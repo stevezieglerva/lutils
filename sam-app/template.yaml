@@ -33,7 +33,10 @@ Resources:
     Properties:
       Tags:
       - Key: Name
-        Value: "lutil-processing"
+        Value: !Join
+        - '-'
+        - - !Ref 'AWS::StackName'
+          - processing
 
 
 Outputs:
