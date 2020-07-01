@@ -1,8 +1,0 @@
-Name                                                  Stmts   Miss  Cover
--------------------------------------------------------------------------
-lutil-s3-text-lines-to-sns/S3TextFromLambdaEvent.py      54     54     0%
-lutil-s3-text-lines-to-sns/__init__.py                    0      0   100%
-lutil-s3-text-lines-to-sns/app.py                        36     36     0%
-lutil-s3-text-lines-to-sns/firehose_helpers.py           23     23     0%
--------------------------------------------------------------------------
-TOTAL                                                   113    113     0%

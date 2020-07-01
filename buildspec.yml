@@ -1,0 +1,23 @@
+version: 0.2
+
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+    commands:
+       - echo "Installing ..."
+       - pip install aws-sam-cli
+
+
+  build:
+    commands:
+        - export S3_ARTIFACTS=$(aws cloudformation describe-stacks --stack-name lutils-pipeline --query "Stacks[0].Outputs[?OutputKey == 'S3Artifacts'].OutputValue" --output text)
+        - printenv | grep S3_ARTIFACTS
+        - cd sam-app
+        - sam validate -t template.yaml
+        - sam build
+        - sam package --output-template-file packaged.yaml --s3-bucket $S3_ARTIFACTS
+        - sam deploy --template-file packaged.yaml --stack-name zillow-and-schools --capabilities CAPABILITY_IAM
+        - aws cloudformation describe-stacks --stack-name zillow-and-schools --query 'Stacks[].Outputs' --output table
+

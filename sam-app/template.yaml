@@ -18,6 +18,27 @@ Resources:
       Handler: app.lambda_handler
       Runtime: python3.6
 
+  S3TextLinesToSNSLambda:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: lutil_s3_text_lines_to_sns/
+      Handler: app.lambda_handler
+      Runtime: python3.6
+      Tags:
+        Type: "lutils"
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref ProcessingBucket
+
+  ProcessingBucket:
+    Type: AWS::S3::Bucket    
+    DeletionPolicy: Delete
+    Description: Creating Amazon S3 bucket for processing files and storing output
+    Properties:
+      Tags:
+      - Key: Name
+        Value: "lutil-processing"
+
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
