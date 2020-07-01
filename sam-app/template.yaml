@@ -26,7 +26,8 @@ Resources:
         - S3CrudPolicy:
             BucketName: !Ref ProcessingBucket
       Events:
-        S3:
+        S3Event:
+          Type: S3
           Bucket: !Ref ProcessingBucket
           Events: s3:ObjectCreated:*
           Filter: 
