@@ -37,6 +37,7 @@ Resources:
         - '-'
         - - !Ref 'AWS::StackName'
           - processing
+          - "-"
 
 
 Outputs:
