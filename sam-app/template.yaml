@@ -1,11 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: >
-  sam-app
+Description: lutils SAM app
 
-  Sample SAM Template for sam-app
-
-# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
     Timeout: 3
@@ -16,14 +12,14 @@ Resources:
     Properties:
       CodeUri: hello_world/
       Handler: app.lambda_handler
-      Runtime: python3.6
+      Runtime: python3.7
 
   S3TextLinesToSNSLambda:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: lutil_s3_text_lines_to_sns/
       Handler: app.lambda_handler
-      Runtime: python3.6
+      Runtime: python3.7
       Tags:
         Type: "lutils"
       Policies:
