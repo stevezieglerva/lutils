@@ -1,4 +1,5 @@
 *.code-workspace
+sam-app/test_coverage_results*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
