@@ -1,2 +1,1 @@
-# lutils
-Lambda Utility Functions
+# lutil-s3-text-lines-to-sns

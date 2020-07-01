@@ -1,0 +1,8 @@
+botocore
+boto3
+pysnooper
+coverage
+timeago
+pytz
+pylint
+black
