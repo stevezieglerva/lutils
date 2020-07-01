@@ -31,6 +31,11 @@ Resources:
             - Effect: Allow
               Action: "*"
               Resource: !Sub "arn:aws:s3:::${AWS::StackName}-processing/*"
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: "sns:Publish"
+              Resource: "*"
       Environment:
         Variables:
           sns_arn: "arn:aws:sns:us-east-1:112280397275:lutil_s3_text_lines"
