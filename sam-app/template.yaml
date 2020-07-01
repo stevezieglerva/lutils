@@ -23,14 +23,16 @@ Resources:
       Tags:
         Type: "lutils"
       Policies:
-        - S3CrudPolicy:
-            BucketName: !Ref ProcessingBucket
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: *
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}-processing"
       Events:
         S3Event:
           Type: S3
           Properties:
-            Bucket: 
-              Ref: ProcessingBucket
+            Bucket: !Ref ProcessingBucket
             Events: s3:ObjectCreated:*
             Filter: 
               S3Key: 
@@ -38,17 +40,16 @@ Resources:
                 - Name: prefix
                   Value: 10-input-text-files-to-sns
 
+
   ProcessingBucket:
     Type: AWS::S3::Bucket    
     DeletionPolicy: Delete
     Description: Creating Amazon S3 bucket for processing files and storing output
     Properties:
-      Tags:
-      - Key: Name
-        Value: !Join
+      BucketName: !Join
         - '-'
         - - !Ref 'AWS::StackName'
-          - processing-
+          - processing
 
 
 Outputs:
