@@ -25,6 +25,15 @@ Resources:
       Policies:
         - S3CrudPolicy:
             BucketName: !Ref ProcessingBucket
+      Events:
+        S3:
+          Bucket: !Ref ProcessingBucket
+          Events: s3:ObjectCreated:*
+          Filter: 
+            S3Key: 
+              Rules:
+              - Name: prefix
+                Value: 10-input-text-files-to-sns
 
   ProcessingBucket:
     Type: AWS::S3::Bucket    
