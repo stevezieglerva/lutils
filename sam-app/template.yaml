@@ -28,6 +28,9 @@ Resources:
             - Effect: Allow
               Action: "*"
               Resource: !Sub "arn:aws:s3:::${AWS::StackName}-processing"
+            - Effect: Allow
+              Action: "*"
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}-processing/*"
       Events:
         S3Event:
           Type: S3
