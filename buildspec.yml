@@ -18,6 +18,6 @@ phases:
         - sam validate -t template.yaml
         - sam build
         - sam package --output-template-file packaged.yaml --s3-bucket $S3_ARTIFACTS
-        - sam deploy --template-file packaged.yaml --stack-name zillow-and-schools --capabilities CAPABILITY_IAM
-        - aws cloudformation describe-stacks --stack-name zillow-and-schools --query 'Stacks[].Outputs' --output table
+        - sam deploy --template-file packaged.yaml --stack-name lutils --capabilities CAPABILITY_IAM
+        - aws cloudformation describe-stacks --stack-name lutils --query 'Stacks[].Outputs' --output table
 
