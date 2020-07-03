@@ -64,8 +64,8 @@ Resources:
         - Version: 2012-10-17
           Statement:
             - Effect: Allow
-              Action: "*"
-              Resource: !Sub "arn:aws:sns:*"
+              Action: "sns:*"
+              Resource: "*"
       Environment:
         Variables:
           s3_bucket: !Sub "arn:aws:s3:::${AWS::StackName}-processing/*"
