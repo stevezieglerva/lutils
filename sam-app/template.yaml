@@ -88,8 +88,8 @@ Resources:
   SNSAlertsText:
     Type: AWS::SNS::Topic
     Properties: 
-      DisplayName: "lutil_s3_text_lines"
-      TopicName: "lutil_s3_text_lines"
+      DisplayName: "lutil_s3_text_lines_output"
+      TopicName: "lutil_s3_text_lines_output"
 
 
 Outputs:
