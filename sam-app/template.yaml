@@ -69,5 +69,6 @@ Outputs:
     Value: !GetAtt S3TextLinesToSNSLambda.Arn
 
   S3ProcessingBucket:
-
+    Description: "S3ProcessingBucket ARN"
+    Value: !GetAtt ProcessingBucket.Arn
 
