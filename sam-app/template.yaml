@@ -68,7 +68,7 @@ Resources:
               Resource: !Sub "arn:aws:sns:*"
       Environment:
         Variables:
-          s3_bucket: !Ref ProcessingBucket
+          s3_bucket: !Sub "arn:aws:s3:::${AWS::StackName}-processing/*"
       Events:
         S3Event:
           Type: S3
