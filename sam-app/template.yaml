@@ -44,6 +44,43 @@ Resources:
                 - Name: prefix
                   Value: 10-input-text-files-to-sns
 
+  DownloadURLLambda:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: lutil_download_url/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      Tags:
+        Type: "lutils"
+      Policies:
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: "*"
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}-processing"
+            - Effect: Allow
+              Action: "*"
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}-processing/*"
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: "*"
+              Resource: !Sub "arn:aws:sns:*"
+      Environment:
+        Variables:
+          s3_bucket: !Ref ProcessingBucket
+      Events:
+        S3Event:
+          Type: S3
+          Properties:
+            Bucket: !Ref ProcessingBucket
+            Events: s3:ObjectCreated:*
+            Filter: 
+              S3Key: 
+                Rules:
+                - Name: prefix
+                  Value: 10-input-text-files-to-sns
+
 
   ProcessingBucket:
     Type: AWS::S3::Bucket    
