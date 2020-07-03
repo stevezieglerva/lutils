@@ -85,6 +85,12 @@ Resources:
         - - !Ref 'AWS::StackName'
           - processing
 
+  SNSAlertsText:
+    Type: AWS::SNS::Topic
+    Properties: 
+      DisplayName: "lutil_s3_text_lines"
+      TopicName: "lutil_s3_text_lines"
+
 
 Outputs:
   S3TextLinesToSNSLambda:
