@@ -69,8 +69,11 @@ Resources:
       Environment:
         Variables:
           s3_bucket: !Sub "arn:aws:s3:::${AWS::StackName}-processing/*"
-
-
+      Events:
+        SNSEvent:
+          Type: SNS
+          Properties:
+            Topic: util_s3_text_lines
 
   ProcessingBucket:
     Type: AWS::S3::Bucket    
