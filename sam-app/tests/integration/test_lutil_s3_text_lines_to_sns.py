@@ -11,9 +11,10 @@ print(json.dumps(sys.path, indent=3))
 import unittest
 from lutil_s3_text_lines_to_sns import app
 from unittest.mock import patch, Mock, MagicMock, PropertyMock
+from lutil_s3_text_lines_to_sns import app
 
 
-class UnitTests(unittest.TestCase):
+class IntegrationTests(unittest.TestCase):
     def test_lambda_handler__given_event__then_messages_sent(self):
         # Arrange
         event = {

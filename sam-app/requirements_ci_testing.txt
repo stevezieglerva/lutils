@@ -6,3 +6,4 @@ timeago
 pytz
 pylint
 black
+requests
