@@ -73,7 +73,7 @@ Resources:
         SNSEvent:
           Type: SNS
           Properties:
-            Topic: "lutil_s3_text_lines_output2"
+            Topic: "lutil_s3_text_lines_output_new"
 
   ProcessingBucket:
     Type: AWS::S3::Bucket    
