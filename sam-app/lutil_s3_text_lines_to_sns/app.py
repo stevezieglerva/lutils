@@ -11,11 +11,6 @@ from S3TextFromLambdaEvent import *
 def lambda_handler(event, context):
 
     print(f"Started at {datetime.now()}")
-    sns_arn = os.environ.get("sns_arn", "")
-    if sns_arn == "":
-        raise (
-            ValueError("Environment variable sns_arn must be set to a valid SNS topic.")
-        )
 
     files = get_files_from_s3_lambda_event(event)
     s3 = boto3.resource("s3")
@@ -23,7 +18,7 @@ def lambda_handler(event, context):
 
     messages = format_messages(text_data)
     count = 0
-    count = send_messages(messages, sns_arn)
+    count = send_messages(messages)
 
     print(f"Finished at {datetime.now()}")
 
@@ -48,17 +43,21 @@ def format_messages(text_data):
     return message_list
 
 
-def send_messages(message_list, sns_arn):
+def send_messages(message_list):
     sns = boto3.client("sns")
     for message in message_list:
         source = message["source"]
         source_key_parts = source.split("/")
+        print(source_key_parts)
         assert (
-            len(source_key_parts) >= 3
+            len(source_key_parts) >= 6
         ), "Expect input S3 key to have at least three parts"
-        POSITION_OF_SNS_TOPIC_NAME = 1
+        POSITION_OF_SNS_TOPIC_NAME = 5
         sns_topic_name = source_key_parts[POSITION_OF_SNS_TOPIC_NAME]
-        print(f"Sending message to {sns_topic_name}: {message}")
+        region = os.environ["region"]
+        accountid = os.environ["accountid"]
+        sns_arn = f"arn:aws:sns:{region}:{accountid}:{sns_topic_name}"
+        print(f"Sending message to {sns_arn}: {message}")
         result = sns.publish(TopicArn=sns_arn, Message=json.dumps(message))
         print(result)
     return len(message_list)

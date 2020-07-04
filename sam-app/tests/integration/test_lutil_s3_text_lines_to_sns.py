@@ -35,12 +35,12 @@ class IntegrationTests(unittest.TestCase):
                         "s3SchemaVersion": "1.0",
                         "configurationId": "testConfigRule",
                         "bucket": {
-                            "name": "svz-aws-download-webpages",
+                            "name": "lutils-processing",
                             "ownerIdentity": {"principalId": "EXAMPLE"},
-                            "arn": "arn:aws:s3:::svz-aws-download-webpages",
+                            "arn": "arn:aws:s3:::lutils-processing",
                         },
                         "object": {
-                            "key": "input/url_list.txt",
+                            "key": "lutil_s3_text_lines_to_sns/lutil_s3_text_lines_output/url_list.txt",
                             "size": 1024,
                             "eTag": "0123456789abcdef0123456789abcdef",
                             "sequencer": "0A1B2C3D4E5F678901",
@@ -49,7 +49,7 @@ class IntegrationTests(unittest.TestCase):
                 }
             ]
         }
-        os.environ["sns_arn"] = "arn:aws:sns:us-east-1:112280397275:lutil_s3_text_lines"
+        os.environ["region"] = "us-east-1"
 
         # Act
         results = app.lambda_handler(event, "")
