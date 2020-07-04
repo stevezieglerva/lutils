@@ -42,7 +42,7 @@ Resources:
               S3Key: 
                 Rules:
                 - Name: prefix
-                  Value: 10-input-text-files-to-sns
+                  Value: lutil_s3_text_lines_to_sns
 
   DownloadURLLambda:
     Type: AWS::Serverless::Function 
