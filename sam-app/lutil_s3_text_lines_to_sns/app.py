@@ -51,7 +51,14 @@ def format_messages(text_data):
 def send_messages(message_list, sns_arn):
     sns = boto3.client("sns")
     for message in message_list:
-        print("Sending message: {}".format(message))
+        source = message["source"]
+        source_key_parts = source.split("/")
+        assert (
+            len(source_key_parts) >= 3
+        ), "Expect input S3 key to have at least three parts"
+        POSITION_OF_SNS_TOPIC_NAME = 1
+        sns_topic_name = source_key_parts[POSITION_OF_SNS_TOPIC_NAME]
+        print(f"Sending message to {sns_topic_name}: {message}")
         result = sns.publish(TopicArn=sns_arn, Message=json.dumps(message))
         print(result)
     return len(message_list)

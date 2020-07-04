@@ -32,6 +32,8 @@ Resources:
       Environment:
         Variables:
           sns_arn: "arn:aws:sns:us-east-1:112280397275:lutil_s3_text_lines"
+          region: !Sub "${AWS::Region}"
+          accountid: !Sub "${AWS::AccountId}"
       Events:
         S3Event:
           Type: S3
