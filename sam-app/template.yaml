@@ -13,6 +13,7 @@ Resources:
       CodeUri: lutil_s3_text_lines_to_sns/
       Handler: app.lambda_handler
       Runtime: python3.7
+      ReservedConcurrentExecutions: 10
       Tags:
         Type: "lutils"
       Policies:
@@ -52,6 +53,7 @@ Resources:
       CodeUri: lutil_download_url/
       Handler: app.lambda_handler
       Runtime: python3.7
+      ReservedConcurrentExecutions: 10
       Tags:
         Type: "lutils"
       Policies:

@@ -57,7 +57,7 @@ def lambda_handler(event, context):
 
 
 def download_page(url):
-    random_secs_delay_for_brownlisting = random.randint(1, 5)
+    random_secs_delay_for_brownlisting = random.randint(1, 3)
     time.sleep(random_secs_delay_for_brownlisting)
     res = requests.get(url, allow_redirects=True, timeout=30)
     return res

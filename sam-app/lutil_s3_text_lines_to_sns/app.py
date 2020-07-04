@@ -11,6 +11,7 @@ from S3TextFromLambdaEvent import *
 def lambda_handler(event, context):
 
     print(f"Started at {datetime.now()}")
+    print(json.dumps(event, indent=3, default=str))
 
     files = get_files_from_s3_lambda_event(event)
     s3 = boto3.resource("s3")

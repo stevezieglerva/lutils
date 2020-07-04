@@ -17,12 +17,14 @@ class EndToEndTests(unittest.TestCase):
         self,
     ):
         # Arrange
-        list = """https://www.cnn.com
-https://www.twitter.com
-https://google.com"""
+        list = """https://www.twitter.com
+https://www.facebook.com
+https://instagram.com"""
         now = datetime.now().isoformat()
         create_s3_text_file(
-            "lutils-processing", f"lutil_s3_text_lines_to_sns/test_{now}.txt", list
+            "lutils-processing",
+            f"lutil_s3_text_lines_to_sns/lutil_s3_text_lines_output/test_{now}.txt",
+            list,
         )
 
         # Act
