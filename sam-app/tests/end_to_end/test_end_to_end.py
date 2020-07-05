@@ -20,7 +20,7 @@ class EndToEndTests(unittest.TestCase):
         list = """https://www.twitter.com
 https://www.facebook.com
 https://instagram.com"""
-        now = datetime.now().isoformat()
+        now = datetime.now().isoformat().replace(":", "")
         create_s3_text_file(
             "lutils-processing",
             f"lutil_s3_text_lines_to_sns/lutil_s3_text_lines_output/test_{now}.txt",
