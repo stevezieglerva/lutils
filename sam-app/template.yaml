@@ -61,10 +61,10 @@ Resources:
           Statement:
             - Effect: Allow
               Action: "*"
-              Resource: !Sub "arn:aws:s3:::${AWS::StackName}-processing"
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}*"
             - Effect: Allow
               Action: "*"
-              Resource: !Sub "arn:aws:s3:::${AWS::StackName}-processing/*"
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}*/*"
         - Version: 2012-10-17
           Statement:
             - Effect: Allow
@@ -72,7 +72,7 @@ Resources:
               Resource: "*"
       Environment:
         Variables:
-          s3_bucket: !Sub "${AWS::StackName}-processing"
+          s3_bucket: !Ref ProcessingBucket
       Events:
         SNSEvent:
           Type: SNS
@@ -84,7 +84,9 @@ Resources:
     DeletionPolicy: Delete
     Description: Creating Amazon S3 bucket for processing files and storing output
     Properties:
-      BucketName: !Join
+      Tags:
+      - Key: Name
+        Value: !Join
         - '-'
         - - !Ref 'AWS::StackName'
           - processing
