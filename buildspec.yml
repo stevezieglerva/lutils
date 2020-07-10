@@ -14,6 +14,7 @@ phases:
     commands:
         - export S3_ARTIFACTS=$(aws cloudformation describe-stacks --stack-name lutils-pipeline --query "Stacks[0].Outputs[?OutputKey == 'S3Artifacts'].OutputValue" --output text)
         - printenv | grep S3_ARTIFACTS
+        - . upload_python_selenium_layer.sh
         - cd sam-app
         - sam validate -t template.yaml
         - sam build
