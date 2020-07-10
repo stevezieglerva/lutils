@@ -104,7 +104,7 @@ Resources:
       LayerName: selenium-simplified
       Description: Dependencies for Selenium and the headless browser
       ContentUri: 
-        Bucket: !Sub  "https://lutils-pipeline-artifactsbucket-98fi0mj7zik2.s3.amazonaws.com/python-selenium-simplified.zip"
+        Bucket: !Sub  "lutils-pipeline-artifactsbucket-98fi0mj7zik2"
         Key: "python-selenium-simplified.zip"
       CompatibleRuntimes:
         - python3.7
