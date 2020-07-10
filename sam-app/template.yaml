@@ -21,10 +21,10 @@ Resources:
           Statement:
             - Effect: Allow
               Action: "*"
-              Resource: !Sub "arn:aws:s3:::${AWS::StackName}-processing"
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}*"
             - Effect: Allow
               Action: "*"
-              Resource: !Sub "arn:aws:s3:::${AWS::StackName}-processing/*"
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}*/*"
         - Version: 2012-10-17
           Statement:
             - Effect: Allow
