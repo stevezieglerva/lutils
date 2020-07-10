@@ -17,7 +17,7 @@ phases:
         - ls -la
         - pwd
         - chmod +x upload_python_selenium_layer.sh
-        - . upload_python_selenium_layer.sh
+        - sh upload_python_selenium_layer.sh
         - cd sam-app
         - sam validate -t template.yaml
         - sam build
