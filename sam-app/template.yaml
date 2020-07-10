@@ -79,6 +79,37 @@ Resources:
           Properties:
             Topic: !Ref DownloadURLSNS
 
+  DownloadURLSeleniumLambda:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Description: Downloads a URL using Selenium
+      CodeUri: lutil-download-url-selenium/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      Layers: 
+        - !Ref Shared
+      MemorySize: 512  
+      Environment: 
+        Variables:
+          PATH: /tmp/bin
+          PYTHON_PATH: /opt/python
+      Tags:
+        Type: "selenium-testing"
+        Environment: lutils
+
+
+  Shared:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: selenium-simplified
+      Description: Dependencies for Selenium and the headless browser
+      ContentUri: 
+        Bucket: !Sub  "ustif-sam-python-dependencies-zip-${AWS::AccountId}"
+        Key: "python-selenium-simplified.zip"
+      CompatibleRuntimes:
+        - python3.7
+
+
   ProcessingBucket:
     Type: AWS::S3::Bucket    
     DeletionPolicy: Delete

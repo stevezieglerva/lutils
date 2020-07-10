@@ -1,4 +1,4 @@
-
+git status
 git diff
 
 echo 'Enter commit message:'
