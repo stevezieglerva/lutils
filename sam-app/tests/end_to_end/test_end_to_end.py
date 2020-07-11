@@ -49,6 +49,29 @@ https://usa.gov"""
 
         # Assert
 
+    def test_upload_new_starting_file__given_upload_new_starting_file_for_selenium__then_new_html_pages_downloaded(
+        self,
+    ):
+        # Arrange
+        cf = boto3.client("cloudformation")
+        stack = cf.describe_stacks(StackName="lutils")
+        # print(json.dumps(stack, indent=3, default=str))
+        bucket = get_s3_bucket_from_stack("S3ProcessingBucket")
+        print(f"*** {bucket}")
+
+        list = """https://www.mtv.com
+https://walmart.com"""
+        now = datetime.now().isoformat().replace(":", "")
+        create_s3_text_file(
+            bucket,
+            f"lutil_s3_text_lines_to_sns/lutil_s3_text_lines_output_selenium/test-end-to-end/folder2/test_{now}.txt",
+            list,
+        )
+
+        # Act
+
+        # Assert
+
 
 if __name__ == "__main__":
     unittest.main()

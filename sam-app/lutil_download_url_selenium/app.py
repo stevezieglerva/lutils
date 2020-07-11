@@ -74,6 +74,7 @@ def lambda_handler(event, context):
             message = json.loads(records["Sns"]["Message"])
             print(message)
             url = message["line"]
+            source = message["source"]
             res = download_page(url, chrome_options)
             status_code = 200
             print(str(status_code) + "-" + url)
