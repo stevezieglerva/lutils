@@ -5,6 +5,12 @@ import glob
 import subprocess
 import shutil
 import time
+import json
+import re
+from urllib.parse import urlparse
+from datetime import datetime
+from S3TextFromLambdaEvent import *
+
 
 BIN_DIR = "/tmp/bin"
 CURR_BIN_DIR = "/opt/python/bin"
@@ -32,14 +38,14 @@ def _init_bin(executable_name):
 
 
 def lambda_handler(event, context):
+    print(f"Started at {datetime.now()}")
+
     _init_bin("headless-chromium")
     _init_bin("chromedriver")
 
     for filename in glob.iglob("/tmp/**/*", recursive=True):
         print(filename)
 
-    # TODO implement
-    print("Starting ...")
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
@@ -61,12 +67,55 @@ def lambda_handler(event, context):
     chrome_path = "/tmp/bin/headless-chromium"
     chrome_options.binary_location = chrome_path
 
+    try:
+
+        bucket = os.environ["s3_bucket"]
+        for records in event["Records"]:
+            message = json.loads(records["Sns"]["Message"])
+            print(message)
+            url = message["line"]
+            res = download_page(url, chrome_options)
+            status_code = 200
+            print(str(status_code) + "-" + url)
+            result = {
+                "processing_type": "async download urls",
+                "url": url,
+                "status_code": res.status_code,
+                "length": len(res.text),
+            }
+            print(f"processed url: {result}")
+            url_parts = urlparse(url)
+            domain = re.sub(r"[^a-zA-Z0-9-_.]", "_", url_parts.netloc)
+            filename = re.sub(r"[^a-zA-Z0-9-_.]", "_", url)
+            s3_key = f"lutil-download-url/latest/{domain}/{filename}"
+            create_s3_text_file(
+                bucket, s3_key, res.text,
+            )
+            print(f"File saved to: {s3_key}")
+            timestamp = datetime.now().isoformat()
+            s3_key = f"lutil-download-url/{domain}/{filename}.{timestamp}"
+            create_s3_text_file(
+                bucket, s3_key, res.text,
+            )
+            print(f"File saved to: {s3_key}")
+            print(f"Finished at {datetime.now()}")
+
+    except Exception as e:
+        print("Exception: " + str(e))
+        raise (e)
+        return {"msg": "Exception"}
+
+    print(f"Finished at {datetime.now()}")
+
+    return {"msg": "Success"}
+
+
+def download_page(url, chrome_options):
     driver = webdriver.Chrome(chrome_options=chrome_options)
     page_data = ""
-    if "url" in event.keys():
-        driver.get(event["url"])
-        time.sleep(2)
-        page_data = driver.page_source
+    driver.get(url)
+    time.sleep(2)
+    page_data = driver.page_source
     driver.close()
-    print("Finished.")
     return page_data
+
