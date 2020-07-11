@@ -95,6 +95,7 @@ Resources:
           PATH: /tmp/bin
           PYTHON_PATH: /opt/python
           s3_bucket: !Ref ProcessingBucket
+          use_guids_for_filenames: no
       Tags:
         Type: "selenium-testing"
         Environment: lutils

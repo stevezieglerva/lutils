@@ -9,6 +9,7 @@ import requests
 import re
 import random
 import time
+import hashlib
 from urllib.parse import urlparse
 from S3TextFromLambdaEvent import *
 
@@ -33,6 +34,10 @@ def lambda_handler(event, context):
                 "length": len(res.text),
             }
             print(f"processed url: {result}")
+            use_guid_for_filename_var = os.environ.get("use_guids_for_filenames", "no")
+            use_guid_for_filename = False
+            if use_guid_for_filename_var == "yes":
+                use_guid_for_filename = True
             s3_key = get_s3_key_for_latest(url, source)
             create_s3_text_file(
                 bucket, s3_key, res.text,
@@ -62,10 +67,15 @@ def download_page(url):
     return res
 
 
-def get_s3_key_for_latest(url, source):
+def get_s3_key_for_latest(url, source, use_guid=False):
     url_parts = urlparse(url)
     domain = re.sub(r"[^a-zA-Z0-9-_.]", "_", url_parts.netloc)
     filename = re.sub(r"[^a-zA-Z0-9-_.]", "_", url)
+    if use_guid:
+        m = hashlib.md5()
+        m.update(bytes(filename, "utf-8"))
+        hash_val = int.from_bytes(m.digest(), "big")
+        filename = str(hash_val)
 
     source_url_parts = urlparse(source)
     source_key_parts = source_url_parts.path.split("/")
