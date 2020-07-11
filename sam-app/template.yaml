@@ -73,6 +73,7 @@ Resources:
       Environment:
         Variables:
           s3_bucket: !Ref ProcessingBucket
+          use_guids_for_filenames: False
       Events:
         SNSEvent:
           Type: SNS
@@ -95,7 +96,7 @@ Resources:
           PATH: /tmp/bin
           PYTHON_PATH: /opt/python
           s3_bucket: !Ref ProcessingBucket
-          use_guids_for_filenames: no
+          use_guids_for_filenames: False
       Tags:
         Type: "selenium-testing"
         Environment: lutils
