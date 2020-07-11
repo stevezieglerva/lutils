@@ -34,10 +34,10 @@ def lambda_handler(event, context):
                 "length": len(res.text),
             }
             print(f"processed url: {result}")
-            use_guid_for_filename = os.environ.get("use_guids_for_filenames", False)
-            #            use_guid_for_filename = False
-            #            if use_guid_for_filename_var == "yes":
-            #                use_guid_for_filename = True
+            use_guid_for_filename_var = os.environ.get("use_guids_for_filenames", "no")
+            use_guid_for_filename = False
+            if use_guid_for_filename_var == "yes":
+                use_guid_for_filename = True
             s3_key = get_s3_key_for_latest(url, source, use_guid_for_filename)
             create_s3_text_file(
                 bucket, s3_key, res.text,
