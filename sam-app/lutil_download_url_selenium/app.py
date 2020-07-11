@@ -87,15 +87,16 @@ def lambda_handler(event, context):
             url_parts = urlparse(url)
             domain = re.sub(r"[^a-zA-Z0-9-_.]", "_", url_parts.netloc)
             filename = re.sub(r"[^a-zA-Z0-9-_.]", "_", url)
-            s3_key = f"lutil-download-url/latest/{domain}/{filename}"
+            s3_key = get_s3_key_for_latest(url, source)
             create_s3_text_file(
-                bucket, s3_key, res,
+                bucket, s3_key, res.text,
             )
             print(f"File saved to: {s3_key}")
             timestamp = datetime.now().isoformat()
-            s3_key = f"lutil-download-url/{domain}/{filename}.{timestamp}"
+            s3_key_historical = s3_key.replace("latest/", "")
+            s3_key = f"{s3_key_historical}.{timestamp}"
             create_s3_text_file(
-                bucket, s3_key, res,
+                bucket, s3_key, res.text,
             )
             print(f"File saved to: {s3_key}")
             print(f"Finished at {datetime.now()}")
@@ -119,3 +120,24 @@ def download_page(url, chrome_options):
     driver.close()
     return page_data
 
+
+def get_s3_key_for_latest(url, source):
+    url_parts = urlparse(url)
+    domain = re.sub(r"[^a-zA-Z0-9-_.]", "_", url_parts.netloc)
+    filename = re.sub(r"[^a-zA-Z0-9-_.]", "_", url)
+
+    source_url_parts = urlparse(source)
+    source_key_parts = source_url_parts.path.split("/")
+    required_first_parts = 4
+    array_index = -1 * (len(source_key_parts) - required_first_parts)
+    source_key_parts_without_bucket_through_sns_topic = source_key_parts[array_index:]
+    source_prefix = ""
+    if len(source_key_parts_without_bucket_through_sns_topic) > 1:
+        source_prefix_without_last = source_key_parts_without_bucket_through_sns_topic[
+            :-1
+        ]
+        source_prefix = "/".join(source_prefix_without_last)
+        domain = f"{source_prefix}/{domain}"
+
+    s3_key = f"lutil-download-url/latest/{domain}/{filename}"
+    return s3_key
