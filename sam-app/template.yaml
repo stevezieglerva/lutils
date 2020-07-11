@@ -53,7 +53,7 @@ Resources:
       CodeUri: lutil_download_url/
       Handler: app.lambda_handler
       Runtime: python3.7
-      ReservedConcurrentExecutions: 10
+      ReservedConcurrentExecutions: 25
       Tags:
         Type: "lutils"
       Policies:
@@ -86,6 +86,7 @@ Resources:
       CodeUri: lutil_download_url_selenium/
       Handler: app.lambda_handler
       Runtime: python3.7
+      ReservedConcurrentExecutions: 25
       Layers: 
         - !Ref Shared
       MemorySize: 512  
