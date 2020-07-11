@@ -83,7 +83,7 @@ Resources:
     Type: AWS::Serverless::Function 
     Properties:
       Description: Downloads a URL using Selenium
-      CodeUri: lutil-download-url-selenium/
+      CodeUri: lutil_download_url_selenium/
       Handler: app.lambda_handler
       Runtime: python3.7
       Layers: 
