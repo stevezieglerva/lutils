@@ -51,7 +51,7 @@ fi
 
 # Run the unit tests first and short circuit if they fail
 SOURCE_DIRS=lutil_s3_text_lines_to_sns,lutil_download_url
-FILE_FILTER=*unit*.py # Update this file filter to run specific test files
+FILE_FILTER=*.py # Update this file filter to run specific test files
 
 echo "*** SOURCE_DIRS: $SOURCE_DIRS"
 echo "*** FILE_FILTER: $FILE_FILTER"

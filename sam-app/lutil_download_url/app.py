@@ -22,6 +22,7 @@ def lambda_handler(event, context):
             message = json.loads(records["Sns"]["Message"])
             print(message)
             url = message["line"]
+            source = message["source"]
             res = download_page(url)
             status_code = res.status_code
             print(str(res.status_code) + "-" + url)
@@ -32,16 +33,13 @@ def lambda_handler(event, context):
                 "length": len(res.text),
             }
             print(f"processed url: {result}")
-            url_parts = urlparse(url)
-            domain = re.sub(r"[^a-zA-Z0-9-_.]", "_", url_parts.netloc)
-            filename = re.sub(r"[^a-zA-Z0-9-_.]", "_", url)
-            s3_key = f"lutil-download-url/latest/{domain}/{filename}"
+            s3_key = get_s3_key_for_latest(url, source)
             create_s3_text_file(
                 bucket, s3_key, res.text,
             )
             print(f"File saved to: {s3_key}")
             timestamp = datetime.now().isoformat()
-            s3_key = f"lutil-download-url/{domain}/{filename}.{timestamp}"
+            s3_key = f"{s3_key}.{timestamp}"
             create_s3_text_file(
                 bucket, s3_key, res.text,
             )
