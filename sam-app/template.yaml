@@ -93,10 +93,29 @@ Resources:
         Variables:
           PATH: /tmp/bin
           PYTHON_PATH: /opt/python
+          s3_bucket: !Ref ProcessingBucket
       Tags:
         Type: "selenium-testing"
         Environment: lutils
-
+      Policies:
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: "*"
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}*"
+            - Effect: Allow
+              Action: "*"
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}*/*"
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: "sns:*"
+              Resource: "*"
+      Events:
+        SNSEvent:
+          Type: SNS
+          Properties:
+            Topic: !Ref DownloadURLSeleniumSNS
 
   Shared:
     Type: AWS::Serverless::LayerVersion
@@ -128,6 +147,11 @@ Resources:
       DisplayName: "lutil_s3_text_lines_output"
       TopicName: "lutil_s3_text_lines_output"
 
+  DownloadURLSeleniumSNS:
+    Type: AWS::SNS::Topic
+    Properties: 
+      DisplayName: "lutil_s3_text_lines_output_selenium"
+      TopicName: "lutil_s3_text_lines_output_selenium"
 
 Outputs:
   S3TextLinesToSNSLambda:
