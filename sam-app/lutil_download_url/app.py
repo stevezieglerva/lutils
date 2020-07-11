@@ -62,3 +62,6 @@ def download_page(url):
     res = requests.get(url, allow_redirects=True, timeout=30)
     return res
 
+
+def get_s3_latest_filename(url, source):
+    return ""

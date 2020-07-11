@@ -80,8 +80,8 @@ def lambda_handler(event, context):
             result = {
                 "processing_type": "async download urls",
                 "url": url,
-                "status_code": res.status_code,
-                "length": len(res.text),
+                "status_code": status_code,
+                "length": len(res),
             }
             print(f"processed url: {result}")
             url_parts = urlparse(url)
@@ -89,13 +89,13 @@ def lambda_handler(event, context):
             filename = re.sub(r"[^a-zA-Z0-9-_.]", "_", url)
             s3_key = f"lutil-download-url/latest/{domain}/{filename}"
             create_s3_text_file(
-                bucket, s3_key, res.text,
+                bucket, s3_key, res,
             )
             print(f"File saved to: {s3_key}")
             timestamp = datetime.now().isoformat()
             s3_key = f"lutil-download-url/{domain}/{filename}.{timestamp}"
             create_s3_text_file(
-                bucket, s3_key, res.text,
+                bucket, s3_key, res,
             )
             print(f"File saved to: {s3_key}")
             print(f"Finished at {datetime.now()}")
