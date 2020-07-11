@@ -39,6 +39,7 @@ def lambda_handler(event, context):
             )
             print(f"File saved to: {s3_key}")
             timestamp = datetime.now().isoformat()
+            s3_key_historical = s3_key.replace("latest/", "")
             s3_key = f"{s3_key}.{timestamp}"
             create_s3_text_file(
                 bucket, s3_key, res.text,
