@@ -41,7 +41,7 @@ https://usa.gov"""
         now = datetime.now().isoformat().replace(":", "")
         create_s3_text_file(
             bucket,
-            f"lutil_s3_text_lines_to_sns/lutil_s3_text_lines_output/test-end-to-end/folder2/test_{now}.txt",
+            f"lutil_s3_text_lines_to_sns/lutil_s3_text_lines_output/test-end-to-end/regular-download/test_{now}.txt",
             list,
         )
 
@@ -64,7 +64,7 @@ https://walmart.com"""
         now = datetime.now().isoformat().replace(":", "")
         create_s3_text_file(
             bucket,
-            f"lutil_s3_text_lines_to_sns/lutil_s3_text_lines_output_selenium/test-end-to-end/folder2/test_{now}.txt",
+            f"lutil_s3_text_lines_to_sns/lutil_s3_text_lines_output_selenium/test-end-to-end/selenium-download/test_{now}.txt",
             list,
         )
 

@@ -90,14 +90,14 @@ def lambda_handler(event, context):
             filename = re.sub(r"[^a-zA-Z0-9-_.]", "_", url)
             s3_key = get_s3_key_for_latest(url, source)
             create_s3_text_file(
-                bucket, s3_key, res.text,
+                bucket, s3_key, res,
             )
             print(f"File saved to: {s3_key}")
             timestamp = datetime.now().isoformat()
             s3_key_historical = s3_key.replace("latest/", "")
             s3_key = f"{s3_key_historical}.{timestamp}"
             create_s3_text_file(
-                bucket, s3_key, res.text,
+                bucket, s3_key, res,
             )
             print(f"File saved to: {s3_key}")
             print(f"Finished at {datetime.now()}")
