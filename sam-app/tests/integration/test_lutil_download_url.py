@@ -68,10 +68,10 @@ opm_event = {
 }
 
 
-class TestMethods(unittest.TestCase):
+class IntegrationTests(unittest.TestCase):
     def test_lambda_handler__given_valid_sns_data__file_is_downloaded_to_location(self):
         # Arrange
-        os.environ["s3_bucket"] = "lutils-processing"
+        os.environ["s3_bucket"] = "lutils-processingbucket-ekhfo2czytqo"
 
         # Act
         result = app.lambda_handler(event, None)

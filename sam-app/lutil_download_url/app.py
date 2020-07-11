@@ -63,5 +63,28 @@ def download_page(url):
     return res
 
 
-def get_s3_latest_filename(url, source):
-    return ""
+def get_s3_key_for_latest(url, source):
+    url_parts = urlparse(url)
+    domain = re.sub(r"[^a-zA-Z0-9-_.]", "_", url_parts.netloc)
+    filename = re.sub(r"[^a-zA-Z0-9-_.]", "_", url)
+
+    source_url_parts = urlparse(source)
+    source_key_parts = source_url_parts.path.split("/")
+    #    print(source_key_parts)
+    required_first_parts = 4
+    array_index = -1 * (len(source_key_parts) - required_first_parts)
+    source_key_parts_without_bucket_through_sns_topic = source_key_parts[array_index:]
+    #   print(
+    #        f"source_key_parts_without_bucket_through_sns_topic: {source_key_parts_without_bucket_through_sns_topic}"
+    #    )
+    source_prefix = ""
+    if len(source_key_parts_without_bucket_through_sns_topic) > 1:
+        source_prefix_without_last = source_key_parts_without_bucket_through_sns_topic[
+            :-1
+        ]
+        source_prefix = "/".join(source_prefix_without_last)
+        #        print(f"source_prefix: {source_prefix}")
+        domain = f"{source_prefix}/{domain}"
+
+    s3_key = f"lutil-download-url/latest/{domain}/{filename}"
+    return s3_key

@@ -35,9 +35,9 @@ class IntegrationTests(unittest.TestCase):
                         "s3SchemaVersion": "1.0",
                         "configurationId": "testConfigRule",
                         "bucket": {
-                            "name": "lutils-processing",
+                            "name": "lutils-processingbucket-ekhfo2czytqo",
                             "ownerIdentity": {"principalId": "EXAMPLE"},
-                            "arn": "arn:aws:s3:::lutils-processing",
+                            "arn": "arn:aws:s3:::lutils-processingbucket-ekhfo2czytqo",
                         },
                         "object": {
                             "key": "lutil_s3_text_lines_to_sns/lutil_s3_text_lines_output/url_list.txt",
@@ -50,6 +50,7 @@ class IntegrationTests(unittest.TestCase):
             ]
         }
         os.environ["region"] = "us-east-1"
+        os.environ["accountid"] = "112280397275"
 
         # Act
         results = app.lambda_handler(event, "")
