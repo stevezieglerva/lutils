@@ -165,6 +165,4 @@ Outputs:
     Description: "S3ProcessingBucket ARN"
     Value: !GetAtt ProcessingBucket.Arn
 
-  S3ProcessingBucketName:
-    Description: "S3ProcessingBucket Bucket Name"
-    Value: !GetAtt ProcessingBucket.BucketName
+
