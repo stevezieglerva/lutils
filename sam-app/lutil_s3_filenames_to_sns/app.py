@@ -25,7 +25,7 @@ def lambda_handler(event, context):
 
     print(f"Finished at {datetime.now()}")
 
-    return {"msg": "Success", "lines_processed": count}
+    return {"msg": "Success", "files_processed": count}
 
 
 def get_s3_files(bucket, prefix):
