@@ -8,7 +8,7 @@ Globals:
 
 Resources:
   S3TextLinesToSNSLambda:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Type: AWS::Serverless::Function 
     Properties:
       CodeUri: lutil_s3_text_lines_to_sns/
       Handler: app.lambda_handler
@@ -46,6 +46,46 @@ Resources:
                 Rules:
                 - Name: prefix
                   Value: lutil_s3_text_lines_to_sns
+
+  S3FilenamesToSNSLambda:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: lutil_s3_filenames_to_sns/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      ReservedConcurrentExecutions: 10
+      Tags:
+        Type: "lutils"
+      Policies:
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: "*"
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}*"
+            - Effect: Allow
+              Action: "*"
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}*/*"
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: "sns:Publish"
+              Resource: "*"
+      Environment:
+        Variables:
+          sns_arn: "arn:aws:sns:us-east-1:112280397275:lutil_s3_text_lines"
+          region: !Sub "${AWS::Region}"
+          accountid: !Sub "${AWS::AccountId}"
+##      Events:
+##        S3Event:
+##          Type: S3
+##          Properties:
+##            Bucket: !Ref ProcessingBucket
+##            Events: s3:ObjectCreated:*
+##            Filter: 
+##              S3Key: 
+##                Rules:
+##                - Name: prefix
+##                  Value: lutil_s3_text_lines_to_sns
 
   DownloadURLLambda:
     Type: AWS::Serverless::Function 
@@ -143,6 +183,12 @@ Resources:
         - '-'
         - - !Ref 'AWS::StackName'
           - processing
+
+  S3FilenamesLSNS:
+    Type: AWS::SNS::Topic
+    Properties: 
+      DisplayName: "lutil_s3_filenames_output"
+      TopicName: "lutil_s3_filenames_output"
 
   DownloadURLSNS:
     Type: AWS::SNS::Topic
