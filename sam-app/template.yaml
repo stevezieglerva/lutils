@@ -60,11 +60,11 @@ Resources:
         - Version: 2012-10-17
           Statement:
             - Effect: Allow
-              Action: "*"
-              Resource: !Sub "arn:aws:s3:::${AWS::StackName}*"
+              Action: "ListObjectsV2"
+              Resource: !Sub "arn:aws:s3:::*"
             - Effect: Allow
-              Action: "*"
-              Resource: !Sub "arn:aws:s3:::${AWS::StackName}*/*"
+              Action: "ListObjectsV2"
+              Resource: !Sub "arn:aws:s3:::*/*"
         - Version: 2012-10-17
           Statement:
             - Effect: Allow
