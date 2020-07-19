@@ -13,51 +13,69 @@ def lambda_handler(event, context):
     print(f"Started at {datetime.now()}")
     print(json.dumps(event, indent=3, default=str))
 
-    files = get_files_from_s3_lambda_event(event)
-    s3 = boto3.resource("s3")
-    text_data = get_file_text_from_s3_file_urls(files, s3)
+    bucket = event["bucket"]
+    prefix = event["prefix"]
+    sns_topic = event["sns_arn"]
+    print("Getting files")
+    files = get_s3_files(bucket, prefix)
+    print(files[0])
 
-    messages = format_messages(text_data)
-    count = 0
-    count = send_messages(messages)
+    messages = format_messages(bucket, files)
+    count = send_messages(sns_topic, messages)
 
     print(f"Finished at {datetime.now()}")
 
     return {"msg": "Success", "lines_processed": count}
 
 
-def format_messages(text_data):
+def get_s3_files(bucket, prefix):
+    s3 = boto3.client("s3")
+    files = []
+    batch = s3.list_objects_v2(Bucket=bucket, Prefix=prefix)
+    files.extend(batch["Contents"])
+    print(f'Received {len(batch["Contents"])} files')
+    ##print(json.dumps(files, indent=3, default=str))
+    while batch.get("ContinuationToken", "") != "":
+        attempt = 0
+        while attempt < 10:
+            try:
+                attempt = attempt + 1
+                batch = s3.list_objects_v2(
+                    Bucket=bucket,
+                    Prefix=prefix,
+                    ContinuationToken=batch["ContinuationToken"],
+                )
+                files.extend(batch["Contents"])
+                print(f'Received {len(batch["Contents"])} files')
+                break
+            except Exception as e:
+                print(f"Exception: {e}")
+                time.sleep(1)
+    return files
+
+
+def format_messages(bucket, files):
     message_list = []
-    for key, value in text_data.items():
-        lines = value.split("\n")
-        count = 0
-        print("line count: {}".format(len(lines)))
-        for line in lines:
-            count = count + 1
-            message = {
-                "line_number": count,
-                "line": line.strip(),
-                "source": key,
-                "date": str(datetime.now()),
-            }
-            message_list.append(message)
+    count = 0
+    for file in files:
+        s3_key = file["Key"]
+        count = count + 1
+        message = {
+            "filenumber": count,
+            "key": s3_key,
+            "bucket": bucket,
+            "date": str(datetime.now()),
+        }
+        message_list.append(message)
     return message_list
 
 
-def send_messages(message_list):
+def send_messages(topic, message_list):
     sns = boto3.client("sns")
     for message in message_list:
-        source = message["source"]
-        source_key_parts = source.split("/")
-        print(source_key_parts)
-        assert (
-            len(source_key_parts) >= 6
-        ), "Expect input S3 key to have at least three parts"
-        POSITION_OF_SNS_TOPIC_NAME = 5
-        sns_topic_name = source_key_parts[POSITION_OF_SNS_TOPIC_NAME]
         region = os.environ["region"]
         accountid = os.environ["accountid"]
-        sns_arn = f"arn:aws:sns:{region}:{accountid}:{sns_topic_name}"
+        sns_arn = topic
         print(f"Sending message to {sns_arn}: {message}")
         result = sns.publish(TopicArn=sns_arn, Message=json.dumps(message))
         print(result)

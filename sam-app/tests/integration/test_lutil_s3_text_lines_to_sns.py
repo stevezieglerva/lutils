@@ -9,7 +9,6 @@ print(json.dumps(sys.path, indent=3))
 
 
 import unittest
-from lutil_s3_text_lines_to_sns import app
 from unittest.mock import patch, Mock, MagicMock, PropertyMock
 from lutil_s3_text_lines_to_sns import app
 

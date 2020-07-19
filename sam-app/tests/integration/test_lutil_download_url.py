@@ -11,8 +11,8 @@ import unittest
 from unittest.mock import patch, Mock, MagicMock, PropertyMock
 import time
 import boto3
-from lutil_download_url import app
 import json
+from lutil_download_url import app
 
 
 event = {
