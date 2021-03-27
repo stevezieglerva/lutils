@@ -92,14 +92,18 @@ def lambda_handler(event, context):
                 use_guid_for_filename = True
             s3_key = get_s3_key_for_latest(url, source, use_guid_for_filename)
             create_s3_text_file(
-                bucket, s3_key, res,
+                bucket,
+                s3_key,
+                res,
             )
             print(f"File saved to: {s3_key}")
-            timestamp = datetime.now().isoformat()
+            timestamp = datetime.now().isoformat().replace(":", "")
             s3_key_historical = s3_key.replace("latest/", "")
             s3_key = f"{s3_key_historical}.{timestamp}"
             create_s3_text_file(
-                bucket, s3_key, res,
+                bucket,
+                s3_key,
+                res,
             )
             print(f"File saved to: {s3_key}")
             print(f"Finished at {datetime.now()}")
