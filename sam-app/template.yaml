@@ -130,7 +130,7 @@ Resources:
       ReservedConcurrentExecutions: 25
       Layers: 
         - !Ref Shared
-      MemorySize: 512  
+      MemorySize: 128  
       Environment: 
         Variables:
           PATH: /tmp/bin
@@ -138,7 +138,7 @@ Resources:
           s3_bucket: !Ref ProcessingBucket
           use_guids_for_filenames: "no"
       Tags:
-        Type: "selenium-testing"
+        Type: "lutils"
         Environment: lutils
       Policies:
         - Version: 2012-10-17
