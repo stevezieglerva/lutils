@@ -130,7 +130,7 @@ Resources:
       ReservedConcurrentExecutions: 25
       Layers: 
         - !Ref Shared
-      MemorySize: 128  
+      MemorySize: 512  
       Environment: 
         Variables:
           PATH: /tmp/bin
