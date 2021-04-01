@@ -76,37 +76,42 @@ def lambda_handler(event, context):
             print(message)
             url = message["line"]
             source = message["source"]
-            res = download_page(url, chrome_options)
-            status_code = 200
-            print(str(status_code) + "-" + url)
-            result = {
-                "processing_type": "async download urls",
-                "url": url,
-                "status_code": status_code,
-                "length": len(res),
-            }
-            print(f"processed url: {result}")
-            use_guid_for_filename_var = os.environ.get("use_guids_for_filenames", "no")
-            use_guid_for_filename = False
-            if use_guid_for_filename_var == "yes":
-                use_guid_for_filename = True
-            s3_key = get_s3_key_for_latest(url, source, use_guid_for_filename)
-            create_s3_text_file(
-                bucket,
-                s3_key,
-                res,
-            )
-            print(f"File saved to: {s3_key}")
-            timestamp = datetime.now().isoformat().replace(":", "")
-            s3_key_historical = s3_key.replace("latest/", "")
-            s3_key = f"{s3_key_historical}.{timestamp}"
-            create_s3_text_file(
-                bucket,
-                s3_key,
-                res,
-            )
-            print(f"File saved to: {s3_key}")
-            print(f"Finished at {datetime.now()}")
+            try:
+                res = download_page(url, chrome_options)
+                status_code = 200
+                print(str(status_code) + "-" + url)
+                result = {
+                    "processing_type": "async download urls",
+                    "url": url,
+                    "status_code": status_code,
+                    "length": len(res),
+                }
+                print(f"processed url: {result}")
+                use_guid_for_filename_var = os.environ.get(
+                    "use_guids_for_filenames", "no"
+                )
+                use_guid_for_filename = False
+                if use_guid_for_filename_var == "yes":
+                    use_guid_for_filename = True
+                s3_key = get_s3_key_for_latest(url, source, use_guid_for_filename)
+                create_s3_text_file(
+                    bucket,
+                    s3_key,
+                    res,
+                )
+                print(f"File saved to: {s3_key}")
+                timestamp = datetime.now().isoformat().replace(":", "")
+                s3_key_historical = s3_key.replace("latest/", "")
+                s3_key = f"{s3_key_historical}.{timestamp}"
+                create_s3_text_file(
+                    bucket,
+                    s3_key,
+                    res,
+                )
+                print(f"File saved to: {s3_key}")
+                print(f"Finished at {datetime.now()}")
+            except Exception as e:
+                msg = f"Exception downloading {url} - {e}"
 
     except Exception as e:
         print("Exception: " + str(e))
