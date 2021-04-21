@@ -171,7 +171,7 @@ Resources:
         Type: "lutils"
         Environment: lutils
       Policies:
-        DynamoDBCrudPolicy:
+        - DynamoDBCrudPolicy:
           TableName: lutil_fan-in-processing
         - Version: 2012-10-17
           Statement:
