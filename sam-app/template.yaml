@@ -208,7 +208,6 @@ Resources:
       PrimaryKey:
         Name: process_and_item
         Type: String
-      ProvisionedThroughput: ProvisionedThroughput
       TableName: fan_in_processing
 
 Outputs:
