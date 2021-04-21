@@ -172,12 +172,7 @@ Resources:
         Environment: lutils
       Policies:
         - DynamoDBCrudPolicy:
-          TableName: lutil_fan-in-processing
-        - Version: 2012-10-17
-          Statement:
-            - Effect: Allow
-              Action: "*"
-              Resource: !Sub "arn:aws:s3:::${AWS::StackName}*"
+            TableName: !Ref FanInProcessingTable
       Events:
         SNSEvent:
           Type: SNS
