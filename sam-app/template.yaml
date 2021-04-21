@@ -202,6 +202,13 @@ Resources:
       DisplayName: "lutil_s3_text_lines_output_selenium"
       TopicName: "lutil_s3_text_lines_output_selenium"
 
+  InProgressTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey: PrimaryKeyObject
+      ProvisionedThroughput: ProvisionedThroughput
+      TableName: fan_in_processing
+
 Outputs:
   S3TextLinesToSNSLambda:
     Description: "S3TextLinesToSNSLambda Lambda Function ARN"
