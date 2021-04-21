@@ -202,13 +202,22 @@ Resources:
       DisplayName: "lutil_s3_text_lines_output_selenium"
       TopicName: "lutil_s3_text_lines_output_selenium"
 
-  InProgressTable:
+  FanInProcessingTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:
         Name: process_and_item
         Type: String
-      TableName: fan_in_processing
+      TableName: fan-in-processing
+
+  FanInHistory:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: process_and_item
+        Type: String
+      TableName: fan-in-history
+
 
 Outputs:
   S3TextLinesToSNSLambda:
