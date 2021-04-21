@@ -160,6 +160,31 @@ Resources:
           Properties:
             Topic: !Ref DownloadURLSeleniumSNS
 
+  StartStopFanInLambda:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Description: Inserts or deletes fan in records into the fan in table
+      CodeUri: lutil_start_and_stop_fan_in/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      Tags:
+        Type: "lutils"
+        Environment: lutils
+      Policies:
+        DynamoDBCrudPolicy:
+          TableName: lutil_fan-in-processing
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: "*"
+              Resource: !Sub "arn:aws:s3:::${AWS::StackName}*"
+      Events:
+        SNSEvent:
+          Type: SNS
+          Properties:
+            Topic: !Ref FanInEventsSNS
+
+
   Shared:
     Type: AWS::Serverless::LayerVersion
     Properties:
@@ -202,21 +227,28 @@ Resources:
       DisplayName: "lutil_s3_text_lines_output_selenium"
       TopicName: "lutil_s3_text_lines_output_selenium"
 
+  FanInEventsSNS:
+    Type: AWS::SNS::Topic
+    Properties: 
+      DisplayName: "lutil_fan_in_events"
+      TopicName: "lutil_fan_in_events"
+
+
   FanInProcessingTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:
         Name: process_and_item
         Type: String
-      TableName: fan-in-processing
+      TableName: lutil_fan-in-processing
 
   FanInHistory:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:
-        Name: process_and_item
+        Name: process_and_item_and_date
         Type: String
-      TableName: fan-in-history
+      TableName: lutil_fan-in-history
 
 
 Outputs:
