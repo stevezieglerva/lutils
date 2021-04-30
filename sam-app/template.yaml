@@ -160,11 +160,11 @@ Resources:
           Properties:
             Topic: !Ref DownloadURLSeleniumSNS
 
-  StartStopFanInLambda:
+  FanHandlerLambda:
     Type: AWS::Serverless::Function 
     Properties:
       Description: Inserts or deletes fan in records into the fan in table
-      CodeUri: lutil_start_and_stop_fan_in/
+      CodeUri: lutil_fan_handler/
       Handler: app.lambda_handler
       Runtime: python3.7
       Tags:
@@ -222,14 +222,13 @@ Resources:
       DisplayName: "lutil_s3_text_lines_output_selenium"
       TopicName: "lutil_s3_text_lines_output_selenium"
 
-  FanInEventsSNS:
+  FanEventsSNS:
     Type: AWS::SNS::Topic
     Properties: 
-      DisplayName: "lutil_fan_in_events"
-      TopicName: "lutil_fan_in_events"
+      DisplayName: "lutil_fan_events"
+      TopicName: "lutil_fan_events"
 
-
-  FanInProcessingTable:
+  FanProcessingTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:

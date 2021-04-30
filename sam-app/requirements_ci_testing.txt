@@ -7,3 +7,5 @@ pytz
 pylint
 black
 requests
+html-testRunner
+
