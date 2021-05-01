@@ -242,14 +242,27 @@ Resources:
         Type: String
 
 
+
   FanProcessingTableTest:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:
         Name: pk
         Type: String
-
-
+      AttributeDefinitions: 
+        - 
+          AttributeName: "pk"
+          AttributeType: "S"
+        - 
+          AttributeName: "process_id"
+          AttributeType: "S"
+      GlobalSecondaryIndexes:
+        - IndexName: process_id
+          KeySchema:
+            - AttributeName: process_id
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
 
 
 Outputs:
