@@ -6,10 +6,16 @@ from NamedTupleBase import FanJob
 
 
 class FanOut:
-    def __init__(self, process_name, storage_location="xyz"):
-        self.storage_location = storage_location
+    def __init__(self, process_name, table_name="xyz"):
+        self._db = boto3.client("dynamodb")
+        if not self._table_exists(table_name):
+            raise ValueError(f"{table_name} does not exist")
+        self.table_name = table_name
         self.process_name = process_name
         self.process_id = uuid.uuid1()
+
+    def _table_exists(self, table_name):
+        results = self._db.describe_table(TableName=table_name)
 
     def __str__(self):
         text = ""

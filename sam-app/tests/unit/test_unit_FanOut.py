@@ -1,5 +1,10 @@
-import os, sys, inspect, json
-from moto import mock_dynamodb
+import inspect
+import json
+import os
+import sys
+
+import boto3
+from moto import mock_dynamodb2
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
@@ -9,29 +14,38 @@ print("Updated path:")
 print(json.dumps(sys.path, indent=3))
 
 import unittest
+from unittest import mock
+
 from lutil_fan_handler.FanOut import FanOut
-from unittest.mock import patch, Mock, MagicMock, PropertyMock
 
 
 class FanOutUnitTests(unittest.TestCase):
-    @mock_dynamodb
     def test_constructor__given_valid_inputs__then_properties_correct(self):
         # Arrange
+        table_name = "fake-table"
 
         # Act
-        subject = FanOut("processA")
+        with mock.patch(
+            "lutil_fan_handler.FanOut.FanOut._table_exists",
+            mock.MagicMock(return_value=True),
+        ):
+            subject = FanOut("processA", table_name)
 
         # Assert
         self.assertEqual(subject.process_name, "processA")
         self.assertTrue(subject.process_id is not None)
 
-    @mock_dynamodb
+    @mock_dynamodb2
     def test_fan_out__given_valid_message__then_job_returned(self):
         # Arrange
-        subject = FanOut("processA")
 
         # Act
-        results = subject.fan_out("task A", {"hello": "world"})
+        with mock.patch(
+            "lutil_fan_handler.FanOut.FanOut._table_exists",
+            mock.MagicMock(return_value=True),
+        ):
+            subject = FanOut("processA")
+            results = subject.fan_out("task A", {"hello": "world"})
 
         # Assert
         self.assertEqual(results.process_name, "processA")
