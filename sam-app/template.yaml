@@ -246,7 +246,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:
-        Name: process_and_item
+        Name: pk
         Type: String
       TableName: lutil-fan-processing-test
 
@@ -254,7 +254,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:
-        Name: process_and_item_and_date
+        Name: pk
         Type: String
       TableName: lutil_fan-in-history
 

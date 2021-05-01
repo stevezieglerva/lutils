@@ -21,7 +21,7 @@ from lutil_fan_handler.FanOut import FanOut
 class FanOutIntTests(unittest.TestCase):
     def test_fan_out__given_valid_inputs__then_item_added_to_db(self):
         # Arrange
-        table_name = "lutil-fan-processing"
+        table_name = "lutil-fan-processing-test"
         subject = FanOut("processA", table_name)
 
         # Act

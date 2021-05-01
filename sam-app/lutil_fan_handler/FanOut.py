@@ -1,9 +1,11 @@
 import json
 import uuid
+from datetime import datetime
+
 import boto3
 
-from NamedTupleBase import FanJob
 from DynamoDB import DynamoDB
+from NamedTupleBase import FanJob
 
 
 class FanOut:
@@ -18,7 +20,12 @@ class FanOut:
 
     def _table_exists(self, table_name):
         db = boto3.client("dynamodb")
-        results = db.describe_table(TableName=table_name)
+        try:
+            results = db.describe_table(TableName=table_name)
+            return True
+        except Exception as e:
+            print(e)
+            return False
 
     def __str__(self):
         text = ""
@@ -36,8 +43,12 @@ class FanOut:
             task_name,
             json.dumps(message, default=str),
         )
+
         self._put_item(job)
         return job
 
     def _put_item(self, job):
+        job_dict = job.json()
+        job_dict["timestamp"] = datetime.now().isoformat()
+        print(json.dumps(job_dict, indent=3, default=str))
         raise ValueError()
