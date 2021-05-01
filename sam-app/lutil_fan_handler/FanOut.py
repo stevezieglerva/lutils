@@ -33,4 +33,8 @@ class FanOut:
             task_name,
             json.dumps(message, default=str),
         )
+        self._put_item(job)
         return job
+
+    def _put_item(self, job):
+        raise ValueError()

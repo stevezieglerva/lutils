@@ -4,7 +4,7 @@ import os
 import sys
 
 import boto3
-from moto import mock_dynamodb2
+
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
@@ -35,7 +35,6 @@ class FanOutUnitTests(unittest.TestCase):
         self.assertEqual(subject.process_name, "processA")
         self.assertTrue(subject.process_id is not None)
 
-    @mock_dynamodb2
     def test_fan_out__given_valid_message__then_job_returned(self):
         # Arrange
 
@@ -44,8 +43,12 @@ class FanOutUnitTests(unittest.TestCase):
             "lutil_fan_handler.FanOut.FanOut._table_exists",
             mock.MagicMock(return_value=True),
         ):
-            subject = FanOut("processA")
-            results = subject.fan_out("task A", {"hello": "world"})
+            with mock.patch(
+                "lutil_fan_handler.FanOut.FanOut._put_item",
+                mock.MagicMock(return_value=True),
+            ):
+                subject = FanOut("processA")
+                results = subject.fan_out("task A", {"hello": "world"})
 
         # Assert
         self.assertEqual(results.process_name, "processA")
