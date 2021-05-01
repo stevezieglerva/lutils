@@ -49,6 +49,7 @@ class FanOutUnitTests(unittest.TestCase):
             ):
                 subject = FanOut("processA")
                 results = subject.fan_out("task A", {"hello": "world"})
+                print(results)
 
         # Assert
         self.assertEqual(results.process_name, "processA")

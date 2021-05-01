@@ -12,7 +12,7 @@ class FanOut:
             raise ValueError(f"{table_name} does not exist")
         self.table_name = table_name
         self.process_name = process_name
-        self.process_id = uuid.uuid1()
+        self.process_id = str(uuid.uuid1())
 
     def _table_exists(self, table_name):
         results = self._db.describe_table(TableName=table_name)
