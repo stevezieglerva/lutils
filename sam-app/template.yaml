@@ -245,6 +245,7 @@ Resources:
   FanProcessingTableTest:
     Type: AWS::DynamoDB::Table
     Properties: 
+      BillingMode: PAY_PER_REQUEST
       AttributeDefinitions: 
         - 
           AttributeName: "pk"
@@ -263,6 +264,9 @@ Resources:
               KeyType: HASH
           Projection:
             ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 0
+            WriteCapacityUnits: 0
       StreamSpecification:
         StreamViewType: NEW_AND_OLD_IMAGES
 
