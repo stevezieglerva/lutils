@@ -55,29 +55,3 @@ class FanOutUnitTests(unittest.TestCase):
         # Assert
         self.assertEqual(results.process_name, "processA")
         self.assertEqual(results.message, '{"hello": "world"}')
-
-    @mock_dynamodb2
-    def test_fan_out__given_valid_inputs__then_item_added_to_db(self):
-        # Arrange
-        table_name = "fake-table"
-        key_field = "pk"
-        db = boto3.client("dynamodb")
-        db.create_table(
-            TableName=table_name,
-            KeySchema=[{"AttributeName": key_field, "KeyType": "HASH"}],
-            AttributeDefinitions=[
-                {"AttributeName": key_field, "AttributeType": "S"},
-            ],
-            ProvisionedThroughput={"ReadCapacityUnits": 10, "WriteCapacityUnits": 10},
-        )
-        test = db.describe_table(TableName=table_name)
-        print(test)
-
-        subject = FanOut("processA", table_name)
-
-        # Act
-        results = subject.put_item({"pk": "dkdlkj987sd"})
-        print(results)
-
-        # Assert
-        self.assertEqual(new_item, {key_field: {"S": "J1K4"}, "value": {"N": "2000"}})

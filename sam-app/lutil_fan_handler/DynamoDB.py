@@ -31,6 +31,8 @@ class DynamoDB:
                 data_type = "N"
             if type(v) == datetime:
                 data_type = "N"
+            if type(v) == dict:
+                data_type = "M"
 
             new_field_value = {}
             new_field_value[data_type] = str(v)
