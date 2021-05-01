@@ -240,7 +240,7 @@ Resources:
       PrimaryKey:
         Name: process_and_item
         Type: String
-      TableName: lutil-fan-processing
+
 
   FanProcessingTableTest:
     Type: AWS::Serverless::SimpleTable
@@ -248,7 +248,6 @@ Resources:
       PrimaryKey:
         Name: pk
         Type: String
-      TableName: lutil-fan-processing-test
 
 
 
