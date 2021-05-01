@@ -242,13 +242,9 @@ Resources:
         Type: String
 
 
-
   FanProcessingTableTest:
-    Type: AWS::Serverless::SimpleTable
-    Properties:
-      PrimaryKey:
-        Name: pk
-        Type: String
+    Type: AWS::DynamoDB::Table
+    Properties: 
       AttributeDefinitions: 
         - 
           AttributeName: "pk"
@@ -256,6 +252,10 @@ Resources:
         - 
           AttributeName: "process_id"
           AttributeType: "S"
+      KeySchema: 
+        -
+          AttributeName: "pk"
+          KeyType: "HASH"
       GlobalSecondaryIndexes:
         - IndexName: process_id
           KeySchema:
@@ -263,6 +263,8 @@ Resources:
               KeyType: HASH
           Projection:
             ProjectionType: ALL
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
 
 
 Outputs:
