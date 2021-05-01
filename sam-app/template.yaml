@@ -172,7 +172,7 @@ Resources:
         Environment: lutils
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref FanProcessingTable
+            TableName: !Ref FanProcessingTable 
       Events:
         SNSEvent:
           Type: SNS

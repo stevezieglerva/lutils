@@ -29,4 +29,4 @@ class FanOutIntTests(unittest.TestCase):
         print(results)
 
         # Assert
-        self.assertEqual(new_item, {key_field: {"S": "J1K4"}, "value": {"N": "2000"}})
+        self.assertTrue(False)
