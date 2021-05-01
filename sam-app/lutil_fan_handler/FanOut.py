@@ -3,19 +3,22 @@ import uuid
 import boto3
 
 from NamedTupleBase import FanJob
+from DynamoDB import DynamoDB
 
 
 class FanOut:
     def __init__(self, process_name, table_name="xyz"):
-        self._db = boto3.client("dynamodb")
+
         if not self._table_exists(table_name):
             raise ValueError(f"{table_name} does not exist")
         self.table_name = table_name
         self.process_name = process_name
         self.process_id = str(uuid.uuid1())
+        self.dynamodb = DynamoDB(self.table_name, "pk")
 
     def _table_exists(self, table_name):
-        results = self._db.describe_table(TableName=table_name)
+        db = boto3.client("dynamodb")
+        results = db.describe_table(TableName=table_name)
 
     def __str__(self):
         text = ""
