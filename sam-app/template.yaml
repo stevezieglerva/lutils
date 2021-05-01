@@ -228,13 +228,27 @@ Resources:
       DisplayName: "lutil_fan_events"
       TopicName: "lutil_fan_events"
 
+  FanEventsTestSNS:
+    Type: AWS::SNS::Topic
+    Properties: 
+      DisplayName: "lutil_fan_events_test"
+      TopicName: "lutil_fan_events_test"
+
   FanProcessingTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey:
         Name: process_and_item
         Type: String
-      TableName: lutil_fan-in-processing
+      TableName: lutil-fan-processing
+
+  FanProcessingTableTest:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: process_and_item
+        Type: String
+      TableName: lutil-fan-processing-test
 
   FanInHistory:
     Type: AWS::Serverless::SimpleTable
