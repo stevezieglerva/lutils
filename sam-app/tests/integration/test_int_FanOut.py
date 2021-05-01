@@ -34,7 +34,7 @@ def get_table_name_from_stack(output_key):
 class FanOutIntTests(unittest.TestCase):
     def test_fan_out__given_one_task__then_item_added_to_db(self):
         # Arrange
-        table_name = "lutils-FanProcessingTableTest-X541MIGMFYBW"
+        table_name = get_table_name_from_stack("FanProcesssingTestTableName")
         subject = FanOut("processA", table_name)
 
         # Act
@@ -56,16 +56,14 @@ class FanOutIntTests(unittest.TestCase):
         subject = FanOut("processA", table_name)
 
         # Act
-        results = subject.fan_out("task A", {"keywords": "hello world"})
+        subject.fan_out("task A", {"keywords": "hello world"})
         subject.fan_out("task B", {"keywords": "api"})
-        subject.fan_out("task C", {"keywords": "data governance"})
+        results = subject.fan_out("task C", {"keywords": "data governance"})
 
         # Assert
-        self.assertTrue("task C" in results)
         db = DynamoDB(table_name, "pk")
         added_item = db.get_item(results.pk)
         print(f"\n\n added item: {added_item}")
         added_item_str = json.dumps(added_item, indent=3, default=str)
         self.assertTrue("processA" in added_item_str)
-        self.assertTrue("created" in added_item_str)
-        self.assertTrue("pk" in added_item_str)
+        self.assertTrue("task C" in added_item_str)
