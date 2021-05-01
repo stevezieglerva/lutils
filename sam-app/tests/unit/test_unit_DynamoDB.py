@@ -77,8 +77,8 @@ class DynamoDBUnitTests(unittest.TestCase):
         subject.put_item({key_field: "J1K4", "value": 2000})
 
         # Act
-        new_item = subject.get_item("J1K4")["Item"]
+        new_item = subject.get_item("J1K4")
         print(new_item)
 
         # Assert
-        self.assertEqual(new_item, {key_field: {"S": "J1K4"}, "value": {"N": "2000"}})
+        self.assertEqual(new_item, {"id": "J1K4", "value": "2000"})

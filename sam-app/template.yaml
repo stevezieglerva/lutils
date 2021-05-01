@@ -265,6 +265,12 @@ Outputs:
     Description: "FanProcessingTable ARN"
     Value: !GetAtt FanProcessingTable.Arn
 
-  FanProcesssingTestTable:
+  FanProcesssingTestTableArn:
     Description: "FanProcessingTableTest ARN"
     Value: !GetAtt FanProcessingTableTest.Arn
+
+  FanProcesssingTestTableName:
+    Description: "FanProcessingTableTest name"
+    Value: !Select [1, !Split ['/', !GetAtt FanProcessingTableTest.Arn]] 
+
+  

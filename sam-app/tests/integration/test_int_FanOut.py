@@ -16,17 +16,56 @@ import unittest
 from unittest.mock import MagicMock, Mock, PropertyMock, patch
 
 from lutil_fan_handler.FanOut import FanOut
+from DynamoDB import DynamoDB
+
+
+def get_table_name_from_stack(output_key):
+    cloudformation = boto3.client("cloudformation")
+    stacks = cloudformation.describe_stacks(StackName="lutils")
+    stack_outputs = stacks["Stacks"][0]["Outputs"]
+    s3_bucket = ""
+    for output in stack_outputs:
+        if output["OutputKey"] == output_key:
+            output_value = output["OutputValue"]
+            break
+    return output_value
 
 
 class FanOutIntTests(unittest.TestCase):
-    def test_fan_out__given_valid_inputs__then_item_added_to_db(self):
+    def test_fan_out__given_one_task__then_item_added_to_db(self):
         # Arrange
-        table_name = "lutil-fan-processing-test"
+        table_name = "lutils-FanProcessingTableTest-X541MIGMFYBW"
         subject = FanOut("processA", table_name)
 
         # Act
         results = subject.fan_out("task C", {"keywords": "hello world"})
-        print(results)
 
         # Assert
-        self.assertTrue(False)
+        self.assertTrue("task C" in results)
+        db = DynamoDB(table_name, "pk")
+        added_item = db.get_item(results.pk)
+        print(f"\n\n added item: {added_item}")
+        added_item_str = json.dumps(added_item, indent=3, default=str)
+        self.assertTrue("processA" in added_item_str)
+        self.assertTrue("created" in added_item_str)
+        self.assertTrue("pk" in added_item_str)
+
+    def test_fan_out__given_three_tasks__then_item_added_to_db(self):
+        # Arrange
+        table_name = "lutils-FanProcessingTableTest-X541MIGMFYBW"
+        subject = FanOut("processA", table_name)
+
+        # Act
+        results = subject.fan_out("task A", {"keywords": "hello world"})
+        subject.fan_out("task B", {"keywords": "api"})
+        subject.fan_out("task C", {"keywords": "data governance"})
+
+        # Assert
+        self.assertTrue("task C" in results)
+        db = DynamoDB(table_name, "pk")
+        added_item = db.get_item(results.pk)
+        print(f"\n\n added item: {added_item}")
+        added_item_str = json.dumps(added_item, indent=3, default=str)
+        self.assertTrue("processA" in added_item_str)
+        self.assertTrue("created" in added_item_str)
+        self.assertTrue("pk" in added_item_str)

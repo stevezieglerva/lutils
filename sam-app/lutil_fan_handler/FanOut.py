@@ -5,7 +5,7 @@ from datetime import datetime
 import boto3
 
 from DynamoDB import DynamoDB
-from NamedTupleBase import FanJob
+from NamedTupleBase import FanJob, CreatedFanJob
 
 
 class FanOut:
@@ -16,7 +16,8 @@ class FanOut:
         self.table_name = table_name
         self.process_name = process_name
         self.process_id = str(uuid.uuid1())
-        self.dynamodb = DynamoDB(self.table_name, "pk")
+        self._dynamodb = DynamoDB(self.table_name, "pk")
+        self.job_tmsp = datetime.now().isoformat()
 
     def _table_exists(self, table_name):
         db = boto3.client("dynamodb")
@@ -43,12 +44,22 @@ class FanOut:
             task_name,
             json.dumps(message, default=str),
         )
-
-        self._put_item(job)
-        return job
+        added_data = self._put_item(job)
+        return added_data
 
     def _put_item(self, job):
         job_dict = job.json()
-        job_dict["timestamp"] = datetime.now().isoformat()
+        job_dict["timestamp"] = self.job_tmsp
+        job_dict["pk"] = job.process_id + "-" + self.job_tmsp + "-" + job.task_name
+        job_dict["status"] = "created"
+        job_dict["status_change_timestamp"] = datetime.now().isoformat()
         print(json.dumps(job_dict, indent=3, default=str))
-        raise ValueError()
+        self._dynamodb.put_item(job_dict)
+        fan_job_created = job.create_job(
+            job_dict["pk"],
+            job_dict["timestamp"],
+            job_dict["status"],
+            job_dict["status_change_timestamp"],
+        )
+
+        return fan_job_created
