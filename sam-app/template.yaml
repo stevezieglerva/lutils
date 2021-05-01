@@ -261,4 +261,10 @@ Outputs:
     Description: "S3ProcessingBucket ARN"
     Value: !GetAtt ProcessingBucket.Arn
 
+  FanProcesssingTable:
+    Description: "FanProcessingTable ARN"
+    Value: !GetAtt FanProcessingTable.Arn
 
+  FanProcesssingTestTable:
+    Description: "FanProcessingTableTest ARN"
+    Value: !GetAtt FanProcessingTableTest.Arn
