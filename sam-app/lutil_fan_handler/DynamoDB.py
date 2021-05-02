@@ -19,26 +19,25 @@ class DynamoDB:
 
     def put_item(self, record):
         db_format = self._convert_to_dynamodb_format(record)
+        print("*** in DynamoDB about to put")
         self._db.put_item(TableName=self.table_name, Item=db_format)
 
     def _convert_to_dynamodb_format(self, record):
         results = {}
         for k, v in record.items():
-            print(f"{k} : {v}")
             data_type = ""
+            new_value = str(v)
             if type(v) == str:
                 data_type = "S"
             if type(v) == int or type(v) == float:
                 data_type = "N"
             if type(v) == datetime:
                 data_type = "N"
-            if type(v) == dict:
-                data_type = "M"
             if data_type == "":
                 raise ValueError(f"no data type mapping for {type(v)}")
 
             new_field_value = {}
-            new_field_value[data_type] = str(v)
+            new_field_value[data_type] = new_value
             results[k] = new_field_value
         print(json.dumps(results, indent=3, default=str))
         return results

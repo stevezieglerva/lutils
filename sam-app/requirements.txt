@@ -9,3 +9,4 @@ black
 requests
 html-testRunner
 moto
+aws_lambda_powertools

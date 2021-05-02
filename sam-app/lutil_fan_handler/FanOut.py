@@ -43,7 +43,7 @@ class FanOut:
             self.process_id,
             self.process_name,
             task_name,
-            message,
+            json.dumps(message, indent=3, default=str),
             self.completion_sns_arn,
         )
         added_data = self._put_item(job)
