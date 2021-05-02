@@ -253,6 +253,9 @@ Resources:
           Type: SNS
           Properties:
             Topic: !Ref FanEventsTestSNS
+            FilterPolicy:
+              process_name:
+                - "processA" # Only accept processA SNS messages
 
   Shared:
     Type: AWS::Serverless::LayerVersion
