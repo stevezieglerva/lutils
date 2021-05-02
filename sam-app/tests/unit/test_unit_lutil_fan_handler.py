@@ -163,7 +163,12 @@ class FanHandlerUnitTests(unittest.TestCase):
         # Arrange
 
         # Act
-        results = app.lambda_handler(EVENT_INSERT, {})
+        with mock.patch(
+            "lutil_fan_handler.app.send_sns_message",
+            mock.MagicMock(return_value="Fake sent!"),
+        ):
+            results = app.lambda_handler(EVENT_INSERT, {})
 
         # Assert
-        self.assertTrue(False)
+        expected = {"inserted": {"sns-arn": 1}}
+        self.assertEqual(results, expected)
