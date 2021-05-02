@@ -166,7 +166,7 @@ Resources:
   FanHandlerLambda:
     Type: AWS::Serverless::Function 
     Properties:
-      Description: Inserts or deletes fan in records into the fan in table
+      Description: Responds to inserts or deletes fan in records into the fan in table
       CodeUri: lutil_fan_handler/
       Handler: app.lambda_handler
       Runtime: python3.7
@@ -177,11 +177,6 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Ref FanProcessingTable 
       Events:
-        SNSEvent:
-          Type: SNS
-          Properties:
-            Topic: !Ref FanEventsTestSNS
-      Events:
         Stream:
           Type: DynamoDB
           Properties:
@@ -189,6 +184,26 @@ Resources:
             BatchSize: 100
             StartingPosition: TRIM_HORIZON
 
+  FanHandlerLambdaTest:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Description: Responds to inserts or deletes fan in records into the fan in table
+      CodeUri: lutil_fan_handler/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      Tags:
+        Type: "lutils"
+        Environment: lutils
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref FanProcessingTableTest 
+      Events:
+        Stream:
+          Type: DynamoDB
+          Properties:
+            Stream: !GetAtt FanProcessingTableTest.StreamArn
+            BatchSize: 100
+            StartingPosition: TRIM_HORIZON
 
   Shared:
     Type: AWS::Serverless::LayerVersion
