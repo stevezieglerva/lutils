@@ -14,22 +14,6 @@ class ClassConverter:
         return json.dumps(value, indent=3, default=str)
 
 
-class IndexQueueEvent(namedtuple("X", "bucket key domain index"), ClassConverter):
-    pass
-
-
-def get_indexqueueevent_from_string(text):
-    replaced_single_quote_identifiers = text.replace("'", '"')
-    text_json = json.loads(replaced_single_quote_identifiers)
-
-    return IndexQueueEvent(
-        bucket=text_json["bucket"],
-        key=text_json["key"],
-        domain=text_json["domain"],
-        index=text_json["index"],
-    )
-
-
 class FanJob(
     namedtuple("X", "process_id process_name task_name message completion_sns_arn"),
     ClassConverter,
@@ -49,6 +33,19 @@ class FanJob(
         return new
 
 
+def get_fanjob_from_string(text):
+    replaced_single_quote_identifiers = text.replace("'", '"')
+    text_json = json.loads(replaced_single_quote_identifiers)
+
+    return FanJob(
+        process_id=text_json["process_id"],
+        process_name=text_json["process_name"],
+        task_name=text_json["task_name"],
+        message=text_json["message"],
+        completion_sns_arn=text_json["completion_sns_arn"],
+    )
+
+
 class CreatedFanJob(
     namedtuple(
         "X",
@@ -57,3 +54,20 @@ class CreatedFanJob(
     ClassConverter,
 ):
     pass
+
+
+def get_createdfanjob_from_string(text):
+    replaced_single_quote_identifiers = text.replace("'", '"')
+    text_json = json.loads(replaced_single_quote_identifiers)
+
+    return CreatedFanJob(
+        process_id=text_json["process_id"],
+        process_name=text_json["process_name"],
+        task_name=text_json["task_name"],
+        message=text_json["message"],
+        completion_sns_arn=text_json["completion_sns_arn"],
+        pk=text_json["pk"],
+        timestamp=text_json["timestamp"],
+        status=text_json["status"],
+        status_change_timestamp=text_json["status_change_timestamp"],
+    )
