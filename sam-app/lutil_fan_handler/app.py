@@ -10,8 +10,12 @@ from FanIn import FanIn
 
 
 def lambda_handler(event, context):
-
     print(f"Started at {datetime.now()}")
+
+    handler_sns_topic_arn = os.environ.get("HANDLER_SNS_TOPIC_ARN", "")
+    if handler_sns_topic_arn == "":
+        raise ValueError(f"Missing env variable for HANDLER_SNS_TOPIC_ARN")
+
     results = {}
     inserted = {}
 
@@ -21,6 +25,7 @@ def lambda_handler(event, context):
         event_name = record["eventName"]
         print(f"Record #{count}: {event_name}")
         fan_in = FanIn(record)
+        print(f"table: {fan_in.table_name}")
         print(fan_in.created_fan_job)
         if fan_in.event_name == "INSERT":
             process_insert(fan_in, inserted)
@@ -33,12 +38,13 @@ def lambda_handler(event, context):
     return results
 
 
-def send_sns_message(sns_topic_arn, message):
+def send_sns_message(sns_arn, message):
+    print(f"Sending message to {sns_arn}: {message}")
+    result = sns.publish(TopicArn=sns_arn, Message=json.dumps(message))
     print("Sent!")
 
 
 def process_insert(fan_in, inserted):
-    print("Here!")
     sns_message_json = fan_in.created_fan_job.json()
     sns_arn = fan_in.created_fan_job.completion_sns_arn
     send_sns_message(sns_arn, json.dumps(sns_message_json, indent=3, default=str))

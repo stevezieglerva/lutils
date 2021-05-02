@@ -170,6 +170,8 @@ Resources:
       CodeUri: lutil_fan_handler/
       Handler: app.lambda_handler
       Runtime: python3.7
+      Environment:
+        - HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
       Tags:
         Type: "lutils"
         Environment: lutils
@@ -198,6 +200,8 @@ Resources:
       CodeUri: lutil_fan_handler/
       Handler: app.lambda_handler
       Runtime: python3.7
+      Environment:
+        - HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
       Tags:
         Type: "lutils"
         Environment: lutils
