@@ -65,3 +65,7 @@ class FanInUnitTests(unittest.TestCase):
         self.assertEqual(
             subject.table_name, "lutils-FanProcessingTableTest-X541MIGMFYBW"
         )
+        self.assertEqual(
+            subject.created_fan_job.process_name,
+            "processA",
+        )

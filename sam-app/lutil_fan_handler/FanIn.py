@@ -6,7 +6,7 @@ from datetime import datetime
 import boto3
 
 from DynamoDB import DynamoDB
-from NamedTupleBase import CreatedFanJob, FanJob
+from NamedTupleBase import *
 
 
 class FanIn:
@@ -22,17 +22,8 @@ class FanIn:
         item_format = {}
         item_format["Item"] = stream_record["dynamodb"]["NewImage"]
         image = db.covert_from_dynamodb_format(item_format)
-        self.created_fan_job = CreatedFanJob(
-            process_id=image["process_id"],
-            process_name=image["process_name"],
-            task_name=image["task_name"],
-            message=image["message"],
-            completion_sns_arn=image["completion_sns_arn"],
-            timestamp=image["timestamp"],
-            pk=image["pk"],
-            status=image["status"],
-            status_change_timestamp=image["status_change_timestamp"],
-        )
+        image_string = json.dumps(image, indent=3, default=str)
+        self.created_fan_job = get_createdfanjob_from_string(image_string)
 
     def _get_table_name_from_source_arn(self, arn):
         parts = arn.split(":")
