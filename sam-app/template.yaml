@@ -176,6 +176,13 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref FanProcessingTable 
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: 
+                - sns:Get*
+                - sns:Publish*
+              Resource: "lutil*"
       Events:
         Stream:
           Type: DynamoDB
