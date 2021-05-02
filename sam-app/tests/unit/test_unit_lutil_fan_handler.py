@@ -202,7 +202,7 @@ class FanHandlerUnitTests(unittest.TestCase):
 
         # Act
         with mock.patch(
-            "lutil_fan_handler.app.send_sns_message",
+            "lutil_fan_handler.app.send_start_sns_message",
             mock.MagicMock(return_value="Fake sent!"),
         ):
             results = app.lambda_handler(EVENT_INSERT, {})

@@ -254,8 +254,11 @@ Resources:
           Properties:
             Topic: !Ref FanEventsTestSNS
             FilterPolicy:
+              event_name:
+                - "start_job" # Process only start jobs
               process_name:
                 - "processA" # Only accept processA SNS messages
+
 
   Shared:
     Type: AWS::Serverless::LayerVersion
