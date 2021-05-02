@@ -208,5 +208,5 @@ class FanHandlerUnitTests(unittest.TestCase):
             results = app.lambda_handler(EVENT_INSERT, {})
 
         # Assert
-        expected = {"inserted": {"sns-arn": 1}}
+        expected = {"inserted": {"processA": 1}}
         self.assertEqual(results, expected)

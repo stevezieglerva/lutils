@@ -195,14 +195,26 @@ EVENT_INSERT_INVALID_SNS_ARN = {
 }
 
 
+def get_sns_arn_from_stack(output_key):
+    cloudformation = boto3.client("cloudformation")
+    stacks = cloudformation.describe_stacks(StackName="lutils")
+    stack_outputs = stacks["Stacks"][0]["Outputs"]
+    s3_bucket = ""
+    for output in stack_outputs:
+        if output["OutputKey"] == output_key:
+            output_value = output["OutputValue"]
+            break
+    return output_value
+
+
 class FanHandlerIntTests(unittest.TestCase):
     def test_lambda_handler__given_single_insert_event__then_one_sns_sent(self):
         # Arrange
-        os.environ["HANDLER_SNS_TOPIC_ARN"] = "fake-topic"
+        os.environ["HANDLER_SNS_TOPIC_ARN"] = get_sns_arn_from_stack("FanEventsTestSNS")
 
         # Act
         results = app.lambda_handler(EVENT_INSERT, {})
 
         # Assert
-        expected = {"inserted": {"sns-arn": 1}}
+        expected = {"inserted": {"processA": 1}}
         self.assertEqual(results, expected)
