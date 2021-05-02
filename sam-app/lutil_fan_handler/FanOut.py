@@ -9,11 +9,12 @@ from NamedTupleBase import FanJob, CreatedFanJob
 
 
 class FanOut:
-    def __init__(self, process_name, table_name="xyz"):
+    def __init__(self, process_name, completion_sns_arn, table_name="xyz"):
 
         if not self._table_exists(table_name):
             raise ValueError(f"{table_name} does not exist")
         self.table_name = table_name
+        self.completion_sns_arn = completion_sns_arn
         self.process_name = process_name
         self.process_id = str(uuid.uuid1())
         self._dynamodb = DynamoDB(self.table_name, "pk")
@@ -42,7 +43,8 @@ class FanOut:
             self.process_id,
             self.process_name,
             task_name,
-            json.dumps(message, default=str),
+            message,
+            self.completion_sns_arn,
         )
         added_data = self._put_item(job)
         return added_data
@@ -50,7 +52,7 @@ class FanOut:
     def _put_item(self, job):
         job_dict = job.json()
         job_dict["timestamp"] = self.job_tmsp
-        job_dict["pk"] = job.process_id + "-" + self.job_tmsp + "-" + job.task_name
+        job_dict["pk"] = "FAN-OUT-JOB#" + job.process_id + "-TASK#" + job.task_name
         job_dict["status"] = "created"
         job_dict["status_change_timestamp"] = datetime.now().isoformat()
         print(json.dumps(job_dict, indent=3, default=str))
@@ -61,5 +63,5 @@ class FanOut:
             job_dict["status"],
             job_dict["status_change_timestamp"],
         )
-
+        print(fan_job_created)
         return fan_job_created

@@ -31,25 +31,28 @@ def get_indexqueueevent_from_string(text):
 
 
 class FanJob(
-    namedtuple("X", "process_id process_name task_name message"), ClassConverter
+    namedtuple("X", "process_id process_name task_name message completion_sns_arn"),
+    ClassConverter,
 ):
     def create_job(self, pk, timestamp, status, status_change_timestamp):
-        return CreatedFanJob(
+        new = CreatedFanJob(
             process_id=self.process_id,
             process_name=self.process_name,
             task_name=self.task_name,
             message=self.message,
+            completion_sns_arn=self.completion_sns_arn,
             timestamp=timestamp,
             pk=pk,
             status=status,
             status_change_timestamp=status_change_timestamp,
         )
+        return new
 
 
 class CreatedFanJob(
     namedtuple(
         "X",
-        "process_id process_name task_name message timestamp pk status status_change_timestamp",
+        "process_id process_name task_name message completion_sns_arn timestamp pk status status_change_timestamp",
     ),
     ClassConverter,
 ):

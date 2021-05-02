@@ -7,6 +7,9 @@ Globals:
     Timeout: 900
 
 Resources:
+  ################################
+  ### Lambdas
+  ################################
   S3TextLinesToSNSLambda:
     Type: AWS::Serverless::Function 
     Properties:
@@ -178,6 +181,13 @@ Resources:
           Type: SNS
           Properties:
             Topic: !Ref FanEventsTestSNS
+      Events:
+        Stream:
+          Type: DynamoDB
+          Properties:
+            Stream: !GetAtt FanProcessingTable.StreamArn
+            BatchSize: 100
+            StartingPosition: TRIM_HORIZON
 
 
   Shared:
@@ -191,7 +201,9 @@ Resources:
       CompatibleRuntimes:
         - python3.7
 
-
+  ################################
+  ### S3
+  ################################
   ProcessingBucket:
     Type: AWS::S3::Bucket    
     DeletionPolicy: Delete
@@ -204,6 +216,9 @@ Resources:
         - - !Ref 'AWS::StackName'
           - processing
 
+  ################################
+  ### SNS
+  ################################
   S3FilenamesLSNS:
     Type: AWS::SNS::Topic
     Properties: 
@@ -234,6 +249,9 @@ Resources:
       DisplayName: "lutil_fan_events_test"
       TopicName: "lutil_fan_events_test"
 
+  ################################
+  ### Tables
+  ################################
   FanProcessingTable:
     Type: AWS::DynamoDB::Table
     Properties: 
@@ -291,7 +309,9 @@ Resources:
       StreamSpecification:
         StreamViewType: NEW_AND_OLD_IMAGES
 
-
+################################
+### Outputs
+################################
 Outputs:
   S3TextLinesToSNSLambda:
     Description: "S3TextLinesToSNSLambda Lambda Function ARN"

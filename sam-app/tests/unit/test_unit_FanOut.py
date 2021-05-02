@@ -18,6 +18,7 @@ import unittest
 from unittest import mock
 
 from lutil_fan_handler.FanOut import FanOut
+from lutil_fan_handler.NamedTupleBase import FanJob
 
 
 class FanOutUnitTests(unittest.TestCase):
@@ -30,28 +31,8 @@ class FanOutUnitTests(unittest.TestCase):
             "lutil_fan_handler.FanOut.FanOut._table_exists",
             mock.MagicMock(return_value=True),
         ):
-            subject = FanOut("processA", table_name)
+            subject = FanOut("processA", "arn::fake-sns", table_name)
 
         # Assert
         self.assertEqual(subject.process_name, "processA")
         self.assertTrue(subject.process_id is not None)
-
-    def test_fan_out__given_valid_message__then_job_returned(self):
-        # Arrange
-
-        # Act
-        with mock.patch(
-            "lutil_fan_handler.FanOut.FanOut._table_exists",
-            mock.MagicMock(return_value=True),
-        ):
-            with mock.patch(
-                "lutil_fan_handler.FanOut.FanOut._put_item",
-                mock.MagicMock(return_value=True),
-            ):
-                subject = FanOut("processA")
-                results = subject.fan_out("task A", {"hello": "world"})
-                print(results)
-
-        # Assert
-        self.assertEqual(results.process_name, "processA")
-        self.assertEqual(results.message, '{"hello": "world"}')

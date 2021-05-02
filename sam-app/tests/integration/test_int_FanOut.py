@@ -35,7 +35,7 @@ class FanOutIntTests(unittest.TestCase):
     def test_fan_out__given_one_task__then_item_added_to_db(self):
         # Arrange
         table_name = get_table_name_from_stack("FanProcesssingTestTableName")
-        subject = FanOut("processA", table_name)
+        subject = FanOut("processA", "sns-arn", table_name)
 
         # Act
         results = subject.fan_out("task C", {"keywords": "hello world"})
@@ -53,7 +53,7 @@ class FanOutIntTests(unittest.TestCase):
     def test_fan_out__given_three_tasks__then_item_added_to_db(self):
         # Arrange
         table_name = "lutils-FanProcessingTableTest-X541MIGMFYBW"
-        subject = FanOut("processA", table_name)
+        subject = FanOut("processA", "sns-arn", table_name)
 
         # Act
         subject.fan_out("task A", {"keywords": "hello world"})
