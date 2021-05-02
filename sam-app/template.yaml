@@ -171,7 +171,8 @@ Resources:
       Handler: app.lambda_handler
       Runtime: python3.7
       Environment:
-        - HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
+        Variables:
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
       Tags:
         Type: "lutils"
         Environment: lutils
@@ -201,7 +202,8 @@ Resources:
       Handler: app.lambda_handler
       Runtime: python3.7
       Environment:
-        - HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
+        Variables:
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
       Tags:
         Type: "lutils"
         Environment: lutils
@@ -370,4 +372,10 @@ Outputs:
     Description: "FanProcessingTableTest Name"
     Value: !Select [1, !Split ['/', !GetAtt FanProcessingTableTest.Arn]] 
 
-  
+  FanEventsSNS:
+    Description: "FanEventsSNS ARN"
+    Value: !Ref FanEventsSNS
+
+  FanEventsTestSNS:
+    Description: "FanEventsTestSNS ARN"
+    Value: !Ref FanEventsTestSNS

@@ -195,17 +195,13 @@ EVENT_INSERT_INVALID_SNS_ARN = {
 }
 
 
-class FanHandlerUnitTests(unittest.TestCase):
+class FanHandlerIntTests(unittest.TestCase):
     def test_lambda_handler__given_single_insert_event__then_one_sns_sent(self):
         # Arrange
         os.environ["HANDLER_SNS_TOPIC_ARN"] = "fake-topic"
 
         # Act
-        with mock.patch(
-            "lutil_fan_handler.app.send_sns_message",
-            mock.MagicMock(return_value="Fake sent!"),
-        ):
-            results = app.lambda_handler(EVENT_INSERT, {})
+        results = app.lambda_handler(EVENT_INSERT, {})
 
         # Assert
         expected = {"inserted": {"sns-arn": 1}}
