@@ -225,6 +225,35 @@ Resources:
             BatchSize: 100
             StartingPosition: TRIM_HORIZON
 
+  FanTestClientLambda:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Description: Sample fan client to receive test events
+      CodeUri: lutil_fan_test_client/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      Environment:
+        Variables:
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
+      Tags:
+        Type: "lutils"
+        Environment: lutils
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref FanProcessingTableTest 
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: 
+                - sns:Get*
+                - sns:Publish*
+              Resource: !Sub "arn:aws:sns:us-east-1:${AWS::AccountId}:lutil_*"
+      Events:
+        SNSEvent:
+          Type: SNS
+          Properties:
+            Topic: !Ref FanEventsTestSNS
+
   Shared:
     Type: AWS::Serverless::LayerVersion
     Properties:
@@ -376,6 +405,8 @@ Outputs:
     Description: "FanEventsSNS ARN"
     Value: !Ref FanEventsSNS
 
-  FanEventsTestSNS:
+  "FanEventsTestSNS":
     Description: "FanEventsTestSNS ARN"
     Value: !Ref FanEventsTestSNS
+
+

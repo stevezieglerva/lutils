@@ -41,7 +41,7 @@ def lambda_handler(event, context):
 def send_sns_message(sns_arn, message):
     print(f"Sending message to {sns_arn}: {message}")
     sns = boto3.client("sns")
-    result = sns.publish(TopicArn=sns_arn, Message=json.dumps(message))
+    result = sns.publish(TopicArn=sns_arn, Message=message)
     print("Sent!")
 
 
