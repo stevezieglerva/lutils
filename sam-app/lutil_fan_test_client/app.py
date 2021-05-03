@@ -7,7 +7,7 @@ import json
 import sys
 import glob
 
-from common_layer.FanIn import FanIn
+from FanIn import FanIn
 
 
 def lambda_handler(event, context):
