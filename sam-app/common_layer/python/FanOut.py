@@ -6,7 +6,7 @@ import boto3
 
 from DynamoDB import DynamoDB
 from NamedTupleBase import FanJob, CreatedFanJob
-import FanStatus
+import FanTaskStatus
 
 
 class FanOut:
@@ -53,7 +53,7 @@ class FanOut:
         job_dict = job.json()
         job_dict["timestamp"] = self.job_tmsp
         job_dict["pk"] = "FAN-OUT-JOB#" + job.process_id + "-TASK#" + job.task_name
-        job_dict["status"] = FanStatus.CREATED
+        job_dict["status"] = FanTaskStatus.CREATED
         job_dict["status_change_timestamp"] = datetime.now().isoformat()
         print(json.dumps(job_dict, indent=3, default=str))
         self._dynamodb.put_item(job_dict)
