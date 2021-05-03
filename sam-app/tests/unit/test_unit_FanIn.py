@@ -58,7 +58,7 @@ class FanInUnitTests(unittest.TestCase):
         table_name = "fake-table"
 
         # Act
-        subject = FanIn(stream_record=STREAM_RECORD_INSERT)
+        subject = FanIn("fake-sns", stream_record=STREAM_RECORD_INSERT)
         print(subject.created_fan_job)
 
         # Assert
@@ -76,7 +76,7 @@ class FanInUnitTests(unittest.TestCase):
         table_name = "fake-table"
 
         # Act
-        subject = FanIn(event_string=EVENT_STRING)
+        subject = FanIn("fake-sns", event_string=EVENT_STRING)
         print(subject.created_fan_job)
 
         # Assert

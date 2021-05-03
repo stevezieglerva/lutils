@@ -10,7 +10,7 @@ from NamedTupleBase import *
 
 
 class FanIn:
-    def __init__(self, **kwargs):
+    def __init__(self, sns_arn, **kwargs):
         assert (
             "stream_record" in kwargs or "event_string" in kwargs
         ), "Need argument for stream_record or event_string"
@@ -49,3 +49,24 @@ class FanIn:
         table_name = table_name.replace("table/", "")
         without_stream = re.sub("/stream.*", "", table_name)
         return without_stream
+
+    def update_task(self, event):
+        sns = boto3.client("sns")
+        event = FanEvent(
+            self.created_fan_job.process_id,
+            self.created_fan_job.process_name,
+            self.created_fan_job.task_name,
+            event,
+        )
+        message = str(event)
+        print(f"Sending message to {sns_arn}: {message}")
+        sns = boto3.client("sns")
+        result = sns.publish(
+            TopicArn=sns_arn,
+            Message=message,
+            MessageAttributes={
+                "event_name": {"DataType": "String", "StringValue": "task_update"},
+                "process_name": {"DataType": "String", "StringValue": process_name},
+            },
+        )
+        print("Sent!")

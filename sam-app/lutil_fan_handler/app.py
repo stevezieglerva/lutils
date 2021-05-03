@@ -24,7 +24,7 @@ def lambda_handler(event, context):
     for count, record in enumerate(event["Records"]):
         event_name = record["eventName"]
         print(f"Record #{count}: {event_name}")
-        fan_in = FanIn(stream_record=record)
+        fan_in = FanIn(handler_sns_topic_arn, stream_record=record)
         print(f"table: {fan_in.table_name}")
         print(fan_in.created_fan_job)
         if fan_in.event_name == "INSERT":

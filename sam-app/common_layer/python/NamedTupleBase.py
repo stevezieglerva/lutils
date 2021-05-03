@@ -83,7 +83,14 @@ class FanEvent(
     ClassConverter,
 ):
     def __init__(self, process_id, process_name, task_name, event):
-        possible_events = [FanEventOptions.TASK_CREATED]
+        possible_events = [
+            FanEventOptions.TASK_CREATED,
+            FanEventOptions.TASK_COMPLETED,
+            FanEventOptions.TASK_STARTED,
+            FanEventOptions.TASK_COMPLETED,
+            FanEventOptions.TASK_ERROR,
+            FanEventOptions.PROCESS_COMPLETED,
+        ]
         if self.event not in possible_events:
             raise ValueError(
                 f"event of '{self.event}'' in not one of {possible_events}"

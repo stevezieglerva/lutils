@@ -25,6 +25,7 @@ class FanOut:
         db = boto3.client("dynamodb")
         try:
             results = db.describe_table(TableName=table_name)
+            return True
         except Exception as e:
             print(e)
             return False
@@ -53,7 +54,7 @@ class FanOut:
         job_dict = job.json()
         job_dict["timestamp"] = self.job_tmsp
         job_dict["pk"] = "FAN-OUT-JOB#" + job.process_id + "-TASK#" + job.task_name
-        job_dict["status"] = FanTaskStatus.CREATED
+        job_dict["status"] = FanTaskStatus.TASK_CREATED
         job_dict["status_change_timestamp"] = datetime.now().isoformat()
         print(json.dumps(job_dict, indent=3, default=str))
         self._dynamodb.put_item(job_dict)

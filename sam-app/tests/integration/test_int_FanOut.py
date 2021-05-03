@@ -23,6 +23,7 @@ from common_layer.python.DynamoDB import DynamoDB
 def get_table_name_from_stack(output_key):
     cloudformation = boto3.client("cloudformation")
     stacks = cloudformation.describe_stacks(StackName="lutils")
+    print(json.dumps(stacks, indent=3, default=str))
     stack_outputs = stacks["Stacks"][0]["Outputs"]
     s3_bucket = ""
     for output in stack_outputs:
