@@ -15,12 +15,12 @@ class FanIn:
             "stream_record" in kwargs or "event_string" in kwargs
         ), "Need argument for stream_record or event_string"
 
-        self._set_properties_from_record(stream_record)
         assert not (
             "stream_record" in kwargs and "event_string" in kwargs
         ), "Can't provide both keyword arguments"
-
-        self._set_properties_from_record(stream_record)
+        stream_record = kwargs.get("stream_record", "")
+        if stream_record != "":
+            self._set_properties_from_record(stream_record)
 
     def _set_properties_from_record(self, stream_record):
         self.event_name = stream_record["eventName"]
