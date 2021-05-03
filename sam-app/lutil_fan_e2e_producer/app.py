@@ -13,11 +13,10 @@ from FanOut import FanOut
 def lambda_handler(event, context):
     print(f"Started at {datetime.now()}")
 
-    # Just print the event for now
-    print(json.dumps(event, indent=3, default=str))
-
     fan = FanOut("e2e test", "sns-done", "lutils-FanProcessingTableTest-X541MIGMFYBW")
-    new_job = fan.fan_out("task #1", {"parameters": "38jdjsls"})
+    # Create a group of fan out events for the "e2e test" process
+    for i in range(10):
+        new_job = fan.fan_out(f"task #{i}", {"parameters": f"38jdjsls-{i}"})
 
     print(f"Finished at {datetime.now()}")
 
