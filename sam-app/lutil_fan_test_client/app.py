@@ -7,7 +7,7 @@ import json
 import sys
 import glob
 
-from FanIn import FanIn
+# from FanIn import FanIn
 
 
 def lambda_handler(event, context):
@@ -15,6 +15,9 @@ def lambda_handler(event, context):
 
     # Just print the event for now
     print(json.dumps(event, indent=3, default=str))
+
+    for file in os.scandir("/opt/python"):
+        print(file.name)
 
     print(f"Finished at {datetime.now()}")
 
