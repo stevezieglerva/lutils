@@ -67,7 +67,10 @@ class FanIn:
             Message=message,
             MessageAttributes={
                 "event_name": {"DataType": "String", "StringValue": "task_update"},
-                "process_name": {"DataType": "String", "StringValue": process_name},
+                "process_name": {
+                    "DataType": "String",
+                    "StringValue": self.created_fan_job.pprocess_name,
+                },
             },
         )
         print("Sent!")
