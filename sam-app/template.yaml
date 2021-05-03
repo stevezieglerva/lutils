@@ -209,6 +209,8 @@ Resources:
       Tags:
         Type: "lutils"
         Environment: lutils
+      Layers: 
+        - !Ref Common
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref FanProcessingTableTest 
@@ -240,6 +242,8 @@ Resources:
       Tags:
         Type: "lutils"
         Environment: lutils
+      Layers: 
+        - !Ref Common
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref FanProcessingTableTest 

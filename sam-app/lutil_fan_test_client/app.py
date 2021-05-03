@@ -7,7 +7,7 @@ import json
 import sys
 import glob
 
-# from common_layer.FanIn import FanIn
+from common_layer.FanIn import FanIn
 
 
 def lambda_handler(event, context):
@@ -15,9 +15,6 @@ def lambda_handler(event, context):
 
     # Just print the event for now
     print(json.dumps(event, indent=3, default=str))
-
-    for file in glob.glob("**/*.*", recursive=True):
-        print(file)
 
     print(f"Finished at {datetime.now()}")
 
