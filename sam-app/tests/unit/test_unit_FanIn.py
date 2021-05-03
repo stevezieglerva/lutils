@@ -57,7 +57,7 @@ class FanInUnitTests(unittest.TestCase):
         table_name = "fake-table"
 
         # Act
-        subject = FanIn(STREAM_RECORD_INSERT)
+        subject = FanIn(stream_record=STREAM_RECORD_INSERT)
         print(subject.created_fan_job)
 
         # Assert

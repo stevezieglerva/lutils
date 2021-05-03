@@ -278,8 +278,7 @@ Resources:
     Properties:
       LayerName: common
       Description: Custom python code shared across the app
-
-      CodeUri: common_layer/
+      ContentUri: common_layer/
       CompatibleRuntimes:
         - python3.7
 
