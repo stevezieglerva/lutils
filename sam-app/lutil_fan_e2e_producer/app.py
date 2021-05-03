@@ -16,7 +16,7 @@ def lambda_handler(event, context):
     # Just print the event for now
     print(json.dumps(event, indent=3, default=str))
 
-    fan = FanOut("processA", "sns-done", "lutils-FanProcessingTableTest-X541MIGMFYBW")
+    fan = FanOut("e2e test", "sns-done", "lutils-FanProcessingTableTest-X541MIGMFYBW")
     new_job = fan.fan_out("task #1", {"parameters": "38jdjsls"})
 
     print(f"Finished at {datetime.now()}")
