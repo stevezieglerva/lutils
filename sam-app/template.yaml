@@ -176,6 +176,8 @@ Resources:
       Tags:
         Type: "lutils"
         Environment: lutils
+      Layers: 
+        - !Ref Common
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref FanProcessingTable 
