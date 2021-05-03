@@ -8,7 +8,7 @@ import boto3
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
-parentdir = os.path.dirname(parentdir) + "/common_layer"
+parentdir = os.path.dirname(parentdir) + "/common_layer/python"
 sys.path.insert(0, parentdir)
 print("Updated path:")
 print(json.dumps(sys.path, indent=3))
@@ -17,7 +17,7 @@ import unittest
 from unittest import mock
 
 
-from common_layer.NamedTupleBase import *
+from common_layer.python.NamedTupleBase import *
 
 
 class FanJobUnitTests(unittest.TestCase):
