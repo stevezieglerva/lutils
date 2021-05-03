@@ -6,7 +6,7 @@ import os
 import json
 import sys
 
-from FanIn import FanIn
+from common_layer.FanIn import FanIn
 
 
 def lambda_handler(event, context):
@@ -14,8 +14,6 @@ def lambda_handler(event, context):
 
     # Just print the event for now
     print(json.dumps(event, indent=3, default=str))
-
-    fan_job = FanIn()
 
     print(f"Finished at {datetime.now()}")
 
