@@ -24,6 +24,7 @@ class FanIn:
         else:
             event_string = kwargs["event_string"]
             self._set_properties_from_event_string(event_string)
+        self.sns_arn = sns_arn
 
     def _set_properties_from_record(self, stream_record):
         self.event_name = stream_record["eventName"]
@@ -59,10 +60,10 @@ class FanIn:
             event,
         )
         message = str(event)
-        print(f"Sending message to {sns_arn}: {message}")
+        print(f"Sending message to {self.sns_arn}: {message}")
         sns = boto3.client("sns")
         result = sns.publish(
-            TopicArn=sns_arn,
+            TopicArn=self.sns_arn,
             Message=message,
             MessageAttributes={
                 "event_name": {"DataType": "String", "StringValue": "task_update"},
