@@ -9,7 +9,7 @@ from moto import mock_dynamodb2
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
-parentdir = os.path.dirname(parentdir) + "/lutil_fan_handler"
+parentdir = os.path.dirname(parentdir) + "/common_layer"
 sys.path.insert(0, parentdir)
 print("Updated path:")
 print(json.dumps(sys.path, indent=3))
@@ -17,8 +17,8 @@ print(json.dumps(sys.path, indent=3))
 import unittest
 from unittest import mock
 
-from lutil_fan_handler.FanIn import FanIn
-from lutil_fan_handler.NamedTupleBase import FanJob
+from common_layer.FanIn import FanIn
+from common_layer.NamedTupleBase import FanJob
 
 
 STREAM_RECORD_INSERT = {

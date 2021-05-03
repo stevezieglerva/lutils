@@ -267,7 +267,9 @@ Resources:
     Properties:
       LayerName: selenium-simplified
       Description: Dependencies for Selenium and the headless browser
-      CodeUri: common/
+      ContentUri: 
+        Bucket: !Sub  "lutils-pipeline-artifactsbucket-98fi0mj7zik2"
+        Key: "python-selenium-simplified.zip"
       CompatibleRuntimes:
         - python3.7
 
@@ -276,9 +278,8 @@ Resources:
     Properties:
       LayerName: common
       Description: Custom python code shared across the app
-      ContentUri: 
-        Bucket: !Sub  "lutils-pipeline-artifactsbucket-98fi0mj7zik2"
-        Key: "python-selenium-simplified.zip"
+
+      CodeUri: common_layer/
       CompatibleRuntimes:
         - python3.7
 

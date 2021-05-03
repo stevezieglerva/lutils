@@ -10,7 +10,11 @@ from NamedTupleBase import *
 
 
 class FanIn:
-    def __init__(self, stream_record):
+    def __init__(self, **kwargs):
+        assert (
+            "stream_record" in kwargs or "event_string" in kwargs
+        ), "Need argument for stream_record or event_string"
+
         self._set_properties_from_record(stream_record)
 
     def _set_properties_from_record(self, stream_record):
