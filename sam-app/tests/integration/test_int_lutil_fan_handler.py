@@ -10,7 +10,7 @@ from moto import mock_dynamodb2
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 parentdir = os.path.dirname(parentdir) + "/lutil_fan_handler"
-parentdir = os.path.dirname(parentdir) + "/common_layer"
+parentdir = os.path.dirname(parentdir) + "/common_layer/python"
 sys.path.insert(0, parentdir)
 print("Updated path:")
 print(json.dumps(sys.path, indent=3))

@@ -8,7 +8,7 @@ import boto3
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 parentdir = os.path.dirname(parentdir) + "/lutil_fan_handler"
-parentdir = os.path.dirname(parentdir) + "/common_layer"
+parentdir = os.path.dirname(parentdir) + "/common_layer/python"
 sys.path.insert(0, parentdir)
 print("Updated path:")
 print(json.dumps(sys.path, indent=3))
@@ -16,8 +16,8 @@ print(json.dumps(sys.path, indent=3))
 import unittest
 from unittest.mock import MagicMock, Mock, PropertyMock, patch
 
-from common_layer.FanOut import FanOut
-from common_layer.DynamoDB import DynamoDB
+from common_layer.python.FanOut import FanOut
+from common_layer.python.DynamoDB import DynamoDB
 
 
 def get_table_name_from_stack(output_key):
