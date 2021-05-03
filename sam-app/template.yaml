@@ -265,6 +265,15 @@ Resources:
     Properties:
       LayerName: selenium-simplified
       Description: Dependencies for Selenium and the headless browser
+      CodeUri: common/
+      CompatibleRuntimes:
+        - python3.7
+
+  Common:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: common
+      Description: Custom python code shared across the app
       ContentUri: 
         Bucket: !Sub  "lutils-pipeline-artifactsbucket-98fi0mj7zik2"
         Key: "python-selenium-simplified.zip"
