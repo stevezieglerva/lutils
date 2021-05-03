@@ -7,7 +7,7 @@ import json
 import sys
 import glob
 
-# from FanIn import FanIn
+from FanOut import FanOut
 
 
 def lambda_handler(event, context):
