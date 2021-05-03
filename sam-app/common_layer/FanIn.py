@@ -5,8 +5,8 @@ from datetime import datetime
 
 import boto3
 
-from DynamoDB import DynamoDB
-from NamedTupleBase import *
+from common_layer.DynamoDB import DynamoDB
+from common_layer.NamedTupleBase import *
 
 
 class FanIn:
