@@ -229,6 +229,10 @@ Resources:
             BatchSize: 100
             StartingPosition: TRIM_HORIZON
 
+
+  #--------------------------------
+  # e2e testing lambdas
+  #--------------------------------
   FanTestE2EProducerLambda:
     Type: AWS::Serverless::Function 
     Properties:
@@ -325,15 +329,16 @@ Resources:
             Topic: !Ref FanEventsTestSNS
             FilterPolicy:
               event_name:
-                - "start_job" # Process only start jobs
+                - "process_completed" # Process only start jobs
               process_name:
                 - "processA" # Only accept processA SNS messages
+
 
   FanLogEventsLambda:
     Type: AWS::Serverless::Function 
     Properties:
       Description: Log all fan events for debugging
-      CodeUri: lutil_fan_test_client/
+      CodeUri: lutil_fan_log_events/
       Handler: app.lambda_handler
       Runtime: python3.7
       Environment:
