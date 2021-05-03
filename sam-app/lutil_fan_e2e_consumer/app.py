@@ -10,7 +10,7 @@ import time
 import random
 
 from FanIn import FanIn
-import FanTaskStatus
+import FanEventOptions
 
 
 def lambda_handler(event, context):
@@ -20,10 +20,10 @@ def lambda_handler(event, context):
     for record in event["Records"]:
         message = record["Sns"]["Message"]
         fan_job = FanIn(os.environ["HANDLER_SNS_TOPIC_ARN"], event_string=message)
-        fan_job.update_task(FanTaskStatus.TASK_CREATED)
+        fan_job.update_task(FanEventOptions.TASK_STARTED)
         sleep_duration = random.randint(0, 3)
         time.sleep(sleep_duration)
-        fan_job.update_task(FanTaskStatus.TASK_COMPLETED)
+        fan_job.update_task(FanEventOptions.TASK_COMPLETED)
 
     print(f"Finished at {datetime.now()}")
 
