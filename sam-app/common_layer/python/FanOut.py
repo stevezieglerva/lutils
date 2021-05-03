@@ -25,7 +25,6 @@ class FanOut:
         db = boto3.client("dynamodb")
         try:
             results = db.describe_table(TableName=table_name)
-            print(results)
             return True
         except Exception as e:
             print(e)
