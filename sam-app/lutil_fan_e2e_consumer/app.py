@@ -16,8 +16,11 @@ def lambda_handler(event, context):
     print(f"Started at {datetime.now()}")
     print(json.dumps(event, indent=3, default=str))
 
-    sleep_duration = random.randint(0, 3)
-    time.sleep(sleep_duration)
+    for record in event["Records"]:
+        message = record["Sns"]["Message"]
+        fan_job = FanIn(event_string=message)
+        sleep_duration = random.randint(0, 3)
+        time.sleep(sleep_duration)
 
     print(f"Finished at {datetime.now()}")
 
