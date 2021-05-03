@@ -11,6 +11,8 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 parentdir = os.path.dirname(parentdir) + "/lutil_fan_handler"
 sys.path.insert(0, parentdir)
+parentdir = os.path.dirname(parentdir) + "/common_layer/python"
+sys.path.insert(0, parentdir)
 print("Updated path:")
 print(json.dumps(sys.path, indent=3))
 
