@@ -49,9 +49,11 @@ STREAM_RECORD_INSERT = {
     "eventSourceARN": "arn:aws:dynamodb:us-east-1:112280397275:table/lutils-FanProcessingTableTest-X541MIGMFYBW/stream/2021-05-01T16:26:21.720",
 }
 
+EVENT_STRING = '{\n   "process_id": "e915fd0c-ac53-11eb-8f7e-c2ad2721aeef",\n   "process_name": "e2e test",\n   "task_name": "task #1",\n   "message": "{\\n   \\"parameters\\": \\"38jdjsls\\"\\n}",\n   "completion_sns_arn": "sns-done",\n   "timestamp": "2021-05-03T21:09:58.699450",\n   "pk": "FAN-OUT-JOB#e915fd0c-ac53-11eb-8f7e-c2ad2721aeef-TASK#task #1",\n   "status": "created",\n   "status_change_timestamp": "2021-05-03T21:09:55.814367"\n}'
+
 
 class FanInUnitTests(unittest.TestCase):
-    def test_constructor__given_insert_image__then_properties_correct(self):
+    def test_constructor__given_insert_record_image__then_properties_correct(self):
         # Arrange
         table_name = "fake-table"
 
@@ -67,4 +69,20 @@ class FanInUnitTests(unittest.TestCase):
         self.assertEqual(
             subject.created_fan_job.process_name,
             "processA",
+        )
+
+    def test_constructor__given_insert_image__then_properties_correct(self):
+        # Arrange
+        table_name = "fake-table"
+
+        # Act
+        subject = FanIn(event_string=EVENT_STRING)
+        print(subject.created_fan_job)
+
+        # Assert
+        self.assertEqual(subject.event_name, "")
+        self.assertEqual(subject.table_name, "")
+        self.assertEqual(
+            subject.created_fan_job.process_name,
+            "e2e test",
         )
