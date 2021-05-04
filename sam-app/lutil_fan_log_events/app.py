@@ -7,7 +7,7 @@ import json
 import sys
 import glob
 
-from NamedTupleBase import FanEvent, get_fanevent_from_string
+from FanEvent import *
 
 
 from aws_lambda_powertools import Metrics

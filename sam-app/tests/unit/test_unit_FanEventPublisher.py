@@ -49,13 +49,3 @@ class FanEventPublisherUnitTests(unittest.TestCase):
         # Assert
         self.assertEqual(results.event_source, "keyword_blast")
         self.assertEqual(results.event_name, "fan_out")
-
-    @mock_sns
-    def test_task_started__given_event__then_sns_sent(self):
-        # Arrange
-        subject = FanEventPublisher("test-sns-topic-arn")
-
-        # Act
-        results = subject.task_started("pk")
-
-        # Assert
