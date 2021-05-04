@@ -7,7 +7,7 @@ import json
 import sys
 import glob
 
-from NamedTupleBase import FanEvent
+from NamedTupleBase import FanEvent, get_fanevent_from_string
 
 
 from aws_lambda_powertools import Metrics
@@ -22,6 +22,7 @@ def lambda_handler(event, context):
         message = record["Sns"]["Message"]
         fan_event = get_fanevent_from_string(message)
         metrics.add_metric(name=fan_event.event, unit=MetricUnit.Count, value=1)
+        print(fan_event.get_formatted_line())
 
     print(f"Finished at {datetime.now()}")
 
