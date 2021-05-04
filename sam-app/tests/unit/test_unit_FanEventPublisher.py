@@ -32,15 +32,23 @@ class FanEventPublisherUnitTests(unittest.TestCase):
         # Assert
         subject.topic_arn = "test-sns-topic-arn"
 
-    @mock_sns
     def test_create_task__given_event__then_sns_sent(self):
         # Arrange
         subject = FanEventPublisher("test-sns-topic-arn")
 
         # Act
-        results = subject.create_task("process z", "task 1")
+        with mock.patch(
+            "common_layer.python.FanEventPublisher.FanEventPublisher._publish_sns",
+            mock.MagicMock(return_value="sns sent"),
+        ):
+            results = subject.fan_out(
+                "keyword_blast", "document-1", {"document_name": "agency-x-doc.pdf"}
+            )
+        print(results)
 
         # Assert
+        self.assertEqual(results.event_source, "keyword_blast")
+        self.assertEqual(results.event_name, "fan_out")
 
     @mock_sns
     def test_task_started__given_event__then_sns_sent(self):
