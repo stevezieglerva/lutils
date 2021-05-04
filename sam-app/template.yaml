@@ -242,7 +242,7 @@ Resources:
       Runtime: python3.7
       Environment:
         Variables:
-          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
       Tags:
         Type: "lutils"
         Environment: lutils
@@ -269,7 +269,7 @@ Resources:
       Runtime: python3.7
       Environment:
         Variables:
-          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
       Tags:
         Type: "lutils"
         Environment: lutils
@@ -292,7 +292,7 @@ Resources:
             Topic: !Ref FanEventsTestSNS
             FilterPolicy:
               event_name:
-                - "start_job" # Process only start jobs
+                - "task_created" # Process only start jobs
               process_name:
                 - "e2e test" # Only accept processA SNS messages
 
