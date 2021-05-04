@@ -21,7 +21,10 @@ def lambda_handler(event, context):
         message = record["Sns"]["Message"]
         fan_job = FanIn(os.environ["HANDLER_SNS_TOPIC_ARN"], event_string=message)
         fan_job.update_task(FanEventOptions.TASK_STARTED)
-        sleep_duration = random.randint(0, 3)
+
+        message_str = fan_job.created_fan_job.message
+        message_json = json.loads(message_str)
+        sleep_duration = message_json["number"]
         time.sleep(sleep_duration)
         fan_job.update_task(FanEventOptions.TASK_COMPLETED)
 

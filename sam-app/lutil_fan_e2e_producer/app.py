@@ -16,7 +16,9 @@ def lambda_handler(event, context):
     fan = FanOut("e2e test", "sns-done", "lutils-FanProcessingTableTest-X541MIGMFYBW")
     # Create a group of fan out events for the "e2e test" process
     for i in range(10):
-        new_job = fan.fan_out(f"task #{i}", {"parameters": f"38jdjsls-{i}"})
+        new_job = fan.fan_out(
+            f"task #{i}", {"number": i, "parameters": f"38jdjsls-{i}"}
+        )
 
     print(f"Finished at {datetime.now()}")
 
