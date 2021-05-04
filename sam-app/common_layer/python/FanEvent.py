@@ -11,6 +11,8 @@ TASK_ERROR = "task_error"
 
 PROCESS_COMPLETED = "process_completed"
 
+from NamedTupleBase import *
+
 
 class FanEvent:
     def __init__(self, event_source, event_name, fan_job=None):
@@ -47,3 +49,19 @@ class FanEvent:
     def get_formatted_line(self):
         line = f"{self.event_source:<20} {self.event_name:<40} {self.job.process_id:<40} {self.job.process_name:<40} {self.job.task_name}"
         return line
+
+
+def get_fanevent_from_string(text):
+    replaced_single_quote_identifiers = text.replace("'", '"')
+    text_json = json.loads(replaced_single_quote_identifiers)
+
+    job_json = text_json["job"]
+    job_text = json.dumps(job_json, indent=3, default=str)
+
+    job = get_fanjob_from_string(job_text)
+
+    return FanEvent(
+        text_json["event_source"],
+        text_json["event_name"],
+        job,
+    )

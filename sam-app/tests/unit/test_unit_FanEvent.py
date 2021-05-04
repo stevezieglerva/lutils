@@ -76,3 +76,26 @@ class FanEventUnitTests(unittest.TestCase):
             results,
             "process-x            task_created                             123                                      process X                                task 1",
         )
+
+    def test_get_fanevent_from_string__given_valid_string__then_event_returned(self):
+        # Arrange
+        input = """{
+   "event_source": "keyword_blast",
+   "event_name": "fan_out",
+   "job": {
+      "process_id": "",
+      "process_name": "keyword_blast",
+      "task_name": "document-1",
+      "message": {
+         "document_name": "agency-x-doc.pdf"
+      },
+      "completion_sns_arn": "completion_sns_arn",
+      "timestamp": "2021-05-04T17:56:00.334435"
+   },
+   "timestamp": "2021-05-04T17:56:00.334497"
+}"""
+        # Act
+        results = get_fanevent_from_string(input)
+
+        # Assert
+        self.assertEqual(results.job.process_name, "keyword_blast")
