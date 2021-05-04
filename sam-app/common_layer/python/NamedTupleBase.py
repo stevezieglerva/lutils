@@ -96,6 +96,10 @@ class FanEvent(
                 f"event of '{self.event}'' in not one of {possible_events}"
             )
 
+    def get_formatted_line(self):
+        line = f"{self.event:<20} {self.process_id:<40} {self.process_name:<40} {self.task_name}"
+        return line
+
 
 def get_fanevent_from_string(text):
     replaced_single_quote_identifiers = text.replace("'", '"')

@@ -165,19 +165,13 @@ class FanEventUnitTests(unittest.TestCase):
         self,
     ):
         # Arrange
-        input = json.dumps(
-            {
-                "process_id": "id1",
-                "process_name": "name x",
-                "task_name": "task y",
-                "event": FanEventOptions.TASK_CREATED,
-            },
-            indent=3,
-            default=str,
-        )
+        subject = FanEvent("123", "processA", "task C", FanEventOptions.TASK_CREATED)
 
         # Act
-        results = get_fanevent_from_string(input)
+        results = subject.get_formatted_line()
 
         # Assert
-        self.assertEqual(results.process_name, "name x")
+        self.assertEqual(
+            results,
+            "task_created         123                                      processA                                 task C",
+        )
