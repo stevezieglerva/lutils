@@ -21,6 +21,7 @@ def lambda_handler(event, context):
     print(f"Started at {datetime.now()}")
 
     for record in event["Records"]:
+        print(record)
         message = record["Sns"]["Message"]
         fan_event = get_fanevent_from_string(message)
         print(fan_event.get_formatted_line())
