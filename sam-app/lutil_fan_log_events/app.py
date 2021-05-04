@@ -14,6 +14,7 @@ from aws_lambda_powertools import Metrics
 from aws_lambda_powertools.metrics import MetricUnit
 
 
+@metrics.log_metrics
 def lambda_handler(event, context):
     print(f"Started at {datetime.now()}")
 

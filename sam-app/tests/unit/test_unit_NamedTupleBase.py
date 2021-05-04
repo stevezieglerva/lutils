@@ -160,3 +160,24 @@ class FanEventUnitTests(unittest.TestCase):
 
         # Assert
         self.assertEqual(results.process_name, "name x")
+
+    def test_print(
+        self,
+    ):
+        # Arrange
+        input = json.dumps(
+            {
+                "process_id": "id1",
+                "process_name": "name x",
+                "task_name": "task y",
+                "event": FanEventOptions.TASK_CREATED,
+            },
+            indent=3,
+            default=str,
+        )
+
+        # Act
+        results = get_fanevent_from_string(input)
+
+        # Assert
+        self.assertEqual(results.process_name, "name x")
