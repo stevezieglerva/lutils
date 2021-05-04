@@ -7,7 +7,9 @@ import json
 import sys
 import glob
 
-# from FanIn import FanIn
+
+from aws_lambda_powertools import Metrics
+from aws_lambda_powertools.metrics import MetricUnit
 
 
 def lambda_handler(event, context):
