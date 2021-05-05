@@ -36,6 +36,12 @@ class FanEventPublisher:
         print(result)
         return result
 
+    def publish_event(event_source, event_name):
+        new_event = FanEvent(event_source, event_name, job)
+        result = self._publish_sns(new_event)
+        print(result)
+        return result
+
     def _publish_sns(self, event):
         result = self.sns.publish(
             TopicArn=self.topic_arn,
