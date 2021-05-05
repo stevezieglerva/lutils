@@ -300,7 +300,7 @@ Resources:
               event_name:
                 - "task_created" # Process only start jobs
               process_name:
-                - "e2e test" # Only accept processA SNS messages
+                - "e2e tests" # Only accept processA SNS messages
 
 
   FanTestE2ECompletedLambda:
