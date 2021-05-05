@@ -26,6 +26,7 @@ def lambda_handler(event, context):
         print(event)
         publisher.task_started(event.event_source, event.job)
         time.sleep(count)
+        publisher.publish_event(event.event_source, TASK_COMPLETED, event.job)
 
     print(f"Finished at {datetime.now()}")
 
