@@ -74,6 +74,7 @@ class DynamoDBUnitTests(unittest.TestCase):
         )
 
         subject = DynamoDB(table_name, key_field)
+        subject.set_ttl_seconds(10)
         subject.put_item({key_field: "J1K4", "value": 2000})
 
         # Act
@@ -81,4 +82,6 @@ class DynamoDBUnitTests(unittest.TestCase):
         print(new_item)
 
         # Assert
+        self.assertTrue("ttl" in new_item)
+        new_item.pop("ttl")
         self.assertEqual(new_item, {"id": "J1K4", "value": "2000"})

@@ -1,5 +1,6 @@
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
+from time import time
 
 import boto3
 
@@ -9,10 +10,21 @@ class DynamoDB:
         self.table_name = table_name
         self.key_field = key_field
         self._db = boto3.client("dynamodb")
+        self._ttl = None
+
+    def set_ttl_seconds(self, seconds):
+        self._ttl = seconds
 
     def put_item(self, record):
+        if self._ttl != None:
+            ttl = self._calculate_ttl_epoch()
+            record["ttl"] = ttl
         db_format = self.convert_to_dynamodb_format(record)
         self._db.put_item(TableName=self.table_name, Item=db_format)
+
+    def _calculate_ttl_epoch(self):
+        future_time = datetime.now() + timedelta(self._ttl)
+        return int(future_time.strftime("%s"))
 
     def convert_to_dynamodb_format(self, record):
         results = {}
