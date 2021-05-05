@@ -10,7 +10,7 @@ import time
 import random
 
 from NamedTupleBase import *
-from FanEvent import FanEvent, get_fanevent_from_string
+from FanEvent import *
 from FanEventPublisher import FanEventPublisher
 import FanEventOptions
 
