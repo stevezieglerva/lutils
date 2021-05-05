@@ -478,6 +478,9 @@ Resources:
             WriteCapacityUnits: 0
       StreamSpecification:
         StreamViewType: NEW_AND_OLD_IMAGES
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: True
 
 
   FanProcessingTableTest:
@@ -507,6 +510,9 @@ Resources:
             WriteCapacityUnits: 0
       StreamSpecification:
         StreamViewType: NEW_AND_OLD_IMAGES
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: True
 
 ################################
 ### Outputs
