@@ -16,6 +16,8 @@ db_table = os.environ.get("TABLE_NAME", "")
 if db_table == "":
     raise ValueError(f"Missing env variable for TABLE_NAME")
 dynamodb = DynamoDB(db_table, "pk")
+seconds_in_24_hours = 60 * 60 * 24
+dynamodb.set_ttl_seconds(seconds_in_24_hours)
 
 
 def lambda_handler(event, context):
