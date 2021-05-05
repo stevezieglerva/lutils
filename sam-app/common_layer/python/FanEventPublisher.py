@@ -24,6 +24,12 @@ class FanEventPublisher:
         print(result)
         return event
 
+    def task_created(self, event_source, job):
+        new_event = FanEvent(event_source, TASK_CREATED, job)
+        result = self._publish_sns(new_event)
+        print(result)
+        return result
+
     def _publish_sns(self, event):
         result = self.sns.publish(
             TopicArn=self.topic_arn,

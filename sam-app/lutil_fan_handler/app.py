@@ -6,11 +6,11 @@ import uuid
 from datetime import datetime
 
 import boto3
+import FanTaskStatus
 from DynamoDB import DynamoDB
 from FanEvent import *
+from FanEventPublisher import FanEventPublisher
 from NamedTupleBase import FanJob
-import FanTaskStatus
-
 
 db_table = os.environ.get("TABLE_NAME", "")
 if db_table == "":
@@ -20,12 +20,14 @@ seconds_in_24_hours = 60 * 60 * 24
 dynamodb.set_ttl_seconds(seconds_in_24_hours)
 
 
+handler_sns_topic_arn = os.environ.get("HANDLER_SNS_TOPIC_ARN", "")
+if handler_sns_topic_arn == "":
+    raise ValueError(f"Missing env variable for HANDLER_SNS_TOPIC_ARN")
+publisher = FanEventPublisher(handler_sns_topic_arn)
+
+
 def lambda_handler(event, context):
     print(f"Started at {datetime.now()}")
-
-    handler_sns_topic_arn = os.environ.get("HANDLER_SNS_TOPIC_ARN", "")
-    if handler_sns_topic_arn == "":
-        raise ValueError(f"Missing env variable for HANDLER_SNS_TOPIC_ARN")
 
     results = {}
     fan_out_list = []
@@ -39,7 +41,7 @@ def lambda_handler(event, context):
             created_job = process_fan_out(record["Sns"]["Message"])
             fan_out_list.append(created_job.json())
         else:
-            print("not processed")
+            print(f"Skipping event_name: {event_name}")
 
     results["fan_out"] = fan_out_list
 
@@ -67,22 +69,9 @@ def send_start_sns_message(sns_arn, process_name, message):
 def process_fan_out(message_str):
     fan_event = get_fanevent_from_string(message_str)
     created_job = put_to_db(fan_event.job)
+    publisher.task_created("lutil_fan_handler", created_job)
+
     return created_job
-
-
-def process_insert(fan_in, inserted, handler_sns_topic_arn):
-    sns_message_json = fan_in.created_fan_job.json()
-    process_name = fan_in.created_fan_job.process_name
-    send_start_sns_message(
-        handler_sns_topic_arn,
-        process_name,
-        json.dumps(sns_message_json, indent=3, default=str),
-    )
-
-    current_topic_count = inserted.get(process_name, 0)
-    current_topic_count = current_topic_count + 1
-    inserted[process_name] = current_topic_count
-    return inserted
 
 
 def put_to_db(job):
