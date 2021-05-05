@@ -103,7 +103,7 @@ class FanHandlerIntTests(unittest.TestCase):
         os.environ["TABLE_NAME"] = "table-name"
 
         # Act
-        results = app.lambda_handler(FAN_OUT, {})
+        results = app.lambda_handler(TASK_STARTED, {})
 
         # Assert
         expected = {"inserted": {"processA": 1}}

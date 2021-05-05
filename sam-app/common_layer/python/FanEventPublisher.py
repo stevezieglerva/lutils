@@ -15,7 +15,7 @@ class FanEventPublisher:
         self.sns = boto3.client("sns")
 
     def generate_process_id(self):
-        return uuid.uuid1()
+        return str(uuid.uuid1())
 
     def fan_out(self, process_id, process_name, task_name, message):
         job = FanJob(process_id, process_name, task_name, message, "completion_sns_arn")

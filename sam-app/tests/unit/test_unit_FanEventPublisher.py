@@ -35,6 +35,7 @@ class FanEventPublisherUnitTests(unittest.TestCase):
     def test_create_task__given_event__then_sns_sent(self):
         # Arrange
         subject = FanEventPublisher("test-sns-topic-arn")
+        process_id = subject.generate_process_id()
 
         # Act
         with mock.patch(
@@ -42,7 +43,10 @@ class FanEventPublisherUnitTests(unittest.TestCase):
             mock.MagicMock(return_value="sns sent"),
         ):
             results = subject.fan_out(
-                "keyword_blast", "document-1", {"document_name": "agency-x-doc.pdf"}
+                process_id,
+                "keyword_blast",
+                "document-1",
+                {"document_name": "agency-x-doc.pdf"},
             )
         print(results)
 
