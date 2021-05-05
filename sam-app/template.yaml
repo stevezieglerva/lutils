@@ -173,6 +173,7 @@ Resources:
       Environment:
         Variables:
           HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
+          TABLE_NAME: !Ref FanProcessingTableTest
       Tags:
         Type: "lutils"
         Environment: lutils
@@ -206,7 +207,7 @@ Resources:
       Environment:
         Variables:
           HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
-          TABLE_NAME: FanProcessingTableTest
+          TABLE_NAME: !Ref FanProcessingTableTest
       Tags:
         Type: "lutils"
         Environment: lutils
