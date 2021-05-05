@@ -10,7 +10,7 @@ import time
 import random
 
 from NamedTupleBase import *
-from FanEvent import FanEvent
+from FanEvent import FanEvent, get_fanevent_from_string
 import FanEventOptions
 
 
@@ -24,7 +24,7 @@ def lambda_handler(event, context):
         # fan_job.update_task(FanEventOptions.TASK_STARTED)
 
         event = get_fanevent_from_string(mesage)
-        print(job)
+        print(event)
 
         # message_str = fan_job.created_fan_job.message
         # message_json = json.loads(message_str)
