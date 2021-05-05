@@ -34,7 +34,7 @@ def lambda_handler(event, context):
         print(f"Record #{count}: {event_name}")
         print(f"'{event_name}' '{FAN_OUT}'")
         if event_name == FAN_OUT:
-            process_fan_out(record["Sns"]["Message"])
+            created_job = process_fan_out(record["Sns"]["Message"])
         else:
             print("not processed")
 
@@ -63,11 +63,8 @@ def send_start_sns_message(sns_arn, process_name, message):
 
 def process_fan_out(message_str):
     fan_event = get_fanevent_from_string(message_str)
-
-    print(fan_event)
     created_job = put_to_db(fan_event.job)
-    print(created_job)
-    pass
+    return created_job
 
 
 def process_insert(fan_in, inserted, handler_sns_topic_arn):
