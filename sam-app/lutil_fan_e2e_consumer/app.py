@@ -9,7 +9,8 @@ import glob
 import time
 import random
 
-from FanIn import FanIn
+from NamedTupleBase import *
+from FanEvent import FanEvent
 import FanEventOptions
 
 
@@ -19,14 +20,17 @@ def lambda_handler(event, context):
 
     for record in event["Records"]:
         message = record["Sns"]["Message"]
-        fan_job = FanIn(os.environ["HANDLER_SNS_TOPIC_ARN"], event_string=message)
-        fan_job.update_task(FanEventOptions.TASK_STARTED)
+        # fan_job = FanIn(os.environ["HANDLER_SNS_TOPIC_ARN"], event_string=message)
+        # fan_job.update_task(FanEventOptions.TASK_STARTED)
 
-        message_str = fan_job.created_fan_job.message
-        message_json = json.loads(message_str)
-        sleep_duration = message_json["number"]
-        time.sleep(sleep_duration)
-        fan_job.update_task(FanEventOptions.TASK_COMPLETED)
+        event = get_fanevent_from_string(mesage)
+        print(job)
+
+        # message_str = fan_job.created_fan_job.message
+        # message_json = json.loads(message_str)
+        # sleep_duration = message_json["number"]
+        # time.sleep(sleep_duration)
+        # fan_job.update_task(FanEventOptions.TASK_COMPLETED)
 
     print(f"Finished at {datetime.now()}")
 
