@@ -296,11 +296,8 @@ Resources:
           Type: SNS
           Properties:
             Topic: !Ref FanEventsTestSNS
-            FilterPolicy:
-              event_name:
-                - "task_created" # Process only start jobs
-              process_name:
-                - "e2e tests" # Only accept processA SNS messages
+            FilterPolicy: # only accept specific message types
+
 
 
   FanTestE2ECompletedLambda:
