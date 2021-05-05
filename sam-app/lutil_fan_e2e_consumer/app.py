@@ -23,7 +23,7 @@ def lambda_handler(event, context):
         # fan_job = FanIn(os.environ["HANDLER_SNS_TOPIC_ARN"], event_string=message)
         # fan_job.update_task(FanEventOptions.TASK_STARTED)
 
-        event = get_fanevent_from_string(mesage)
+        event = get_fanevent_from_string(message)
         print(event)
 
         # message_str = fan_job.created_fan_job.message
