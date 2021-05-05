@@ -297,9 +297,8 @@ Resources:
           Properties:
             Topic: !Ref FanEventsTestSNS
             FilterPolicy: # only accept specific message types
-              event_name:
-                - "task_created" 
-
+              process_name:
+                - "e2e tests" 
 
 
   FanTestE2ECompletedLambda:
