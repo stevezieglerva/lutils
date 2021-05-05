@@ -69,7 +69,7 @@ def send_start_sns_message(sns_arn, process_name, message):
 def process_fan_out(message_str):
     fan_event = get_fanevent_from_string(message_str)
     created_job = put_to_db(fan_event.job)
-    publisher.task_created("lutil_fan_handler", created_job)
+    publisher.task_created(fan_event.event_source, created_job)
 
     return created_job
 
