@@ -24,7 +24,7 @@ def lambda_handler(event, context):
         print(record)
         message = record["Sns"]["Message"]
         fan_event = get_fanevent_from_string(message)
-        print("*event* " + fan_event.get_formatted_line())
+        print("_event_ " + fan_event.get_formatted_line())
         metrics.add_metric(name=fan_event.event_source, unit=MetricUnit.Count, value=1)
         metrics.add_metric(name=fan_event.event_name, unit=MetricUnit.Count, value=1)
 

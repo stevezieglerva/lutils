@@ -206,6 +206,7 @@ Resources:
       Environment:
         Variables:
           HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
+          TABLE_NAME: FanProcessingTableTest
       Tags:
         Type: "lutils"
         Environment: lutils
@@ -222,12 +223,17 @@ Resources:
                 - sns:Publish*
               Resource: !Sub "arn:aws:sns:us-east-1:${AWS::AccountId}:lutil_*"
       Events:
-        Stream:
-          Type: DynamoDB
+        SNSEvent:
+          Type: SNS
           Properties:
-            Stream: !GetAtt FanProcessingTableTest.StreamArn
-            BatchSize: 100
-            StartingPosition: TRIM_HORIZON
+            Topic: !Ref FanEventsTestSNS
+            FilterPolicy:
+              event_name:
+                - "fan_out" 
+                - "task_started"
+                - "task_completed"
+                - "task_error"
+
 
 
   #--------------------------------

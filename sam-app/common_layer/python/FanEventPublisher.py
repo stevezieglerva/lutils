@@ -1,4 +1,5 @@
 import json
+import uuid
 from collections import namedtuple
 from datetime import datetime
 
@@ -13,8 +14,11 @@ class FanEventPublisher:
         self.topic_arn = topic_arn
         self.sns = boto3.client("sns")
 
-    def fan_out(self, process_name, task_name, message):
-        job = FanJob("", process_name, task_name, message, "completion_sns_arn")
+    def generate_process_id():
+        return uuid.uuid1()
+
+    def fan_out(self, process_id, process_name, task_name, message):
+        job = FanJob(process_id, process_name, task_name, message, "completion_sns_arn")
         event = FanEvent(process_name, FAN_OUT, job)
         result = self._publish_sns(event)
         print(result)
