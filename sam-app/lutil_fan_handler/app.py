@@ -26,7 +26,7 @@ def lambda_handler(event, context):
         raise ValueError(f"Missing env variable for HANDLER_SNS_TOPIC_ARN")
 
     results = {}
-    inserted = {}
+    fan_out_list = []
 
     print(json.dumps(event, indent=3, default=str))
     for count, record in enumerate(event["Records"]):
@@ -35,10 +35,11 @@ def lambda_handler(event, context):
         print(f"'{event_name}' '{FAN_OUT}'")
         if event_name == FAN_OUT:
             created_job = process_fan_out(record["Sns"]["Message"])
+            fan_out_list.append(created_job.json())
         else:
             print("not processed")
 
-    results["inserted"] = inserted
+    results["fan_out"] = fan_out_list
 
     print(json.dumps(results, indent=3, default=str))
 

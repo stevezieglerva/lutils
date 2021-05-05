@@ -67,7 +67,37 @@ FAN_OUT = {
 
 
 class FanHandlerIntTests(unittest.TestCase):
-    def test_lambda_handler__given_single_insert_event__then_one_sns_sent(self):
+    def test_lambda_handler__given_fan_out__then_one_sns_sent(self):
+        # Arrange
+        os.environ["HANDLER_SNS_TOPIC_ARN"] = "fake-topic"
+        os.environ["TABLE_NAME"] = "table-name"
+
+        # Act
+        results = app.lambda_handler(FAN_OUT, {})
+
+        # Assert
+        expected = {
+            "fan_out": [
+                {
+                    "process_id": "lhklhk-099087gjg87t8-ohoiuyiuh",
+                    "process_name": "e2e tests",
+                    "task_name": "task-9",
+                    "message": {"var_1": 297},
+                    "completion_sns_arn": "completion_sns_arn",
+                    "timestamp": "2021-05-05T09:17:15.285217",
+                    "pk": "FAN-OUT-JOB#lhklhk-099087gjg87t8-ohoiuyiuh-TASK#task-9",
+                    "status": "created",
+                    "status_change_timestamp": "2021-05-05T09:17:15.221737",
+                }
+            ]
+        }
+        expected["fan_out"][0].pop("timestamp")
+        expected["fan_out"][0].pop("status_change_timestamp")
+        results["fan_out"][0].pop("timestamp")
+        results["fan_out"][0].pop("status_change_timestamp")
+        self.assertEqual(results, expected)
+
+    def test_lambda_handler__given_task_started__then_one_sns_sent(self):
         # Arrange
         os.environ["HANDLER_SNS_TOPIC_ARN"] = "fake-topic"
         os.environ["TABLE_NAME"] = "table-name"
