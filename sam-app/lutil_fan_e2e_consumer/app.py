@@ -25,7 +25,7 @@ def lambda_handler(event, context):
         event = get_fanevent_from_string(message)
         print(event)
         publisher.task_started(event.event_source, event.job)
-        time.sleep(count)
+        time.sleep(random.randint(0, 5))
         publisher.publish_event(event.event_source, TASK_COMPLETED, event.job)
 
     print(f"Finished at {datetime.now()}")
