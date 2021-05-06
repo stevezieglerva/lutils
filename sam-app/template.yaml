@@ -524,7 +524,13 @@ Resources:
           AttributeName: "pk"
           AttributeType: "S"
         - 
-          AttributeName: "process_id"
+          AttributeName: "sk"
+          AttributeType: "S"
+        - 
+          AttributeName: "gs1_pk"
+          AttributeType: "S"
+        - 
+          AttributeName: "gs1_sk"
           AttributeType: "S"
       KeySchema: 
         -
@@ -589,8 +595,7 @@ Outputs:
   FanEventsSNS:
     Description: "FanEventsSNS ARN"
     Value: !Ref FanEventsSNS
-
-  "FanEventsTestSNS":
+  FanEventsTestSNS:
     Description: "FanEventsTestSNS ARN"
     Value: !Ref FanEventsTestSNS
 
