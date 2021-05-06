@@ -544,7 +544,6 @@ Resources:
           KeySchema:
             - AttributeName: gs1_pk
               KeyType: HASH
-          KeySchema:
             - AttributeName: gs1_sk
               KeyType: RANGE
           Projection:
