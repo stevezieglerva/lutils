@@ -34,7 +34,15 @@ class ProcessRecordUnitTests(unittest.TestCase):
 
     def test_constructor__given_valid_string_input__then_no_exceptions(self):
         # Arrange
-        record = {"process_name": "keyword blast", "pk": "PROCESS#1819-00"}
+        record = {
+            "pk": "PROCESS#1819-00",
+            "sk": "TASK#93020939F",
+            "gsk1_pk": "-",
+            "gsk1_sk": "-",
+            "process_name": "keyword blast",
+            "started": "2021",
+            "ended": "2021",
+        }
 
         # Act
         subject = ProcessRecord(record_string=json.dumps(record, indent=3, default=str))
