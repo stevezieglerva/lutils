@@ -32,6 +32,17 @@ class ProcessRecordUnitTests(unittest.TestCase):
         self.assertEqual(subject.process_name, input)
         self.assertEqual(subject.pk, "")
 
+    def test_constructor__given_valid_string_input__then_no_exceptions(self):
+        # Arrange
+        record = {"process_name": "keyword blast", "pk": "PROCESS#1819-00"}
+
+        # Act
+        subject = ProcessRecord(record_string=json.dumps(record, indent=3, default=str))
+
+        # Assert
+        self.assertEqual(subject.process_name, record["process_name"])
+        self.assertEqual(subject.pk, "PROCESS#1819-00")
+
 
 if __name__ == "__main__":
     unittest.main()
