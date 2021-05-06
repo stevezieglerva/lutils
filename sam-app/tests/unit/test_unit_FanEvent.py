@@ -70,10 +70,12 @@ class FanEventUnitTests(unittest.TestCase):
         print(results)
 
         # Assert
-        self.assertEqual(
-            results,
-            "process-x            task_created                             123                                      process X                                task 1",
-        )
+        expected = """process-x            task_created                              123                                      process X                                task 1"""
+
+        print(results)
+        print(expected)
+
+        self.assertEqual(results, expected)
 
     def test_get_fanevent_from_string__given_valid_string__then_event_returned(self):
         # Arrange
