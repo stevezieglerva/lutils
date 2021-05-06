@@ -52,20 +52,6 @@ def lambda_handler(event, context):
     return results
 
 
-def send_start_sns_message(sns_arn, process_name, message):
-    print(f"Sending message to {sns_arn}: {message}")
-    sns = boto3.client("sns")
-    result = sns.publish(
-        TopicArn=sns_arn,
-        Message=message,
-        MessageAttributes={
-            "event_name": {"DataType": "String", "StringValue": "start_job"},
-            "process_name": {"DataType": "String", "StringValue": process_name},
-        },
-    )
-    print("Sent!")
-
-
 def process_fan_out(message_str):
     fan_event = get_fanevent_from_string(message_str)
     created_job = put_to_db(fan_event.job)
