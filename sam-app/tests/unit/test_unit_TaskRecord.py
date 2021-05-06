@@ -17,19 +17,19 @@ import unittest
 from unittest import mock
 
 
-from common_layer.python.ProcessRecord import *
+from common_layer.python.TaskRecord import *
 
 
-class ProcessRecordUnitTests(unittest.TestCase):
+class TaskRecordUnitTests(unittest.TestCase):
     def test_constructor__given_valid_dict_input__then_no_exceptions(self):
         # Arrange
-        input = "keyword blast"
+        input = "document-3"
 
         # Act
-        subject = ProcessRecord(process_name=input)
+        subject = TaskRecord(task_name=input)
 
         # Assert
-        self.assertEqual(subject.process_name, input)
+        self.assertEqual(subject.task_name, input)
         self.assertEqual(subject.pk, "")
 
     def test_constructor__given_valid_string_input__then_no_exceptions(self):
@@ -40,18 +40,21 @@ class ProcessRecordUnitTests(unittest.TestCase):
             "gsk1_pk": "-",
             "gsk1_sk": "-",
             "process_name": "keyword blast",
-            "started": "2021",
-            "ended": "2021",
+            "status": "created",
+            "task_name": "document-2",
+            "status_changed": "2021",
+            "created": "2021",
         }
 
         # Act
-        subject = ProcessRecord(record_string=json.dumps(record, indent=3, default=str))
+        subject = TaskRecord(record_string=json.dumps(record, indent=3, default=str))
         print(subject)
         print(subject.__dict__)
 
         # Assert
         self.assertEqual(subject.process_name, record["process_name"])
         self.assertEqual(subject.pk, "PROCESS#1819-00")
+        self.assertEqual(subject.task_name, "document-2")
 
 
 if __name__ == "__main__":
