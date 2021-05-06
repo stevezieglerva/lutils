@@ -15,53 +15,61 @@ from NamedTupleBase import *
 
 
 class FanEvent:
-    def __init__(self, event_source, event_name, fan_job=None):
-        self.event_source = event_source
-        self.event_name = event_name
-        self.job = fan_job
-        possible_events = [
-            FAN_OUT,
-            TASK_CREATED,
-            TASK_COMPLETED,
-            TASK_STARTED,
-            TASK_COMPLETED,
-            TASK_ERROR,
-            PROCESS_COMPLETED,
-        ]
-        if self.event_name not in possible_events:
-            raise ValueError(
-                f"event_name of '{self.event_name}'' is not one of {possible_events}"
-            )
+    def __init__(self, **kwargs):
+        self.event_source = ""
+        self.event_name = ""
+        self.message = {}
+        self.timestamp = ""
+
+        if "event_source" in kwargs:
+            self.event_source = kwargs["event_source"]
+        if "event_name" in kwargs:
+            self.event_name = kwargs["event_name"]
+            possible_events = [
+                FAN_OUT,
+                TASK_CREATED,
+                TASK_COMPLETED,
+                TASK_STARTED,
+                TASK_COMPLETED,
+                TASK_ERROR,
+                PROCESS_COMPLETED,
+            ]
+            if self.event_name not in possible_events:
+                raise ValueError(
+                    f"event_name of '{event_name}'' is not one of {possible_events}"
+                )
+        if "message" in kwargs:
+            message = kwargs["message"]
+            assert (
+                type(message) == dict
+            ), f"message parameter of {message} must be a dict"
+            self.message = message
+        if "timestamp" in kwargs:
+            self.timestamp = kwargs["timestamp"]
+        if "record_string" in kwargs:
+            record_string = kwargs["record_string"].replace("'", '"')
+            record_json = json.loads(record_string)
+            self.event_source = record_json["event_source"]
+            self.event_name = record_json["event_name"]
+            self.message = record_json["message"]
 
     def json(self):
-        job_dict = {}
-        if self.job != None:
-            job_dict = self.job.json()
         dict_value = json.loads(json.dumps(vars(self)))
-        dict_value["job"] = job_dict
-        dict_value["timestamp"] = datetime.now().isoformat()
         return dict_value
 
     def __str__(self):
         value = self.json()
-        return json.dumps(value, indent=3, default=str)
+        return json.dumps(value, default=str)
 
     def get_formatted_line(self):
-        line = f"{self.event_source:<20} {self.event_name:<40} {self.job.process_id:<40} {self.job.process_name:<40} {self.job.task_name}"
+        line = f"{self.event_source:<20} {self.event_name:<40} "
+        process_id = self.message.get("process_id", "")
+        if process_id != "":
+            line = line + f" {process_id:<40} "
+        process_name = self.message.get("process_name", "")
+        if process_name != "":
+            line = line + f" {process_name:<40} "
+        task_name = self.message.get("task_name", "")
+        if task_name != "":
+            line = line + f" {self.task_name:<40}"
         return line
-
-
-def get_fanevent_from_string(text):
-    replaced_single_quote_identifiers = text.replace("'", '"')
-    text_json = json.loads(replaced_single_quote_identifiers)
-
-    job_json = text_json["job"]
-    job_text = json.dumps(job_json, indent=3, default=str)
-
-    job = get_fanjob_from_string(job_text)
-
-    return FanEvent(
-        text_json["event_source"],
-        text_json["event_name"],
-        job,
-    )

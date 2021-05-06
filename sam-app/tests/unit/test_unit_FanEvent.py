@@ -22,50 +22,48 @@ from common_layer.python.NamedTupleBase import *
 
 
 class FanEventUnitTests(unittest.TestCase):
-    def test_constructor__given_create_task__then_no_exceptions(self):
+    def test_constructor__given_keywords_for_create_task__then_no_exceptions(self):
         # Arrange
-        job = FanJob(
-            "123",
-            "process X",
-            "task 1",
-            '{"message" : "hello world"}',
-            "sns",
-        )
-        print(job)
 
         # Act
-        subject = FanEvent("process-x", TASK_CREATED, job)
+        subject = FanEvent(
+            event_source="process-x",
+            event_name=TASK_CREATED,
+            message={"process_id": "123"},
+            timestamp="2021",
+        )
+        print("****")
+        print(subject)
 
         # Assert
         results = subject.json()
         print(json.dumps(results, indent=3, default=str))
-        self.assertEqual(results["job"]["process_id"], "123")
-        self.assertTrue("timestamp" in results)
+        self.assertEqual(results["message"], {"process_id": "123"})
+        self.assertEqual(subject.timestamp, "2021")
 
     def test_constructor__given_create_task_without_job__then_no_exceptions(self):
         # Arrange
 
         # Act
-        subject = FanEvent("process-x", TASK_CREATED)
+        subject = FanEvent(
+            event_source="process-x",
+            event_name=TASK_CREATED,
+        )
 
         # Assert
         results = subject.json()
         print(json.dumps(results, indent=3, default=str))
-        self.assertTrue("timestamp" in results)
 
     def test_print(
         self,
     ):
         # Arrange
-        job = FanJob(
-            "123",
-            "process X",
-            "task 1",
-            '{"message" : "hello world"}',
-            "sns",
+        subject = FanEvent(
+            event_source="process-x",
+            event_name=TASK_CREATED,
+            message={"process_id": "123"},
+            timestamp="2021",
         )
-        print(job)
-        subject = FanEvent("process-x", TASK_CREATED, job)
 
         # Act
         results = subject.get_formatted_line()
@@ -79,23 +77,9 @@ class FanEventUnitTests(unittest.TestCase):
 
     def test_get_fanevent_from_string__given_valid_string__then_event_returned(self):
         # Arrange
-        input = """{
-   "event_source": "keyword_blast",
-   "event_name": "fan_out",
-   "job": {
-      "process_id": "",
-      "process_name": "keyword_blast",
-      "task_name": "document-1",
-      "message": {
-         "document_name": "agency-x-doc.pdf"
-      },
-      "completion_sns_arn": "completion_sns_arn",
-      "timestamp": "2021-05-04T17:56:00.334435"
-   },
-   "timestamp": "2021-05-04T17:56:00.334497"
-}"""
+        input = '{\n   "event_source": "e2e tests",\n   "event_name": "task_started",\n   "message": {\n      "process_id": "2e7d2b96-ae10-11eb-b5ab-acde48001122",\n      "process_name": "e2e tests",\n      "task_name": "task-9",\n      "message": {\n         "var_1": 297\n      },\n      "completion_sns_arn": "completion_sns_arn",\n      "timestamp": "2021-05-06T09:20:40.055717"\n   },\n   "timestamp": "2021-05-06T09:20:40.055754"\n}'
         # Act
-        results = get_fanevent_from_string(input)
+        subject = FanEvent(record_string=input)
 
         # Assert
-        self.assertEqual(results.job.process_name, "keyword_blast")
+        self.assertEqual(subject.event_source, "e2e tests")
