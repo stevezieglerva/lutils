@@ -515,6 +515,43 @@ Resources:
         AttributeName: ttl
         Enabled: True
 
+  FanProcessingPartTestTable:
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions: 
+        - 
+          AttributeName: "pk"
+          AttributeType: "S"
+        - 
+          AttributeName: "process_id"
+          AttributeType: "S"
+      KeySchema: 
+        -
+          AttributeName: "pk"
+          KeyType: "HASH"
+        -
+          AttributeName: "sk"
+          KeyType: "RANGE"
+      GlobalSecondaryIndexes:
+        - IndexName: gs1
+          KeySchema:
+            - AttributeName: gs1_pk
+              KeyType: HASH
+          KeySchema:
+            - AttributeName: gs1_sk
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 0
+            WriteCapacityUnits: 0
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: True
+
 
 ################################
 ### Outputs
@@ -531,7 +568,6 @@ Outputs:
   FanProcesssingTable:
     Description: "FanProcessingTable ARN"
     Value: !GetAtt FanProcessingTable.Arn
-
   FanProcesssingTableName:
     Description: "FanProcessingTable Name"
     Value: !Select [1, !Split ['/', !GetAtt FanProcessingTable.Arn]] 
@@ -539,10 +575,16 @@ Outputs:
   FanProcesssingTestTableArn:
     Description: "FanProcessingTableTest ARN"
     Value: !GetAtt FanProcessingTableTest.Arn
-
   FanProcesssingTestTableName:
     Description: "FanProcessingTableTest Name"
     Value: !Select [1, !Split ['/', !GetAtt FanProcessingTableTest.Arn]] 
+
+  FanProcessingPartTestTableArn:
+    Description: "FanProcessingTableTest ARN"
+    Value: !GetAtt FanProcessingPartTestTable.Arn
+  FanProcessingPartTestTableName:
+    Description: "FanProcessingTableTest Name"
+    Value: !Select [1, !Split ['/', !GetAtt FanProcessingPartTestTable.Arn]] 
 
   FanEventsSNS:
     Description: "FanEventsSNS ARN"

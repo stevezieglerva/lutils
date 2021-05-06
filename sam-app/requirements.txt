@@ -11,3 +11,4 @@ html-testRunner
 moto
 aws_lambda_powertools
 docker
+ulid-py

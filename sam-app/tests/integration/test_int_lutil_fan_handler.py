@@ -72,7 +72,7 @@ FAN_OUT_SNS = {
 }
 
 
-FAN_OUT_STARTED = {
+TASK_STARTED_SNS = {
     "Records": [
         {
             "EventSource": "aws:sns",
@@ -91,7 +91,7 @@ FAN_OUT_STARTED = {
                 "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:112280397275:lutil_fan_events_test:65c9d2d8-1b58-4a31-b16d-59f83e78ca31",
                 "MessageAttributes": {
                     "process_name": {"Type": "String", "Value": "e2e tests"},
-                    "event_name": {"Type": "String", "Value": "fan_out"},
+                    "event_name": {"Type": "String", "Value": "task_started"},
                     "event_source": {"Type": "String", "Value": "e2e tests"},
                 },
             },
@@ -131,8 +131,6 @@ class FanHandlerIntTests(unittest.TestCase):
 
     def test_lambda_handler__given_task_started__then_one_sns_sent(self):
         # Arrange
-        os.environ["HANDLER_SNS_TOPIC_ARN"] = "fake-topic"
-        os.environ["TABLE_NAME"] = "table-name"
 
         # Act
         results = app.lambda_handler(TASK_STARTED_SNS, {})
