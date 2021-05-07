@@ -71,5 +71,5 @@ class FanEvent:
             line = line + f" {process_name:<40} "
         task_name = self.message.get("task_name", "")
         if task_name != "":
-            line = line + f" {self.task_name:<40}"
+            line = line + f" {task_name:<40}"
         return line

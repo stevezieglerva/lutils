@@ -25,14 +25,18 @@ class FanEventPublisher:
         print(result)
         return event
 
-    def task_created(self, event_source, job):
-        new_event = FanEvent(event_source, TASK_CREATED, job)
+    def task_created(self, event_source, task):
+        event = FanEvent(
+            event_source=task.process_name, event_name=TASK_CREATED, message=task.json()
+        )
         result = self._publish_sns(new_event)
         print(result)
         return result
 
-    def task_started(self, event_source, job):
-        new_event = FanEvent(event_source, TASK_STARTED, job)
+    def task_started(self, event_source, task):
+        new_event = FanEvent(
+            event_source=event_source, event_name=TASK_STARTED, message=task
+        )
         result = self._publish_sns(new_event)
         print(result)
         return result

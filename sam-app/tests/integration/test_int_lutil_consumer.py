@@ -17,6 +17,8 @@ import unittest
 from unittest import mock
 
 from lutil_fan_e2e_consumer import app
+from TaskRecord import TaskRecord
+from FanEvent import *
 
 
 def get_sns_arn_from_stack(output_key):
@@ -31,6 +33,24 @@ def get_sns_arn_from_stack(output_key):
     return output_value
 
 
+task_json = {
+    "process_id": "2e7d2b96-ae10-11eb-b5ab-acde48001122",
+    "process_name": "e2e tests",
+    "task_name": "task-9",
+    "task_message": {"var_1": 297},
+    "completion_sns_arn": "completion_sns_arn",
+    "created": "2021-05-06T02:10:10.773986",
+    "pk": "FAN-OUT-JOB#2e7d2b96-ae10-11eb-b5ab-acde48001122-TASK#task-9",
+    "sk": "-",
+    "gs1_pk": "-",
+    "gs1_sk": "-",
+    "status": "created",
+    "status_changed_timestamp": "2021-05-06T02:10:10.577068",
+}
+
+task = TaskRecord(record_string=json.dumps(task_json, indent=3, default=str))
+event = FanEvent(event_source="e2e tests", event_name=TASK_CREATED, message=task.json())
+
 TASK_CREATED = {
     "Records": [
         {
@@ -42,7 +62,7 @@ TASK_CREATED = {
                 "MessageId": "afc5e054-eab6-5906-a8d7-b959b8f41ec6",
                 "TopicArn": "arn:aws:sns:us-east-1:112280397275:lutil_fan_events_test",
                 "Subject": None,
-                "Message": '{\n   "event_source": "e2e tests",\n   "event_name": "task_created",\n   "job": {\n      "process_id": "2e7d2b96-ae10-11eb-b5ab-acde48001122",\n      "process_name": "e2e tests",\n      "task_name": "task-9",\n      "message": {\n         "var_1": 297\n      },\n      "completion_sns_arn": "completion_sns_arn",\n      "timestamp": "2021-05-06T02:10:10.773986",\n      "pk": "FAN-OUT-JOB#2e7d2b96-ae10-11eb-b5ab-acde48001122-TASK#task-9",\n      "status": "created",\n      "status_change_timestamp": "2021-05-06T02:10:10.577068"\n   },\n   "timestamp": "2021-05-06T02:10:10.774026"\n}',
+                "Message": str(event),
                 "Timestamp": "2021-05-06T02:10:10.968Z",
                 "SignatureVersion": "1",
                 "Signature": "GxRmH8dcwhDc/Ft1zH7K1MOnFeOhq2NJfuWkHFnRjA2IreQGk30OVIcKwtSkoPxL71wi6Up58oaoXXkiBLnRTAqucGzLtGpIFBT/nXvPW3NqCLew5HaB068ulkbpxHqjeWRmF6HgZbGnNlmelcKwyNUnMHu+2dNAL4UJ+slctGlK0p/Q8dxowO/TA/ZPMsiKv5xoA2z2Y/R1UfbTt7orDeAhfOew6eJP/4ZzHBharWM1UcR0XCUUPK2Q7N/X45c+vBuTffdtQYpA4SZhBRK2LwaWX2BsRN58LjUVGRypX/Zm9cOLuvAVaBb+j5dd3vya5oB516A29bxKqkymySE28A==",
@@ -59,7 +79,7 @@ TASK_CREATED = {
 }
 
 
-class ProducerIntTests(unittest.TestCase):
+class ConsumerIntTests(unittest.TestCase):
     def test_lambda_handler__then_no_exception(self):
         # Arrange
         os.environ["HANDLER_SNS_TOPIC_ARN"] = get_sns_arn_from_stack("FanEventsTestSNS")
