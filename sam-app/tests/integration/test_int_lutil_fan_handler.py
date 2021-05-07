@@ -1,13 +1,8 @@
 import os
-
-os.environ[
-    "TABLE_NAME"
-] = "lutils-FanProcessingTableTest-X541MIGMFYBW"  # put up here because Lambda caches code using this variable between executions
-
 import boto3
 
 
-def get_sns_arn_from_stack(output_key):
+def get_output_from_stack(output_key):
     cloudformation = boto3.client("cloudformation")
     stacks = cloudformation.describe_stacks(StackName="lutils")
     stack_outputs = stacks["Stacks"][0]["Outputs"]
@@ -19,7 +14,12 @@ def get_sns_arn_from_stack(output_key):
     return output_value
 
 
-os.environ["HANDLER_SNS_TOPIC_ARN"] = get_sns_arn_from_stack("FanEventsTestSNS")
+os.environ["TABLE_NAME"] = get_output_from_stack(
+    "FanProcessingPartTestTableName"
+)  # put up here because Lambda caches code using this variable between executions
+
+
+os.environ["HANDLER_SNS_TOPIC_ARN"] = get_output_from_stack("FanEventsTestSNS")
 
 import inspect
 import json
@@ -55,7 +55,7 @@ FAN_OUT_SNS = {
                 "MessageId": "24c29dfb-f208-5e91-aee5-c4f020b25459",
                 "TopicArn": "arn:aws:sns:us-east-1:112280397275:lutil_fan_events_test",
                 "Subject": None,
-                "Message": '{\n   "event_source": "e2e tests",\n   "event_name": "fan_out",\n   "message": {\n      "process_id": "lhklhk-099087gjg87t8-ohoiuyiuh",\n      "process_name": "e2e tests",\n      "task_name": "task-9",\n      "message": {\n         "var_1": 297\n      },\n      \n      "timestamp": "2021-05-04T22:53:46.738623"\n   },\n   "timestamp": "2021-05-04T22:53:46.738664"\n}',
+                "Message": '{\n   "event_source": "e2e tests",\n   "event_name": "fan_out",\n   "message": {\n      "process_id": "lhklhk-099087gjg87t8-ohoiuyiuh",\n      "process_name": "e2e tests",\n      "task_name": "task-9",\n      "task_message": {\n         "var_1": 297\n      },\n      \n      "timestamp": "2021-05-04T22:53:46.738623"\n   },\n   "timestamp": "2021-05-04T22:53:46.738664"\n}',
                 "Timestamp": "2021-05-04T22:53:46.749Z",
                 "SignatureVersion": "1",
                 "Signature": "v+N06nbQXbuoyP56Gwvbybz60feJKiMZ9sk9CnBGMNP85uIZ1c3Fvuozm+oPPgCmgyd1LPi+JUFxhLd52UaIewWXIRzZKErcOBsIrF30C+YIIyipKs8TEGp+B3vUhHAJVh/5px6u0H1EcMks/JFmJ/tepJj26JqBqEUHk3hvKtixPq37DIfY/o2ozNKu/AFAQmBXmUAGw6WMqFE7U761mojGO0fdD2HqIqxTUbmy6NY9mtck8Wvudtxq6mqKXlguG5KPSxp2IsW/bWYR2KPtK/1rVaC5OvWn3GS8kWwQ4+y8IeL+NfpfSx3tW2r2PvWKItBofNbFb+cwcT541Po/yg==",
@@ -111,22 +111,29 @@ class FanHandlerIntTests(unittest.TestCase):
         expected = {
             "fan_out": [
                 {
+                    "pk": "PROCESS#lhklhk-099087gjg87t8-ohoiuyiuh",
+                    "sk": "TASK#task-9",
+                    "gsk1_pk": "",
+                    "gsk1_sk": "",
                     "process_id": "lhklhk-099087gjg87t8-ohoiuyiuh",
                     "process_name": "e2e tests",
                     "task_name": "task-9",
-                    "message": {"var_1": 297},
-                    "completion_sns_arn": "completion_sns_arn",
-                    "timestamp": "2021-05-05T09:17:15.285217",
-                    "pk": "FAN-OUT-JOB#lhklhk-099087gjg87t8-ohoiuyiuh-TASK#task-9",
+                    "task_message": '{\n   "var_1": 297\n}',
                     "status": "created",
-                    "status_change_timestamp": "2021-05-05T09:17:15.221737",
+                    "status_changed": "",
+                    "created": "",
+                    "timestamp": "2021-05-07T00:04:59.279057",
+                    "status_change_timestamp": "2021-05-07T00:04:59.279100",
+                    "ttl": 9085323899,
                 }
             ]
         }
         expected["fan_out"][0].pop("timestamp")
         expected["fan_out"][0].pop("status_change_timestamp")
+        expected["fan_out"][0].pop("ttl")
         results["fan_out"][0].pop("timestamp")
         results["fan_out"][0].pop("status_change_timestamp")
+        results["fan_out"][0].pop("ttl")
         self.assertEqual(results, expected)
 
     def test_lambda_handler__given_task_started__then_one_sns_sent(self):

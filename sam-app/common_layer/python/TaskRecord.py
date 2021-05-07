@@ -1,9 +1,6 @@
 import json
 
 
-PLACEHOLDER_INDEX_FIELD_VALUE = "-"
-
-
 class TaskRecord:
     def __init__(self, **kwargs):
 

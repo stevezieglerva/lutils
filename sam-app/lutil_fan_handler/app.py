@@ -57,29 +57,26 @@ def lambda_handler(event, context):
 
 
 def process_fan_out(sns_message_json):
-    print("\n\n\n*********")
-    print(sns_message_json)
     fan_event = FanEvent(record_string=sns_message_json)
-    print(fan_event)
     task_json = fan_event.message
     task = TaskRecord(
         process_id=task_json["process_id"],
         process_name=task_json["process_name"],
         task_name=task_json["task_name"],
+        task_message=task_json["task_message"],
     )
     task.timestamp = datetime.now().isoformat()
     task.pk = f"PROCESS#{task.process_id}"
     task.status = FanTaskStatus.TASK_CREATED
-    task.message = json.dumps(task.message, indent=3, default=str)
+    task.task_message = json.dumps(task.task_message, indent=3, default=str)
     task.status_change_timestamp = datetime.now().isoformat()
-    print(task)
+    put_db_task(task)
+    publisher.publish_event(fan_event.event_source, fan_event.event_name, task.json())
+    print(f"Added: {task}")
+    return task
 
-    created_job = create_db_task(task)
-    publisher.task_created(fan_event.event_source, created_job)
-    return created_job
 
-
-def create_db_task(task):
+def put_db_task(task):
     task_dict = task.json()
     call_dynamodb(task_dict)
     return task

@@ -38,7 +38,9 @@ class FanEventPublisher:
         return result
 
     def publish_event(self, event_source, event_name, message_json):
-        new_event = FanEvent(event_source, event_name, message_json)
+        new_event = FanEvent(
+            event_source=event_source, event_name=event_name, message=message_json
+        )
         result = self._publish_sns(new_event)
         print(result)
         return result
