@@ -37,8 +37,8 @@ class ProcessRecordUnitTests(unittest.TestCase):
         record = {
             "pk": "PROCESS#1819-00",
             "sk": "TASK#93020939F",
-            "gsk1_pk": "-",
-            "gsk1_sk": "-",
+            "gs1_pk": "-",
+            "gs1_sk": "-",
             "process_name": "keyword blast",
             "started": "2021",
             "ended": "2021",

@@ -23,13 +23,18 @@ from common_layer.python.TaskRecord import TaskRecord
 
 
 class FanEventPublisherUnitTests(unittest.TestCase):
-    def test_create_task__given_event__then_sns_sent(self):
+    def test_fan_out__given_event__then_sns_sent(self):
         # Arrange
         subject = FanEventPublisher(
             "arn:aws:sns:us-east-1:112280397275:lutil_fan_events_test"
         )
         process_id = subject.generate_process_id()
-        task = TaskRecord(process_id=process_id, process_name="procA", task_name="#1")
+        task = TaskRecord(
+            process_id=process_id,
+            process_name="procA",
+            task_name="#1",
+            task_message={"hello": "world"},
+        )
 
         # Act
         results = subject.fan_out(

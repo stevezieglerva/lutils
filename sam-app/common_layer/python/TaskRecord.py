@@ -9,26 +9,26 @@ class TaskRecord:
             ["process_id", "process_name", "task_name", "task_message"]
         ) or kwargs_set == [
             "record_string"
-        ], "keyword arguments must be record_string or process_id, process_name, task_name, or message"
+        ], "keyword arguments must be (record_string) or (process_id, process_name, task_name, and task_message)"
 
         self.pk = ""
         self.sk = ""
-        self.gsk1_pk = ""
-        self.gsk1_sk = ""
+        self.gs1_pk = "-"
+        self.gs1_sk = "-"
         self.process_id = ""
         self.process_name = ""
         self.task_name = ""
         self.task_message = ""
         self.status = ""
-        self.status_changed = ""
+        self.status_changed_timestamp = ""
         self.created = ""
 
         if "record_string" in kwargs:
             record_json = json.loads(kwargs["record_string"])
             self.pk = record_json["pk"]
             self.sk = record_json["sk"]
-            self.gsk1_pk = record_json["gsk1_pk"]
-            self.gsk1_sk = record_json["gsk1_sk"]
+            self.gs1_pk = record_json["gs1_pk"]
+            self.gs1_sk = record_json["gs1_sk"]
             self.process_name = record_json["process_name"]
             self.task_name = record_json["task_name"]
             self.task_message = record_json["task_message"]

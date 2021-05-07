@@ -78,8 +78,8 @@ class FanHandlerUnitTests(unittest.TestCase):
                 {
                     "pk": "PROCESS#lhklhk-099087gjg87t8-ohoiuyiuh",
                     "sk": "TASK#task-9",
-                    "gsk1_pk": "",
-                    "gsk1_sk": "",
+                    "gs1_pk": "",
+                    "gs1_sk": "",
                     "process_id": "lhklhk-099087gjg87t8-ohoiuyiuh",
                     "process_name": "e2e tests",
                     "task_name": "task-9",
