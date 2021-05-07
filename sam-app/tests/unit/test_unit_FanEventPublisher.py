@@ -20,6 +20,7 @@ from unittest import mock
 
 from common_layer.python.FanEventPublisher import FanEventPublisher
 from common_layer.python.FanEvent import *
+from common_layer.python.TaskRecord import TaskRecord
 
 
 class FanEventPublisherUnitTests(unittest.TestCase):
@@ -36,17 +37,19 @@ class FanEventPublisherUnitTests(unittest.TestCase):
         # Arrange
         subject = FanEventPublisher("test-sns-topic-arn")
         process_id = subject.generate_process_id()
+        task = TaskRecord(process_id=process_id, process_name="procA", task_name="#1")
 
         # Act
         with mock.patch(
             "common_layer.python.FanEventPublisher.FanEventPublisher._publish_sns",
             mock.MagicMock(return_value="sns sent"),
         ):
+
             results = subject.fan_out(
                 process_id,
                 "keyword_blast",
                 "document-1",
-                {"document_name": "agency-x-doc.pdf"},
+                task.json(),
             )
         print(results)
 

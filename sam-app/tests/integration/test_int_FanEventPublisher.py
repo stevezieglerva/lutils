@@ -19,7 +19,7 @@ from unittest import mock
 
 
 from common_layer.python.FanEventPublisher import FanEventPublisher
-from common_layer.python.FanEvent import *
+from common_layer.python.TaskRecord import TaskRecord
 
 
 class FanEventPublisherUnitTests(unittest.TestCase):
@@ -28,10 +28,12 @@ class FanEventPublisherUnitTests(unittest.TestCase):
         subject = FanEventPublisher(
             "arn:aws:sns:us-east-1:112280397275:lutil_fan_events_test"
         )
+        process_id = subject.generate_process_id()
+        task = TaskRecord(process_id=process_id, process_name="procA", task_name="#1")
 
         # Act
         results = subject.fan_out(
-            "keyword_blast", "document-1", {"document_name": "agency-x-doc.pdf"}
+            process_id, "keyword_blast", "document-1", task.json()
         )
         print(results)
 
