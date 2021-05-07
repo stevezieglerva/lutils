@@ -51,13 +51,10 @@ class FanEventPublisherUnitTests(unittest.TestCase):
         ):
 
             results = subject.fan_out(
-                process_id,
-                "keyword_blast",
-                "document-1",
-                task.json(),
+                task,
             )
         print(results)
 
         # Assert
-        self.assertEqual(results.event_source, "keyword_blast")
+        self.assertEqual(results.event_source, "procA")
         self.assertEqual(results.event_name, "fan_out")

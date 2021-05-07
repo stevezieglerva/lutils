@@ -26,7 +26,7 @@ def lambda_handler(event, context):
             task_name=f"task-{i}",
             task_message={"hello": "world"},
         )
-        publisher.fan_out(process_id, "e2e tests", f"task-{i}", task.json())
+        publisher.fan_out(task)
 
     print(f"Finished at {datetime.now()}")
 

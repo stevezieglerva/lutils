@@ -17,9 +17,9 @@ class FanEventPublisher:
     def generate_process_id(self):
         return str(ULID())
 
-    def fan_out(self, process_id, process_name, task_name, task_json):
+    def fan_out(self, task):
         event = FanEvent(
-            event_source=process_name, event_name=FAN_OUT, message=task_json
+            event_source=task.process_name, event_name=FAN_OUT, message=task.json()
         )
         result = self._publish_sns(event)
         print(result)
