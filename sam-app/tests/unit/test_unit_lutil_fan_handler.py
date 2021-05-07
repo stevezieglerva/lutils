@@ -40,7 +40,7 @@ FAN_OUT = {
                 "MessageId": "24c29dfb-f208-5e91-aee5-c4f020b25459",
                 "TopicArn": "arn:aws:sns:us-east-1:112280397275:lutil_fan_events_test",
                 "Subject": None,
-                "Message": '{\n   "event_source": "e2e tests",\n   "event_name": "fan_out",\n   "message": {\n      "process_id": "lhklhk-099087gjg87t8-ohoiuyiuh",\n      "process_name": "e2e tests",\n      "task_name": "task-9",\n      "message": {\n         "var_1": 297\n      },\n      "completion_sns_arn": "completion_sns_arn",\n      "timestamp": "2021-05-04T22:53:46.738623"\n   },\n   "timestamp": "2021-05-04T22:53:46.738664"\n}',
+                "Message": '{\n   "event_source": "e2e tests",\n   "event_name": "fan_out",\n   "message": {\n      "process_id": "lhklhk-099087gjg87t8-ohoiuyiuh",\n      "process_name": "e2e tests",\n      "task_name": "task-9",\n      "task_message": {\n         "var_1": 297\n      },\n        "timestamp": "2021-05-04T22:53:46.738623"\n   },\n   "timestamp": "2021-05-04T22:53:46.738664"\n}',
                 "Timestamp": "2021-05-04T22:53:46.749Z",
                 "SignatureVersion": "1",
                 "Signature": "v+N06nbQXbuoyP56Gwvbybz60feJKiMZ9sk9CnBGMNP85uIZ1c3Fvuozm+oPPgCmgyd1LPi+JUFxhLd52UaIewWXIRzZKErcOBsIrF30C+YIIyipKs8TEGp+B3vUhHAJVh/5px6u0H1EcMks/JFmJ/tepJj26JqBqEUHk3hvKtixPq37DIfY/o2ozNKu/AFAQmBXmUAGw6WMqFE7U761mojGO0fdD2HqIqxTUbmy6NY9mtck8Wvudtxq6mqKXlguG5KPSxp2IsW/bWYR2KPtK/1rVaC5OvWn3GS8kWwQ4+y8IeL+NfpfSx3tW2r2PvWKItBofNbFb+cwcT541Po/yg==",
@@ -63,7 +63,7 @@ class FanHandlerUnitTests(unittest.TestCase):
 
         # Act
         with mock.patch(
-            "lutil_fan_handler.app.FanEventPublisher.task_created",
+            "lutil_fan_handler.app.publish_next_event",
             mock.MagicMock(return_value="Fake sent!"),
         ):
             with mock.patch(
@@ -76,15 +76,19 @@ class FanHandlerUnitTests(unittest.TestCase):
         expected = {
             "fan_out": [
                 {
-                    "completion_sns_arn": "completion_sns_arn",
-                    "message": {"var_1": 297},
-                    "pk": "FAN-OUT-JOB#lhklhk-099087gjg87t8-ohoiuyiuh-TASK#task-9",
+                    "pk": "PROCESS#lhklhk-099087gjg87t8-ohoiuyiuh",
+                    "sk": "TASK#task-9",
+                    "gsk1_pk": "",
+                    "gsk1_sk": "",
                     "process_id": "lhklhk-099087gjg87t8-ohoiuyiuh",
                     "process_name": "e2e tests",
-                    "status": "created",
-                    "status_change_timestamp": "2021-05-05T22:37:26.629346",
                     "task_name": "task-9",
-                    "timestamp": "2021-05-05T22:37:26.629708",
+                    "task_message": '{\n   "var_1": 297\n}',
+                    "status": "created",
+                    "status_changed": "",
+                    "created": "",
+                    "timestamp": "2021-05-07T17:13:14.078826",
+                    "status_change_timestamp": "2021-05-07T17:13:14.078883",
                 }
             ]
         }

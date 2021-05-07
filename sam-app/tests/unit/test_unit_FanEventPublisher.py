@@ -37,7 +37,12 @@ class FanEventPublisherUnitTests(unittest.TestCase):
         # Arrange
         subject = FanEventPublisher("test-sns-topic-arn")
         process_id = subject.generate_process_id()
-        task = TaskRecord(process_id=process_id, process_name="procA", task_name="#1")
+        task = TaskRecord(
+            process_id=process_id,
+            process_name="procA",
+            task_name="#1",
+            task_message={"hello": "world"},
+        )
 
         # Act
         with mock.patch(

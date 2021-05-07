@@ -71,7 +71,7 @@ def process_fan_out(sns_message_json):
     task.task_message = json.dumps(task.task_message, indent=3, default=str)
     task.status_change_timestamp = datetime.now().isoformat()
     put_db_task(task)
-    publisher.publish_event(fan_event.event_source, fan_event.event_name, task.json())
+    publish_next_event(fan_event.event_source, TASK_CREATED, task.json())
     print(f"Added: {task}")
     return task
 
@@ -80,6 +80,10 @@ def put_db_task(task):
     task_dict = task.json()
     call_dynamodb(task_dict)
     return task
+
+
+def publish_next_event(event_source, event_name, message_json):
+    publisher.publish_event(event_source, event_name, message_json)
 
 
 def call_dynamodb(dict):
