@@ -27,7 +27,10 @@ class TaskRecordUnitTests(unittest.TestCase):
 
         # Act
         subject = TaskRecord(
-            process_id="123", task_name=input, process_name="proc_name"
+            process_id="123",
+            task_name=input,
+            process_name="proc_name",
+            task_message="hi",
         )
 
         # Assert
@@ -47,6 +50,7 @@ class TaskRecordUnitTests(unittest.TestCase):
             "task_name": "document-2",
             "status_changed": "2021",
             "created": "2021",
+            "task_message": "hello",
         }
 
         # Act

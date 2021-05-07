@@ -1,16 +1,18 @@
 import json
 
+
 PLACEHOLDER_INDEX_FIELD_VALUE = "-"
 
 
 class TaskRecord:
     def __init__(self, **kwargs):
-        possible_kwargs = ["process_id", "process_name", "task_name", "record_string"]
-        kwargs_set = set(kwargs.keys())
 
-        assert kwargs_set.issubset(
-            ["process_id", "process_name", "task_name"]
-        ) or kwargs_set.issubset(["record_string"])
+        kwargs_set = list(kwargs.keys())
+        assert sorted(kwargs_set) == sorted(
+            ["process_id", "process_name", "task_name", "task_message"]
+        ) or kwargs_set == [
+            "record_string"
+        ], "keyword arguments must be record_string or process_id, process_name, task_name, or message"
 
         self.pk = ""
         self.sk = ""
@@ -19,6 +21,7 @@ class TaskRecord:
         self.process_id = ""
         self.process_name = ""
         self.task_name = ""
+        self.task_message = ""
         self.status = ""
         self.status_changed = ""
         self.created = ""
@@ -31,16 +34,15 @@ class TaskRecord:
             self.gsk1_sk = record_json["gsk1_sk"]
             self.process_name = record_json["process_name"]
             self.task_name = record_json["task_name"]
+            self.task_message = record_json["task_message"]
             self.status = record_json["status"]
             self.status_changed = record_json["status_changed"]
             self.created = record_json["created"]
         else:
-            if "process_id" in kwargs:
-                self.process_id = kwargs["process_id"]
-            if "process_name" in kwargs:
-                self.process_name = kwargs["process_name"]
-            if "task_name" in kwargs:
-                self.task_name = kwargs["task_name"]
+            self.process_id = kwargs["process_id"]
+            self.process_name = kwargs["process_name"]
+            self.task_name = kwargs["task_name"]
+            self.task_message = kwargs["task_message"]
             self.pk = f"PROCESS#{self.process_id}"
             self.sk = f"TASK#{self.task_name}"
 

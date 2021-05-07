@@ -67,32 +67,23 @@ def process_fan_out(sns_message_json):
         process_name=task_json["process_name"],
         task_name=task_json["task_name"],
     )
+    task.timestamp = datetime.now().isoformat()
+    task.pk = f"PROCESS#{task.process_id}"
+    task.status = FanTaskStatus.TASK_CREATED
+    task.message = json.dumps(task.message, indent=3, default=str)
+    task.status_change_timestamp = datetime.now().isoformat()
     print(task)
+
     created_job = create_db_task(task)
     publisher.task_created(fan_event.event_source, created_job)
     return created_job
 
 
 def create_db_task(task):
-    task.timestamp = datetime.now().isoformat()
-    task.pk = f"PROCESS#{task.process_id}"
-
-    job_dict = task.json()
-    job_dict["timestamp"] = datetime.now().isoformat()
-    job_dict["pk"] = "FAN-OUT-JOB#" + task.process_id + "-TASK#" + task.task_name
-    job_dict["status"] = FanTaskStatus.TASK_CREATED
-    job_dict["message"] = json.dumps(task.message, indent=3, default=str)
-    job_dict["status_change_timestamp"] = datetime.now().isoformat()
-    print(json.dumps(job_dict, indent=3, default=str))
-    call_dynamodb(job_dict)
-    fan_job_created = job.create_job(
-        job_dict["pk"],
-        job_dict["timestamp"],
-        job_dict["status"],
-        job_dict["status_change_timestamp"],
-    )
-    return fan_job_created
+    task_dict = task.json()
+    call_dynamodb(task_dict)
+    return task
 
 
-def call_dynamodb(job_dict):
-    dynamodb.put_item(job_dict)
+def call_dynamodb(dict):
+    dynamodb.put_item(dict)
