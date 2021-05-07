@@ -8,6 +8,7 @@ from datetime import datetime
 
 import boto3
 from FanEventPublisher import FanEventPublisher
+from TaskRecord import TaskRecord
 
 
 def lambda_handler(event, context):
@@ -19,7 +20,13 @@ def lambda_handler(event, context):
     # Create a group of fan out events for the "e2e test" process
     for i in range(10):
         value = i * 33
-        publisher.fan_out(process_id, "e2e tests", f"task-{i}", {"var_1": value})
+        task = TaskRecord(
+            process_id=process_id,
+            process_name="e2e tests",
+            task_name=f"task-{i}",
+            task_message={"hello": "world"},
+        )
+        publisher.fan_out(process_id, "e2e tests", f"task-{i}", task.json())
 
     print(f"Finished at {datetime.now()}")
 
