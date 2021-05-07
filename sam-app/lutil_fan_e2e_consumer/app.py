@@ -25,11 +25,15 @@ def lambda_handler(event, context):
         print(f"Record #{count}")
         message = record["Sns"]["Message"]
         event = FanEvent(record_string=message)
-        print(event.json())
+        print("Received task event:")
+        print(event)
+
         task = TaskRecord(record_string=json.dumps(event.message, default=str))
-        publisher.task_started(event.event_source, task.json())
+        publisher.publish_event(event.event_source, TASK_STARTED, task.json())
+
         time.sleep(random.randint(0, 5))
-        publisher.publish_event(event.event_source, TASK_COMPLETED, event.json())
+
+        publisher.publish_event(event.event_source, TASK_COMPLETED, task.json())
     print(f"Finished at {datetime.now()}")
 
     return {}
