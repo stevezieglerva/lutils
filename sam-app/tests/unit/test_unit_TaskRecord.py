@@ -26,11 +26,14 @@ class TaskRecordUnitTests(unittest.TestCase):
         input = "document-3"
 
         # Act
-        subject = TaskRecord(task_name=input)
+        subject = TaskRecord(
+            process_id="123", task_name=input, process_name="proc_name"
+        )
 
         # Assert
         self.assertEqual(subject.task_name, input)
-        self.assertEqual(subject.pk, "")
+        self.assertEqual(subject.pk, "PROCESS#123")
+        self.assertEqual(subject.sk, "TASK#document-3")
 
     def test_constructor__given_valid_string_input__then_no_exceptions(self):
         # Arrange

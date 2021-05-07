@@ -10,6 +10,7 @@ import FanTaskStatus
 from DynamoDB import DynamoDB
 from FanEvent import *
 from FanEventPublisher import FanEventPublisher
+from TaskRecord import TaskRecord
 from NamedTupleBase import FanJob
 
 db_table = os.environ.get("TABLE_NAME", "")
@@ -37,7 +38,6 @@ def lambda_handler(event, context):
     for count, record in enumerate(event["Records"]):
         event_name = record["Sns"]["MessageAttributes"]["event_name"]["Value"]
         print(f"Record #{count}: {event_name}")
-        print(f"'{event_name}' '{FAN_OUT}'")
         if event_name == FAN_OUT:
             created_job = process_fan_out(record["Sns"]["Message"])
             fan_out_list.append(created_job.json())
@@ -56,20 +56,32 @@ def lambda_handler(event, context):
     return results
 
 
-def process_fan_out(message_str):
-    fan_event = get_fanevent_from_string(message_str)
-    created_job = put_to_db(fan_event.job)
+def process_fan_out(sns_message_json):
+    print("\n\n\n*********")
+    print(sns_message_json)
+    fan_event = FanEvent(record_string=sns_message_json)
+    print(fan_event)
+    task_json = fan_event.message
+    task = TaskRecord(
+        process_id=task_json["process_id"],
+        process_name=task_json["process_name"],
+        task_name=task_json["task_name"],
+    )
+    print(task)
+    created_job = create_db_task(task)
     publisher.task_created(fan_event.event_source, created_job)
-
     return created_job
 
 
-def put_to_db(job):
-    job_dict = job.json()
+def create_db_task(task):
+    task.timestamp = datetime.now().isoformat()
+    task.pk = f"PROCESS#{task.process_id}"
+
+    job_dict = task.json()
     job_dict["timestamp"] = datetime.now().isoformat()
-    job_dict["pk"] = "FAN-OUT-JOB#" + job.process_id + "-TASK#" + job.task_name
+    job_dict["pk"] = "FAN-OUT-JOB#" + task.process_id + "-TASK#" + task.task_name
     job_dict["status"] = FanTaskStatus.TASK_CREATED
-    job_dict["message"] = json.dumps(job.message, indent=3, default=str)
+    job_dict["message"] = json.dumps(task.message, indent=3, default=str)
     job_dict["status_change_timestamp"] = datetime.now().isoformat()
     print(json.dumps(job_dict, indent=3, default=str))
     call_dynamodb(job_dict)
