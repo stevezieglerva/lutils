@@ -31,6 +31,7 @@ def lambda_handler(event, context):
     print(f"Started at {datetime.now()}")
 
     results = {}
+    results["table_name"] = db_table
     fan_out_list = []
     task_started = []
 

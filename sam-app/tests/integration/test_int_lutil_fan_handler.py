@@ -109,6 +109,7 @@ class FanHandlerIntTests(unittest.TestCase):
 
         # Assert
         expected = {
+            "table_name": os.environ["TABLE_NAME"],
             "fan_out": [
                 {
                     "pk": "PROCESS#00-int-00",
@@ -126,7 +127,7 @@ class FanHandlerIntTests(unittest.TestCase):
                     "status_change_timestamp": "2021-05-07T00:04:59.279100",
                     "ttl": 9085323899,
                 }
-            ]
+            ],
         }
         expected["fan_out"][0].pop("timestamp")
         expected["fan_out"][0].pop("status_change_timestamp")
