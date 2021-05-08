@@ -85,3 +85,31 @@ class DynamoDBUnitTests(unittest.TestCase):
         self.assertTrue("ttl" in new_item)
         new_item.pop("ttl")
         self.assertEqual(new_item, {"id": "J1K4", "value": "2000"})
+
+    @mock_dynamodb2
+    def test_get_item__given_dict_is_subvalue__then_return_correct(self):
+        # Arrange
+        table_name = "fake-table"
+        key_field = "id"
+        db = boto3.client("dynamodb")
+        db.create_table(
+            TableName=table_name,
+            KeySchema=[{"AttributeName": key_field, "KeyType": "HASH"}],
+            AttributeDefinitions=[
+                {"AttributeName": key_field, "AttributeType": "S"},
+            ],
+            ProvisionedThroughput={"ReadCapacityUnits": 10, "WriteCapacityUnits": 10},
+        )
+
+        subject = DynamoDB(table_name, key_field)
+        subject.set_ttl_seconds(10)
+        subject.put_item({key_field: "J1K4", "value": {"subkey": "subvalue"}})
+
+        # Act
+        new_item = subject.get_item("J1K4")
+        print(new_item)
+
+        # Assert
+        self.assertTrue("ttl" in new_item)
+        new_item.pop("ttl")
+        self.assertEqual(new_item, {"id": "J1K4", "value": {"subkey": "subvalue"}})

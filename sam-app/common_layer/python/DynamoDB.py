@@ -57,6 +57,18 @@ class DynamoDB:
             for sub_k, sub_v in v.items():
                 type = sub_k
                 field_value = sub_v
+                # try to convert to dict
+                if type == "S":
+                    try:
+                        json_str = field_value.replace("'", '"')
+                        json_str = json_str[1:]
+                        json_str = json_str[:-1]
+                        field_dict = json.loads(json_str)
+                        print(f"converted {field_name} to JSON")
+                        field_value = field_dict
+                    except json.decoder.JSONDecodeError:
+                        # field is not JSON
+                        pass
             results[field_name] = field_value
         return results
 
