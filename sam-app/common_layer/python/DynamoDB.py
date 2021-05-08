@@ -37,6 +37,10 @@ class DynamoDB:
                 data_type = "N"
             if type(v) == datetime:
                 data_type = "N"
+            if type(v) == dict:
+                # convert to string for storage instead of using complicated dynamobd format for dicts
+                data_type = "S"
+                new_value = json.dumps(str(v), indent=3, default=str)
             if data_type == "":
                 raise ValueError(f"no data type mapping for {type(v)}")
 
@@ -46,7 +50,7 @@ class DynamoDB:
         print(json.dumps(results, indent=3, default=str))
         return results
 
-    def covert_from_dynamodb_format(self, db_record):
+    def convert_from_dynamodb_format(self, db_record):
         results = {}
         for k, v in db_record["Item"].items():
             field_name = k
@@ -62,5 +66,5 @@ class DynamoDB:
         db_format = self.convert_to_dynamodb_format(key_json)
         print(json.dumps(db_format, indent=3, default=str))
         db_record = self._db.get_item(TableName=self.table_name, Key=db_format)
-        results = self.covert_from_dynamodb_format(db_record)
+        results = self.convert_from_dynamodb_format(db_record)
         return results

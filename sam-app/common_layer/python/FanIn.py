@@ -34,7 +34,7 @@ class FanIn:
         db = DynamoDB(self.table_name, "pk")
         item_format = {}
         item_format["Item"] = stream_record["dynamodb"]["NewImage"]
-        image = db.covert_from_dynamodb_format(item_format)
+        image = db.convert_from_dynamodb_format(item_format)
         image_string = json.dumps(image, indent=3, default=str)
         self.created_fan_job = get_createdfanjob_from_string(image_string)
 
