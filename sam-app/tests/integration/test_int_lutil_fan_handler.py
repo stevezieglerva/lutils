@@ -103,6 +103,10 @@ TASK_STARTED_SNS = {
 class FanHandlerIntTests(unittest.TestCase):
     def test_lambda_handler__given_fan_out__then_one_sns_sent(self):
         # Arrange
+        # repeat down here in case other test sets this
+        os.environ["TABLE_NAME"] = get_output_from_stack(
+            "FanProcessingPartTestTableName"
+        )
 
         # Act
         results = app.lambda_handler(FAN_OUT_SNS, {})
