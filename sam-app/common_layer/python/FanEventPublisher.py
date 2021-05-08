@@ -33,14 +33,6 @@ class FanEventPublisher:
         print(result)
         return result
 
-    def task_started(self, event_source, task):
-        new_event = FanEvent(
-            event_source=event_source, event_name=TASK_STARTED, message=task
-        )
-        result = self._publish_sns(new_event)
-        print(result)
-        return result
-
     def publish_event(self, event_source, event_name, message_json):
         new_event = FanEvent(
             event_source=event_source, event_name=event_name, message=message_json

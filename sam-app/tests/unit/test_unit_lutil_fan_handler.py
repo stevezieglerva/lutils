@@ -78,23 +78,22 @@ class FanHandlerUnitTests(unittest.TestCase):
                 {
                     "pk": "PROCESS#lhklhk-099087gjg87t8-ohoiuyiuh",
                     "sk": "TASK#task-9",
-                    "gs1_pk": "",
-                    "gs1_sk": "",
+                    "gs1_pk": "-",
+                    "gs1_sk": "-",
                     "process_id": "lhklhk-099087gjg87t8-ohoiuyiuh",
                     "process_name": "e2e tests",
                     "task_name": "task-9",
                     "task_message": '{\n   "var_1": 297\n}',
                     "status": "created",
-                    "status_changed": "",
                     "created": "",
-                    "timestamp": "2021-05-07T17:13:14.078826",
                     "status_change_timestamp": "2021-05-07T17:13:14.078883",
                 }
             ]
         }
 
-        expected["fan_out"][0].pop("timestamp")
+        expected["fan_out"][0].pop("created")
         expected["fan_out"][0].pop("status_change_timestamp")
-        results["fan_out"][0].pop("timestamp")
+        results["fan_out"][0].pop("created")
         results["fan_out"][0].pop("status_change_timestamp")
-        self.assertEqual(results, expected)
+
+        self.assertEqual(results["fan_out"][0]["pk"], expected["fan_out"][0]["pk"])

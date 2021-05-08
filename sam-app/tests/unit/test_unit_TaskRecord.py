@@ -48,7 +48,7 @@ class TaskRecordUnitTests(unittest.TestCase):
             "process_name": "keyword blast",
             "status": "created",
             "task_name": "document-2",
-            "status_changed": "2021",
+            "status_changed_timestamp": "2021",
             "created": "2021",
             "task_message": "hello",
         }
