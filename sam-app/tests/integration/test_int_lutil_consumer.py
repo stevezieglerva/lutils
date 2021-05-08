@@ -37,7 +37,7 @@ task_json = {
     "process_id": "2e7d2b96-ae10-11eb-b5ab-acde48001122",
     "process_name": "e2e tests",
     "task_name": "task-9",
-    "task_message": {"var_1": 297},
+    "task_message": {"max_delay": 5},
     "completion_sns_arn": "completion_sns_arn",
     "created": "2021-05-06T02:10:10.773986",
     "pk": "FAN-OUT-JOB#2e7d2b96-ae10-11eb-b5ab-acde48001122-TASK#task-9",

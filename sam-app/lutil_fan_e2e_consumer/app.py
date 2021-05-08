@@ -33,6 +33,9 @@ def lambda_handler(event, context):
         task = TaskRecord(record_string=json.dumps(event.message, default=str))
         publisher.publish_event(event.event_source, TASK_STARTED, task.json())
 
+        print(f"task_message: {task.task_message}")
+        max_delay = task.task_message["max_delay"]
+
         time.sleep(random.randint(0, max_delay))
 
         publisher.publish_event(event.event_source, TASK_COMPLETED, task.json())
