@@ -74,6 +74,7 @@ class FanHandlerUnitTests(unittest.TestCase):
 
         # Assert
         expected = {
+            "table_name": "table-name",
             "fan_out": [
                 {
                     "pk": "PROCESS#lhklhk-099087gjg87t8-ohoiuyiuh",
@@ -88,7 +89,7 @@ class FanHandlerUnitTests(unittest.TestCase):
                     "created": "",
                     "status_change_timestamp": "2021-05-07T17:13:14.078883",
                 }
-            ]
+            ],
         }
 
         expected["fan_out"][0].pop("created")

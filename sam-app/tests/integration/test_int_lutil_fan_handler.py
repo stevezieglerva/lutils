@@ -119,7 +119,7 @@ class FanHandlerIntTests(unittest.TestCase):
                     "process_id": "00-int-00",
                     "process_name": "fan handler tests",
                     "task_name": "task-9",
-                    "task_message": '{\n   "var_1": 297\n}',
+                    "task_message": {"var_1": 297},
                     "status": "created",
                     "status_changed_timestamp": "",
                     "created": "",
@@ -135,4 +135,7 @@ class FanHandlerIntTests(unittest.TestCase):
         results["fan_out"][0].pop("timestamp")
         results["fan_out"][0].pop("status_change_timestamp")
         results["fan_out"][0].pop("ttl")
+        print(json.dumps(results, indent=3, default=str))
+        print(json.dumps(expected, indent=3, default=str))
+
         self.assertEqual(results, expected)
