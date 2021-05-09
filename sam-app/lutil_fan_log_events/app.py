@@ -14,7 +14,7 @@ from aws_lambda_powertools import Metrics
 from aws_lambda_powertools.metrics import MetricUnit
 from FanEvent import FanEvent
 
-metrics = Metrics()
+metrics = Metrics(service=f"fan-out-{fan_event.event_source}")
 
 
 @metrics.log_metrics
@@ -27,7 +27,6 @@ def lambda_handler(event, context):
         fan_event = FanEvent(record_string=message)
         print("_event_ " + fan_event.get_formatted_line())
         metrics.add_metric(
-            service=f"fan-out-{fan_event.event_source}",
             name=f"{fan_event.event_name}",
             unit=MetricUnit.Count,
             value=1,
