@@ -27,10 +27,10 @@ def lambda_handler(event, context):
         fan_event = FanEvent(record_string=message)
         print("_event_ " + fan_event.get_formatted_line())
         metrics.add_metric(
-            name=f"Source-{fan_event.event_source}", unit=MetricUnit.Count, value=1
-        )
-        metrics.add_metric(
-            name=f"Event-{fan_event.event_name}", unit=MetricUnit.Count, value=1
+            service=f"fan-out-{fan_event.event_source}",
+            name=f"{fan_event.event_name}",
+            unit=MetricUnit.Count,
+            value=1,
         )
 
     print(f"Finished at {datetime.now()}")
