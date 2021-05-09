@@ -21,7 +21,9 @@ def lambda_handler(event, context):
     max_delay = event.get("max_delay", 5)
 
     print(json.dumps(event, indent=3, default=str))
-    publisher = FanEventPublisher(os.environ["HANDLER_SNS_TOPIC_ARN"])
+
+    event_source = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "lambda_consumer")
+    publisher = FanEventPublisher(event_source, os.environ["HANDLER_SNS_TOPIC_ARN"])
 
     for count, record in enumerate(event["Records"]):
         print(f"Record #{count}")
@@ -31,14 +33,14 @@ def lambda_handler(event, context):
         print(event)
 
         task = TaskRecord(record_string=json.dumps(event.message, default=str))
-        publisher.publish_event(event.event_source, TASK_STARTED, task.json())
+        publisher.publish_event(TASK_STARTED, task.json())
 
         print(f"task_message: {task.task_message}")
         max_delay = task.task_message["max_delay"]
 
         time.sleep(random.randint(0, max_delay))
 
-        publisher.publish_event(event.event_source, TASK_COMPLETED, task.json())
+        publisher.publish_event(TASK_COMPLETED, task.json())
     print(f"Finished at {datetime.now()}")
 
     return {}

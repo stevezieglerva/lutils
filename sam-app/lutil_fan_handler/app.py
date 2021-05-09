@@ -20,13 +20,12 @@ dynamodb = DynamoDB(db_table, "pk")
 seconds_in_24_hours = 60 * 60 * 24
 dynamodb.set_ttl_seconds(seconds_in_24_hours)
 
+EVENT_SOUCRE = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "lambda")
 
 handler_sns_topic_arn = os.environ.get("HANDLER_SNS_TOPIC_ARN", "")
 if handler_sns_topic_arn == "":
     raise ValueError(f"Missing env variable for HANDLER_SNS_TOPIC_ARN")
-publisher = FanEventPublisher(handler_sns_topic_arn)
-
-EVENT_SOUCRE = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "lambda")
+publisher = FanEventPublisher(EVENT_SOUCRE, handler_sns_topic_arn)
 
 
 def lambda_handler(event, context):
@@ -90,7 +89,7 @@ def put_db_task(task):
 
 
 def publish_next_event(event_source, event_name, message_json):
-    publisher.publish_event(event_source, event_name, message_json)
+    publisher.publish_event(event_name, message_json)
 
 
 def call_dynamodb(dict):

@@ -26,7 +26,8 @@ class FanEventPublisherUnitTests(unittest.TestCase):
     def test_fan_out__given_event__then_sns_sent(self):
         # Arrange
         subject = FanEventPublisher(
-            "arn:aws:sns:us-east-1:112280397275:lutil_fan_events_test"
+            "test_process_two",
+            "arn:aws:sns:us-east-1:112280397275:lutil_fan_events_test",
         )
         process_id = subject.generate_process_id()
         task = TaskRecord(
@@ -41,5 +42,5 @@ class FanEventPublisherUnitTests(unittest.TestCase):
         print(results)
 
         # Assert
-        self.assertEqual(results.event_source, "procA")
+        self.assertEqual(results.event_source, "test_process_two")
         self.assertEqual(results.event_name, "fan_out")

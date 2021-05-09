@@ -10,7 +10,8 @@ from NamedTupleBase import FanJob
 
 
 class FanEventPublisher:
-    def __init__(self, topic_arn):
+    def __init__(self, event_source, topic_arn):
+        self.event_source = event_source
         self.topic_arn = topic_arn
         self.sns = boto3.client("sns")
 
@@ -19,23 +20,15 @@ class FanEventPublisher:
 
     def fan_out(self, task):
         event = FanEvent(
-            event_source=task.process_name, event_name=FAN_OUT, message=task.json()
+            event_source=self.event_source, event_name=FAN_OUT, message=task.json()
         )
         result = self._publish_sns(event)
         print(result)
         return event
 
-    def task_created(self, event_source, task):
-        event = FanEvent(
-            event_source=task.process_name, event_name=TASK_CREATED, message=task.json()
-        )
-        result = self._publish_sns(new_event)
-        print(result)
-        return result
-
-    def publish_event(self, event_source, event_name, message_json):
+    def publish_event(self, event_name, message_json):
         new_event = FanEvent(
-            event_source=event_source, event_name=event_name, message=message_json
+            event_source=self.event_source, event_name=event_name, message=message_json
         )
         result = self._publish_sns(new_event)
         print(result)

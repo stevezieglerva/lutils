@@ -28,14 +28,14 @@ class FanEventPublisherUnitTests(unittest.TestCase):
         # Arrange
 
         # Act
-        subject = FanEventPublisher("test-sns-topic-arn")
+        subject = FanEventPublisher("test_process_one", "test-sns-topic-arn")
 
         # Assert
         subject.topic_arn = "test-sns-topic-arn"
 
     def test_create_task__given_event__then_sns_sent(self):
         # Arrange
-        subject = FanEventPublisher("test-sns-topic-arn")
+        subject = FanEventPublisher("test_process_one", "test-sns-topic-arn")
         process_id = subject.generate_process_id()
         task = TaskRecord(
             process_id=process_id,
@@ -56,5 +56,5 @@ class FanEventPublisherUnitTests(unittest.TestCase):
         print(results)
 
         # Assert
-        self.assertEqual(results.event_source, "procA")
+        self.assertEqual(results.event_source, "test_process_one")
         self.assertEqual(results.event_name, "fan_out")
