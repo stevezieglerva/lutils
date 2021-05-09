@@ -26,6 +26,8 @@ if handler_sns_topic_arn == "":
     raise ValueError(f"Missing env variable for HANDLER_SNS_TOPIC_ARN")
 publisher = FanEventPublisher(handler_sns_topic_arn)
 
+EVENT_SOUCRE = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "lambda")
+
 
 def lambda_handler(event, context):
     print(f"Started at {datetime.now()}")
@@ -43,6 +45,7 @@ def lambda_handler(event, context):
             created_job = process_fan_out(record["Sns"]["Message"])
             fan_out_list.append(created_job.json())
         if event_name == TASK_STARTED:
+            raise (ValueError("Haven't implemented process_task_started yet"))
             created_job = process_task_started(record["Sns"]["Message"])
             fan_out_list.append(created_job.json())
         else:
@@ -75,7 +78,7 @@ def process_fan_out(sns_message_json):
     # task.task_message = json.dumps(task.task_message, indent=3, default=str)
     task.status_change_timestamp = datetime.now().isoformat()
     put_db_task(task)
-    publish_next_event(fan_event.event_source, TASK_CREATED, task.json())
+    publish_next_event(EVENT_SOUCRE, TASK_CREATED, task.json())
     print(f"Added: {task}")
     return task
 

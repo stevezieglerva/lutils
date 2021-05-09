@@ -10,6 +10,8 @@ import boto3
 from FanEventPublisher import FanEventPublisher
 from TaskRecord import TaskRecord
 
+EVENT_SOUCRE = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "lambda")
+
 
 def lambda_handler(event, context):
     print(f"Started at {datetime.now()}")
