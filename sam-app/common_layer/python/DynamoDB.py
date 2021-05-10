@@ -6,11 +6,18 @@ import boto3
 
 
 class DynamoDB:
-    def __init__(self, table_name, key_field):
-        self.table_name = table_name
-        self.key_field = key_field
+    def __init__(self, table_name):
         self._db = boto3.client("dynamodb")
+        self.table_name = table_name
+        self._set_key_fields()
         self._ttl = None
+
+    def _set_key_fields(self):
+        table_resp = self._db.describe_table(TableName=self.table_name)
+        # print(json.dumps(table_resp, indent=3, default=str))
+        key_schema = table_resp["Table"]["KeySchema"]
+        self.key_fields = [k["AttributeName"] for k in key_schema]
+        print(self.key_fields)
 
     def set_ttl_seconds(self, seconds):
         self._ttl = seconds
@@ -73,10 +80,8 @@ class DynamoDB:
         return results
 
     def get_item(self, key):
-        key_json = {}
-        key_json[self.key_field] = key
-        db_format = self.convert_to_dynamodb_format(key_json)
-        print(json.dumps(db_format, indent=3, default=str))
+        assert type(key) == dict, "Expecting key to be of type dict"
+        db_format = self.convert_to_dynamodb_format(key)
         db_record = self._db.get_item(TableName=self.table_name, Key=db_format)
         results = self.convert_from_dynamodb_format(db_record)
         return results
