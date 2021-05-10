@@ -35,6 +35,7 @@ def lambda_handler(event, context):
     results["table_name"] = db_table
     fan_out_list = []
     task_started_list = []
+    task_completed_list = []
 
     print(json.dumps(event, indent=3, default=str))
     for count, record in enumerate(event["Records"]):
@@ -46,11 +47,16 @@ def lambda_handler(event, context):
         if event_name == TASK_STARTED:
             updated_job = process_task_started(record["Sns"]["Message"])
             task_started_list.append(updated_job.json())
+        if event_name == TASK_COMPLETED:
+            updated_job = process_task_started(record["Sns"]["Message"])
+            task_completed_list.append(updated_job.json())
+
         else:
             print(f"Skipping event_name: {event_name}")
 
     results["fan_out"] = fan_out_list
     results["task_started"] = task_started_list
+    results["completed"] = task_completed_list
 
     print(json.dumps(results, indent=3, default=str))
 
