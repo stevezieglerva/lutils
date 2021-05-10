@@ -68,13 +68,12 @@ def process_fan_out(sns_message_json):
         task_name=task_json["task_name"],
         task_message=task_json["task_message"],
     )
-    task.timestamp = datetime.now().isoformat()
+    task.created = datetime.now().isoformat()
     task.pk = f"PROCESS#{task.process_id}"
     task.status = FanTaskStatus.TASK_CREATED
     assert (
         type(task.task_message) == dict
     ), f"expected task_message {task.task_message} to be a dict"
-    # task.task_message = json.dumps(task.task_message, indent=3, default=str)
     task.status_changed_timestamp = datetime.now().isoformat()
     put_db_task(task)
     publish_next_event(EVENT_SOUCRE, TASK_CREATED, task.json())
