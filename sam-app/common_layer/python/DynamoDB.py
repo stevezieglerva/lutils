@@ -58,8 +58,11 @@ class DynamoDB:
         return results
 
     def convert_from_dynamodb_format(self, db_record):
+        return self._convert_from_dict_format(db_record["Item"])
+
+    def _convert_from_dict_format(self, dict):
         results = {}
-        for k, v in db_record["Item"].items():
+        for k, v in dict.items():
             field_name = k
             for sub_k, sub_v in v.items():
                 type = sub_k
@@ -79,9 +82,44 @@ class DynamoDB:
             results[field_name] = field_value
         return results
 
+    def convert_list_from_dynamodb_format(self, query_results):
+        converted_results = []
+        for item in query_results["Items"]:
+            converted_results.append(self._convert_from_dict_format(item))
+        return converted_results
+
     def get_item(self, key):
         assert type(key) == dict, "Expecting key to be of type dict"
         db_format = self.convert_to_dynamodb_format(key)
         db_record = self._db.get_item(TableName=self.table_name, Key=db_format)
         results = self.convert_from_dynamodb_format(db_record)
+        return results
+
+    def query_table_equal(self, key):
+        assert type(key) == dict, "Expecting key to be of type dict"
+
+        key_condition_exp_parts = [f"{k} = :{k}" for k in key.keys()]
+        key_condition_exp = " AND ".join(key_condition_exp_parts)
+        print(f"key_condition_exp: {key_condition_exp}")
+
+        exp_attribute_values = key
+        original_key_list = list(key.keys())
+        print(f"original_key_list: {original_key_list}")
+        for key_name in original_key_list:
+            print(f"working: {key_name}")
+            expr_key_name = f":{key_name}"
+            exp_attribute_values[expr_key_name] = key[key_name]
+            exp_attribute_values.pop(key_name)
+        print(f"exp_attribute_values: {exp_attribute_values}")
+        exp_attribute_values_db_format = self.convert_to_dynamodb_format(
+            exp_attribute_values
+        )
+        print(f"exp_attribute_values_db_format: {exp_attribute_values_db_format}")
+
+        query_response = self._db.query(
+            TableName=self.table_name,
+            KeyConditionExpression=key_condition_exp,
+            ExpressionAttributeValues=exp_attribute_values_db_format,
+        )
+        results = self.convert_list_from_dynamodb_format(query_response)
         return results
