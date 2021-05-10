@@ -73,6 +73,7 @@ def process_fan_out(sns_message_json):
     process = ProcessRecord(
         process_id=task_json["process_id"], process_name=task_json["process_name"]
     )
+    put_db_task(process)
 
     # Add task record
     task = TaskRecord(

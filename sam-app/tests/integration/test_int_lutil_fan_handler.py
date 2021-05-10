@@ -128,75 +128,75 @@ TASK_COMPLETED_SNS = {
 
 
 class FanHandlerIntTests(unittest.TestCase):
-    ##    def test_lambda_handler__given_fan_out__then_one_sns_sent(self):
-    ##        # Arrange
-    ##        # repeat down here in case other test sets this
-    ##        os.environ["TABLE_NAME"] = get_output_from_stack(
-    ##            "FanProcessingPartTestTableName"
-    ##        )
-    ##
-    ##        # Act
-    ##        results = app.lambda_handler(FAN_OUT_SNS, {})
-    ##
-    ##        # Assert
-    ##        expected_record = {
-    ##            "pk": "PROCESS#00-int-00",
-    ##            "sk": "TASK#task-9",
-    ##            "gs1_pk": "-",
-    ##            "gs1_sk": "-",
-    ##            "process_id": "00-int-00",
-    ##            "process_name": "fan handler tests",
-    ##            "task_name": "task-9",
-    ##            "task_message": {"var_1": 297},
-    ##            "status": "created",
-    ##            "created": "",
-    ##            "status_changed_timestamp": "2021-05-09T21:51:19.962194",
-    ##            "ttl": "123",
-    ##        }
-    ##        results_record = results["fan_out"][0]
-    ##        print("*results_record:")
-    ##        print(json.dumps(results_record, indent=3, default=str))
-    ##        print("*expected_record:")
-    ##        print(json.dumps(expected_record, indent=3, default=str))
-    ##
-    ##        self.assertEqual(results_record["pk"], expected_record["pk"])
-    ##        self.assertEqual(results_record["status"], expected_record["status"])
-    ##
-    ##    def test_lambda_handler__given_task_started__then_one_sns_sent(self):
-    ##        # Arrange
-    ##        # repeat down here in case other test sets this
-    ##        os.environ["TABLE_NAME"] = get_output_from_stack(
-    ##            "FanProcessingPartTestTableName"
-    ##        )
-    ##
-    ##        # Act
-    ##        action = "task_started"
-    ##        results = app.lambda_handler(TASK_STARTED_SNS, {})
-    ##
-    ##        # Assert
-    ##        expected_record = {
-    ##            "pk": "PROCESS#01F59Y46K6MK6DA3XT9WCH0VXY",
-    ##            "sk": "TASK#task-6",
-    ##            "gs1_pk": "-",
-    ##            "gs1_sk": "-",
-    ##            "process_id": "",
-    ##            "process_name": "e2e tests",
-    ##            "task_name": "task-6",
-    ##            "task_message": {"max_delay": 300},
-    ##            "status": "task_started",
-    ##            "status_changed_timestamp": "2021-05-09T21:47:58.143252",
-    ##            "created": "2021",
-    ##            "ttl": "123",
-    ##        }
-    ##        results_record = results[action][0]
-    ##
-    ##        print("*results_record:")
-    ##        print(json.dumps(results_record, indent=3, default=str))
-    ##        print("*expected_record:")
-    ##        print(json.dumps(expected_record, indent=3, default=str))
-    ##
-    ##        self.assertEqual(results_record["pk"], expected_record["pk"])
-    ##        self.assertEqual(results_record["status"], expected_record["status"])
+    def test_lambda_handler__given_fan_out__then_one_sns_sent(self):
+        # Arrange
+        # repeat down here in case other test sets this
+        os.environ["TABLE_NAME"] = get_output_from_stack(
+            "FanProcessingPartTestTableName"
+        )
+
+        # Act
+        results = app.lambda_handler(FAN_OUT_SNS, {})
+
+        # Assert
+        expected_record = {
+            "pk": "PROCESS#00-int-00",
+            "sk": "TASK#task-9",
+            "gs1_pk": "-",
+            "gs1_sk": "-",
+            "process_id": "00-int-00",
+            "process_name": "fan handler tests",
+            "task_name": "task-9",
+            "task_message": {"var_1": 297},
+            "status": "created",
+            "created": "",
+            "status_changed_timestamp": "2021-05-09T21:51:19.962194",
+            "ttl": "123",
+        }
+        results_record = results["fan_out"][0]
+        print("*results_record:")
+        print(json.dumps(results_record, indent=3, default=str))
+        print("*expected_record:")
+        print(json.dumps(expected_record, indent=3, default=str))
+
+        self.assertEqual(results_record["pk"], expected_record["pk"])
+        self.assertEqual(results_record["status"], expected_record["status"])
+
+    def test_lambda_handler__given_task_started__then_one_sns_sent(self):
+        # Arrange
+        # repeat down here in case other test sets this
+        os.environ["TABLE_NAME"] = get_output_from_stack(
+            "FanProcessingPartTestTableName"
+        )
+
+        # Act
+        action = "task_started"
+        results = app.lambda_handler(TASK_STARTED_SNS, {})
+
+        # Assert
+        expected_record = {
+            "pk": "PROCESS#01F59Y46K6MK6DA3XT9WCH0VXY",
+            "sk": "TASK#task-6",
+            "gs1_pk": "-",
+            "gs1_sk": "-",
+            "process_id": "",
+            "process_name": "e2e tests",
+            "task_name": "task-6",
+            "task_message": {"max_delay": 300},
+            "status": "task_started",
+            "status_changed_timestamp": "2021-05-09T21:47:58.143252",
+            "created": "2021",
+            "ttl": "123",
+        }
+        results_record = results[action][0]
+
+        print("*results_record:")
+        print(json.dumps(results_record, indent=3, default=str))
+        print("*expected_record:")
+        print(json.dumps(expected_record, indent=3, default=str))
+
+        self.assertEqual(results_record["pk"], expected_record["pk"])
+        self.assertEqual(results_record["status"], expected_record["status"])
 
     def test_lambda_handler__given_task_completed__then_one_sns_sent(self):
         # Arrange
