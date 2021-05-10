@@ -1,18 +1,29 @@
-import os
-
-os.environ[
-    "TABLE_NAME"
-] = "table-name"  # put up here because Lambda caches code using this variable between executions
-os.environ["HANDLER_SNS_TOPIC_ARN"] = "fake-topic"
-
 import inspect
 import json
-
+import os
 import sys
 
 import boto3
 from moto import mock_dynamodb2
 
+
+def get_output_from_stack(output_key):
+    cloudformation = boto3.client("cloudformation")
+    stacks = cloudformation.describe_stacks(StackName="lutils")
+    stack_outputs = stacks["Stacks"][0]["Outputs"]
+    s3_bucket = ""
+    for output in stack_outputs:
+        if output["OutputKey"] == output_key:
+            output_value = output["OutputValue"]
+            break
+    return output_value
+
+
+os.environ["TABLE_NAME"] = get_output_from_stack(
+    "FanProcessingPartTestTableName"
+)  # put up here because Lambda caches code using this variable between executions
+
+os.environ["HANDLER_SNS_TOPIC_ARN"] = "fake-sns"
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
@@ -27,7 +38,7 @@ import unittest
 from unittest import mock
 
 from lutil_fan_handler import app
-
+from moto import mock_dynamodb2
 
 FAN_OUT = {
     "Records": [
@@ -58,8 +69,18 @@ FAN_OUT = {
 
 
 class FanHandlerUnitTests(unittest.TestCase):
+    @mock_dynamodb2
     def test_lambda_handler__given_single_insert_event__then_one_sns_sent(self):
         # Arrange
+        db = boto3.client("dynamodb")
+        db.create_table(
+            TableName=os.environ["TABLE_NAME"],
+            KeySchema=[{"AttributeName": "key_field", "KeyType": "HASH"}],
+            AttributeDefinitions=[
+                {"AttributeName": "key_field", "AttributeType": "S"},
+            ],
+            ProvisionedThroughput={"ReadCapacityUnits": 10, "WriteCapacityUnits": 10},
+        )
 
         # Act
         with mock.patch(

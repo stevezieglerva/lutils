@@ -17,7 +17,7 @@ from NamedTupleBase import FanJob
 db_table = os.environ.get("TABLE_NAME", "")
 if db_table == "":
     raise ValueError(f"Missing env variable for TABLE_NAME")
-dynamodb = DynamoDB(db_table, "pk")
+dynamodb = DynamoDB(db_table)
 seconds_in_24_hours = 60 * 60 * 24
 dynamodb.set_ttl_seconds(seconds_in_24_hours)
 
@@ -115,7 +115,17 @@ def process_task_completed(sns_message_json):
     task.status_changed_timestamp = datetime.now().isoformat()
     put_db_task(task)
     print(f"Updated: {task}")
+
+    # check if all tasks completed
+    process_tasks_list = get_all_tasks_for_process(task.pk)
+    print("all tasks:")
+    print(json.dumps(process_tasks_list, indent=3, default=str))
+
     return task
+
+
+def get_all_tasks_for_process(pk):
+    return dynamodb.query_table_equal({"pk": pk})
 
 
 def put_db_task(task):
