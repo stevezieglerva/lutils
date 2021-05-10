@@ -44,9 +44,8 @@ def lambda_handler(event, context):
             created_job = process_fan_out(record["Sns"]["Message"])
             fan_out_list.append(created_job.json())
         if event_name == TASK_STARTED:
-            raise (ValueError("Haven't implemented process_task_started yet"))
-            created_job = process_task_started(record["Sns"]["Message"])
-            fan_out_list.append(created_job.json())
+            updated_job = process_task_started(record["Sns"]["Message"])
+            task_started.append(updated_job.json())
         else:
             print(f"Skipping event_name: {event_name}")
 
@@ -79,6 +78,17 @@ def process_fan_out(sns_message_json):
     put_db_task(task)
     publish_next_event(EVENT_SOUCRE, TASK_CREATED, task.json())
     print(f"Added: {task}")
+    return task
+
+
+def process_task_started():
+    fan_event = FanEvent(record_string=sns_message_json)
+    task_json = fan_event.message
+    task = TaskRecord(record_string=json.dumps(task_json, indent=3, default=str))
+    task.status = TASK_STARTED
+    task.status_change_timestamp = datetime.now().isoformat()
+    put_db_task(task)
+    print(f"Updated: {task}")
     return task
 
 
