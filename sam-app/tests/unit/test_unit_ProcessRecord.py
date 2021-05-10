@@ -26,19 +26,21 @@ class ProcessRecordUnitTests(unittest.TestCase):
         input = "keyword blast"
 
         # Act
-        subject = ProcessRecord(process_name=input)
+        subject = ProcessRecord(process_id="123", process_name=input)
 
         # Assert
         self.assertEqual(subject.process_name, input)
-        self.assertEqual(subject.pk, "")
+        self.assertEqual(subject.pk, "PROCESS#123")
+        self.assertEqual(subject.progress, 0)
 
     def test_constructor__given_valid_string_input__then_no_exceptions(self):
         # Arrange
         record = {
             "pk": "PROCESS#1819-00",
-            "sk": "TASK#93020939F",
+            "sk": "PROCESS#1819-00",
             "gs1_pk": "-",
             "gs1_sk": "-",
+            "process_id": "456",
             "process_name": "keyword blast",
             "started": "2021",
             "ended": "2021",
@@ -52,6 +54,7 @@ class ProcessRecordUnitTests(unittest.TestCase):
         # Assert
         self.assertEqual(subject.process_name, record["process_name"])
         self.assertEqual(subject.pk, "PROCESS#1819-00")
+        self.assertEqual(subject.sk, "PROCESS#1819-00")
 
 
 if __name__ == "__main__":
