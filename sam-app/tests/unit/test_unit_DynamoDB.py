@@ -196,3 +196,57 @@ class DynamoDBUnitTests(unittest.TestCase):
                 }
             ],
         )
+
+    @mock_dynamodb2
+    def test_query_table_equal__given_only_pk_of_composite_key__then_return_correct(
+        self,
+    ):
+        # Arrange
+        table_name = "fake-table"
+
+        db = boto3.client("dynamodb")
+        db.create_table(
+            TableName=table_name,
+            KeySchema=[
+                {"AttributeName": "pk", "KeyType": "HASH"},
+                {"AttributeName": "sk", "KeyType": "RANGE"},
+            ],
+            AttributeDefinitions=[
+                {"AttributeName": "pk", "AttributeType": "S"},
+                {"AttributeName": "sk", "AttributeType": "S"},
+            ],
+            ProvisionedThroughput={"ReadCapacityUnits": 10, "WriteCapacityUnits": 10},
+        )
+
+        subject = DynamoDB(table_name)
+        subject.set_ttl_seconds(10)
+        subject.put_item(
+            {"pk": "J1K4", "sk": "TASK#03939", "value": {"subkey": "03939"}}
+        )
+        subject.put_item(
+            {"pk": "J1K4", "sk": "TASK#03940", "value": {"subkey": "03940"}}
+        )
+
+        # Act
+        results = subject.query_table_equal({"pk": "J1K4"})
+        print(f"Query results: {results}")
+
+        # Assert
+        self.assertTrue("ttl" in results[0])
+        results[0].pop("ttl")
+        results[1].pop("ttl")
+        self.assertEqual(
+            results,
+            [
+                {
+                    "pk": "J1K4",
+                    "sk": "TASK#03939",
+                    "value": {"subkey": "03939"},
+                },
+                {
+                    "pk": "J1K4",
+                    "sk": "TASK#03940",
+                    "value": {"subkey": "03940"},
+                },
+            ],
+        )
