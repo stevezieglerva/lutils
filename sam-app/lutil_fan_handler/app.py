@@ -34,7 +34,7 @@ def lambda_handler(event, context):
     results = {}
     results["table_name"] = db_table
     fan_out_list = []
-    task_started = []
+    task_started_list = []
 
     print(json.dumps(event, indent=3, default=str))
     for count, record in enumerate(event["Records"]):
@@ -45,11 +45,12 @@ def lambda_handler(event, context):
             fan_out_list.append(created_job.json())
         if event_name == TASK_STARTED:
             updated_job = process_task_started(record["Sns"]["Message"])
-            task_started.append(updated_job.json())
+            task_started_list.append(updated_job.json())
         else:
             print(f"Skipping event_name: {event_name}")
 
     results["fan_out"] = fan_out_list
+    results["task_started"] = task_started_list
 
     print(json.dumps(results, indent=3, default=str))
 
@@ -74,19 +75,19 @@ def process_fan_out(sns_message_json):
         type(task.task_message) == dict
     ), f"expected task_message {task.task_message} to be a dict"
     # task.task_message = json.dumps(task.task_message, indent=3, default=str)
-    task.status_change_timestamp = datetime.now().isoformat()
+    task.status_changed_timestamp = datetime.now().isoformat()
     put_db_task(task)
     publish_next_event(EVENT_SOUCRE, TASK_CREATED, task.json())
     print(f"Added: {task}")
     return task
 
 
-def process_task_started():
+def process_task_started(sns_message_json):
     fan_event = FanEvent(record_string=sns_message_json)
     task_json = fan_event.message
     task = TaskRecord(record_string=json.dumps(task_json, indent=3, default=str))
     task.status = TASK_STARTED
-    task.status_change_timestamp = datetime.now().isoformat()
+    task.status_changed_timestamp = datetime.now().isoformat()
     put_db_task(task)
     print(f"Updated: {task}")
     return task

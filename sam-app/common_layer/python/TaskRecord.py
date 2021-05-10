@@ -20,7 +20,7 @@ class TaskRecord:
         self.task_name = ""
         self.task_message = ""
         self.status = ""
-        self.status_changed_timestamp = ""
+        self.status_changed_timestamp = "-none-"
         self.created = ""
 
         if "record_string" in kwargs:
@@ -33,7 +33,7 @@ class TaskRecord:
             self.task_name = record_json["task_name"]
             self.task_message = record_json["task_message"]
             self.status = record_json["status"]
-            self.status_changed = record_json["status_changed_timestamp"]
+            self.status_changed_timestamp = record_json["status_changed_timestamp"]
             self.created = record_json["created"]
         else:
             self.process_id = kwargs["process_id"]

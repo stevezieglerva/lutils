@@ -83,7 +83,7 @@ TASK_STARTED_SNS = {
                 "MessageId": "24c29dfb-f208-5e91-aee5-c4f020b25459",
                 "TopicArn": "arn:aws:sns:us-east-1:112280397275:lutil_fan_events_test",
                 "Subject": None,
-                "Message": '{\n   "event_source": "fan handler tests",\n   "event_name": "fan_out",\n   "job": {\n      "process_id": "00-int-00",\n      "process_name": "fan handler tests",\n      "task_name": "task-9",\n      "task_message": {\n         "var_1": 297\n      },\n           "timestamp": "2021-05-04T22:53:46.738623"\n   },\n   "timestamp": "2021-05-04T22:53:46.738664"\n}',
+                "Message": '{"event_source": "lutils-FanTestE2EConsumerLambda-1VQQ5T0QWZE1S", "event_name": "task_started", "message": {"pk": "PROCESS#01F59Y46K6MK6DA3XT9WCH0VXY", "sk": "TASK#task-6", "gs1_pk": "-", "gs1_sk": "-", "process_id": "01F59Y46K6MK6DA3XT9WCH0VXY", "process_name": "e2e tests", "task_name": "task-6", "task_message": {"max_delay": 300}, "status": "created", "status_changed_timestamp": "", "created": "2021"}, "timestamp": ""}',
                 "Timestamp": "2021-05-04T22:53:46.749Z",
                 "SignatureVersion": "1",
                 "Signature": "v+N06nbQXbuoyP56Gwvbybz60feJKiMZ9sk9CnBGMNP85uIZ1c3Fvuozm+oPPgCmgyd1LPi+JUFxhLd52UaIewWXIRzZKErcOBsIrF30C+YIIyipKs8TEGp+B3vUhHAJVh/5px6u0H1EcMks/JFmJ/tepJj26JqBqEUHk3hvKtixPq37DIfY/o2ozNKu/AFAQmBXmUAGw6WMqFE7U761mojGO0fdD2HqIqxTUbmy6NY9mtck8Wvudtxq6mqKXlguG5KPSxp2IsW/bWYR2KPtK/1rVaC5OvWn3GS8kWwQ4+y8IeL+NfpfSx3tW2r2PvWKItBofNbFb+cwcT541Po/yg==",
@@ -101,7 +101,48 @@ TASK_STARTED_SNS = {
 
 
 class FanHandlerIntTests(unittest.TestCase):
-    def test_lambda_handler__given_fan_out__then_one_sns_sent(self):
+    ##    def test_lambda_handler__given_fan_out__then_one_sns_sent(self):
+    ##        # Arrange
+    ##        # repeat down here in case other test sets this
+    ##        os.environ["TABLE_NAME"] = get_output_from_stack(
+    ##            "FanProcessingPartTestTableName"
+    ##        )
+    ##
+    ##        # Act
+    ##        results = app.lambda_handler(FAN_OUT_SNS, {})
+    ##
+    ##        # Assert
+    ##        expected = {
+    ##            "table_name": os.environ["TABLE_NAME"],
+    ##            "task_started": [],
+    ##            "fan_out": [
+    ##                {
+    ##                    "pk": "PROCESS#00-int-00",
+    ##                    "sk": "TASK#task-9",
+    ##                    "gs1_pk": "-",
+    ##                    "gs1_sk": "-",
+    ##                    "process_id": "00-int-00",
+    ##                    "process_name": "fan handler tests",
+    ##                    "task_name": "task-9",
+    ##                    "task_message": {"var_1": 297},
+    ##                    "status": "created",
+    ##                    "created": "",
+    ##                    "status_change_timestamp": "2021-05-09T21:51:19.962194",
+    ##                }
+    ##            ],
+    ##        }
+    ##        print("*results:")
+    ##        print(json.dumps(results, indent=3, default=str))
+    ##        print("*expected:")
+    ##        print(json.dumps(expected, indent=3, default=str))
+    ##        expected["fan_out"][0].pop("status_changed_timestamp")
+    ##        expected["fan_out"][0].pop("ttl")
+    ##        results["fan_out"][0].pop("status_changed_timestamp")
+    ##        results["fan_out"][0].pop("ttl")
+    ##
+    ##        self.assertEqual(results, expected)
+
+    def test_lambda_handler__given_task_started__then_one_sns_sent(self):
         # Arrange
         # repeat down here in case other test sets this
         os.environ["TABLE_NAME"] = get_output_from_stack(
@@ -109,37 +150,39 @@ class FanHandlerIntTests(unittest.TestCase):
         )
 
         # Act
-        results = app.lambda_handler(FAN_OUT_SNS, {})
+        action = "task_started"
+        results = app.lambda_handler(TASK_STARTED_SNS, {})
 
         # Assert
         expected = {
+            "fan_out": [],
             "table_name": os.environ["TABLE_NAME"],
-            "fan_out": [
+            action: [
                 {
-                    "pk": "PROCESS#00-int-00",
-                    "sk": "TASK#task-9",
+                    "pk": "PROCESS#01F59Y46K6MK6DA3XT9WCH0VXY",
+                    "sk": "TASK#task-6",
                     "gs1_pk": "-",
                     "gs1_sk": "-",
-                    "process_id": "00-int-00",
-                    "process_name": "fan handler tests",
-                    "task_name": "task-9",
-                    "task_message": {"var_1": 297},
-                    "status": "created",
-                    "status_changed_timestamp": "",
-                    "created": "",
-                    "timestamp": "2021-05-07T00:04:59.279057",
-                    "status_change_timestamp": "2021-05-07T00:04:59.279100",
-                    "ttl": 9085323899,
+                    "process_id": "",
+                    "process_name": "e2e tests",
+                    "task_name": "task-6",
+                    "task_message": {"max_delay": 300},
+                    "status": "task_started",
+                    "status_changed_timestamp": "2021-05-09T21:47:58.143252",
+                    "created": "2021",
+                    "ttl": "123",
                 }
             ],
         }
-        expected["fan_out"][0].pop("timestamp")
-        expected["fan_out"][0].pop("status_change_timestamp")
-        expected["fan_out"][0].pop("ttl")
-        results["fan_out"][0].pop("timestamp")
-        results["fan_out"][0].pop("status_change_timestamp")
-        results["fan_out"][0].pop("ttl")
+        print("*results:")
         print(json.dumps(results, indent=3, default=str))
+        print("*expected:")
         print(json.dumps(expected, indent=3, default=str))
+        expected[action][0].pop("created")
+        expected[action][0].pop("status_changed_timestamp")
+        expected[action][0].pop("ttl")
+        results[action][0].pop("created")
+        results[action][0].pop("status_changed_timestamp")
+        results[action][0].pop("ttl")
 
         self.assertEqual(results, expected)

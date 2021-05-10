@@ -87,14 +87,14 @@ class FanHandlerUnitTests(unittest.TestCase):
                     "task_message": '{\n   "var_1": 297\n}',
                     "status": "created",
                     "created": "",
-                    "status_change_timestamp": "2021-05-07T17:13:14.078883",
+                    "status_changed_timestamp": "2021-05-07T17:13:14.078883",
                 }
             ],
         }
 
         expected["fan_out"][0].pop("created")
-        expected["fan_out"][0].pop("status_change_timestamp")
+        expected["fan_out"][0].pop("status_changed_timestamp")
         results["fan_out"][0].pop("created")
-        results["fan_out"][0].pop("status_change_timestamp")
+        results["fan_out"][0].pop("status_changed_timestamp")
 
         self.assertEqual(results["fan_out"][0]["pk"], expected["fan_out"][0]["pk"])
