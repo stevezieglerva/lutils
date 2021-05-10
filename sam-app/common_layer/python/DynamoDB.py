@@ -74,7 +74,6 @@ class DynamoDB:
                         json_str = json_str[1:]
                         json_str = json_str[:-1]
                         field_dict = json.loads(json_str)
-                        print(f"converted {field_name} to JSON")
                         field_value = field_dict
                     except json.decoder.JSONDecodeError:
                         # field is not JSON
@@ -96,21 +95,31 @@ class DynamoDB:
         return results
 
     def query_table_equal(self, key):
-        assert type(key) == dict, "Expecting key to be of type dict"
-
         key_condition_exp_parts = [f"{k} = :{k}" for k in key.keys()]
         key_condition_exp = " AND ".join(key_condition_exp_parts)
         print(f"key_condition_exp: {key_condition_exp}")
+        return self._query_table_by_operator(key, key_condition_exp)
 
+    def query_table_begins(self, key):
+        key_names = list(key.keys())
+        if len(key_names) == 1:
+            field_name = key_names[0]
+            key_condition_exp = f"begins_with( {field_name}, :{field_name} )"
+        if len(key_names) == 2:
+            field_name_1 = key_names[0]
+            field_name_2 = key_names[1]
+            key_condition_exp = f"{field_name_1} = :{field_name_1} AND begins_with( {field_name_2}, :{field_name_2})"
+        print(f"key_condition_exp: {key_condition_exp}")
+        return self._query_table_by_operator(key, key_condition_exp)
+
+    def _query_table_by_operator(self, key, key_condition_exp):
+        assert type(key) == dict, "Expecting key to be of type dict"
         exp_attribute_values = key
         original_key_list = list(key.keys())
-        print(f"original_key_list: {original_key_list}")
         for key_name in original_key_list:
-            print(f"working: {key_name}")
             expr_key_name = f":{key_name}"
             exp_attribute_values[expr_key_name] = key[key_name]
             exp_attribute_values.pop(key_name)
-        print(f"exp_attribute_values: {exp_attribute_values}")
         exp_attribute_values_db_format = self.convert_to_dynamodb_format(
             exp_attribute_values
         )
