@@ -379,7 +379,7 @@ Resources:
         - !Ref Common
       Policies:
         - S3CrudPolicy:
-          - BucketName: !Ref ProcessingBucket
+            BucketName: !Ref ProcessingBucket
         - Version: 2012-10-17
           Statement:
             - Effect: Allow
