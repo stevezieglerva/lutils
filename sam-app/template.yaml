@@ -358,9 +358,7 @@ Resources:
           Type: SNS
           Properties:
             Topic: !Ref FanEventsTestSNS
-            FilterPolicy:
-              event_name:
-                - "process_completed" 
+
 
 
 
