@@ -360,9 +360,8 @@ Resources:
             Topic: !Ref FanEventsTestSNS
             FilterPolicy:
               event_name:
-                - "process_completed" # Process only start jobs
-              process_name:
-                - "e2e tests" # Only accept processA SNS messages
+                - "process_completed" 
+
 
 
   FanLogEventsLambda:
