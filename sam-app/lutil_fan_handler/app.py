@@ -21,12 +21,12 @@ dynamodb = DynamoDB(db_table)
 seconds_in_24_hours = 60 * 60 * 24
 dynamodb.set_ttl_seconds(seconds_in_24_hours)
 
-EVENT_SOUCRE = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "lambda")
+EVENT_SOURCE = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "lambda")
 
 handler_sns_topic_arn = os.environ.get("HANDLER_SNS_TOPIC_ARN", "")
 if handler_sns_topic_arn == "":
     raise ValueError(f"Missing env variable for HANDLER_SNS_TOPIC_ARN")
-publisher = FanEventPublisher(EVENT_SOUCRE, handler_sns_topic_arn)
+publisher = FanEventPublisher(EVENT_SOURCE, handler_sns_topic_arn)
 
 
 def lambda_handler(event, context):
@@ -91,7 +91,7 @@ def process_fan_out(sns_message_json):
     task.status_changed_timestamp = datetime.now().isoformat()
     put_db_task(task)
 
-    publish_next_event(EVENT_SOUCRE, TASK_CREATED, task.json())
+    publish_next_event(EVENT_SOURCE, TASK_CREATED, task.json())
     print(f"Added: {task}")
     return task
 
@@ -116,16 +116,48 @@ def process_task_completed(sns_message_json):
     put_db_task(task)
     print(f"Updated: {task}")
 
-    # check if all tasks completed
-    process_tasks_list = get_all_tasks_for_process(task.pk)
-    print("all tasks:")
-    print(json.dumps(process_tasks_list, indent=3, default=str))
+    update_process_record_based_on_completions(task.pk)
 
     return task
 
 
+def update_process_record_based_on_completions(pk):
+    # check if all tasks completed
+    process_tasks_list = get_all_tasks_for_process(pk)
+    print("all tasks:")
+    print(json.dumps(process_tasks_list, indent=3, default=str))
+    progress = calculate_progress(process_tasks_list)
+    print(f"Progress: {progress}")
+
+    # Get the process record to update it
+    print("Get the parent process record")
+    get_key = {"pk": pk, "sk": pk}
+    print(f"get_key: {get_key}")
+
+    process_record_json = dynamodb.get_item(get_key)
+    print(process_record_json)
+    process_record = ProcessRecord(
+        record_string=json.dumps(process_record_json, indent=3, default=str)
+    )
+    process_record.progress = progress
+    if progress == 1:
+        process_record.ended = datetime.now().isoformat()
+    dynamodb.put_item(process_record.json())
+
+    if progress == 1:
+        print("Sending event of process completion")
+        publish_next_event(EVENT_SOURCE, PROCESS_COMPLETED, process_record.json())
+
+
+def calculate_progress(process_task_list):
+    total_tasks = len(process_task_list)
+    completed_tasks = [t for t in process_task_list if t["status"] == TASK_COMPLETED]
+    completed_count = len(completed_tasks)
+    return float(completed_count / total_tasks)
+
+
 def get_all_tasks_for_process(pk):
-    return dynamodb.query_table_equal({"pk": pk})
+    return dynamodb.query_table_begins({"pk": pk, "sk": "TASK"})
 
 
 def put_db_task(task):

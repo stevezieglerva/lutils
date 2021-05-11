@@ -14,10 +14,8 @@ class DynamoDB:
 
     def _set_key_fields(self):
         table_resp = self._db.describe_table(TableName=self.table_name)
-        # print(json.dumps(table_resp, indent=3, default=str))
         key_schema = table_resp["Table"]["KeySchema"]
         self.key_fields = [k["AttributeName"] for k in key_schema]
-        print(self.key_fields)
 
     def set_ttl_seconds(self, seconds):
         self._ttl = seconds
@@ -28,6 +26,7 @@ class DynamoDB:
             record["ttl"] = ttl
         db_format = self.convert_to_dynamodb_format(record)
         self._db.put_item(TableName=self.table_name, Item=db_format)
+        print(f"put item successful: {db_format}")
 
     def _calculate_ttl_epoch(self):
         future_time = datetime.now() + timedelta(self._ttl)
@@ -54,7 +53,6 @@ class DynamoDB:
             new_field_value = {}
             new_field_value[data_type] = new_value
             results[k] = new_field_value
-        print(json.dumps(results, indent=3, default=str))
         return results
 
     def convert_from_dynamodb_format(self, db_record):
@@ -90,6 +88,7 @@ class DynamoDB:
     def get_item(self, key):
         assert type(key) == dict, "Expecting key to be of type dict"
         db_format = self.convert_to_dynamodb_format(key)
+        print(f"Getting: {db_format}")
         db_record = self._db.get_item(TableName=self.table_name, Key=db_format)
         results = self.convert_from_dynamodb_format(db_record)
         return results

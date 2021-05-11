@@ -38,9 +38,12 @@ class ProcessRecord:
             self.gs1_sk = record_json["gs1_sk"]
             self.process_id = record_json["process_id"]
             self.process_name = record_json["process_name"]
+            self.progress = float(record_json["progress"])
             self.started = record_json["started"]
             self.ended = record_json["ended"]
-            for k, v in vars(self).items():
+            self_properties = vars(self)
+            self_properties.pop("ended")  # not required
+            for k, v in self_properties.items():
                 if type(v) == str:
                     if v == "":
                         raise ValueError(f"Missing value for {k} in json")
