@@ -76,6 +76,8 @@ class DynamoDB:
                     except json.decoder.JSONDecodeError:
                         # field is not JSON
                         pass
+                if type == "N":
+                    field_value = float(field_value)
             results[field_name] = field_value
         return results
 

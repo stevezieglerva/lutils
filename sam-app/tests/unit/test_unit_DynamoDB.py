@@ -84,7 +84,7 @@ class DynamoDBUnitTests(unittest.TestCase):
         # Assert
         self.assertTrue("ttl" in new_item)
         new_item.pop("ttl")
-        self.assertEqual(new_item, {"id": "J1K4", "value": "2000"})
+        self.assertEqual(new_item, {"id": "J1K4", "value": 2000})
 
     @mock_dynamodb2
     def test_get_item__given_dict_is_subvalue__then_return_correct(self):

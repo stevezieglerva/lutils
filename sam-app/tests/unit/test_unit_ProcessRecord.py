@@ -42,6 +42,7 @@ class ProcessRecordUnitTests(unittest.TestCase):
             "gs1_sk": "-",
             "process_id": "456",
             "process_name": "keyword blast",
+            "progress": 0.5,
             "started": "2021",
             "ended": "2021",
         }
