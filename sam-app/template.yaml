@@ -239,6 +239,28 @@ Resources:
   #--------------------------------
   # e2e testing lambdas
   #--------------------------------
+  Shared:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: selenium-simplified
+      Description: Dependencies for Selenium and the headless browser
+      ContentUri: 
+        Bucket: !Sub  "lutils-pipeline-artifactsbucket-98fi0mj7zik2"
+        Key: "python-selenium-simplified.zip"
+      CompatibleRuntimes:
+        - python3.7
+
+
+  Common:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: common
+      Description: Custom python code shared across the app
+      ContentUri: common_layer/
+      CompatibleRuntimes:
+        - python3.7
+        
+
   FanTestE2EProducerLambda:
     Type: AWS::Serverless::Function 
     Properties:
@@ -301,7 +323,6 @@ Resources:
                 - "task_created" 
               process_name:
                 - "e2e tests" 
-
 
 
   FanTestE2ECompletedLambda:
@@ -377,26 +398,7 @@ Resources:
             Topic: !Ref FanEventsTestSNS
 
 
-  Shared:
-    Type: AWS::Serverless::LayerVersion
-    Properties:
-      LayerName: selenium-simplified
-      Description: Dependencies for Selenium and the headless browser
-      ContentUri: 
-        Bucket: !Sub  "lutils-pipeline-artifactsbucket-98fi0mj7zik2"
-        Key: "python-selenium-simplified.zip"
-      CompatibleRuntimes:
-        - python3.7
 
-
-  Common:
-    Type: AWS::Serverless::LayerVersion
-    Properties:
-      LayerName: common
-      Description: Custom python code shared across the app
-      ContentUri: common_layer/
-      CompatibleRuntimes:
-        - python3.7
 
 
   ################################
