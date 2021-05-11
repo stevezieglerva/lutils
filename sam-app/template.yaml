@@ -360,8 +360,6 @@ Resources:
             Topic: !Ref FanEventsTestSNS
 
 
-
-
   FanLogEventsLambda:
     Type: AWS::Serverless::Function 
     Properties:
@@ -380,6 +378,8 @@ Resources:
       Layers: 
         - !Ref Common
       Policies:
+        - S3CrudPolicy:
+          - Bucket: !Ref ProcessingBucket
         - Version: 2012-10-17
           Statement:
             - Effect: Allow

@@ -140,11 +140,11 @@ def update_process_record_based_on_completions(pk):
         record_string=json.dumps(process_record_json, indent=3, default=str)
     )
     process_record.progress = progress
-    if progress == 1:
+    if progress == 1.0:
         process_record.ended = datetime.now().isoformat()
     dynamodb.put_item(process_record.json())
 
-    if progress == 1:
+    if progress == 1.0:
         print("Sending event of process completion")
         publish_next_event(EVENT_SOURCE, PROCESS_COMPLETED, process_record.json())
 
