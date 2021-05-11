@@ -362,7 +362,7 @@ Resources:
               event_name:
                 - "process_completed" # Process only start jobs
               process_name:
-                - "e2e test" # Only accept processA SNS messages
+                - "e2e tests" # Only accept processA SNS messages
 
 
   FanLogEventsLambda:
