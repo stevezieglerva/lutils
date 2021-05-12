@@ -24,7 +24,7 @@ def lambda_handler(event, context):
     for record in event["Records"]:
         old_image = record["dynamodb"].get("OldImage", None)
         if old_image != None:
-            line = ""
+            line = "old "
             for k, dynamodb_v in old_image.items():
                 value = list(dynamodb_v.values())[0]
                 field = f" {value:<50}"
@@ -32,12 +32,13 @@ def lambda_handler(event, context):
             print(line)
         new_image = record["dynamodb"].get("NewImage", None)
         if new_image != None:
-            line = ""
+            line = "new "
             for k, dynamodb_v in new_image.items():
                 value = list(dynamodb_v.values())[0]
                 field = f" {value:<50}"
                 line = line + field
             print(line)
+        print("")
 
     print(f"Finished at {datetime.now()}")
 
