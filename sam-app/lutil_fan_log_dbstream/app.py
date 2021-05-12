@@ -31,9 +31,9 @@ def lambda_handler(event, context):
         new_image = record["dynamodb"].get("NewImage", None)
         if new_image != None:
             pks = (
-                list(old_image["pk"].values())[0]
+                list(new_image["pk"].values())[0]
                 + " / "
-                + list(old_image["sk"].values())[0]
+                + list(new_image["sk"].values())[0]
             )
             print(pks)
             for k, dynamodb_v in new_image.items():
