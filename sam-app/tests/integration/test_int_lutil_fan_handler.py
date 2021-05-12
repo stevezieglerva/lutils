@@ -206,219 +206,220 @@ TASK_COMPLETED_SNS_ALL_DONE = {
 
 
 class FanHandlerIntTests(unittest.TestCase):
-    ##    def test_lambda_handler__given_fan_out__then_one_sns_sent(self):
-    ##        # Arrange
-    ##        # repeat down here in case other test sets this
-    ##        os.environ["TABLE_NAME"] = get_output_from_stack(
-    ##            "FanProcessingPartTestTableName"
-    ##        )
-    ##
-    ##        # Act
-    ##        results = app.lambda_handler(FAN_OUT_SNS, {})
-    ##
-    ##        # Assert
-    ##        expected_record = {
-    ##            "pk": "PROCESS#00-int-00",
-    ##            "sk": "TASK#task-9",
-    ##            "gs1_pk": "-",
-    ##            "gs1_sk": "-",
-    ##            "process_id": "00-int-00",
-    ##            "process_name": "fan handler tests",
-    ##            "task_name": "task-9",
-    ##            "task_message": {"var_1": 297},
-    ##            "status": "created",
-    ##            "created": "",
-    ##            "status_changed_timestamp": "2021-05-09T21:51:19.962194",
-    ##            "ttl": "123",
-    ##        }
-    ##        results_record = results["fan_out"][0]
-    ##        print("*results_record:")
-    ##        print(json.dumps(results_record, indent=3, default=str))
-    ##        print("*expected_record:")
-    ##        print(json.dumps(expected_record, indent=3, default=str))
-    ##
-    ##        self.assertEqual(results_record["pk"], expected_record["pk"])
-    ##        self.assertEqual(results_record["status"], expected_record["status"])
-    ##
-    ##    def test_lambda_handler__given_task_started__then_one_sns_sent(self):
-    ##        # Arrange
-    ##        # repeat down here in case other test sets this
-    ##        os.environ["TABLE_NAME"] = get_output_from_stack(
-    ##            "FanProcessingPartTestTableName"
-    ##        )
-    ##
-    ##        # Act
-    ##        action = "task_started"
-    ##        results = app.lambda_handler(TASK_STARTED_SNS, {})
-    ##
-    ##        # Assert
-    ##        expected_record = {
-    ##            "pk": "PROCESS#01F59Y46K6MK6DA3XT9WCH0VXY",
-    ##            "sk": "TASK#task-6",
-    ##            "gs1_pk": "-",
-    ##            "gs1_sk": "-",
-    ##            "process_id": "",
-    ##            "process_name": "lutil fan tests",
-    ##            "task_name": "task-6",
-    ##            "task_message": {"max_delay": 300},
-    ##            "status": "task_started",
-    ##            "status_changed_timestamp": "2021-05-09T21:47:58.143252",
-    ##            "created": "2021",
-    ##            "ttl": "123",
-    ##        }
-    ##        results_record = results[action][0]
-    ##
-    ##        print("*results_record:")
-    ##        print(json.dumps(results_record, indent=3, default=str))
-    ##        print("*expected_record:")
-    ##        print(json.dumps(expected_record, indent=3, default=str))
-    ##
-    ##        self.assertEqual(results_record["pk"], expected_record["pk"])
-    ##        self.assertEqual(results_record["status"], expected_record["status"])
-
-    ##    def test_lambda_handler__given_task_completed_but_others_not__then_one_sns_sent(
-    ##        self,
-    ##    ):
-    ##        # Arrange
-    ##        # repeat down here in case other test sets this
-    ##        os.environ["TABLE_NAME"] = get_output_from_stack(
-    ##            "FanProcessingPartTestTableName"
-    ##        )
-    ##
-    ##        # add a related process task that is not completed
-    ##        dynamodb = DynamoDB(os.environ["TABLE_NAME"])
-    ##        dynamodb.put_item(
-    ##            {
-    ##                "pk": f"PROCESS#{ulid_completed_not_all_done}",
-    ##                "sk": "TASK#task-7",
-    ##                "gs1_pk": "-",
-    ##                "gs1_sk": "-",
-    ##                "process_id": ulid_completed_not_all_done,
-    ##                "process_name": "lutil fan tests - all done",
-    ##                "task_name": "task-7",
-    ##                "task_message": {"max_delay": 300},
-    ##                "status": "task_started",
-    ##                "status_changed_timestamp": "2021-05-09T21:47:58.143252",
-    ##                "created": "2021",
-    ##                "ttl": "123",
-    ##            }
-    ##        )
-    ##        # Add process record so the progress can be updated
-    ##        dynamodb.put_item(
-    ##            {
-    ##                "pk": f"PROCESS#{ulid_completed_not_all_done}",
-    ##                "sk": f"PROCESS#{ulid_completed_not_all_done}",
-    ##                "gs1_pk": "-",
-    ##                "gs1_sk": "-",
-    ##                "process_id": ulid_completed_not_all_done,
-    ##                "process_name": "lutil fan tests - all done",
-    ##                "ended": "",
-    ##                "gs1_pk": "-",
-    ##                "gs1_sk": "-",
-    ##                "progress": 0,
-    ##                "started": "2021-05-10T16:16:29.653752",
-    ##                "ttl": 9085641389,
-    ##            }
-    ##        )
-    ##        added_item = dynamodb.get_item(
-    ##            {
-    ##                "pk": f"PROCESS#{ulid_completed_not_all_done}",
-    ##                "sk": f"PROCESS#{ulid_completed_not_all_done}",
-    ##            }
-    ##        )
-    ##        print(f"added_item: {added_item}")
-    ##
-    ##        # Act
-    ##        action = "task_completed"
-    ##        results = app.lambda_handler(TASK_COMPLETED_SNS, {})
-    ##
-    ##        # Assert
-    ##        expected_record = {
-    ##            "pk": f"PROCESS#{ulid_completed_not_all_done}",
-    ##            "sk": "TASK#task-6",
-    ##            "gs1_pk": "-",
-    ##            "gs1_sk": "-",
-    ##            "process_id": ulid_completed_not_all_done,
-    ##            "process_name": "lutil fan tests - all done",
-    ##            "task_name": "task-6",
-    ##            "task_message": {"max_delay": 300},
-    ##            "status": "task_completed",
-    ##            "status_changed_timestamp": "2021-05-09T21:47:58.143252",
-    ##            "created": "2021",
-    ##            "ttl": "123",
-    ##        }
-    ##        results_record = results[action][0]
-    ##
-    ##        print("*results_record:")
-    ##        print(json.dumps(results_record, indent=3, default=str))
-    ##        print("*expected_record:")
-    ##        print(json.dumps(expected_record, indent=3, default=str))
-    ##
-    ##        self.assertEqual(results_record["pk"], expected_record["pk"])
-    ##        self.assertEqual(
-    ##            results_record["process_name"], expected_record["process_name"]
-    ##        )
-    ##        self.assertEqual(results_record["status"], expected_record["status"])
-
-    def test_lambda_handler__given_task_completed_and_others_completed__then_process_marked_completed(
-        self,
-    ):
+    def test_lambda_handler__given_fan_out__then_one_sns_sent(self):
         # Arrange
         # repeat down here in case other test sets this
         os.environ["TABLE_NAME"] = get_output_from_stack(
             "FanProcessingPartTestTableName"
         )
 
-        # add a related process task that is not completed
-        dynamodb = DynamoDB(os.environ["TABLE_NAME"])
-        dynamodb.put_item(
-            {
-                "pk": f"PROCESS#{ulid_completed_all_done}",
-                "sk": "TASK#task-7",
-                "gs1_pk": "-",
-                "gs1_sk": "-",
-                "process_id": ulid_completed_all_done,
-                "process_name": "lutil fan tests - all done",
-                "task_name": "task-7",
-                "task_message": {"max_delay": 300},
-                "status": "task_completed",
-                "status_changed_timestamp": "2021-05-09T21:47:58.143252",
-                "created": "2021",
-                "ttl": "123",
-            }
-        )
-        # Add process record so the progress can be updated
-        dynamodb.put_item(
-            {
-                "pk": f"PROCESS#{ulid_completed_all_done}",
-                "sk": f"PROCESS#{ulid_completed_all_done}",
-                "gs1_pk": "-",
-                "gs1_sk": "-",
-                "process_id": ulid_completed_all_done,
-                "process_name": "lutil fan tests - all done",
-                "ended": "",
-                "gs1_pk": "-",
-                "gs1_sk": "-",
-                "progress": 0,
-                "started": "2021-05-10T16:16:29.653752",
-                "ttl": 9085641389,
-            }
-        )
-
         # Act
-        action = "task_completed"
-        results = app.lambda_handler(TASK_COMPLETED_SNS_ALL_DONE, {})
+        results = app.lambda_handler(FAN_OUT_SNS, {})
 
         # Assert
-        added_item = dynamodb.get_item(
-            {
-                "pk": f"PROCESS#{ulid_completed_all_done}",
-                "sk": f"PROCESS#{ulid_completed_all_done}",
-            }
-        )
-        process_record = ProcessRecord(
-            record_string=json.dumps(added_item, indent=3, default=str)
-        )
-        print("*** final process record:")
-        print(json.dumps(added_item, indent=3, default=str))
-        self.assertEqual(process_record.progress, 1)
+        expected_record = {
+            "pk": "PROCESS#00-int-00",
+            "sk": "TASK#task-9",
+            "gs1_pk": "-",
+            "gs1_sk": "-",
+            "process_id": "00-int-00",
+            "process_name": "fan handler tests",
+            "task_name": "task-9",
+            "task_message": {"var_1": 297},
+            "status": "created",
+            "created": "",
+            "status_changed_timestamp": "2021-05-09T21:51:19.962194",
+            "ttl": "123",
+        }
+        results_record = results["fan_out"][0]
+        print("*results_record:")
+        print(json.dumps(results_record, indent=3, default=str))
+        print("*expected_record:")
+        print(json.dumps(expected_record, indent=3, default=str))
+
+        self.assertEqual(results_record["pk"], expected_record["pk"])
+        self.assertEqual(results_record["status"], expected_record["status"])
+
+
+##    def test_lambda_handler__given_task_started__then_one_sns_sent(self):
+##        # Arrange
+##        # repeat down here in case other test sets this
+##        os.environ["TABLE_NAME"] = get_output_from_stack(
+##            "FanProcessingPartTestTableName"
+##        )
+##
+##        # Act
+##        action = "task_started"
+##        results = app.lambda_handler(TASK_STARTED_SNS, {})
+##
+##        # Assert
+##        expected_record = {
+##            "pk": "PROCESS#01F59Y46K6MK6DA3XT9WCH0VXY",
+##            "sk": "TASK#task-6",
+##            "gs1_pk": "-",
+##            "gs1_sk": "-",
+##            "process_id": "",
+##            "process_name": "lutil fan tests",
+##            "task_name": "task-6",
+##            "task_message": {"max_delay": 300},
+##            "status": "task_started",
+##            "status_changed_timestamp": "2021-05-09T21:47:58.143252",
+##            "created": "2021",
+##            "ttl": "123",
+##        }
+##        results_record = results[action][0]
+##
+##        print("*results_record:")
+##        print(json.dumps(results_record, indent=3, default=str))
+##        print("*expected_record:")
+##        print(json.dumps(expected_record, indent=3, default=str))
+##
+##        self.assertEqual(results_record["pk"], expected_record["pk"])
+##        self.assertEqual(results_record["status"], expected_record["status"])
+##
+##    def test_lambda_handler__given_task_completed_but_others_not__then_one_sns_sent(
+##        self,
+##    ):
+##        # Arrange
+##        # repeat down here in case other test sets this
+##        os.environ["TABLE_NAME"] = get_output_from_stack(
+##            "FanProcessingPartTestTableName"
+##        )
+##
+##        # add a related process task that is not completed
+##        dynamodb = DynamoDB(os.environ["TABLE_NAME"])
+##        dynamodb.put_item(
+##            {
+##                "pk": f"PROCESS#{ulid_completed_not_all_done}",
+##                "sk": "TASK#task-7",
+##                "gs1_pk": "-",
+##                "gs1_sk": "-",
+##                "process_id": ulid_completed_not_all_done,
+##                "process_name": "lutil fan tests - all done",
+##                "task_name": "task-7",
+##                "task_message": {"max_delay": 300},
+##                "status": "task_started",
+##                "status_changed_timestamp": "2021-05-09T21:47:58.143252",
+##                "created": "2021",
+##                "ttl": "123",
+##            }
+##        )
+##        # Add process record so the progress can be updated
+##        dynamodb.put_item(
+##            {
+##                "pk": f"PROCESS#{ulid_completed_not_all_done}",
+##                "sk": f"PROCESS#{ulid_completed_not_all_done}",
+##                "gs1_pk": "-",
+##                "gs1_sk": "-",
+##                "process_id": ulid_completed_not_all_done,
+##                "process_name": "lutil fan tests - all done",
+##                "ended": "",
+##                "gs1_pk": "-",
+##                "gs1_sk": "-",
+##                "progress": 0,
+##                "started": "2021-05-10T16:16:29.653752",
+##                "ttl": 9085641389,
+##            }
+##        )
+##        added_item = dynamodb.get_item(
+##            {
+##                "pk": f"PROCESS#{ulid_completed_not_all_done}",
+##                "sk": f"PROCESS#{ulid_completed_not_all_done}",
+##            }
+##        )
+##        print(f"added_item: {added_item}")
+##
+##        # Act
+##        action = "task_completed"
+##        results = app.lambda_handler(TASK_COMPLETED_SNS, {})
+##
+##        # Assert
+##        expected_record = {
+##            "pk": f"PROCESS#{ulid_completed_not_all_done}",
+##            "sk": "TASK#task-6",
+##            "gs1_pk": "-",
+##            "gs1_sk": "-",
+##            "process_id": ulid_completed_not_all_done,
+##            "process_name": "lutil fan tests - all done",
+##            "task_name": "task-6",
+##            "task_message": {"max_delay": 300},
+##            "status": "task_completed",
+##            "status_changed_timestamp": "2021-05-09T21:47:58.143252",
+##            "created": "2021",
+##            "ttl": "123",
+##        }
+##        results_record = results[action][0]
+##
+##        print("*results_record:")
+##        print(json.dumps(results_record, indent=3, default=str))
+##        print("*expected_record:")
+##        print(json.dumps(expected_record, indent=3, default=str))
+##
+##        self.assertEqual(results_record["pk"], expected_record["pk"])
+##        self.assertEqual(
+##            results_record["process_name"], expected_record["process_name"]
+##        )
+##        self.assertEqual(results_record["status"], expected_record["status"])ß
+##
+##    def test_lambda_handler__given_task_completed_and_others_completed__then_process_marked_completed(
+##        self,
+##    ):
+##        # Arrange
+##        # repeat down here in case other test sets this
+##        os.environ["TABLE_NAME"] = get_output_from_stack(
+##            "FanProcessingPartTestTableName"
+##        )
+##
+##        # add a related process task that is not completed
+##        dynamodb = DynamoDB(os.environ["TABLE_NAME"])
+##        dynamodb.put_item(
+##            {
+##                "pk": f"PROCESS#{ulid_completed_all_done}",
+##                "sk": "TASK#task-7",
+##                "gs1_pk": "-",
+##                "gs1_sk": "-",
+##                "process_id": ulid_completed_all_done,
+##                "process_name": "lutil fan tests - all done",
+##                "task_name": "task-7",
+##                "task_message": {"max_delay": 300},
+##                "status": "task_completed",
+##                "status_changed_timestamp": "2021-05-09T21:47:58.143252",
+##                "created": "2021",
+##                "ttl": "123",
+##            }
+##        )
+##        # Add process record so the progress can be updated
+##        dynamodb.put_item(
+##            {
+##                "pk": f"PROCESS#{ulid_completed_all_done}",
+##                "sk": f"PROCESS#{ulid_completed_all_done}",
+##                "gs1_pk": "-",
+##                "gs1_sk": "-",
+##                "process_id": ulid_completed_all_done,
+##                "process_name": "lutil fan tests - all done",
+##                "ended": "",
+##                "gs1_pk": "-",
+##                "gs1_sk": "-",
+##                "progress": 0,
+##                "started": "2021-05-10T16:16:29.653752",
+##                "ttl": 9085641389,
+##            }
+##        )
+##
+##        # Act
+##        action = "task_completed"
+##        results = app.lambda_handler(TASK_COMPLETED_SNS_ALL_DONE, {})
+##
+##        # Assert
+##        added_item = dynamodb.get_item(
+##            {
+##                "pk": f"PROCESS#{ulid_completed_all_done}",
+##                "sk": f"PROCESS#{ulid_completed_all_done}",
+##            }
+##        )
+##        process_record = ProcessRecord(
+##            record_string=json.dumps(added_item, indent=3, default=str)
+##        )
+##        print("*** final process record:")
+##        print(json.dumps(added_item, indent=3, default=str))
+##        self.assertEqual(process_record.progress, 1)

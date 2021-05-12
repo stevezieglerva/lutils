@@ -70,6 +70,7 @@ def process_fan_out(sns_message_json):
     task_json = fan_event.message
 
     # Add process record
+    print("*** putting initial process record in")
     process = ProcessRecord(
         process_id=task_json["process_id"], process_name=task_json["process_name"]
     )
