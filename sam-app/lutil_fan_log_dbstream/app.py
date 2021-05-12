@@ -19,7 +19,6 @@ metrics = Metrics()
 
 @metrics.log_metrics
 def lambda_handler(event, context):
-    print(f"Started at {datetime.now()}")
 
     for record in event["Records"]:
         old_image = record["dynamodb"].get("OldImage", None)
@@ -38,8 +37,6 @@ def lambda_handler(event, context):
                 field = f" {value:<50}"
                 line = line + field
             print(line)
-        print("")
-
-    print(f"Finished at {datetime.now()}")
+        print("\n")
 
     return {}
