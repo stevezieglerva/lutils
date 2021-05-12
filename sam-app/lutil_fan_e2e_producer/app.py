@@ -28,7 +28,7 @@ def lambda_handler(event, context):
             process_id=process_id,
             process_name=process_name,
             task_name=f"task-{i}",
-            task_message={"max_delay": max_delay},
+            task_message=event,
         )
         publisher.fan_out(task)
 
