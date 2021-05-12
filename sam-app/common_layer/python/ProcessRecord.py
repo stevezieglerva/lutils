@@ -42,10 +42,9 @@ class ProcessRecord:
             self.started = record_json["started"]
             self.ended = record_json["ended"]
             self_properties = vars(self)
-            self_properties.pop("ended")  # not required
             for k, v in self_properties.items():
                 if type(v) == str:
-                    if v == "":
+                    if v == "" and k != "ended":
                         raise ValueError(f"Missing value for {k} in json")
 
     def json(self):
