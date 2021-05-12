@@ -217,7 +217,7 @@ Resources:
         Stream:
           Type: DynamoDB
           Properties:
-            Stream: !GetAtt FanProcessingTableTest.StreamArn
+            Stream: !GetAtt FanProcessingPartTestTable.StreamArn
             BatchSize: 100
             StartingPosition: TRIM_HORIZON
 
