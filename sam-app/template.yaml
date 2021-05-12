@@ -191,7 +191,7 @@ Resources:
     Type: AWS::Serverless::Function 
     Properties:
       Description: Responds to inserts or deletes fan in records into the fan in table
-      CodeUri: lutil_fan_handler/
+      CodeUri: lutil_fan_log_dbstream/
       Handler: app.lambda_handler
       Runtime: python3.7
       Environment:
