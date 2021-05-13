@@ -22,11 +22,12 @@ class DynamoDBStream:
         for record in self.stream_event["Records"]:
             new_item = {}
             primary_key_string = ""
-            for k, v in record["dynamodb"]["Keys"].items():
-                key_name = k
-                key_value = list(v.values())[0]
-                primary_key_string = primary_key_string + f"{key_name} / {key_value}"
-            primary_key_string = primary_key_string + " #" + str(ulid.ULID())
+            # for k, v in record["dynamodb"]["Keys"].items():
+            #    key_name = k
+            #    key_value = list(v.values())[0]
+            #    primary_key_string = primary_key_string + f"{key_name} / {key_value}"
+            # primary_key_string = primary_key_string + " #" + str(ulid.ULID())
+            primary_key_string = str(ulid.ULID())
             print(primary_key_string)
             new_item["key"] = primary_key_string
 
