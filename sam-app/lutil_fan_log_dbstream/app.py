@@ -20,6 +20,6 @@ metrics = Metrics()
 def lambda_handler(event, context):
 
     stream_data = DynamoDBStream(event)
-    stream_data.save_data_to_table(os.environ["TABLE_NAME"])
+    stream_data.save_to_table(os.environ["TABLE_NAME"])
 
     return {}
