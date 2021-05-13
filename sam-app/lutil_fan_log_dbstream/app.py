@@ -18,6 +18,6 @@ metrics = Metrics()
 
 @metrics.log_metrics
 def lambda_handler(event, context):
-    print(event)
+    print(json.dumps(event, indent=3, default=str))
 
     return {}
