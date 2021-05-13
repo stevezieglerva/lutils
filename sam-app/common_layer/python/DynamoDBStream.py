@@ -65,6 +65,6 @@ class DynamoDBStream:
     def save_to_table(self, table_name):
         db = DynamoDB(table_name)
         for change in self.changes:
-            change["pk"] = "CHANGE#" + change["key"]
-            change["sk"] = change["key"]
+            # change["pk"] = "CHANGE#" + change["key"]
+            # change["sk"] = change["key"]
             db.put_item(change)
