@@ -38,6 +38,26 @@ os.environ["TABLE_NAME"] = get_output_from_stack("FanProcessingPartTestTableName
 
 
 class TaskRecordIntTests(unittest.TestCase):
+    def test_fan_out__given_valid_object__then_no_exceptions(self):
+        # Arrange
+
+        db = DynamoDB(os.environ["TABLE_NAME"])
+        subject = TaskRecord(
+            process_id="38930",
+            process_name="TaskRecord Int Test",
+            task_name="task_00",
+            task_message={"go": "caps!"},
+            db=db,
+        )
+
+        # Act
+        results = subject.fan_out()
+        print(results)
+
+        # Assert
+        added_item = db.get_item({"pk": "PROCESS#38930", "sk": "TASK#task_00"})
+        self.assertEqual(added_item["status"], FAN_OUT)
+
     def test_start__given_valid_object__then_no_exceptions(self):
         # Arrange
         record = {

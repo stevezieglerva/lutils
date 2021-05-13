@@ -31,6 +31,7 @@ class TaskRecordUnitTests(unittest.TestCase):
             task_name=input,
             process_name="proc_name",
             task_message="hi",
+            db="fake",
         )
 
         # Assert
@@ -54,7 +55,9 @@ class TaskRecordUnitTests(unittest.TestCase):
         }
 
         # Act
-        subject = TaskRecord(record_string=json.dumps(record, indent=3, default=str))
+        subject = TaskRecord(
+            db="fake", record_string=json.dumps(record, indent=3, default=str)
+        )
         print(subject)
         print(subject.__dict__)
 

@@ -33,7 +33,6 @@ Resources:
         
 
 
-
   S3TextLinesToSNSLambda:
     Type: AWS::Serverless::Function 
     Properties:
@@ -187,6 +186,7 @@ Resources:
           Properties:
             Topic: !Ref DownloadURLSeleniumSNS
 
+
   FanHandlerLambda:
     Type: AWS::Serverless::Function 
     Properties:
@@ -223,11 +223,11 @@ Resources:
             BatchSize: 100
             StartingPosition: TRIM_HORIZON
 
-  FanHandlerLambdaTest:
+  FanDBStreamHandlerTestLambda:
     Type: AWS::Serverless::Function 
     Properties:
       Description: Responds to inserts or deletes fan in records into the fan in table
-      CodeUri: lutil_fan_handler/
+      CodeUri: lutil_fan_dbstream_handler/
       Handler: app.lambda_handler
       Runtime: python3.7
       Environment:
@@ -250,16 +250,12 @@ Resources:
                 - sns:Publish*
               Resource: !Sub "arn:aws:sns:us-east-1:${AWS::AccountId}:lutil_*"
       Events:
-        SNSEvent:
-          Type: SNS
+        Stream:
+          Type: DynamoDB
           Properties:
-            Topic: !Ref FanEventsTestSNS
-            FilterPolicy:
-              event_name:
-                - "fan_out" 
-                - "task_started"
-                - "task_completed"
-                - "task_error"
+            Stream: !GetAtt FanProcessingPartTestTable.StreamArn
+            BatchSize: 100
+            StartingPosition: TRIM_HORIZON
 
 
   #--------------------------------

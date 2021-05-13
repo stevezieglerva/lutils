@@ -1,4 +1,6 @@
 import json
+from datetime import datetime
+
 from DynamoDB import DynamoDB
 from FanEvent import *
 
@@ -46,6 +48,7 @@ class TaskRecord:
             self.task_message = kwargs["task_message"]
             self.pk = f"PROCESS#{self.process_id}"
             self.sk = f"TASK#{self.task_name}"
+            self.created = datetime.now().isoformat()
 
         self.db = None
         if "db" in kwargs:
@@ -62,6 +65,13 @@ class TaskRecord:
 
     def __repr__(self):
         return str(self)
+
+    def fan_out(self):
+        assert self.db is not None, "Need to pass the db parameter in for DB updates"
+        self.status = FAN_OUT
+        self.status_changed_timestamp = datetime.now().isoformat()
+        print(self.json())
+        self.db.put_item(self.json())
 
     def start(self):
         assert self.db is not None, "Need to pass the db parameter in for DB updates"

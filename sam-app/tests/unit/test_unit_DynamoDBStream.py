@@ -101,19 +101,22 @@ class DynamoDBStreamUnitTests(unittest.TestCase):
         # Assert
         expected = [
             {
-                "key": "Id / 101 #01F5HNBYDQETT083T7QN06SBBS",
+                "Id": "101",
+                "key": "01F5KM1GVRS2P88WA27P84MVJY",
                 "tmsp": "1974-07-12T05:36:00",
                 "action": "INSERT",
                 "changes": "Message: '*' -> 'New item!' | Id: '*' -> '101' | ",
             },
             {
-                "key": "Id / 101 #01F5HNBYDQ5Q1Z4A8GR5714HY2",
+                "Id": "101",
+                "key": "01F5KM1GVRSJP37YD2VYD6E6XQ",
                 "tmsp": "2015-04-08T20:00:00",
                 "action": "UPDATE",
                 "changes": "Message: 'New item!' -> 'This item has changed' | hello: '*' -> 'dude' | ",
             },
             {
-                "key": "Id / 101 #01F5HNBYDQP7085FZ25CE9F8BM",
+                "Id": "101",
+                "key": "01F5KM1GVRDA19MFHMSCXN2G2F",
                 "tmsp": "2015-04-08T20:01:40",
                 "action": "DELETE",
                 "changes": "   -> X",
