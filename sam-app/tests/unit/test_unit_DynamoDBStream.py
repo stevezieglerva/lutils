@@ -124,4 +124,4 @@ class DynamoDBStreamUnitTests(unittest.TestCase):
 
         self.assertEqual(results_no_tsmp, expected_no_tsmp)
 
-        subject.save_to_table("lutils-FanProcessingPartTestTable-1O7DX6QTMG6N8")
+        subject.save_to_table("AUDIT")
