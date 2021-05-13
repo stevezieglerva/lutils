@@ -197,7 +197,7 @@ Resources:
       Environment:
         Variables:
           HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
-          TABLE_NAME: !Ref FanProcessingPartTestTable
+          TABLE_NAME: AUDIT #!Ref FanProcessingPartTestTable
       Tags:
         Type: "lutils"
         Environment: lutils
@@ -206,6 +206,8 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref FanProcessingPartTestTable 
+        - DynamoDBCrudPolicy:
+            TableName: "AUDIT" 
         - Version: 2012-10-17
           Statement:
             - Effect: Allow
