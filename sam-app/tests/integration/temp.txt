@@ -1,0 +1,757 @@
+Updated path:
+[
+   "/Users/sziegler/Documents/GitHub/lutils/sam-app/common_layer/python",
+   "/Users/sziegler/Documents/GitHub/lutils/sam-app/tests/integration",
+   "/Library/Frameworks/Python.framework/Versions/3.7/lib/python37.zip",
+   "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7",
+   "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload",
+   "/Users/sziegler/Documents/GitHub/es-doc-search-loader/venv/lib/python3.7/site-packages"
+]
+Getting data for: BLAST-2021-05-13T12:19:33.253884
+
+
+
+
+************************************
+TASK#task-10 - INSERT
+	task_name: '*' -> 'task-10'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.425229'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.425214'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-10'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-0 - INSERT
+	task_name: '*' -> 'task-0'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.074020'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.074005'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-0'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-1 - INSERT
+	task_name: '*' -> 'task-1'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.188509'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.188494'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-1'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-2 - INSERT
+	task_name: '*' -> 'task-2'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.293558'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.293543'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-2'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-23 - INSERT
+	task_name: '*' -> 'task-23'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.373919'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.373905'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-23'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-24 - INSERT
+	task_name: '*' -> 'task-24'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.489773'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.489757'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-24'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-7 - INSERT
+	task_name: '*' -> 'task-7'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.478215'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.478201'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-7'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-6 - INSERT
+	task_name: '*' -> 'task-6'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.584488'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.584474'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-6'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-4 - INSERT
+	task_name: '*' -> 'task-4'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.663668'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.663643'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-4'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-13 - INSERT
+	task_name: '*' -> 'task-13'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.771265'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.771248'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-13'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-11 - INSERT
+	task_name: '*' -> 'task-11'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.800165'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.800151'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-11'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-3 - INSERT
+	task_name: '*' -> 'task-3'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.811384'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.811368'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-3'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-14 - INSERT
+	task_name: '*' -> 'task-14'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.732787'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.732774'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-14'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-12 - INSERT
+	task_name: '*' -> 'task-12'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.724870'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.724855'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-12'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-16 - INSERT
+	task_name: '*' -> 'task-16'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.770422'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.770407'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-16'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-9 - INSERT
+	task_name: '*' -> 'task-9'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.758824'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.758810'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-9'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-5 - INSERT
+	task_name: '*' -> 'task-5'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.690657'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.690591'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-5'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-22 - INSERT
+	task_name: '*' -> 'task-22'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:22.092626'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:22.092609'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-22'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877242'
+	status: '*' -> 'created'
+	
+TASK#task-20 - INSERT
+	task_name: '*' -> 'task-20'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:22.073813'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:22.073799'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-20'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877242'
+	status: '*' -> 'created'
+	
+TASK#task-21 - INSERT
+	task_name: '*' -> 'task-21'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:22.331460'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:22.331446'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-21'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877242'
+	status: '*' -> 'created'
+	
+TASK#task-18 - INSERT
+	task_name: '*' -> 'task-18'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.923206'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.923191'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-18'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-17 - INSERT
+	task_name: '*' -> 'task-17'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:22.039940'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:22.039924'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-17'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877242'
+	status: '*' -> 'created'
+	
+TASK#task-15 - INSERT
+	task_name: '*' -> 'task-15'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:22.106004'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:22.105990'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-15'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877242'
+	status: '*' -> 'created'
+	
+TASK#task-8 - INSERT
+	task_name: '*' -> 'task-8'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:21.833310'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:21.833296'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-8'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877241'
+	status: '*' -> 'created'
+	
+TASK#task-11 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.800165' -> '2021-05-13T14:47:24.186999'
+	ttl: '9085877241' -> '9085877244'
+	status: 'created' -> 'task_started'
+	
+TASK#task-12 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.815190' -> '2021-05-13T14:47:23.907500'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-10 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.425229' -> '2021-05-13T14:47:23.776143'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-14 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.732787' -> '2021-05-13T14:47:23.907800'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-24 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.489773' -> '2021-05-13T14:47:23.572059'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-3 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.811384' -> '2021-05-13T14:47:24.046908'
+	ttl: '9085877241' -> '9085877244'
+	status: 'created' -> 'task_started'
+	
+TASK#task-2 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.514429' -> '2021-05-13T14:47:23.576210'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-9 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.758824' -> '2021-05-13T14:47:23.819373'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-5 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.690657' -> '2021-05-13T14:47:23.643323'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-13 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.771265' -> '2021-05-13T14:47:24.213212'
+	ttl: '9085877241' -> '9085877244'
+	status: 'created' -> 'task_started'
+	
+TASK#task-7 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.478215' -> '2021-05-13T14:47:23.642994'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-12 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.724870' -> '2021-05-13T14:47:23.815190'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-0 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.074020' -> '2021-05-13T14:47:23.405236'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-17 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:22.039940' -> '2021-05-13T14:47:24.193214'
+	ttl: '9085877242' -> '9085877244'
+	status: 'created' -> 'task_started'
+	
+TASK#task-10 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.776143' -> '2021-05-13T14:47:23.816236'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-19 - INSERT
+	task_name: '*' -> 'task-19'
+	process_id: '*' -> '01F5K34FZAE7HP6G7FAX2NFCMB'
+	status_changed_timestamp: '*' -> '2021-05-13T14:47:22.478371'
+	task_message: '*' -> '"{'iterations': 25, 'max_delay': 3, 'hello': 'burger', 'process_name': 'e2e tests'}"'
+	created: '*' -> '2021-05-13T14:47:22.478355'
+	process_name: '*' -> 'e2e tests'
+	sk: '*' -> 'TASK#task-19'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'PROCESS#01F5K34FZAE7HP6G7FAX2NFCMB'
+	gs1_sk: '*' -> '-'
+	ttl: '*' -> '9085877242'
+	status: '*' -> 'created'
+	
+TASK#task-16 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.770422' -> '2021-05-13T14:47:23.892867'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-1 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.188509' -> '2021-05-13T14:47:23.546693'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-4 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.663668' -> '2021-05-13T14:47:23.955717'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-16 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.892867' -> '2021-05-13T14:47:23.924215'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-8 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.833310' -> '2021-05-13T14:47:23.802193'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-18 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:24.169140' -> '2021-05-13T14:47:24.190884'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-18 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.923206' -> '2021-05-13T14:47:24.169140'
+	ttl: '9085877241' -> '9085877244'
+	status: 'created' -> 'task_started'
+	
+TASK#task-22 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:22.092626' -> '2021-05-13T14:47:24.167880'
+	ttl: '9085877242' -> '9085877244'
+	status: 'created' -> 'task_started'
+	
+TASK#task-6 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.584488' -> '2021-05-13T14:47:23.710493'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-23 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.373919' -> '2021-05-13T14:47:23.408387'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-15 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:22.106004' -> '2021-05-13T14:47:24.261989'
+	ttl: '9085877242' -> '9085877244'
+	status: 'created' -> 'task_started'
+	
+TASK#task-2 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:21.293558' -> '2021-05-13T14:47:23.514429'
+	ttl: '9085877241' -> '9085877243'
+	status: 'created' -> 'task_started'
+	
+TASK#task-20 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:22.073813' -> '2021-05-13T14:47:24.298344'
+	ttl: '9085877242' -> '9085877244'
+	status: 'created' -> 'task_started'
+	
+TASK#task-19 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:24.518073' -> '2021-05-13T14:47:24.518913'
+	status: 'task_completed' -> 'task_started'
+	
+TASK#task-22 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:24.167880' -> '2021-05-13T14:47:25.173189'
+	ttl: '9085877244' -> '9085877245'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-11 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:24.186999' -> '2021-05-13T14:47:25.228817'
+	ttl: '9085877244' -> '9085877245'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-17 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:24.193214' -> '2021-05-13T14:47:25.185620'
+	ttl: '9085877244' -> '9085877245'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-13 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:24.213212' -> '2021-05-13T14:47:25.146237'
+	ttl: '9085877244' -> '9085877245'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-8 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.802193' -> '2021-05-13T14:47:24.833322'
+	ttl: '9085877243' -> '9085877244'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-21 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:22.331460' -> '2021-05-13T14:47:24.451448'
+	ttl: '9085877242' -> '9085877244'
+	status: 'created' -> 'task_started'
+	
+TASK#task-19 - UPDATE
+	process_id: '01F5K34FZAE7HP6G7FAX2NFCMB' -> ''
+	status_changed_timestamp: '2021-05-13T14:47:22.478371' -> '2021-05-13T14:47:24.518073'
+	ttl: '9085877242' -> '9085877244'
+	status: 'created' -> 'task_completed'
+	
+TASK#task-20 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:24.298344' -> '2021-05-13T14:47:26.318296'
+	ttl: '9085877244' -> '9085877246'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-6 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.710493' -> '2021-05-13T14:47:26.738407'
+	ttl: '9085877243' -> '9085877246'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-5 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.643323' -> '2021-05-13T14:47:25.621667'
+	ttl: '9085877243' -> '9085877245'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-3 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:24.046908' -> '2021-05-13T14:47:27.077259'
+	ttl: '9085877244' -> '9085877247'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-21 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:24.451448' -> '2021-05-13T14:47:26.471576'
+	ttl: '9085877244' -> '9085877246'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-9 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.819373' -> '2021-05-13T14:47:26.829101'
+	ttl: '9085877243' -> '9085877246'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-23 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.408387' -> '2021-05-13T14:47:26.389342'
+	ttl: '9085877243' -> '9085877246'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-15 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:24.261989' -> '2021-05-13T14:47:27.286470'
+	ttl: '9085877244' -> '9085877247'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-7 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.642994' -> '2021-05-13T14:47:25.664231'
+	ttl: '9085877243' -> '9085877245'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-1 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.546693' -> '2021-05-13T14:47:26.581891'
+	ttl: '9085877243' -> '9085877246'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-24 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.572059' -> '2021-05-13T14:47:26.588234'
+	ttl: '9085877243' -> '9085877246'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-14 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.907800' -> '2021-05-13T14:47:25.911999'
+	ttl: '9085877243' -> '9085877245'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-4 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.955717' -> '2021-05-13T14:47:26.996937'
+	ttl: '9085877243' -> '9085877246'
+	status: 'task_started' -> 'task_completed'
+	
+TASK#task-0 - UPDATE
+	status_changed_timestamp: '2021-05-13T14:47:23.405236' -> '2021-05-13T14:47:26.423068'
+	ttl: '9085877243' -> '9085877246'
+	status: 'task_started' -> 'task_completed'
+	
+TASK-8 - INSERT
+	sk: '*' -> 'TASK-8'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:21.256643'
+	gs1_sk: '*' -> '-'
+	
+TASK-5 - INSERT
+	sk: '*' -> 'TASK-5'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:21.256643'
+	gs1_sk: '*' -> '-'
+	
+TASK-0 - INSERT
+	sk: '*' -> 'TASK-0'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:21.256643'
+	gs1_sk: '*' -> '-'
+	
+TASK-4 - INSERT
+	sk: '*' -> 'TASK-4'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:21.256643'
+	gs1_sk: '*' -> '-'
+	
+TASK-1 - INSERT
+	sk: '*' -> 'TASK-1'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:21.256643'
+	gs1_sk: '*' -> '-'
+	
+TASK-2 - INSERT
+	sk: '*' -> 'TASK-2'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:21.256643'
+	gs1_sk: '*' -> '-'
+	
+TASK-3 - INSERT
+	sk: '*' -> 'TASK-3'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:21.256643'
+	gs1_sk: '*' -> '-'
+	
+TASK-6 - INSERT
+	sk: '*' -> 'TASK-6'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:21.256643'
+	gs1_sk: '*' -> '-'
+	
+TASK-9 - INSERT
+	sk: '*' -> 'TASK-9'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:21.256643'
+	gs1_sk: '*' -> '-'
+	
+TASK-7 - INSERT
+	sk: '*' -> 'TASK-7'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:21.256643'
+	gs1_sk: '*' -> '-'
+	
+TASK-5 - INSERT
+	sk: '*' -> 'TASK-5'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:33.253884'
+	gs1_sk: '*' -> '-'
+	
+TASK-3 - INSERT
+	sk: '*' -> 'TASK-3'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:33.253884'
+	gs1_sk: '*' -> '-'
+	
+TASK-7 - INSERT
+	sk: '*' -> 'TASK-7'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:33.253884'
+	gs1_sk: '*' -> '-'
+	
+TASK-4 - INSERT
+	sk: '*' -> 'TASK-4'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:33.253884'
+	gs1_sk: '*' -> '-'
+	
+TASK-6 - INSERT
+	sk: '*' -> 'TASK-6'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:33.253884'
+	gs1_sk: '*' -> '-'
+	
+TASK-2 - INSERT
+	sk: '*' -> 'TASK-2'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:33.253884'
+	gs1_sk: '*' -> '-'
+	
+TASK-0 - INSERT
+	sk: '*' -> 'TASK-0'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:33.253884'
+	gs1_sk: '*' -> '-'
+	
+TASK-1 - INSERT
+	sk: '*' -> 'TASK-1'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:33.253884'
+	gs1_sk: '*' -> '-'
+	
+TASK-8 - INSERT
+	sk: '*' -> 'TASK-8'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:33.253884'
+	gs1_sk: '*' -> '-'
+	
+TASK-9 - INSERT
+	sk: '*' -> 'TASK-9'
+	gs1_pk: '*' -> '-'
+	pk: '*' -> 'BLAST-2021-05-13T12:19:33.253884'
+	gs1_sk: '*' -> '-'
+	
+key_condition_exp: pk = :pk AND sk = :sk
+exp_attribute_values_db_format: {':pk': {'S': 'BLAST-2021-05-13T12:19:33.253884'}, ':sk': {'S': 'BLAST-2021-05-13T12:19:33.253884'}}
+[]

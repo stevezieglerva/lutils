@@ -1,14 +1,18 @@
 import json
+from DynamoDB import DynamoDB
+from FanEvent import *
 
 
 class TaskRecord:
     def __init__(self, **kwargs):
 
         kwargs_set = list(kwargs.keys())
+        print(kwargs_set)
         assert sorted(kwargs_set) == sorted(
-            ["process_id", "process_name", "task_name", "task_message"]
-        ) or kwargs_set == [
-            "record_string"
+            ["db", "process_id", "process_name", "task_name", "task_message"]
+        ) or sorted(kwargs_set) == [
+            "db",
+            "record_string",
         ], "keyword arguments must be (record_string) or (process_id, process_name, task_name, and task_message)"
 
         self.pk = ""
@@ -43,12 +47,32 @@ class TaskRecord:
             self.pk = f"PROCESS#{self.process_id}"
             self.sk = f"TASK#{self.task_name}"
 
+        self.db = None
+        if "db" in kwargs:
+            self.db = kwargs["db"]
+
     def json(self):
-        return self.__dict__
+        dict_values = self.__dict__.copy()
+        dict_values.pop("db")
+        return dict_values
 
     def __str__(self):
-        text = json.dumps(self.__dict__, indent=3, default=str)
+        text = json.dumps(self.json(), indent=3, default=str)
         return text
 
     def __repr__(self):
         return str(self)
+
+    def start(self):
+        assert self.db is not None, "Need to pass the db parameter in for DB updates"
+        self.status = TASK_STARTED
+        self.status_changed_timestamp = datetime.now().isoformat()
+        print(self.json())
+        self.db.put_item(self.json())
+
+    def complete(self):
+        assert self.db is not None, "Need to pass the db parameter in for DB updates"
+        self.status = TASK_COMPLETED
+        self.status_changed_timestamp = datetime.now().isoformat()
+        print(self.json())
+        self.db.put_item(self.json())

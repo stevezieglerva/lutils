@@ -113,6 +113,10 @@ class DynamoDB:
         print(f"key_condition_exp: {key_condition_exp}")
         return self._query_table_by_operator(key, key_condition_exp)
 
+    def scan_full(self):
+        scan_results = self._db.scan(TableName=self.table_name)
+        return self.convert_list_from_dynamodb_format(scan_results)
+
     def _query_table_by_operator(self, key, key_condition_exp):
         assert type(key) == dict, "Expecting key to be of type dict"
         exp_attribute_values = key
