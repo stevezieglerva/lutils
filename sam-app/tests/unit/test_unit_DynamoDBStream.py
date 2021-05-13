@@ -93,10 +93,35 @@ class DynamoDBStreamUnitTests(unittest.TestCase):
 
     def test_get_formated_changes_json__given_event__then_results_correct(self):
         # Arrange
-        subject = DynamoDBStream(EVENT)
 
         # Act
-        results = subject.get_formated_changes_json()
-        print(json.dumps(results, indent=3, default=str))
+        subject = DynamoDBStream(EVENT)
+        print(json.dumps(subject.changes, indent=3, default=str))
 
         # Assert
+        expected = [
+            {
+                "key": "Id / 101 #01F5HNBYDQETT083T7QN06SBBS",
+                "tmsp": "1974-07-12T05:36:00",
+                "action": "INSERT",
+                "changes": "Message: '*' -> 'New item!' | Id: '*' -> '101' | ",
+            },
+            {
+                "key": "Id / 101 #01F5HNBYDQ5Q1Z4A8GR5714HY2",
+                "tmsp": "2015-04-08T20:00:00",
+                "action": "UPDATE",
+                "changes": "Message: 'New item!' -> 'This item has changed' | hello: '*' -> 'dude' | ",
+            },
+            {
+                "key": "Id / 101 #01F5HNBYDQP7085FZ25CE9F8BM",
+                "tmsp": "2015-04-08T20:01:40",
+                "action": "DELETE",
+                "changes": "   -> X",
+            },
+        ]
+        expected_no_tsmp = [i.pop("tmsp") for i in expected]
+        results_no_tsmp = [i.pop("tmsp") for i in subject.changes]
+
+        self.assertEqual(results_no_tsmp, expected_no_tsmp)
+
+        subject.save_to_table("lutils-FanProcessingPartTestTable-1O7DX6QTMG6N8")

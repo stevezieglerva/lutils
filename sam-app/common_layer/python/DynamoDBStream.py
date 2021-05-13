@@ -1,21 +1,24 @@
+import json
 from datetime import datetime
+
 import ulid
+from DynamoDB import DynamoDB
 
 
 class DynamoDBStream:
     def __init__(self, stream_event):
         self.stream_event = stream_event
-        pass
+        self.changes = []
+        self._set_formated_changes_json()
 
     def __str__(self):
-        text = ""
+        text = json.dumps(self.changes, indent=3, default=str)
         return text
 
     def __repr__(self):
         return str(self)
 
-    def get_formated_changes_json(self):
-        results = []
+    def _set_formated_changes_json(self):
         for record in self.stream_event["Records"]:
             new_item = {}
             primary_key_string = ""
@@ -38,12 +41,10 @@ class DynamoDBStream:
             changes = ""
             if new_image != None:
                 for k, dynamodb_v in new_image.items():
-                    print(f"processing {k}")
                     new_value = list(dynamodb_v.values())[0]
                     old_value = "*"
                     if old_image != None:
                         if k in old_image:
-                            print(old_image[k])
                             old_value = list(old_image[k].values())[0]
 
                     if old_value != new_value:
@@ -52,8 +53,7 @@ class DynamoDBStream:
             else:
                 changes = "   -> X"
             new_item["changes"] = changes
-            results.append(new_item)
-        return results
+            self.changes.append(new_item)
 
     def _determine_action(self, old_image, new_image):
         if old_image and new_image:
@@ -61,3 +61,10 @@ class DynamoDBStream:
         elif old_image:
             return "DELETE"
         return "INSERT"
+
+    def save_to_table(self, table_name):
+        db = DynamoDB(table_name)
+        for change in self.changes:
+            change["pk"] = "CHANGE#" + change["key"]
+            change["sk"] = change["key"]
+            db.put_item(change)
