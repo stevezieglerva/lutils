@@ -23,10 +23,10 @@ class TaskUpdateProcessor:
 
     def _process_fan_out(self, task):
         process_record = ProcessRecord(
-            process_id=task.process_id, process_name=task.process_name
+            process_id=task.process_id, process_name=task.process_name, db=task.db
         )
 
-        self._put_db_item(process_record.json)
+        self._save_process(process_record)
         print("process record added:")
         print(process_record)
 
@@ -36,5 +36,5 @@ class TaskUpdateProcessor:
     def _publish_next_event(self, event_name, message_json):
         return self.publisher.publish_event(event_name, message_json)
 
-    def _put_db_item(self, item):
-        return self.db.put_item(item)
+    def _save_process(self, process):
+        return process.save()

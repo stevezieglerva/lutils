@@ -7,12 +7,13 @@ PLACEHOLDER_INDEX_FIELD_VALUE = "-"
 class ProcessRecord:
     def __init__(self, **kwargs):
 
-        kwargs_set = list(kwargs.keys())
-        assert sorted(kwargs_set) == sorted(
-            ["process_id", "process_name"]
+        kwargs_set = sorted(list(kwargs.keys()))
+        assert kwargs_set == sorted(
+            ["db", "process_id", "process_name"]
         ) or kwargs_set == [
-            "record_string"
-        ], "keyword arguments must be (record_string) or (process_id, process_name)"
+            "db",
+            "record_string",
+        ], "keyword arguments must be (db, record_string) or (db, process_id, process_name)"
 
         self.pk = ""
         self.sk = ""
@@ -23,6 +24,7 @@ class ProcessRecord:
         self.started = ""
         self.ended = ""
         self.progress = 0
+        self.db = None
         if "process_name" in kwargs and "process_id" in kwargs:
             self.process_id = kwargs["process_id"]
             self.process_name = kwargs["process_name"]
@@ -30,6 +32,7 @@ class ProcessRecord:
             self.sk = self.pk
             self.started = datetime.now().isoformat()
             self.progress = 0
+            self.db = kwargs["db"]
         if "record_string" in kwargs:
             record_json = json.loads(kwargs["record_string"])
             self.pk = record_json["pk"]
@@ -41,6 +44,7 @@ class ProcessRecord:
             self.progress = float(record_json["progress"])
             self.started = record_json["started"]
             self.ended = record_json["ended"]
+            self.db = kwargs["db"]
             self_properties = vars(self)
             for k, v in self_properties.items():
                 if type(v) == str:
@@ -48,7 +52,9 @@ class ProcessRecord:
                         raise ValueError(f"Missing value for {k} in json")
 
     def json(self):
-        return self.__dict__
+        dict_values = self.__dict__.copy()
+        dict_values.pop("db")
+        return dict_values
 
     def __str__(self):
         text = json.dumps(self.__dict__, indent=3, default=str)
@@ -56,3 +62,6 @@ class ProcessRecord:
 
     def __repr__(self):
         return str(self)
+
+    def save(self):
+        self.db.put_item(self.json())

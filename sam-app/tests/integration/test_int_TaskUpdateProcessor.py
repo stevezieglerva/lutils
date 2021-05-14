@@ -20,30 +20,33 @@ from common_layer.python.TaskUpdateProcessor import *
 from common_layer.python.TaskRecord import *
 
 
+def get_output_from_stack(output_key):
+    cloudformation = boto3.client("cloudformation")
+    stacks = cloudformation.describe_stacks(StackName="lutils2")
+    stack_outputs = stacks["Stacks"][0]["Outputs"]
+    s3_bucket = ""
+    for output in stack_outputs:
+        if output["OutputKey"] == output_key:
+            output_value = output["OutputValue"]
+            break
+    return output_value
+
+
 class TaskUpdateProcessorUnitTests(unittest.TestCase):
-    def test_constructor__given_valid_input__then_no_exceptions(self):
-        # Arrange
-        publisher = FanEventPublisher("test_event_source", "fake-topic")
-
-        # Act
-        subject = TaskUpdateProcessor(publisher)
-
-        # Assert
-        self.assertEqual(subject.publisher, publisher)
-
     def test_process__given_newly_created_fan_out__then_create_new_process_and_notify(
         self,
     ):
         # Arrange
-        publisher = FanEventPublisher("test_event_source", "fake-topic")
+        sns_arn = get_output_from_stack("FanEventsTestSNS")
+        publisher = FanEventPublisher("TaskUpdateProcessorUnitTests", sns_arn)
 
         subject = TaskUpdateProcessor(publisher)
         record = {
-            "pk": "PROCESS#777",
+            "pk": "PROCESS#888",
             "sk": "TASK#93020939F",
             "gs1_pk": "-",
             "gs1_sk": "",
-            "process_id": "777",
+            "process_id": "888",
             "process_name": "keyword blast",
             "status": "fan_out",
             "task_name": "document-2",
@@ -51,25 +54,20 @@ class TaskUpdateProcessorUnitTests(unittest.TestCase):
             "created": "2021",
             "task_message": {"hello": "world"},
         }
+
+        table_name = get_output_from_stack("FanProcessingPartTestTableName")
+        db = DynamoDB(table_name)
         new_fan_out_task = TaskRecord(
             record_string=json.dumps(record, indent=3, default=str),
-            db="fake",
+            db=db,
         )
 
         # Act
-        with mock.patch(
-            "common_layer.python.TaskUpdateProcessor.TaskUpdateProcessor._save_process",
-            mock.MagicMock(return_value="db_update_made"),
-        ):
-            with mock.patch(
-                "common_layer.python.TaskUpdateProcessor.TaskUpdateProcessor._publish_next_event",
-                mock.MagicMock(return_value={"sns_sent": "yes"}),
-            ):
-                results = subject.process_task(new_fan_out_task)
-                print(json.dumps(results, indent=3, default=str))
+        results = subject.process_task(new_fan_out_task)
+        print(json.dumps(results, indent=3, default=str))
 
         # Assert
-        self.assertEqual(results["process_record"]["pk"], "PROCESS#777")
+        self.assertEqual(results["process_record"]["pk"], "PROCESS#888")
         self.assertEqual(results["event"], {"sns_sent": "yes"})
 
 
