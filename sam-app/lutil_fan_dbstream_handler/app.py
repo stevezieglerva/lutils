@@ -12,6 +12,7 @@ from aws_lambda_powertools import Metrics
 from aws_lambda_powertools.metrics import MetricUnit
 from FanEvent import FanEvent
 from DynamoDBStream import DynamoDBStream
+from DynamoDB import DynamoDB
 from TaskUpdateProcessor import TaskUpdateProcessor
 
 metrics = Metrics()

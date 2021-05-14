@@ -1,7 +1,8 @@
 from TaskRecord import TaskRecord
+from DynamoDB import DynamoDB
 
 
-class DBStreamTaskUpdateProcessor:
+class DBStreamTaskUpdateProcessorAdapter:
     def __init__(self):
         pass
 

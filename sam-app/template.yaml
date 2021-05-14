@@ -280,7 +280,7 @@ Resources:
         - !Ref Common
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref FanProcessingTableTest 
+            TableName: !Ref FanProcessingPartTestTable 
         - Version: 2012-10-17
           Statement:
             - Effect: Allow
