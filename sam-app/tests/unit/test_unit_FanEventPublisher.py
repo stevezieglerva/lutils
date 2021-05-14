@@ -42,6 +42,7 @@ class FanEventPublisherUnitTests(unittest.TestCase):
             process_name="procA",
             task_name="#1",
             task_message={"hello": "world"},
+            db="fake",
         )
 
         # Act

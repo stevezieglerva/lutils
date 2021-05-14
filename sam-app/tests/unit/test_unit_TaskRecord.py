@@ -46,6 +46,7 @@ class TaskRecordUnitTests(unittest.TestCase):
             "sk": "TASK#93020939F",
             "gs1_pk": "-",
             "gs1_sk": "-",
+            "process_id": "1819-00",
             "process_name": "keyword blast",
             "status": "created",
             "task_name": "document-2",

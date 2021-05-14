@@ -26,7 +26,7 @@ class ProcessRecordUnitTests(unittest.TestCase):
         input = "keyword blast"
 
         # Act
-        subject = ProcessRecord(process_id="123", process_name=input)
+        subject = ProcessRecord(process_id="123", process_name=input, db="fake")
 
         # Assert
         self.assertEqual(subject.process_name, input)
@@ -48,7 +48,9 @@ class ProcessRecordUnitTests(unittest.TestCase):
         }
 
         # Act
-        subject = ProcessRecord(record_string=json.dumps(record, indent=3, default=str))
+        subject = ProcessRecord(
+            record_string=json.dumps(record, indent=3, default=str), db="fake"
+        )
         print(subject)
         print(subject.__dict__)
 
