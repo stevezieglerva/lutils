@@ -61,12 +61,16 @@ class TaskUpdateProcessorUnitTests(unittest.TestCase):
             "common_layer.python.TaskUpdateProcessor.TaskUpdateProcessor._put_db_item",
             mock.MagicMock(return_value="db_update_made"),
         ):
-            results = subject.process_task(new_fan_out_task)
-            print(json.dumps(results, indent=3, default=str))
+            with mock.patch(
+                "common_layer.python.TaskUpdateProcessor.TaskUpdateProcessor._publish_next_event",
+                mock.MagicMock(return_value={"sns_sent": "yes"}),
+            ):
+                results = subject.process_task(new_fan_out_task)
+                print(json.dumps(results, indent=3, default=str))
 
         # Assert
         self.assertEqual(results["process_record"]["pk"], "PROCESS#1819-00")
-        self.assertEqual(results["event"], {})
+        self.assertEqual(results["event"], {"sns_sent": "yes"})
 
 
 if __name__ == "__main__":
