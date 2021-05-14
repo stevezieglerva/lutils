@@ -421,33 +421,22 @@ Resources:
   ################################
   S3FilenamesSNS:
     Type: AWS::SNS::Topic
-    Properties: 
-      DisplayName: "lutils2_s3_filenames_output"
-      TopicName: "lutils2s3_filenames_output"
 
   DownloadURLSNS:
     Type: AWS::SNS::Topic
-    Properties: 
-      DisplayName: !Sub "lutils2_s3_text_lines_output"
-      TopicName: !Sub "lutils2_s3_text_lines_output"
+
 
   DownloadURLSeleniumSNS:
     Type: AWS::SNS::Topic
-    Properties: 
-      DisplayName: !Sub "lutils2_s3_text_lines_output_selenium"
-      TopicName: !Sub "lutils2_s3_text_lines_output_selenium"
+
 
   FanEventsSNS:
     Type: AWS::SNS::Topic
-    Properties: 
-      DisplayName: !Sub "lutils2_fan_events"
-      TopicName: !Sub "lutils2_fan_events"
+
 
   FanEventsTestSNS:
     Type: AWS::SNS::Topic
-    Properties: 
-      DisplayName: !Sub "lutils2_fan_events_test"
-      TopicName: !Sub "lutils2_fan_events_test"
+
 
 
   ################################
