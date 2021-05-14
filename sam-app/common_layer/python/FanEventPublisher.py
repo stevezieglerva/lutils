@@ -18,14 +18,6 @@ class FanEventPublisher:
     def generate_process_id(self):
         return str(ULID())
 
-    def fan_out(self, task):
-        event = FanEvent(
-            event_source=self.event_source, event_name=FAN_OUT, message=task.json()
-        )
-        result = self._publish_sns(event)
-        print(result)
-        return event
-
     def publish_event(self, event_name, message_json):
         new_event = FanEvent(
             event_source=self.event_source, event_name=event_name, message=message_json

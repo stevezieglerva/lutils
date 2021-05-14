@@ -34,7 +34,9 @@ def get_sns_arn_from_stack(output_key):
 class ProducerIntTests(unittest.TestCase):
     def test_lambda_handler__then_no_exception(self):
         # Arrange
-        os.environ["HANDLER_SNS_TOPIC_ARN"] = get_sns_arn_from_stack("FanEventsTestSNS")
+        os.environ["TABLE_NAME"] = get_sns_arn_from_stack(
+            "FanProcessingPartTestTableName"
+        )
 
         # Act
         results = app.lambda_handler({}, {})
