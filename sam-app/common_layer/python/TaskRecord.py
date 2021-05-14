@@ -35,6 +35,7 @@ class TaskRecord:
             self.sk = record_json["sk"]
             self.gs1_pk = record_json["gs1_pk"]
             self.gs1_sk = record_json["gs1_sk"]
+            self.process_id = record_json["process_id"]
             self.process_name = record_json["process_name"]
             self.task_name = record_json["task_name"]
             self.task_message = record_json["task_message"]

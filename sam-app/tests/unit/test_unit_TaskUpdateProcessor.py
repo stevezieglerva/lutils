@@ -21,26 +21,29 @@ from common_layer.python.TaskRecord import *
 
 
 class TaskUpdateProcessorUnitTests(unittest.TestCase):
-    def test_constructor__given_valid_dict_input__then_no_exceptions(self):
+    def test_constructor__given_valid_input__then_no_exceptions(self):
         # Arrange
+        publisher = FanEventPublisher("test_event_source", "fake-topic")
 
         # Act
-        subject = TaskUpdateProcessor("sns-topic-name-fake", "table-name-fake")
+        subject = TaskUpdateProcessor(publisher)
 
         # Assert
-        self.assertEqual(subject.sns_topic_name, "sns-topic-name-fake")
-        self.assertEqual(subject.table_name, "table-name-fake")
+        self.assertEqual(subject.publisher, publisher)
 
     def test_process__given_newly_created_fan_out__then_create_new_process_and_notify(
         self,
     ):
         # Arrange
-        subject = TaskUpdateProcessor("sns-topic-name-fake", "table-name-fake")
+        publisher = FanEventPublisher("test_event_source", "fake-topic")
+
+        subject = TaskUpdateProcessor(publisher)
         record = {
             "pk": "PROCESS#1819-00",
             "sk": "TASK#93020939F",
             "gs1_pk": "-",
-            "gs1_sk": "-",
+            "gs1_sk": "",
+            "process_id": "1819-00",
             "process_name": "keyword blast",
             "status": "fan_out",
             "task_name": "document-2",
@@ -54,10 +57,15 @@ class TaskUpdateProcessorUnitTests(unittest.TestCase):
         )
 
         # Act
-        results = subject.process_task(new_fan_out_task)
+        with mock.patch(
+            "common_layer.python.TaskUpdateProcessor.TaskUpdateProcessor._put_db_item",
+            mock.MagicMock(return_value="db_update_made"),
+        ):
+            results = subject.process_task(new_fan_out_task)
+            print(json.dumps(results, indent=3, default=str))
 
         # Assert
-        self.assertEqual(results["process_record"], {})
+        self.assertEqual(results["process_record"]["pk"], "PROCESS#1819-00")
         self.assertEqual(results["event"], {})
 
 
