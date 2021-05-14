@@ -72,6 +72,47 @@ class TaskUpdateProcessorUnitTests(unittest.TestCase):
         self.assertEqual(results["process_record"]["pk"], "PROCESS#777")
         self.assertEqual(results["event"], {"sns_sent": "yes"})
 
+    def test_process__given_newly_started__then_nothing_processed(
+        self,
+    ):
+        # Arrange
+        publisher = FanEventPublisher("test_event_source", "fake-topic")
+
+        subject = TaskUpdateProcessor(publisher)
+        record = {
+            "pk": "PROCESS#777",
+            "sk": "TASK#93020939F",
+            "gs1_pk": "-",
+            "gs1_sk": "",
+            "process_id": "777",
+            "process_name": "keyword blast",
+            "status": "task_stared",
+            "task_name": "document-2",
+            "status_changed_timestamp": "2021",
+            "created": "2021",
+            "task_message": {"hello": "world"},
+        }
+        new_fan_out_task = TaskRecord(
+            record_string=json.dumps(record, indent=3, default=str),
+            db="fake",
+        )
+
+        # Act
+        with mock.patch(
+            "common_layer.python.TaskUpdateProcessor.TaskUpdateProcessor._save_process",
+            mock.MagicMock(return_value="db_update_made"),
+        ):
+            with mock.patch(
+                "common_layer.python.TaskUpdateProcessor.TaskUpdateProcessor._publish_next_event",
+                mock.MagicMock(return_value={"sns_sent": "yes"}),
+            ):
+                results = subject.process_task(new_fan_out_task)
+                print(json.dumps(results, indent=3, default=str))
+
+        # Assert
+        self.assertEqual(results["process_record"], {})
+        self.assertEqual(results["event"], {})
+
 
 if __name__ == "__main__":
     unittest.main()

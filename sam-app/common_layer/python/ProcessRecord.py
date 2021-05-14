@@ -3,6 +3,8 @@ from datetime import datetime
 
 PLACEHOLDER_INDEX_FIELD_VALUE = "-"
 
+from FanEvent import *
+
 
 class ProcessRecord:
     def __init__(self, **kwargs):
@@ -65,3 +67,27 @@ class ProcessRecord:
 
     def save(self):
         self.db.put_item(self.json())
+
+    def update_process_record_based_on_completions(self):
+        # check if all tasks completed
+        process_tasks_list = self._get_all_tasks_for_process()
+        print("all tasks:")
+        print(json.dumps(process_tasks_list, indent=3, default=str))
+        progress = self._calculate_progress(process_tasks_list)
+        print(f"Progress: {progress}")
+
+        self.progress = progress
+        if self.progress == 1.0:
+            self.ended = datetime.now().isoformat()
+        self.save()
+
+    def _calculate_progress(self, process_task_list):
+        total_tasks = len(process_task_list)
+        completed_tasks = [
+            t for t in process_task_list if t["status"] == TASK_COMPLETED
+        ]
+        completed_count = len(completed_tasks)
+        return float(completed_count / total_tasks)
+
+    def _get_all_tasks_for_process(self):
+        return self.db.query_table_begins({"pk": self.pk, "sk": "TASK"})
