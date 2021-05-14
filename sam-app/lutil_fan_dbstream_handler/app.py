@@ -20,6 +20,22 @@ metrics = Metrics()
 def lambda_handler(event, context):
     print(event)
 
+    db_table = os.environ.get("TABLE_NAME", "")
+    if db_table == "":
+        raise ValueError(f"Missing env variable for TABLE_NAME")
+    dynamodb = DynamoDB(db_table)
+    seconds_in_24_hours = 60 * 60 * 24
+    dynamodb.set_ttl_seconds(seconds_in_24_hours)
+
+    EVENT_SOURCE = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "lambda")
+
+    handler_sns_topic_arn = os.environ.get("HANDLER_SNS_TOPIC_ARN", "")
+    if handler_sns_topic_arn == "":
+        raise ValueError(f"Missing env variable for HANDLER_SNS_TOPIC_ARN")
+    publisher = FanEventPublisher(EVENT_SOURCE, handler_sns_topic_arn)
+
+
+
     stream_data = DynamoDBStream(event)
     print("Changes:")
     print(stream_data)
