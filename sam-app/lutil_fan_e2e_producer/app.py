@@ -3,7 +3,7 @@ import json
 import os
 import sys
 import time
-import uuid
+import ulid
 from datetime import datetime
 
 import boto3
