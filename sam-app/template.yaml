@@ -422,8 +422,8 @@ Resources:
   S3FilenamesLSNS:
     Type: AWS::SNS::Topic
     Properties: 
-      DisplayName: !Sub "{AWS::StackName}_s3_filenames_output"
-      TopicName: !Sub "{AWS::StackName}_s3_filenames_output"
+      DisplayName: "lutils2_s3_filenames_output"
+      TopicName: "lutils2_s3_filenames_output"
 
   DownloadURLSNS:
     Type: AWS::SNS::Topic
