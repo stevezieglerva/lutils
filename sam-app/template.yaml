@@ -419,35 +419,35 @@ Resources:
   ################################
   ### SNS
   ################################
-  S3FilenamesLSNS:
+  S3FilenamesSNS:
     Type: AWS::SNS::Topic
     Properties: 
-      DisplayName: "lutils2_s3_filenames_output"
-      TopicName: "lutils2_s3_filenames_output"
+      DisplayName: "${AWS::StackName}_s3_filenames_output"
+      TopicName: "${AWS::StackName}_s3_filenames_output"
 
   DownloadURLSNS:
     Type: AWS::SNS::Topic
     Properties: 
-      DisplayName: !Sub "{AWS::StackName}_s3_text_lines_output"
-      TopicName: !Sub "{AWS::StackName}_s3_text_lines_output"
+      DisplayName: !Sub "${AWS::StackName}_s3_text_lines_output"
+      TopicName: !Sub "${AWS::StackName}_s3_text_lines_output"
 
   DownloadURLSeleniumSNS:
     Type: AWS::SNS::Topic
     Properties: 
-      DisplayName: !Sub "{AWS::StackName}_s3_text_lines_output_selenium"
-      TopicName: !Sub "{AWS::StackName}_s3_text_lines_output_selenium"
+      DisplayName: !Sub "${AWS::StackName}_s3_text_lines_output_selenium"
+      TopicName: !Sub "${AWS::StackName}_s3_text_lines_output_selenium"
 
   FanEventsSNS:
     Type: AWS::SNS::Topic
     Properties: 
-      DisplayName: !Sub "{AWS::StackName}_fan_events"
-      TopicName: !Sub "{AWS::StackName}_fan_events"
+      DisplayName: !Sub "${AWS::StackName}_fan_events"
+      TopicName: !Sub "${AWS::StackName}_fan_events"
 
   FanEventsTestSNS:
     Type: AWS::SNS::Topic
     Properties: 
-      DisplayName: !Sub "{AWS::StackName}_fan_events_test"
-      TopicName: !Sub "{AWS::StackName}_fan_events_test"
+      DisplayName: !Sub "${AWS::StackName}_fan_events_test"
+      TopicName: !Sub "${AWS::StackName}_fan_events_test"
 
 
   ################################
