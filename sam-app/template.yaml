@@ -320,7 +320,7 @@ Resources:
             - Effect: Allow
               Action: 
                 - dynamodb:DescribeTable
-              Resource: !Sub "arn:aws:dynamodb:us-east-1:${AWS::AccountId}:${AWS::StackName}*"
+              Resource: !Sub "arn:aws:dynamodb:us-east-1:${AWS::AccountId}:table/${AWS::StackName}*"
       Events:
         SNSEvent:
           Type: SNS
