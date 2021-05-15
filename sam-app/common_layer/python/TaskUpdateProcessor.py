@@ -26,6 +26,7 @@ class TaskUpdateProcessor:
         return results
 
     def _process_fan_out(self, task):
+        print(f"processing fan out for {task.pk}/{task.sk}/{task.status}")
         process_record = ProcessRecord(
             process_id=task.process_id, process_name=task.process_name, db=task.db
         )
@@ -38,6 +39,7 @@ class TaskUpdateProcessor:
         return (process_record, event)
 
     def _process_task_completed(self, task):
+        print(f"processing completed for {task.pk}/{task.sk}/{task.status}")
         process_record = ProcessRecord(
             process_id=task.process_id, process_name=task.process_name, db=task.db
         )
