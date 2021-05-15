@@ -40,7 +40,7 @@ class DBStreamAdapter:
         return False
 
     def _is_newly_completed_task(self, single_event):
-        if single_event["eventName"] == "INSERT" and single_event["dynamodb"][
+        if single_event["eventName"] == "UPDATE" and single_event["dynamodb"][
             "NewImage"
         ]["sk"]["S"].startswith("TASK"):
             if single_event["dynamodb"]["NewImage"]["status"]["S"] == TASK_COMPLETED:
