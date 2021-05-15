@@ -84,7 +84,7 @@ class DynamoDB:
     def convert_list_from_dynamodb_format(self, query_results):
         converted_results = []
         for item in query_results["Items"]:
-            converted_results.append(self._convert_from_dict_format(item))
+            converted_results.append(self.convert_from_dict_format(item))
         return converted_results
 
     def get_item(self, key):

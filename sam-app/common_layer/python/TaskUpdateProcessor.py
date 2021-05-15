@@ -41,10 +41,7 @@ class TaskUpdateProcessor:
         process_record = ProcessRecord(
             process_id=task.process_id, process_name=task.process_name, db=task.db
         )
-
-        self._save_process(process_record)
-        print("process record added:")
-        print(process_record)
+        process_record.update_process_record_based_on_completions()
 
         event = self._publish_next_event(TASK_CREATED, task.json())
         return (process_record, event)
