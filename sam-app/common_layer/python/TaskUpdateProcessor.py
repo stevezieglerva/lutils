@@ -45,7 +45,7 @@ class TaskUpdateProcessor:
         )
         process_record.update_process_record_based_on_completions()
 
-        event = self._publish_next_event(TASK_CREATED, task.json())
+        event = self._publish_next_event(PROCESS_COMPLETED, task.json())
         return (process_record, event)
 
     def _publish_next_event(self, event_name, message_json):
