@@ -19,9 +19,10 @@ from unittest import mock
 from lutil_fan_e2e_consumer import app
 from TaskRecord import TaskRecord
 from FanEvent import *
+from DynamoDB import DynamoDB
 
 
-def get_sns_arn_from_stack(output_key):
+def get_output_from_stack(output_key):
     cloudformation = boto3.client("cloudformation")
     stacks = cloudformation.describe_stacks(StackName="lutils")
     stack_outputs = stacks["Stacks"][0]["Outputs"]
@@ -32,6 +33,10 @@ def get_sns_arn_from_stack(output_key):
             break
     return output_value
 
+
+table_name = get_output_from_stack("FanProcessingPartTestTableName")
+os.environ["TABLE_NAME"] = table_name
+db = DynamoDB(table_name)
 
 task_json = {
     "process_id": "2e7d2b96-ae10-11eb-b5ab-acde48001122",
@@ -48,8 +53,12 @@ task_json = {
     "status_changed_timestamp": "2021-05-06T02:10:10.577068",
 }
 
-task = TaskRecord(record_string=json.dumps(task_json, indent=3, default=str))
-event = FanEvent(event_source="e2e tests", event_name=TASK_CREATED, message=task.json())
+task = TaskRecord(record_string=json.dumps(task_json, indent=3, default=str), db=db)
+task.fan_out()
+
+event = FanEvent(
+    event_source="test consumer", event_name="task_created", message=task.json()
+)
 
 TASK_CREATED = {
     "Records": [
@@ -82,7 +91,6 @@ TASK_CREATED = {
 class ConsumerIntTests(unittest.TestCase):
     def test_lambda_handler__then_no_exception(self):
         # Arrange
-        os.environ["HANDLER_SNS_TOPIC_ARN"] = get_sns_arn_from_stack("FanEventsTestSNS")
 
         # Act
         results = app.lambda_handler(TASK_CREATED, {})

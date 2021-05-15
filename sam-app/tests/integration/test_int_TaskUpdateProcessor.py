@@ -70,43 +70,6 @@ class TaskUpdateProcessorUnitTests(unittest.TestCase):
         self.assertEqual(results["process_record"]["pk"], "PROCESS#888")
         self.assertTrue("MessageId" in results["event"])
 
-    def test_process__given_newly_completed_task__then_progress_updated(
-        self,
-    ):
-        # Arrange
-        id = str(ulid.ULID())
-        sns_arn = get_output_from_stack("FanEventsTestSNS")
-        publisher = FanEventPublisher("TaskUpdateProcessorUnitTests", sns_arn)
-
-        subject = TaskUpdateProcessor(publisher)
-        record = {
-            "pk": f"PROCESS#{id}",
-            "sk": "TASK#93020939F",
-            "gs1_pk": "-",
-            "gs1_sk": "",
-            "process_id": id,
-            "process_name": "keyword blast",
-            "status": "task_completed",
-            "task_name": "document-2",
-            "status_changed_timestamp": "2021",
-            "created": "2021",
-            "task_message": {"hello": "world"},
-        }
-
-        table_name = get_output_from_stack("FanProcessingPartTestTableName")
-        db = DynamoDB(table_name)
-        new_fan_out_task = TaskRecord(
-            record_string=json.dumps(record, indent=3, default=str),
-            db=db,
-        )
-
-        # Act
-        results = subject.process_task(new_fan_out_task)
-        print(json.dumps(results, indent=3, default=str))
-
-        # Assert
-        self.assertEqual(results["process_record"]["pk"], record["pk"])
-
 
 if __name__ == "__main__":
     unittest.main()
