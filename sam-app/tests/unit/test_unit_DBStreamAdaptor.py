@@ -18,11 +18,13 @@ print(json.dumps(sys.path, indent=3))
 
 import unittest
 from unittest import mock
+from moto import mock_dynamodb2, mock_sns
 
 from common_layer.python.TaskUpdateProcessor import *
 from common_layer.python.TaskRecord import *
+from common_layer.python.FanEventPublisher import FanEventPublisher
 
-from lutil_fan_dbstream_handler import DBStreamTaskUpdateProcessorAdapter
+from lutil_fan_dbstream_handler.DBStreamAdapter import DBStreamAdapter
 
 
 EVENT_FAN_OUT = {
@@ -62,16 +64,45 @@ EVENT_FAN_OUT = {
 }
 
 
-class DBStreamTaskUpdateProcessorAdapterUnitTests(unittest.TestCase):
+class DBStreamAdapterUnitTests(unittest.TestCase):
+    @mock_sns
+    @mock_dynamodb2
     def test_constructor__given_valid_input__then_no_exceptions(self):
         # Arrange
-        subject = DBStreamTaskUpdateProcessorAdapter()
+        table_name = "fake-table"
+        db = boto3.client("dynamodb")
+        db.create_table(
+            TableName=table_name,
+            KeySchema=[
+                {"AttributeName": "pk", "KeyType": "HASH"},
+                {"AttributeName": "sk", "KeyType": "RANGE"},
+            ],
+            AttributeDefinitions=[
+                {"AttributeName": "pk", "AttributeType": "S"},
+                {"AttributeName": "sk", "AttributeType": "S"},
+            ],
+            ProvisionedThroughput={"ReadCapacityUnits": 10, "WriteCapacityUnits": 10},
+        )
+
+        db = DynamoDB("fake-table")
+
+        sns = boto3.client("sns")
+        sns_resp = sns.create_topic(Name="fake-sns")
+        print(sns_resp)
+        topic_arn = sns_resp["TopicArn"]
+        publisher = FanEventPublisher("DBStreamAdapterUnitTests", topic_arn)
+        subject = DBStreamAdapter(db, publisher)
 
         # Act
-        results = subject.process_event(EVENT_FAN_OUT)
+        results = subject.process_single_event(EVENT_FAN_OUT["Records"][0])
+        print(json.dumps(results, indent=3, default=str))
 
         # Assert
-        self.assertEqual(results, "")
+        self.assertEqual(
+            results["process_record"]["pk"], "PROCESS#01F5PA2EMNDQ9YJ0WGGC4KDMNW"
+        )
+        self.assertEqual(results["process_record"]["progress"], 0)
+        self.assertTrue("MessageId" in results["event"])
 
 
 if __name__ == "__main__":

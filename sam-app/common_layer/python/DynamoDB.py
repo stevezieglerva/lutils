@@ -56,9 +56,9 @@ class DynamoDB:
         return results
 
     def convert_from_dynamodb_format(self, db_record):
-        return self._convert_from_dict_format(db_record["Item"])
+        return self.convert_from_dict_format(db_record["Item"])
 
-    def _convert_from_dict_format(self, dict):
+    def convert_from_dict_format(self, dict):
         results = {}
         for k, v in dict.items():
             field_name = k

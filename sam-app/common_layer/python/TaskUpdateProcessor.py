@@ -29,7 +29,7 @@ class TaskUpdateProcessor:
         process_record = ProcessRecord(
             process_id=task.process_id, process_name=task.process_name, db=task.db
         )
-
+        print(f"adding process record: {process_record}")
         self._save_process(process_record)
         print("process record added:")
         print(process_record)
