@@ -67,15 +67,16 @@ class DynamoDB:
                 field_value = sub_v
                 # try to convert to dict
                 if type == "S":
-                    try:
-                        json_str = field_value.replace("'", '"')
-                        json_str = json_str[1:]
-                        json_str = json_str[:-1]
-                        field_dict = json.loads(json_str)
-                        field_value = field_dict
-                    except json.decoder.JSONDecodeError:
-                        # field is not JSON
-                        pass
+                    if "{" in field_value:
+                        try:
+                            json_str = field_value.replace("'", '"')
+                            json_str = json_str[1:]
+                            json_str = json_str[:-1]
+                            field_dict = json.loads(json_str)
+                            field_value = field_dict
+                        except json.decoder.JSONDecodeError:
+                            # field is not JSON
+                            pass
                 if type == "N":
                     field_value = float(field_value)
             results[field_name] = field_value
