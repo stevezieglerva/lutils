@@ -41,7 +41,7 @@ class DBStreamAdapter:
 
     def _is_newly_completed_task(self, single_event):
         print("checking completed")
-        if single_event["eventName"] == "UPDATE" and single_event["dynamodb"][
+        if single_event["eventName"] == "MODIFY" and single_event["dynamodb"][
             "NewImage"
         ]["sk"]["S"].startswith("TASK"):
             print("is updated task")
