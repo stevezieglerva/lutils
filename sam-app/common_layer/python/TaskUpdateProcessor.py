@@ -20,7 +20,7 @@ class TaskUpdateProcessor:
         current_task_status = task.status
         if current_task_status == FAN_OUT:
             process, event = self._process_fan_out(task)
-            results = {"process_record": process.json(), "event": event}
+            results = {"process_record": {}, "event": event}
         if current_task_status == TASK_COMPLETED:
             process, event = self._process_task_completed(task)
             results = {"process_record": process.json(), "event": event}
