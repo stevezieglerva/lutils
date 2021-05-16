@@ -10,6 +10,7 @@ from FanEventPublisher import FanEventPublisher
 class TaskUpdateProcessor:
     def __init__(self, fan_publisher: FanEventPublisher):
         self.publisher = fan_publisher
+        self.completion_notified = False
 
     def process_task(self, task):
         results = {"process_record": {}, "event": {}}
@@ -29,7 +30,7 @@ class TaskUpdateProcessor:
         print(f"\n\nprocessing fan out for {task.pk}/{task.sk}/{task.status}\n\n")
 
         event = self._publish_next_event(TASK_CREATED, task.json())
-        return (process_record, event)
+        return ({}, event)
 
     def _process_task_completed(self, task):
         print(f"\n\nprocessing completed for {task.pk}/{task.sk}/{task.status}\n\n")
@@ -38,8 +39,9 @@ class TaskUpdateProcessor:
         )
         process_record.update_process_record_based_on_completions()
         event = {}
-        if process_record.progress == 1.0:
+        if process_record.progress == 1.0 and self.completion_notified == False:
             event = self._publish_next_event(PROCESS_COMPLETED, task.json())
+            self.completion_notified = True
         return (process_record, event)
 
     def _publish_next_event(self, event_name, message_json):
