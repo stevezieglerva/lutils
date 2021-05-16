@@ -92,6 +92,6 @@ class ProcessRecord:
     def _get_all_tasks_for_process(self):
         return self.db.query_table_begins({"pk": self.pk, "sk": "TASK"})
 
-    def done():
+    def done(self):
         self.gs1_pk = PLACEHOLDER_INDEX_FIELD_VALUE
         self.save()

@@ -39,6 +39,7 @@ class TaskUpdateProcessor:
         )
         process_record.update_process_record_based_on_completions()
         event = {}
+        print(f"Progress: {process_record.progress}")
         if process_record.progress == 1.0:
             if self.completion_notified == False:
                 event = self._publish_next_event(PROCESS_COMPLETED, task.json())
