@@ -33,21 +33,22 @@ class TaskUpdateProcessor:
         return ({}, event)
 
     def _process_task_completed(self, task):
-        print(f"\n\nprocessing completed for {task.pk}/{task.sk}/{task.status}\n\n")
+        print(f"\n\ncompleted-processing: for {task.pk}/{task.sk}/{task.status}\n\n")
         process_record = ProcessRecord(
             process_id=task.process_id, process_name=task.process_name, db=task.db
         )
         process_record.update_process_record_based_on_completions()
         event = {}
-        print(f"Process status: {process_record.gs1_pk}")
+        print(f"ompleted-processing Process status: {process_record.gs1_pk}")
         if process_record.progress == 1.0:
             if self.completion_notified == False:
                 if not process_record.is_current_live_process_already_done:
                     event = self._publish_next_event(PROCESS_COMPLETED, task.json())
                     self.completion_notified = True
                     process_record.done()
+                    print("ompleted-processing Completion notified")
             else:
-                print("Already notified")
+                print("ompleted-processing Already notified")
         return (process_record, event)
 
     def _publish_next_event(self, event_name, message_json):
