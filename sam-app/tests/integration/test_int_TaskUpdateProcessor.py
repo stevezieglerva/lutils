@@ -67,7 +67,7 @@ class TaskUpdateProcessorUnitTests(unittest.TestCase):
         print(json.dumps(results, indent=3, default=str))
 
         # Assert
-        self.assertEqual(results["process_record"]["pk"], "PROCESS#888")
+        self.assertEqual(results["process_record"], {})
         self.assertTrue("MessageId" in results["event"])
 
 
