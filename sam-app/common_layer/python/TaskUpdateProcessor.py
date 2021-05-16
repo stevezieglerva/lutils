@@ -39,12 +39,13 @@ class TaskUpdateProcessor:
         )
         process_record.update_process_record_based_on_completions()
         event = {}
-        print(f"Progress: {process_record.progress}")
+        print(f"Process status: {process_record.gs1_pk}")
         if process_record.progress == 1.0:
             if self.completion_notified == False:
-                event = self._publish_next_event(PROCESS_COMPLETED, task.json())
-                self.completion_notified = True
-                process_record.done()
+                if not process_record.is_current_live_process_already_done:
+                    event = self._publish_next_event(PROCESS_COMPLETED, task.json())
+                    self.completion_notified = True
+                    process_record.done()
             else:
                 print("Already notified")
         return (process_record, event)

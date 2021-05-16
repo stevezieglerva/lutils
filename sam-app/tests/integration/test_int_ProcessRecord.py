@@ -77,6 +77,96 @@ class ProcessRecordIntTests(unittest.TestCase):
         print(latest_process_data)
         self.assertEqual(latest_process_data["progress"], 0.5)
 
+    def test_is_current_live_process_already_done__given_not_done__then_false(
+        self,
+    ):
+        # Arrange
+        id = str(ulid.ULID())
+        db = DynamoDB(os.environ["TABLE_NAME"])
+
+        process = ProcessRecord(
+            process_id=id, process_name="ProcessRecord Int Test", db=db
+        )
+        process.save()
+
+        task1 = TaskRecord(
+            process_id=id,
+            process_name="ProcessRecord Int Test",
+            task_name="task_00",
+            task_message={"go": "caps!"},
+            db=db,
+        )
+        task1.fan_out()
+        task1.complete()
+        task2 = TaskRecord(
+            process_id=id,
+            process_name="ProcessRecord Int Test",
+            task_name="task_01",
+            task_message={"go": "caps!"},
+            db=db,
+        )
+        task2.fan_out()
+
+        data_set = db.query_table_begins({"pk": process.pk, "sk": "TASK"})
+        print("tasks data set:")
+        print(json.dumps(data_set, indent=3, default=str))
+
+        data_set = db.query_table_begins({"pk": process.pk, "sk": "PROCESS"})
+        print("process data set:")
+        print(json.dumps(data_set, indent=3, default=str))
+
+        # Act
+        results = process.is_current_live_process_already_done()
+
+        # Assert
+        self.assertEqual(results, False)
+
+    def test_is_current_live_process_already_done__given_done__then_true(
+        self,
+    ):
+        # Arrange
+        id = str(ulid.ULID())
+        db = DynamoDB(os.environ["TABLE_NAME"])
+
+        process = ProcessRecord(
+            process_id=id, process_name="ProcessRecord Int Test", db=db
+        )
+        process.save()
+
+        task1 = TaskRecord(
+            process_id=id,
+            process_name="ProcessRecord Int Test",
+            task_name="task_00",
+            task_message={"mow": "lawn!"},
+            db=db,
+        )
+        task1.fan_out()
+        task1.complete()
+        task2 = TaskRecord(
+            process_id=id,
+            process_name="ProcessRecord Int Test",
+            task_name="task_01",
+            task_message={"mow": "lawn!"},
+            db=db,
+        )
+        task2.fan_out()
+        task2.complete()
+        process.done()
+
+        data_set = db.query_table_begins({"pk": process.pk, "sk": "TASK"})
+        print("tasks data set:")
+        print(json.dumps(data_set, indent=3, default=str))
+
+        data_set = db.query_table_begins({"pk": process.pk, "sk": "PROCESS"})
+        print("process data set:")
+        print(json.dumps(data_set, indent=3, default=str))
+
+        # Act
+        results = process.is_current_live_process_already_done()
+
+        # Assert
+        self.assertEqual(results, True)
+
 
 if __name__ == "__main__":
     unittest.main()

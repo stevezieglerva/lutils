@@ -95,3 +95,11 @@ class ProcessRecord:
     def done(self):
         self.gs1_pk = PLACEHOLDER_INDEX_FIELD_VALUE
         self.save()
+
+    def is_current_live_process_already_done(self):
+        print("\n\n\n checking live status")
+        live_processs_record = self.db.get_item({"pk": self.pk, "sk": self.sk})
+        print(f"live_processs_record: {live_processs_record}")
+        if live_processs_record["gs1_pk"].startswith("STATUS"):
+            return False
+        return True
