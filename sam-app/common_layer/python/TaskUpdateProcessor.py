@@ -46,7 +46,7 @@ class TaskUpdateProcessor:
                 self.completion_notified = True
                 process_record.done()
             else:
-                print("Don't need to notify again")
+                print("Already notified")
         return (process_record, event)
 
     def _publish_next_event(self, event_name, message_json):
