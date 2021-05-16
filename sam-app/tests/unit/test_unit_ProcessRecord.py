@@ -32,6 +32,7 @@ class ProcessRecordUnitTests(unittest.TestCase):
         self.assertEqual(subject.process_name, input)
         self.assertEqual(subject.pk, "PROCESS#123")
         self.assertEqual(subject.progress, 0)
+        self.assertEqual(subject.gs1_pk, "STATUS#in_progress")
 
     def test_constructor__given_valid_string_input__then_no_exceptions(self):
         # Arrange
