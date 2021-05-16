@@ -69,7 +69,7 @@ class TaskUpdateProcessorUnitTests(unittest.TestCase):
                 print(json.dumps(results, indent=3, default=str))
 
         # Assert
-        self.assertEqual(results["process_record"]["pk"], "PROCESS#777")
+        self.assertEqual(results["process_record"], {})
         self.assertEqual(results["event"], {"sns_sent": "yes"})
 
     def test_process__given_newly_started__then_nothing_processed(

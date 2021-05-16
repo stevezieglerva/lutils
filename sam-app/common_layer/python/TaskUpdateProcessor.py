@@ -39,9 +39,12 @@ class TaskUpdateProcessor:
         )
         process_record.update_process_record_based_on_completions()
         event = {}
-        if process_record.progress == 1.0 and self.completion_notified == False:
-            event = self._publish_next_event(PROCESS_COMPLETED, task.json())
-            self.completion_notified = True
+        if process_record.progress == 1.0:
+            if self.completion_notified == False:
+                event = self._publish_next_event(PROCESS_COMPLETED, task.json())
+                self.completion_notified = True
+            else:
+                print("Don't need to notify again")
         return (process_record, event)
 
     def _publish_next_event(self, event_name, message_json):
