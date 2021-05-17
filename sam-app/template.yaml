@@ -30,7 +30,17 @@ Resources:
       ContentUri: common_layer/
       CompatibleRuntimes:
         - python3.7
-        
+
+  CommonHex:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: common
+      Description: Custom python code shared across the app
+      ContentUri: common_layer_hex/
+      CompatibleRuntimes:
+        - python3.7        
+
+
 
 
   S3TextLinesToSNSLambda:
