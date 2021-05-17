@@ -11,8 +11,12 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 parentdir = os.path.dirname(parentdir) + "/common_layer_hex/python"
 sys.path.insert(0, parentdir)
+parentdir = os.path.dirname(currentdir)
+parentdir = os.path.dirname(parentdir) + "/lutil_fan_start_process"
+sys.path.insert(0, parentdir)
 print("Updated path:")
 print(json.dumps(sys.path, indent=3))
+
 
 import unittest
 from unittest import mock
@@ -25,7 +29,7 @@ from common_layer_hex.python.TaskDTO import *
 from common_layer_hex.python.DynamoDB import DynamoDB
 
 
-class FanManagerUnitTests(unittest.TestCase):
+class LutilStartProcessLambdaUnitTests(unittest.TestCase):
     def is_process_in_repo(self, process_id):
         db = DynamoDB("fake-table")
         process_json = db.get_item(
