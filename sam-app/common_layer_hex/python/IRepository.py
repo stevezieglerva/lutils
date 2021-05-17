@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from ProcessDTO import ProcessDTO
+from TaskDTO import TaskDTO
 
 
 class IRepository(ABC):
@@ -13,4 +14,12 @@ class IRepository(ABC):
 
     @abstractmethod
     def save_process(self, process: ProcessDTO):
+        raise NotImplemented
+
+    @abstractmethod
+    def get_task(self, process_id: str, task_name: str) -> TaskDTO:
+        raise NotImplemented
+
+    @abstractmethod
+    def save_task(self, task: TaskDTO):
         raise NotImplemented
