@@ -40,7 +40,8 @@ from unittest import mock
 from lutil_fan_start_process import app
 from ProcessDTO import ProcessDTO
 from TaskDTO import TaskDTO
-from moto import mock_dynamodb2
+from FakeRepository import FakeRepository
+from TestNotifier import TestNotifier
 
 
 class LutilStartProcessUnitTests(unittest.TestCase):
@@ -79,3 +80,20 @@ class LutilStartProcessUnitTests(unittest.TestCase):
 
         # Assert
         self.assertEqual(results[0], TaskDTO("task 1", {"hello": "world"}))
+
+    def test_start_process__given_valid_event__then_no_exceptions(self):
+        # Arrange
+        event = {
+            "process": {"process_name": "proc A"},
+            "tasks": [
+                {"task_name": "task 1", "task_message": {"hello": "world"}},
+                {"task_name": "task 2", "task_message": {"apple": "pear"}},
+            ],
+        }
+        db = FakeRepository("fake")
+        notifier = TestNotifier("test")
+
+        # Act
+        results = app.start_process(event, db, notifier)
+
+        # Assert

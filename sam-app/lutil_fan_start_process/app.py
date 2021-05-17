@@ -19,6 +19,9 @@ def lambda_handler(event, context):
     print(f"Started at {datetime.now()}")
 
     print(json.dumps(event, indent=3, default=str))
+    db = DynamoDBRepository(os.environ["TABLE_NAME"])
+    notifier = TestNotifier(os.environ["HANDLER_SNS_TOPIC_ARN"])
+    start_process(event, db, notifier)
 
     print(f"Finished at {datetime.now()}")
 
@@ -35,5 +38,8 @@ def convert_tasks_from_event(event: dict) -> list:
     return task_list
 
 
-def start_process(event_data, db: IRepository, notifier: INotifier):
-    pass
+def start_process(event, db: IRepository, notifier: INotifier) -> dict:
+    process = convert_process_from_event(event)
+    tasks = convert_tasks_from_event(event)
+    fan_manager = FanManager(db, notifier)
+    return fan_manager.start_process(process, tasks)
