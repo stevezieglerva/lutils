@@ -6,7 +6,6 @@ import time
 from datetime import datetime
 
 import boto3
-from FanEvent import *
 
 
 def lambda_handler(event, context):
