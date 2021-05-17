@@ -268,6 +268,36 @@ Resources:
             BatchSize: 100
             StartingPosition: TRIM_HORIZON
 
+  FanStartProcessLambda:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Description: Initiate a fan out process for a set of tasks
+      CodeUri: lutil_fan_start_process/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      Environment:
+        Variables:
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
+          TABLE_NAME: !Ref FanProcessingPartTestTable 
+          POWERTOOLS_METRICS_NAMESPACE: lutils
+          POWERTOOLS_SERVICE_NAME: fan-logging
+      Tags:
+        Type: "lutils"
+        Environment: lutils
+      Layers: 
+        - !Ref CommonHex
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref FanProcessingPartTestTable 
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: 
+                - sns:Get*
+                - sns:Publish*
+              Resource: !Sub "arn:aws:sns:us-east-1:${AWS::AccountId}:lutil_*"
+
+
 
   #--------------------------------
   # e2e testing lambdas
