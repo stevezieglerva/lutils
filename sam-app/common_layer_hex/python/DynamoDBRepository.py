@@ -7,21 +7,8 @@ from TaskDTO import TaskDTO
 
 
 class DynamoDBRepository(IRepository):
-    def prep_for_test(self):
-        db = boto3.client("dynamodb")
-        db.create_table(
-            TableName=self.source,
-            KeySchema=[
-                {"AttributeName": "pk", "KeyType": "HASH"},
-                {"AttributeName": "sk", "KeyType": "RANGE"},
-            ],
-            AttributeDefinitions=[
-                {"AttributeName": "pk", "AttributeType": "S"},
-                {"AttributeName": "sk", "AttributeType": "S"},
-            ],
-            ProvisionedThroughput={"ReadCapacityUnits": 10, "WriteCapacityUnits": 10},
-        )
-        self.db = DynamoDB(self.source)
+    def __init__(self, source):
+        self.db = DynamoDB(source)
 
     def get_process(self, process_id: str) -> ProcessDTO:
         process_json = self.db.get_item(
