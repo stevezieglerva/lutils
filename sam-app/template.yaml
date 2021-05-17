@@ -268,7 +268,7 @@ Resources:
             BatchSize: 100
             StartingPosition: TRIM_HORIZON
 
-  FanStartProcessLambda:
+  FanStartProcessTestLambda:
     Type: AWS::Serverless::Function 
     Properties:
       Description: Initiate a fan out process for a set of tasks
