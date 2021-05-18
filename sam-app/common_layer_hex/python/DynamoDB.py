@@ -102,7 +102,7 @@ class DynamoDB:
         print(f"key_condition_exp: {key_condition_exp}")
         return self._query_table_by_operator(key, key_condition_exp)
 
-    def query_table_begins(self, key):
+    def query_table_begins(self, key, index_name=""):
         key_names = list(key.keys())
         if len(key_names) == 1:
             field_name = key_names[0]
@@ -112,13 +112,16 @@ class DynamoDB:
             field_name_2 = key_names[1]
             key_condition_exp = f"{field_name_1} = :{field_name_1} AND begins_with( {field_name_2}, :{field_name_2})"
         print(f"key_condition_exp: {key_condition_exp}")
-        return self._query_table_by_operator(key, key_condition_exp)
+        return self._query_table_by_operator(key, key_condition_exp, index_name)
+
+    def query_index_begins(self, index_name, key):
+        return self.query_table_begins(key, index_name)
 
     def scan_full(self):
         scan_results = self._db.scan(TableName=self.table_name)
         return self.convert_list_from_dynamodb_format(scan_results)
 
-    def _query_table_by_operator(self, key, key_condition_exp):
+    def _query_table_by_operator(self, key, key_condition_exp, index_name=""):
         assert type(key) == dict, "Expecting key to be of type dict"
         exp_attribute_values = key
         original_key_list = list(key.keys())
@@ -130,11 +133,18 @@ class DynamoDB:
             exp_attribute_values
         )
         print(f"exp_attribute_values_db_format: {exp_attribute_values_db_format}")
-
-        query_response = self._db.query(
-            TableName=self.table_name,
-            KeyConditionExpression=key_condition_exp,
-            ExpressionAttributeValues=exp_attribute_values_db_format,
-        )
+        if index_name == "":
+            query_response = self._db.query(
+                TableName=self.table_name,
+                KeyConditionExpression=key_condition_exp,
+                ExpressionAttributeValues=exp_attribute_values_db_format,
+            )
+        else:
+            query_response = self._db.query(
+                TableName=self.table_name,
+                IndexName=index_name,
+                KeyConditionExpression=key_condition_exp,
+                ExpressionAttributeValues=exp_attribute_values_db_format,
+            )
         results = self.convert_list_from_dynamodb_format(query_response)
         return results
