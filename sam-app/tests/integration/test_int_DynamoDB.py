@@ -46,9 +46,6 @@ class DynamoDBUnitTests(unittest.TestCase):
                 "gs1_sk": "ABCDEF",
             }
         )
-        subject.put_item(
-            {"pk": "J1K4", "sk": "TASK#03940", "value": {"subkey": "03940"}}
-        )
 
         # Act
         results = subject.query_index_begins(
