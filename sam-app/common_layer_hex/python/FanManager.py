@@ -47,7 +47,7 @@ class FanManager:
         for task in task_list:
             print(f"\n\nProcessing task: {task.task_name}")
             task.status = TASK_STATUS_TASK_CREATED
-            task.status_changed = datetime.now().isoformat()
+            task.status_changed_timestamp = datetime.now().isoformat()
             self.repository.save_task(task)
 
             event = FanEventDTO(self.event_source, EVENT_TASK_CREATED, task.__dict__)

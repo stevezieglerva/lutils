@@ -1,41 +1,42 @@
-from botocore.retryhandler import _create_single_checker
-from TaskRecord import TaskRecord
-from DynamoDB import DynamoDB
-from FanEvent import *
-from TaskUpdateProcessor import TaskUpdateProcessor
-from FanEventPublisher import FanEventPublisher
+from IRepository import *
+from INotifier import *
+from FanManager import *
+from TaskDTO import *
 
 
 class DBStreamAdapter:
-    def __init__(self, db, publisher):
-        self.db = db
-        self.publisher = publisher
-        self.task_update_processor = TaskUpdateProcessor(self.publisher)
-
-    def __str__(self):
-        text = ""
-        return text
-
-    def __repr__(self):
-        return str(self)
+    def __init__(self, repository: IRepository, notifier: INotifier):
+        self.repository = repository
+        self.notifier = notifier
+        self.fan_manager = FanManager(self.repository, self.notifier)
 
     def process_single_event(self, single_event):
         if self._is_newly_created_fan_out(
             single_event
         ) or self._is_newly_completed_task(single_event):
             task_db_json = single_event["dynamodb"]["NewImage"]
-            task_json = self.db.convert_from_dict_format(task_db_json)
-            task = TaskRecord(
-                record_string=json.dumps(task_json, indent=3, default=str), db=self.db
+            task_json = self._convert_from_dict_format(task_db_json)
+            print(json.dumps(task_json, indent=3, default=str))
+            task = TaskDTO(
+                task_json["task_name"],
+                task_json["task_message"],
+                task_json["process_id"],
+                task_json["status"],
+                task_json["status_changed_timestamp"],
+                task_json["created"],
             )
-            results = self.task_update_processor.process_task(task)
+            print(f"task dto: {task}")
+            results = self.fan_manager.fan_out([task])
             return results
 
     def _is_newly_created_fan_out(self, single_event):
         if single_event["eventName"] == "INSERT" and single_event["dynamodb"][
             "NewImage"
         ]["sk"]["S"].startswith("TASK"):
-            if single_event["dynamodb"]["NewImage"]["status"]["S"] == FAN_OUT:
+            if (
+                single_event["dynamodb"]["NewImage"]["status"]["S"]
+                == TASK_STATUS_FAN_OUT
+            ):
                 return True
         return False
 
@@ -49,3 +50,27 @@ class DBStreamAdapter:
                 print("is task complete")
                 return True
         return False
+
+    def _convert_from_dict_format(self, dict):
+        results = {}
+        for k, v in dict.items():
+            field_name = k
+            for sub_k, sub_v in v.items():
+                type = sub_k
+                field_value = sub_v
+                # try to convert to dict
+                if type == "S":
+                    if "{" in field_value:
+                        try:
+                            json_str = field_value.replace("'", '"')
+                            json_str = json_str[1:]
+                            json_str = json_str[:-1]
+                            field_dict = json.loads(json_str)
+                            field_value = field_dict
+                        except json.decoder.JSONDecodeError:
+                            # field is not JSON
+                            pass
+                if type == "N":
+                    field_value = float(field_value)
+            results[field_name] = field_value
+        return results
