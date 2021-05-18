@@ -27,7 +27,7 @@ os.environ["HANDLER_SNS_TOPIC_ARN"] = "fake-sns"
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
-parentdir = os.path.dirname(parentdir) + "/lutil_fan_handler"
+parentdir = os.path.dirname(parentdir) + "/lutil_fan_start_process"
 sys.path.insert(0, parentdir)
 parentdir = os.path.dirname(parentdir) + "/common_layer_hex/python"
 sys.path.insert(0, parentdir)

@@ -7,7 +7,9 @@ from TaskDTO import TaskDTO
 
 
 class InMemoryRepository(DynamoDBRepository):
-    def prep_for_test(self):
+    def __init__(self, source):
+        self.source = source
+        print(self.source)
         db = boto3.client("dynamodb")
         db.create_table(
             TableName=self.source,

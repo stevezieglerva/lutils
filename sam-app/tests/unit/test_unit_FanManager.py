@@ -11,9 +11,6 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 parentdir = os.path.dirname(parentdir) + "/common_layer_hex/python"
 sys.path.insert(0, parentdir)
-parentdir = os.path.dirname(currentdir)
-parentdir = os.path.dirname(parentdir) + "/lutil_fan_start_process"
-sys.path.insert(0, parentdir)
 print("Updated path:")
 print(json.dumps(sys.path, indent=3))
 
@@ -29,7 +26,7 @@ from common_layer_hex.python.TaskDTO import *
 from common_layer_hex.python.DynamoDB import DynamoDB
 
 
-class LutilStartProcessLambdaUnitTests(unittest.TestCase):
+class FanManagerUnitTests(unittest.TestCase):
     def is_process_in_repo(self, process_id):
         db = DynamoDB("fake-table")
         process_json = db.get_item(
@@ -48,10 +45,11 @@ class LutilStartProcessLambdaUnitTests(unittest.TestCase):
         print(json.dumps(tasks_in_status, indent=3, default=str))
         return len(tasks_in_status)
 
+    @mock_dynamodb2
     def test_constructor__given_valid_inputs__then_no_expections(self):
         # Arrange
-        repo = InMemoryRepository("")
-        notifier = TestNotifier("")
+        repo = InMemoryRepository("fake-table")
+        notifier = TestNotifier("fake-sns")
 
         # Act
         subject = FanManager(repo, notifier)
@@ -62,7 +60,6 @@ class LutilStartProcessLambdaUnitTests(unittest.TestCase):
     def test_start_process__given_valid_inputs__then_process_and_task_in_repo(self):
         # Arrange
         repo = InMemoryRepository("fake-table")
-        repo.prep_for_test()
         notifier = TestNotifier("fake-sns")
         subject = FanManager(repo, notifier)
         task_1 = TaskDTO("task 01", {"action": "go"})
