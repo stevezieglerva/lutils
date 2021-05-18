@@ -7,6 +7,25 @@ import boto3
 from moto import mock_dynamodb2
 
 
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+parentdir = os.path.dirname(parentdir) + "/lutil_fan_start_process"
+sys.path.insert(0, parentdir)
+parentdir = os.path.dirname(parentdir) + "/common_layer_hex/python"
+sys.path.insert(0, parentdir)
+print("Updated path:")
+print(json.dumps(sys.path, indent=3))
+
+import unittest
+from unittest import mock
+
+from lutil_fan_start_process import app
+from ProcessDTO import ProcessDTO
+from TaskDTO import TaskDTO
+from DynamoDBRepository import DynamoDBRepository
+from TestNotifier import TestNotifier
+
+
 def get_output_from_stack(output_key):
     cloudformation = boto3.client("cloudformation")
     stacks = cloudformation.describe_stacks(StackName="lutils")
@@ -23,25 +42,7 @@ os.environ["TABLE_NAME"] = get_output_from_stack(
     "FanProcessingPartTestTableName"
 )  # put up here because Lambda caches code using this variable between executions
 
-os.environ["HANDLER_SNS_TOPIC_ARN"] = "fake-sns"
-
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-parentdir = os.path.dirname(parentdir) + "/lutil_fan_handler"
-sys.path.insert(0, parentdir)
-parentdir = os.path.dirname(parentdir) + "/common_layer_hex/python"
-sys.path.insert(0, parentdir)
-print("Updated path:")
-print(json.dumps(sys.path, indent=3))
-
-import unittest
-from unittest import mock
-
-from lutil_fan_start_process import app
-from ProcessDTO import ProcessDTO
-from TaskDTO import TaskDTO
-from DynamoDBRepository import DynamoDBRepository
-from TestNotifier import TestNotifier
+os.environ["HANDLER_SNS_TOPIC_ARN"] = get_output_from_stack("FanEventsTestSNS")
 
 
 class LutilStartProcessUnitTests(unittest.TestCase):

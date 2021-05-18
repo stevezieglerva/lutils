@@ -9,9 +9,11 @@ from IRepository import IRepository
 from ProcessDTO import *
 from TaskDTO import *
 
+
 TASK_STATUS_FAN_OUT = "fan_out"
 TASK_STATUS_TASK_CREATED = "created"
 
+EVENT_PROCESS_STARTED = "process_started"
 EVENT_TASK_CREATED = "task_created"
 
 
@@ -33,6 +35,9 @@ class FanManager:
             task.created = datetime.now().isoformat()
             task.status = TASK_STATUS_FAN_OUT
             self.repository.save_task(task)
+
+        event = FanEventDTO(self.event_source, EVENT_PROCESS_STARTED, process.__dict__)
+        self.notifer.send_message(event)
 
         return process
 
