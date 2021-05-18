@@ -78,3 +78,24 @@ class FanManagerUnitTests(unittest.TestCase):
         self.assertEqual(
             self.count_of_tasks_in_status(process.process_id, "fan_out"), 2
         )
+
+    @mock_dynamodb2
+    def test_fan_out__given_newly_created_tasks__then_tasks_status_changed_and_notifications_sent(
+        self,
+    ):
+        # Arrange
+        repo = InMemoryRepository("fake-table")
+        notifier = TestNotifier("fake-sns")
+        subject = FanManager(repo, notifier)
+        task_1 = TaskDTO("task 01", {"action": "go"})
+        task_2 = TaskDTO("task 02", {"action": "save"})
+
+        process = ProcessDTO("fan manager test")
+        subject.start_process(process, [task_1, task_2])
+        task_list = [task_1, task_2]
+
+        # Act
+        results = subject.fan_out(task_list)
+
+        # Assert
+        self.assertNotEqual(results["notifications_sent"], "2")

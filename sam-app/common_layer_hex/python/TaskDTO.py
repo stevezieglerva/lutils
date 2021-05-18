@@ -7,6 +7,7 @@ class TaskDTO:
     task_message: dict
     process_id: str = ""
     status: str = ""
+    status_changed = ""
     created: str = ""
 
 

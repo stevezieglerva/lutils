@@ -1,3 +1,4 @@
+import json
 from abc import ABC, abstractmethod
 
 
@@ -7,5 +8,5 @@ class INotifier(ABC):
         pass
 
     @abstractmethod
-    def send_message(self, message):
+    def send_message(self, message: dict):
         raise NotImplemented
