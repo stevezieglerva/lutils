@@ -38,6 +38,7 @@ class FanManager:
 
     def fan_out(self, task_list: list) -> dict:
         print("Fanning out")
+        notifications_sent = 0
         for task in task_list:
             print(f"\n\nProcessing task: {task.task_name}")
             task.status = TASK_STATUS_TASK_CREATED
@@ -46,5 +47,6 @@ class FanManager:
 
             event = FanEventDTO(self.event_source, EVENT_TASK_CREATED, task.__dict__)
             self.notifer.send_message(event)
+            notifications_sent = notifications_sent + 1
 
-        return {"notifications_sent": 0}
+        return {"notifications_sent": notifications_sent}

@@ -42,45 +42,10 @@ from ProcessDTO import ProcessDTO
 from TaskDTO import TaskDTO
 from FakeRepository import FakeRepository
 from TestNotifier import TestNotifier
+from StartProcessAdapter import *
 
 
-class LutilStartProcessUnitTests(unittest.TestCase):
-    def test_convert_process_from_event__lambda_event__then_process_record_is_correct(
-        self,
-    ):
-        # Arrange
-        event = {
-            "process": {"process_name": "proc A"},
-            "tasks": [
-                {"task_name": "task 1", "task_message": {"hello": "world"}},
-                {"task_name": "task 2", "task_message": {"apple": "pear"}},
-            ],
-        }
-
-        # Act
-        results = app.convert_process_from_event(event)
-
-        # Assert
-        self.assertEqual(results.process_name, "proc A")
-
-    def test_convert_tasks_from_event__lambda_event__then_task_record_is_correct(
-        self,
-    ):
-        # Arrange
-        event = {
-            "process": {"process_name": "proc A"},
-            "tasks": [
-                {"task_name": "task 1", "task_message": {"hello": "world"}},
-                {"task_name": "task 2", "task_message": {"apple": "pear"}},
-            ],
-        }
-
-        # Act
-        results = app.convert_tasks_from_event(event)
-
-        # Assert
-        self.assertEqual(results[0], TaskDTO("task 1", {"hello": "world"}))
-
+class StartProcessAdapterUnitTests(unittest.TestCase):
     def test_start_process__given_valid_event__then_no_exceptions(self):
         # Arrange
         event = {
@@ -92,8 +57,10 @@ class LutilStartProcessUnitTests(unittest.TestCase):
         }
         db = FakeRepository("fake")
         notifier = TestNotifier("test")
+        adapter = StartProcessAdapter(db, notifier)
 
         # Act
-        results = app.start_process(event, db, notifier)
+        results = adapter.start_process(event)
+        print(results)
 
         # Assert
