@@ -1,19 +1,25 @@
-import ulid
+import os
 from datetime import datetime
 
+import ulid
+
+from FanEventDTO import *
+from INotifier import INotifier
+from IRepository import IRepository
 from ProcessDTO import *
 from TaskDTO import *
-from IRepository import IRepository
-from INotifier import INotifier
 
 TASK_STATUS_FAN_OUT = "fan_out"
 TASK_STATUS_TASK_CREATED = "created"
+
+EVENT_TASK_CREATED = "task_created"
 
 
 class FanManager:
     def __init__(self, repository: IRepository, notifier: INotifier):
         self.repository = repository
         self.notifer = notifier
+        self.event_source = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "fan_manager")
 
     def start_process(self, process, tasks: list) -> ProcessDTO:
         print(f"Starting process: {process.process_name}")
@@ -37,6 +43,8 @@ class FanManager:
             task.status = TASK_STATUS_TASK_CREATED
             task.status_changed = datetime.now().isoformat()
             self.repository.save_task(task)
-            self.notifer.send_message({})
+
+            event = FanEventDTO(self.event_source, EVENT_TASK_CREATED, task.__dict__)
+            self.notifer.send_message(event)
 
         return {"notifications_sent": 0}

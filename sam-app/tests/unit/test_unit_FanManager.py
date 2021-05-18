@@ -99,3 +99,6 @@ class FanManagerUnitTests(unittest.TestCase):
 
         # Assert
         self.assertNotEqual(results["notifications_sent"], "2")
+        self.assertEqual(
+            self.count_of_tasks_in_status(process.process_id, "created"), 2
+        )

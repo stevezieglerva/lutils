@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
 
 from INotifier import *
+from FanEventDTO import FanEventDTO
 
 
 class TestNotifier(INotifier):
-    def send_message(self, message: dict):
-        print(json.dumps(message, indent=3, default=str))
+    def send_message(self, message: FanEventDTO):
+        print(f"Sending message: {message}")
