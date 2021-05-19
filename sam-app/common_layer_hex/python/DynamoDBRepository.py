@@ -2,13 +2,15 @@ import boto3
 
 from DynamoDB import DynamoDB
 from IRepository import IRepository
-from ProcessDTO import ProcessDTO
-from TaskDTO import TaskDTO
+from ProcessDTO import *
+from TaskDTO import *
 
 
 class DynamoDBRepository(IRepository):
     def __init__(self, source):
         self.db = DynamoDB(source)
+        seconds_in_24_hours = 60 * 60 * 24
+        self.db.set_ttl_seconds(seconds_in_24_hours)
 
     def get_process(self, process_id: str) -> ProcessDTO:
         process_json = self.db.get_item(
@@ -52,3 +54,11 @@ class DynamoDBRepository(IRepository):
         db_record["gs1_pk"] = "-"
         db_record["gs1_sk"] = "-"
         return db_record
+
+    def get_tasks_for_process(self, process: ProcessDTO) -> list:
+        results = []
+        records = self.db.query_table_begins(
+            {"pk": f"PROCESS#{process.process_id}", "sk": "TASK"}
+        )
+        results = [convert_json_to_task(t) for t in records]
+        return results

@@ -21,3 +21,6 @@ class FakeRepository(IRepository):
 
     def save_task(self, task: TaskDTO):
         print("fake save process")
+
+    def get_tasks_for_process(self, process: ProcessDTO) -> list:
+        return []

@@ -19,10 +19,17 @@ db = DynamoDB("lutils2-FanProcessingPartTestTable-Q3PVEB6MO2AJ")
 processes = db.query_index_begins(
     "gs1", {"gs1_pk": "STATUS#in_progress", "gs1_sk": "-"}
 )
+
+sorted_processes = sorted(processes, key=lambda item: item["started"])
+
 print()
-for process in processes:
+for process in sorted_processes:
     name = process["process_name"]
     gs1_pk = process["gs1_pk"]
     progress = process["progress"]
-    print(f"{name:<30} {gs1_pk:<15} {progress}")
+    started = process["started"]
+    process_id = process["process_id"]
+    print(
+        f"{started:<20}   {name:<30}   {gs1_pk:<15}   {progress:<3}   {process_id:<20}"
+    )
 print()

@@ -23,3 +23,7 @@ class IRepository(ABC):
     @abstractmethod
     def save_task(self, task: TaskDTO):
         raise NotImplemented
+
+    @abstractmethod
+    def get_tasks_for_process(self, process: ProcessDTO) -> list:
+        raise NotImplemented
