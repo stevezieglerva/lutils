@@ -1,5 +1,7 @@
 import os
+from dataclasses import dataclass
 from datetime import datetime
+from typing import List
 
 import ulid
 
@@ -8,7 +10,6 @@ from INotifier import INotifier
 from IRepository import IRepository
 from ProcessDTO import *
 from TaskDTO import *
-
 
 TASK_STATUS_FAN_OUT = "fan_out"
 TASK_STATUS_TASK_CREATED = "created"
@@ -55,3 +56,10 @@ class FanManager:
             notifications_sent = notifications_sent + 1
 
         return {"notifications_sent": notifications_sent}
+
+
+@dataclass
+class FanManagerResults:
+    process_updates: ProcessDTO
+    task_updates: List[TaskDTO]
+    event_notifications: List[FanEventDTO]
