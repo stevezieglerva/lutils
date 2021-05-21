@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TaskDTO:
     task_name: str
     task_message: dict

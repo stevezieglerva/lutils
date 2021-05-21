@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-@dataclass
+@dataclass(frozen=True)
 class ProcessDTO:
     process_name: str
     process_id: str = ""

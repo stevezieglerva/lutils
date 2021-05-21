@@ -69,14 +69,20 @@ class FanManagerUnitTests(unittest.TestCase):
 
         # Act
         results = subject.start_process(process, [task_1, task_2])
-        process_added = repo.get_process(process.process_id)
+        print("*****")
+        print(results)
+
+        process_added = repo.get_process(results.process_updates.process_id)
 
         # Assert
-        self.assertNotEqual(results.process_id, "")
-        self.assertNotEqual(results.started, "")
-        self.assertTrue(self.is_process_in_repo(process.process_id))
+        self.assertNotEqual(results.process_updates.process_id, "")
+        self.assertNotEqual(results.process_updates.process_id, "")
+        self.assertTrue(self.is_process_in_repo(results.process_updates.process_id))
         self.assertEqual(
-            self.count_of_tasks_in_status(process.process_id, "fan_out"), 2
+            self.count_of_tasks_in_status(
+                results.process_updates.process_id, "fan_out"
+            ),
+            2,
         )
 
     @mock_dynamodb2

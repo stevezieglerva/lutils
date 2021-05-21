@@ -11,6 +11,7 @@ from IRepository import IRepository
 from ProcessDTO import *
 from TaskDTO import *
 
+
 TASK_STATUS_FAN_OUT = "fan_out"
 TASK_STATUS_TASK_CREATED = "created"
 
@@ -26,21 +27,30 @@ class FanManager:
 
     def start_process(self, process, tasks: list) -> ProcessDTO:
         print(f"Starting process: {process.process_name}")
-        process.process_id = str(ulid.ULID())
-        process.started = datetime.now().isoformat()
-        self.repository.save_process(process)
+        updated_process = ProcessDTO(
+            process.process_name, str(ulid.ULID()), datetime.now().isoformat()
+        )
+        self.repository.save_process(updated_process)
 
+        updated_tasks = []
         for task in tasks:
             print(f"\n\nAdding: {task.task_name}")
-            task.process_id = process.process_id
-            task.created = datetime.now().isoformat()
-            task.status = TASK_STATUS_FAN_OUT
-            self.repository.save_task(task)
+            new_task = TaskDTO(
+                task.task_name,
+                task.task_message,
+                updated_process.process_id,
+                updated_process.process_name,
+                TASK_STATUS_FAN_OUT,
+                datetime.now().isoformat(),
+                datetime.now().isoformat(),
+            )
+            self.repository.save_task(new_task)
+            updated_tasks.append(new_task)
 
         event = FanEventDTO(self.event_source, EVENT_PROCESS_STARTED, process.__dict__)
         self.notifer.send_message(event)
 
-        return process
+        return FanManagerResults(updated_process, updated_tasks, event)
 
     def fan_out(self, task_list: list) -> dict:
         print("Fanning out")
