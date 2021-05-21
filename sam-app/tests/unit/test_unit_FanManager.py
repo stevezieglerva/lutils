@@ -18,12 +18,13 @@ print(json.dumps(sys.path, indent=3))
 import unittest
 from unittest import mock
 
-from common_layer_hex.python.FanManager import FanManager
+from common_layer_hex.python.FanManager import *
 from common_layer_hex.python.InMemoryRepository import InMemoryRepository
 from common_layer_hex.python.TestNotifier import TestNotifier
 from common_layer_hex.python.ProcessDTO import *
 from common_layer_hex.python.TaskDTO import *
 from common_layer_hex.python.DynamoDB import DynamoDB
+from common_layer_hex.python.FanEventDTO import FanEventDTO
 
 
 class FanManagerUnitTests(unittest.TestCase):
@@ -44,6 +45,9 @@ class FanManagerUnitTests(unittest.TestCase):
         tasks_in_status = [t for t in tasks_json if t["status"] == status]
         print(json.dumps(tasks_in_status, indent=3, default=str))
         return len(tasks_in_status)
+
+    def event_created_for(self, event: FanEventDTO, event_name):
+        self.assertEqual(event.event_name, event_name)
 
     @mock_dynamodb2
     def test_constructor__given_valid_inputs__then_no_expections(self):
@@ -84,6 +88,9 @@ class FanManagerUnitTests(unittest.TestCase):
             ),
             2,
         )
+        print("\n\n\n")
+        print(results.event_notifications[0])
+        self.event_created_for(results.event_notifications[0], EVENT_PROCESS_STARTED)
 
     @mock_dynamodb2
     def test_fan_out__given_newly_created_tasks__then_tasks_status_changed_and_notifications_sent(
@@ -102,9 +109,10 @@ class FanManagerUnitTests(unittest.TestCase):
 
         # Act
         results = subject.fan_out(task_list)
+        print(results)
 
         # Assert
-        self.assertNotEqual(results["notifications_sent"], "2")
         self.assertEqual(
             self.count_of_tasks_in_status(process.process_id, "created"), 2
         )
+        self.event_created_for(results.event_notifications[0], EVENT_TASK_CREATED)

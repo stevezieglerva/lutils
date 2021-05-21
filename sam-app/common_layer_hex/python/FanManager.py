@@ -47,25 +47,35 @@ class FanManager:
             self.repository.save_task(new_task)
             updated_tasks.append(new_task)
 
-        event = FanEventDTO(self.event_source, EVENT_PROCESS_STARTED, process.__dict__)
+        event = FanEventDTO(
+            self.event_source, EVENT_PROCESS_STARTED, updated_process.__dict__
+        )
         self.notifer.send_message(event)
-
-        return FanManagerResults(updated_process, updated_tasks, event)
+        return FanManagerResults(updated_process, updated_tasks, [event])
 
     def fan_out(self, task_list: list) -> dict:
         print("Fanning out")
-        notifications_sent = 0
+        updated_tasks = []
         for task in task_list:
             print(f"\n\nProcessing task: {task.task_name}")
-            task.status = TASK_STATUS_TASK_CREATED
-            task.status_changed_timestamp = datetime.now().isoformat()
-            self.repository.save_task(task)
+            new_task = TaskDTO(
+                task.task_name,
+                task.task_message,
+                task.process_id,
+                task.process_name,
+                TASK_STATUS_TASK_CREATED,
+                datetime.now().isoformat(),
+                task.created,
+            )
+            self.repository.save_task(new_task)
+            updated_tasks.append(new_task)
 
-            event = FanEventDTO(self.event_source, EVENT_TASK_CREATED, task.__dict__)
+            event = FanEventDTO(
+                self.event_source, EVENT_TASK_CREATED, new_task.__dict__
+            )
             self.notifer.send_message(event)
-            notifications_sent = notifications_sent + 1
 
-        return {"notifications_sent": notifications_sent}
+        return FanManagerResults(None, updated_tasks, [event])
 
 
 @dataclass
