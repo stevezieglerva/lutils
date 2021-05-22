@@ -25,7 +25,7 @@ from common_layer_hex.python.FanManager import FanManager
 from common_layer_hex.python.DynamoDBRepository import DynamoDBRepository
 from common_layer_hex.python.TestNotifier import TestNotifier
 from common_layer_hex.python.TaskDTO import TaskDTO
-from common_layer_hex.python.ProcessDTO import ProcessDTO
+from common_layer_hex.ProcessDTO import ProcessDTO
 from common_layer_hex.python.DynamoDB import DynamoDB
 from lutil_fan_dbstream_handler.app import *
 
