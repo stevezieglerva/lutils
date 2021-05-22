@@ -133,4 +133,7 @@ class FanManager:
             t for t in process_task_list if t.status == TASK_STATUS_TASK_COMPLETED
         ]
         completed_count = len(completed_tasks)
-        return float(completed_count / total_tasks)
+        progress = 0.0
+        if total_tasks > 0:
+            progress = float(completed_count / total_tasks)
+        return progress
