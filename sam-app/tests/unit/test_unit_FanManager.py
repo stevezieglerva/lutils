@@ -176,4 +176,4 @@ class FanManagerUnitTests(unittest.TestCase):
             results.updated_process.process_id, "completed", 2
         )
         self.assertEqual(results.updated_process.progress, 1.0)
-        self.assertEqual(results.event_notifications, ["hi"])
+        self.event_created_for(results.event_notifications[0], EVENT_PROCESS_CREATED)

@@ -19,6 +19,7 @@ TASK_STATUS_TASK_COMPLETED = "completed"
 
 EVENT_PROCESS_STARTED = "process_started"
 EVENT_TASK_CREATED = "task_created"
+EVENT_PROCESS_CREATED = "process_completed"
 
 
 @dataclass
@@ -90,6 +91,7 @@ class FanManager:
     def complete_task(self, task: TaskDTO) -> FanManagerResults:
         print("F\n\nCompleting task")
         updated_tasks = []
+        event_notifications = []
         print(f"\n\nProcessing task: {task.task_name}")
         new_task = TaskDTO(
             task.task_name,
@@ -114,7 +116,13 @@ class FanManager:
             process_progress,
         )
         self.repository.save_process(updated_process)
-        return FanManagerResults(updated_process, updated_tasks, [])
+        if updated_process.progress == 1.0:
+            event = FanEventDTO(
+                self.event_source, EVENT_PROCESS_CREATED, updated_process.__dict__
+            )
+            self.notifer.send_message(event)
+            event_notifications.append(event)
+        return FanManagerResults(updated_process, updated_tasks, event_notifications)
 
     def _calculate_process_progress(self, process_id: str) -> float:
         process_task_list = self.repository.get_tasks_for_process(process_id)
