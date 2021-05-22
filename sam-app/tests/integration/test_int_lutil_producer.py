@@ -21,7 +21,7 @@ from lutil_fan_e2e_producer import app
 
 def get_output_from_stack(output_key):
     cloudformation = boto3.client("cloudformation")
-    stacks = cloudformation.describe_stacks(StackName="lutils")
+    stacks = cloudformation.describe_stacks(StackName="lutils2")
     stack_outputs = stacks["Stacks"][0]["Outputs"]
     output_value = ""
     for output in stack_outputs:

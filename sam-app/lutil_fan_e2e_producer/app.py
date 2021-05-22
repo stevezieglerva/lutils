@@ -36,7 +36,7 @@ def start_process(start_process_lambda, process_name, task_list):
     lam = boto3.client("lambda")
 
     start_event = {}
-    start_event["process_name"] = process_name
+    start_event["process"] = {"process_name": process_name}
     start_event["tasks"] = task_list
     print(f"Calling: {start_process_lambda} with: {start_event}")
     response = lam.invoke(
