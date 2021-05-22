@@ -19,11 +19,11 @@ from unittest import mock
 from lutil_fan_e2e_producer import app
 
 
-def get_sns_arn_from_stack(output_key):
+def get_output_from_stack(output_key):
     cloudformation = boto3.client("cloudformation")
     stacks = cloudformation.describe_stacks(StackName="lutils")
     stack_outputs = stacks["Stacks"][0]["Outputs"]
-    s3_bucket = ""
+    output_value = ""
     for output in stack_outputs:
         if output["OutputKey"] == output_key:
             output_value = output["OutputValue"]
@@ -34,8 +34,8 @@ def get_sns_arn_from_stack(output_key):
 class ProducerIntTests(unittest.TestCase):
     def test_lambda_handler__then_no_exception(self):
         # Arrange
-        os.environ["TABLE_NAME"] = get_sns_arn_from_stack(
-            "FanProcessingPartTestTableName"
+        os.environ["START_PROCESS_LAMBDA_NAME"] = get_output_from_stack(
+            "FanStartProcessTestLambda"
         )
 
         # Act
