@@ -44,3 +44,4 @@ def start_process(start_process_lambda, process_name, task_list):
         InvocationType="RequestResponse",
         Payload=json.dumps(start_event, indent=3, default=str),
     )
+    return response
