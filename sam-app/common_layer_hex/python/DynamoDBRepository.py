@@ -17,8 +17,14 @@ class DynamoDBRepository(IRepository):
             {"pk": f"PROCESS#{process_id}", "sk": f"PROCESS#{process_id}"}
         )
         print(process_json)
-
-        return ProcessDTO("test")
+        process = ProcessDTO(
+            process_json["process_name"],
+            process_json["process_id"],
+            process_json["started"],
+            process_json["ended"],
+            process_json["progress"],
+        )
+        return process
 
     def save_process(self, process: ProcessDTO):
         db_record = self._convert_process_to_db_record(process)

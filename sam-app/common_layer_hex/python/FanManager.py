@@ -1,3 +1,4 @@
+import json
 import os
 from dataclasses import dataclass
 from datetime import datetime
@@ -9,9 +10,8 @@ from FanEventDTO import *
 from INotifier import INotifier
 from IRepository import IRepository
 from ProcessDTO import *
-from TaskDTO import *
 from ProcessDTO import ProcessDTO
-
+from TaskDTO import *
 
 TASK_STATUS_FAN_OUT = "fan_out"
 TASK_STATUS_TASK_CREATED = "created"
@@ -24,7 +24,7 @@ EVENT_TASK_CREATED = "task_created"
 @dataclass
 class FanManagerResults:
     updated_process: ProcessDTO
-    task_updates: List[TaskDTO]
+    updated_tasks: List[TaskDTO]
     event_notifications: List[FanEventDTO]
 
 
@@ -104,7 +104,8 @@ class FanManager:
         updated_tasks.append(new_task)
 
         process_progress = self._calculate_process_progress(task)
-        current_process = self.repository.get(task.process_id)
+        current_process = self.repository.get_process(task.process_id)
+        print(f"\n\ncurrent_process: {current_process}")
         updated_process = ProcessDTO(
             current_process.process_name,
             current_process.process_id,
@@ -121,7 +122,7 @@ class FanManager:
         print(json.dumps(process_task_list, indent=3, default=str))
         total_tasks = len(process_task_list)
         completed_tasks = [
-            t for t in process_task_list if t["status"] == TASK_STATUS_TASK_COMPLETED
+            t for t in process_task_list if t.status == TASK_STATUS_TASK_COMPLETED
         ]
         completed_count = len(completed_tasks)
         return float(completed_count / total_tasks)
