@@ -9,37 +9,42 @@ import glob
 import time
 import random
 
-from NamedTupleBase import *
-from FanEvent import *
-from TaskRecord import TaskRecord
-from FanEventPublisher import FanEventPublisher
-import FanEventOptions
-from DynamoDB import DynamoDB
+from TaskDTO import *
 
 
 def lambda_handler(event, context):
     print(f"Started at {datetime.now()}")
+    complete_task_lambda = os.environ["COMPLETE_TASK_LAMBDA_NAME"]
     max_delay = event.get("max_delay", 5)
-
     print(json.dumps(event, indent=3, default=str))
-
-    db = DynamoDB(os.environ["TABLE_NAME"])
 
     for count, record in enumerate(event["Records"]):
         print(f"Record #{count}")
         message = record["Sns"]["Message"]
-        event = FanEvent(record_string=message)
-        print("Received task event:")
-        print(event)
-
-        task = TaskRecord(record_string=json.dumps(event.message, default=str), db=db)
-        task.start()
-
+        print(f"Received message: {message}")
+        task = convert_json_to_task(message)
         print(f"task_message: {task.task_message}")
+
         max_delay = task.task_message["max_delay"]
         time.sleep(random.randint(0, max_delay))
-        task.complete()
+
+        results = complete_task(complete_task_lambda, task.process_id, task.task_name)
 
     print(f"Finished at {datetime.now()}")
 
     return {}
+
+
+def complete_task(complete_task_lambda: str, process_id: str, task_name: str):
+    lam = boto3.client("lambda")
+
+    start_event = {}
+    start_event["process_id"] = process_id}
+    start_event["task_name"] = task_name
+    print(f"Calling: {complete_task_lambda} with: {start_event}")
+    response = lam.invoke(
+        FunctionName=complete_task_lambda,
+        InvocationType="RequestResponse",
+        Payload=json.dumps(start_event, indent=3, default=str),
+    )
+    return response
