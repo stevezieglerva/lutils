@@ -249,7 +249,7 @@ Resources:
         Type: "lutils"
         Environment: lutils
       Layers: 
-        - !Ref Common
+        - !Ref CommonHex
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref FanProcessingPartTestTable 
