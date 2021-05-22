@@ -37,7 +37,7 @@ class DynamoDBRepository(IRepository):
         db_record["sk"] = f"PROCESS#{process.process_id}"
         db_record["gs1_pk"] = "-"
         db_record["gs1_sk"] = "-"
-        if process.progress <= 1.0:
+        if process.progress < 1.0:
             db_record["gs1_pk"] = "STATUS#in_progress"
         return db_record
 
