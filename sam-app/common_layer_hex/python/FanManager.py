@@ -80,6 +80,6 @@ class FanManager:
 
 @dataclass
 class FanManagerResults:
-    process_updates: ProcessDTO
+    updated_process: ProcessDTO
     task_updates: List[TaskDTO]
     event_notifications: List[FanEventDTO]

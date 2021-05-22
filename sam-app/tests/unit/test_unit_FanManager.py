@@ -76,15 +76,15 @@ class FanManagerUnitTests(unittest.TestCase):
         print("*****")
         print(results)
 
-        process_added = repo.get_process(results.process_updates.process_id)
+        process_added = repo.get_process(results.updated_process.process_id)
 
         # Assert
-        self.assertNotEqual(results.process_updates.process_id, "")
-        self.assertNotEqual(results.process_updates.process_id, "")
-        self.assertTrue(self.is_process_in_repo(results.process_updates.process_id))
+        self.assertNotEqual(results.updated_process.process_id, "")
+        self.assertNotEqual(results.updated_process.process_id, "")
+        self.assertTrue(self.is_process_in_repo(results.updated_process.process_id))
         self.assertEqual(
             self.count_of_tasks_in_status(
-                results.process_updates.process_id, "fan_out"
+                results.updated_process.process_id, "fan_out"
             ),
             2,
         )

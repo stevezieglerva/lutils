@@ -58,8 +58,8 @@ class DBStreamLambdaIntTests(unittest.TestCase):
         task_1 = TaskDTO("task 01", {"action": "go"})
         task_2 = TaskDTO("task 02", {"action": "save"})
         process = ProcessDTO("DBStreamLambdaIntTests")
-        saved_process = self.fan_manager.start_process(process, [task_1, task_2])
-        return saved_process
+        fan_results = self.fan_manager.start_process(process, [task_1, task_2])
+        return fan_results.updated_process
 
     def test_lambda_hander__given_fan_out_event__then_no_exceptions(
         self,
