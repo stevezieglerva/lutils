@@ -104,6 +104,9 @@ EVENT_TASK_COMPLETED = {
 
 
 class DBStreamAdapterUnitTests(unittest.TestCase):
+    def event_created_for(self, event: FanEventDTO, event_name):
+        self.assertEqual(event.event_name, event_name)
+
     @mock_sns
     @mock_dynamodb2
     def test_process_single_event__given_fan_out__then_process_created_and_sns_sent(
@@ -116,10 +119,10 @@ class DBStreamAdapterUnitTests(unittest.TestCase):
 
         # Act
         results = subject.process_single_event(EVENT_FAN_OUT["Records"][0])
-        print(json.dumps(results, indent=3, default=str))
+        print(f"***\n{results}")
 
         # Assert
-        self.assertEqual(results["notifications_sent"], 1)
+        self.event_created_for(results.event_notifications[0], EVENT_TASK_CREATED)
 
 
 ##    @mock_sns
