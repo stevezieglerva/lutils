@@ -64,3 +64,6 @@ class StartProcessAdapterUnitTests(unittest.TestCase):
         print(results)
 
         # Assert
+        self.assertEqual(results.updated_process.process_name, "proc A")
+        self.assertTrue(results.updated_process.process_id != "")
+        self.assertEqual(results.event_notifications[0].event_name, "process_started")
