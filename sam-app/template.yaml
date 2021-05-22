@@ -365,7 +365,7 @@ Resources:
       Environment:
         Variables:
           HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
-          TABLE_NAME: !Ref FanProcessingPartTestTable
+          TASK_COMPLETED_LAMBDA_NAME: !Ref FanStartProcessTestLambda
       Tags:
         Type: "lutils"
         Environment: lutils
@@ -387,6 +387,12 @@ Resources:
               Action: 
                 - dynamodb:DescribeTable
               Resource: !Sub "arn:aws:dynamodb:us-east-1:${AWS::AccountId}:table/${AWS::StackName}*"
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: 
+                - lambda:InvokeFunction
+              Resource: !Sub "arn:aws:lambda:us-east-1:${AWS::AccountId}:function:${AWS::StackName}*"
       Events:
         SNSEvent:
           Type: SNS
@@ -632,6 +638,7 @@ Outputs:
     Description: "S3ProcessingBucket ARN"
     Value: !GetAtt ProcessingBucket.Arn
 
+  # Tables
   FanProcesssingTable:
     Description: "FanProcessingTable ARN"
     Value: !GetAtt FanProcessingTable.Arn
@@ -653,13 +660,22 @@ Outputs:
     Description: "FanProcessingTableTest Name"
     Value: !Select [1, !Split ['/', !GetAtt FanProcessingPartTestTable.Arn]] 
 
+  # SNS
   FanEventsSNS:
     Description: "FanEventsSNS ARN"
     Value: !Ref FanEventsSNS
+
   FanEventsTestSNS:
     Description: "FanEventsTestSNS ARN"
     Value: !Ref FanEventsTestSNS
 
+  # Lambdas
   FanStartProcessTestLambda:
     Description: "FanStartProcessTestLambda"
     Value: !Ref FanStartProcessTestLambda
+
+  FanStartProcessTestLambda:
+    Description: "FanCompleteTaskTestLambda"
+    Value: !Ref FanCompleteTaskTestLambda
+
+    
