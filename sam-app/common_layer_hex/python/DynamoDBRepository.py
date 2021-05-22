@@ -45,8 +45,17 @@ class DynamoDBRepository(IRepository):
         task_json = self.db.get_item(
             {"pk": f"PROCESS#{process_id}", "sk": f"TASK#{task_name}"}
         )
-        print(process_json)
-        return ProcessDTO("test")
+        print(task_json)
+        task = TaskDTO(
+            task_json["task_name"],
+            task_json["task_message"],
+            task_json["process_id"],
+            task_json["process_name"],
+            task_json["status"],
+            task_json["status_changed_timestamp"],
+            task_json["created"],
+        )
+        return task
 
     def save_task(self, task: TaskDTO):
         db_record = self._convert_task_to_db_record(task)
