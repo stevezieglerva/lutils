@@ -25,6 +25,7 @@ os.environ["TABLE_NAME"] = get_output_from_stack(
 
 os.environ["HANDLER_SNS_TOPIC_ARN"] = "fake-sns"
 
+
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 parentdir = os.path.dirname(parentdir) + "/lutil_fan_complete_task"

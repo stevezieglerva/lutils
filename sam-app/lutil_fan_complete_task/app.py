@@ -13,7 +13,7 @@ from DynamoDBRepository import DynamoDBRepository
 from SNSNotifier import *
 from ProcessDTO import *
 from TaskDTO import *
-from StartProcessAdapter import *
+from CompleteTaskAdapter import *
 
 
 def lambda_handler(event, context):
@@ -22,8 +22,9 @@ def lambda_handler(event, context):
     print(json.dumps(event, indent=3, default=str))
     db = DynamoDBRepository(os.environ["TABLE_NAME"])
     notifier = SNSNotifier(os.environ["HANDLER_SNS_TOPIC_ARN"])
-    adapter = StartProcessAdapter(db, notifier)
-    adapter.start_process(event)
+    adapter = CompleteTaskAdapter(db, notifier)
+    results = adapter.complete_task(event)
+    print(f"\nresults : {results}")
 
     print(f"Finished at {datetime.now()}")
 

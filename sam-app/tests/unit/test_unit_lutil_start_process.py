@@ -23,7 +23,9 @@ os.environ["TABLE_NAME"] = get_output_from_stack(
     "FanProcessingPartTestTableName"
 )  # put up here because Lambda caches code using this variable between executions
 
-os.environ["HANDLER_SNS_TOPIC_ARN"] = "fake-sns"
+os.environ["HANDLER_SNS_TOPIC_ARN"] = get_output_from_stack(
+    "FanProcessingPartTestTableName"
+)
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)

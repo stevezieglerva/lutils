@@ -9,7 +9,7 @@ from moto import mock_dynamodb2
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
-parentdir = os.path.dirname(parentdir) + "/lutil_fan_start_process"
+parentdir = os.path.dirname(parentdir) + "/lutil_fan_complete_task"
 sys.path.insert(0, parentdir)
 parentdir = os.path.dirname(parentdir) + "/common_layer_hex/python"
 sys.path.insert(0, parentdir)
@@ -19,11 +19,12 @@ print(json.dumps(sys.path, indent=3))
 import unittest
 from unittest import mock
 
-from lutil_fan_start_process import app
+from lutil_fan_complete_task import app
 from ProcessDTO import ProcessDTO
 from TaskDTO import TaskDTO
 from DynamoDBRepository import DynamoDBRepository
-from TestNotifier import TestNotifier
+from SNSNotifier import *
+from FanManager import *
 
 
 def get_output_from_stack(output_key):
@@ -38,22 +39,32 @@ def get_output_from_stack(output_key):
     return output_value
 
 
-class LutilStartProcessUnitTests(unittest.TestCase):
+class LutilCompleteTaskUnitTests(unittest.TestCase):
     def test_lambda_handler__given_valid_event__then_no_exceptions(self):
         # Arrange
         os.environ["TABLE_NAME"] = get_output_from_stack(
             "FanProcessingPartTestTableName"
-        )  # put up here because Lambda caches code using this variable between executions
-
+        )
         os.environ["HANDLER_SNS_TOPIC_ARN"] = get_output_from_stack("FanEventsTestSNS")
 
+        repo = DynamoDBRepository(os.environ["TABLE_NAME"])
+        notifier = SNSNotifier(os.environ["HANDLER_SNS_TOPIC_ARN"])
+        subject = FanManager(repo, notifier)
+        task_1 = TaskDTO("task 01", {"action": "go"})
+
+        process = ProcessDTO("LutilCompleteTaskUnitTests")
+        start_results = subject.start_process(process, [task_1])
+        print(f"\n\nstart process: {start_results}")
+
+        fan_out_results = subject.fan_out(start_results.updated_tasks)
+        print(f"\n\nfan out: {fan_out_results}")
+
         event = {
-            "process": {"process_name": "proc A"},
-            "tasks": [
-                {"task_name": "task 1", "task_message": {"hello": "world"}},
-                {"task_name": "task 2", "task_message": {"apple": "pear"}},
-            ],
+            "process_id": start_results.updated_process.process_id,
+            "task_name": fan_out_results.updated_tasks[0].task_name,
         }
+        print("Testing event:")
+        print(json.dumps(event, indent=3, default=str))
 
         # Act
         results = app.lambda_handler(event, "")
