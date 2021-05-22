@@ -365,15 +365,13 @@ Resources:
       Environment:
         Variables:
           HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
-          TASK_COMPLETED_LAMBDA_NAME: !Ref FanStartProcessTestLambda
+          TASK_COMPLETED_LAMBDA_NAME: !Ref FanCompleteTaskTestLambda
       Tags:
         Type: "lutils"
         Environment: lutils
       Layers: 
         - !Ref Common
       Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref FanProcessingPartTestTable 
         - Version: 2012-10-17
           Statement:
             - Effect: Allow
