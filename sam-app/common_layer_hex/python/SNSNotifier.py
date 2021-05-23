@@ -15,7 +15,7 @@ class SNSNotifier(INotifier):
         sns = boto3.client("sns")
         result = sns.publish(
             TopicArn=self.source,
-            Message=str(message),
+            Message=str(message.__dict__),
             MessageAttributes={
                 "event_name": {"DataType": "String", "StringValue": message.event_name},
                 "process_name": {
