@@ -365,7 +365,7 @@ Resources:
       Environment:
         Variables:
           HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
-          TASK_COMPLETED_LAMBDA_NAME: !Ref FanCompleteTaskTestLambda
+          COMPLETE_TASK_LAMBDA_NAME: !Ref FanCompleteTaskTestLambda
       Tags:
         Type: "lutils"
         Environment: lutils
