@@ -46,7 +46,10 @@ class DBStreamAdapter:
             "NewImage"
         ]["sk"]["S"].startswith("TASK"):
             print("is updated task")
-            if single_event["dynamodb"]["NewImage"]["status"]["S"] == TASK_COMPLETED:
+            if (
+                single_event["dynamodb"]["NewImage"]["status"]["S"]
+                == TASK_STATUS_TASK_COMPLETED
+            ):
                 print("is task complete")
                 return True
         return False
