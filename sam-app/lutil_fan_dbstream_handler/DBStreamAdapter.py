@@ -19,14 +19,7 @@ class DBStreamAdapter:
             task_db_json = single_event["dynamodb"]["NewImage"]
             task_json = self._convert_from_dict_format(task_db_json)
             print(json.dumps(task_json, indent=3, default=str))
-            task = TaskDTO(
-                task_json["task_name"],
-                task_json["task_message"],
-                task_json["process_id"],
-                task_json["status"],
-                task_json["status_changed_timestamp"],
-                task_json["created"],
-            )
+            task = convert_json_to_task(task_json)
             print(f"task dto: {task}")
             results = self.fan_manager.fan_out([task])
             return results
