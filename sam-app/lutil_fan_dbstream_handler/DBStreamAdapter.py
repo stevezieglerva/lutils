@@ -11,6 +11,8 @@ class DBStreamAdapter:
         self.fan_manager = FanManager(self.repository, self.notifier)
 
     def process_single_event(self, single_event):
+        print("\n\nsingle_event:")
+        print(json.dumps(single_event, indent=3, default=str))
         if self._is_newly_created_fan_out(
             single_event
         ) or self._is_newly_completed_task(single_event):
