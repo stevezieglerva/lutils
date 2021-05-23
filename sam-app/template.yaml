@@ -445,7 +445,7 @@ Resources:
       Environment:
         Variables:
           HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
-          POWERTOOLS_METRICS_NAMESPACE: lutils
+          POWERTOOLS_METRICS_NAMESPACE: lutils2
           POWERTOOLS_SERVICE_NAME: fan-logging
       Tags:
         Type: "lutils"

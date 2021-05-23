@@ -13,12 +13,15 @@ class TaskDTO:
 
 
 def convert_json_to_task(task_json: dict) -> TaskDTO:
-    return TaskDTO(
-        task_json["task_name"],
-        task_json["task_message"],
-        task_json.get("process_id", ""),
-        task_json.get("process_name", ""),
-        task_json.get("status", ""),
-        task_json.get("status_changed_timestamp", ""),
-        task_json.get("created"),
-    )
+    dummy_for_fields = TaskDTO("dummy", {})
+    expected_fields = [field for field in dummy_for_fields.__dict__.keys()]
+    constructor_arguments = []
+    for field in expected_fields:
+        try:
+            field_value = task_json[field]
+            constructor_arguments.append(field_value)
+        except KeyError as e:
+            # missing field might be optional so let it pass
+            pass
+    print(constructor_arguments)
+    return TaskDTO(*constructor_arguments)

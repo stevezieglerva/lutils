@@ -24,14 +24,14 @@ def lambda_handler(event, context):
     for record in event["Records"]:
         print(record)
         message = record["Sns"]["Message"]
-        fan_event = FanEvent(record_string=message)
+        fan_event = convert_json_to_fanevent(json.loads(message))
         print("_event_ " + fan_event.get_formatted_line())
-        metrics.add_metric(
-            name=f"Source-{fan_event.event_source}", unit=MetricUnit.Count, value=1
-        )
-        metrics.add_metric(
-            name=f"Event-{fan_event.event_name}", unit=MetricUnit.Count, value=1
-        )
+    ##        metrics.add_metric(
+    ##            name=f"Source-{fan_event.event_source}", unit=MetricUnit.Count, value=1
+    ##        )
+    ##        metrics.add_metric(
+    ##            name=f"Event-{fan_event.event_name}", unit=MetricUnit.Count, value=1
+    ##        )
 
     print(f"Finished at {datetime.now()}")
 

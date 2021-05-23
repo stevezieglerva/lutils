@@ -17,8 +17,9 @@ def convert_json_to_process(process_json: dict) -> ProcessDTO:
     for field in expected_fields:
         try:
             field_value = process_json[field]
+            constructor_arguments.append(field_value)
         except KeyError as e:
-            raise KeyError(f"ProcessDTO missing value for '{field}'")
-        constructor_arguments.append(field_value)
+            # missing field might be optional so let it pass
+            pass
     print(constructor_arguments)
     return ProcessDTO(*constructor_arguments)
