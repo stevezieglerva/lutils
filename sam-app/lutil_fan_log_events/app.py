@@ -24,6 +24,7 @@ def lambda_handler(event, context):
     for record in event["Records"]:
         print(record)
         message = record["Sns"]["Message"]
+        message = message.replace("'", '"')
         fan_event = convert_json_to_fanevent(json.loads(message))
         print("_event_ " + fan_event.get_formatted_line())
     ##        metrics.add_metric(
