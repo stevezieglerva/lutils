@@ -39,7 +39,7 @@ def complete_task(complete_task_lambda: str, process_id: str, task_name: str):
     lam = boto3.client("lambda")
 
     start_event = {}
-    start_event["process_id"] = process_id}
+    start_event["process_id"] = process_id
     start_event["task_name"] = task_name
     print(f"Calling: {complete_task_lambda} with: {start_event}")
     response = lam.invoke(

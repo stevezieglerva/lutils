@@ -34,9 +34,9 @@ def lambda_handler(event, context):
 
     adapter = DBStreamAdapter(repo, notifier)
 
-    all_results = []
+    processed_count = 0
     for record in event["Records"]:
         results = adapter.process_single_event(record)
-        all_results.append(results)
+        processed_count = processed_count + 1
 
-    return all_results
+    return {"processed": processed_count}

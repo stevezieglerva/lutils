@@ -213,7 +213,7 @@ Resources:
         Type: "lutils"
         Environment: lutils
       Layers: 
-        - !Ref Common
+        - !Ref CommonHex
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref FanProcessingPartTestTable 
@@ -345,7 +345,7 @@ Resources:
         Type: "lutils"
         Environment: lutils
       Layers: 
-        - !Ref Common
+        - !Ref CommonHex
       Policies:
         - Version: 2012-10-17
           Statement:
@@ -370,7 +370,7 @@ Resources:
         Type: "lutils"
         Environment: lutils
       Layers: 
-        - !Ref Common
+        - !Ref CommonHex
       Policies:
         - Version: 2012-10-17
           Statement:
@@ -417,7 +417,7 @@ Resources:
         Type: "lutils"
         Environment: lutils
       Layers: 
-        - !Ref Common
+        - !Ref CommonHex
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref FanProcessingTableTest 
@@ -451,7 +451,7 @@ Resources:
         Type: "lutils"
         Environment: lutils
       Layers: 
-        - !Ref Common
+        - !Ref CommonHex
       Policies:
         - S3CrudPolicy:
             BucketName: !Ref ProcessingBucket
