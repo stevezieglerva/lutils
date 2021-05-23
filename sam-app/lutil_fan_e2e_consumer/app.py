@@ -23,7 +23,8 @@ def lambda_handler(event, context):
         message = record["Sns"]["Message"]
         print(f"Received message: {message}")
         message = message.replace("'", '"')
-        task = convert_json_to_task(json.loads(message))
+        task_json = json.loads(message)["event_message"]
+        task = convert_json_to_task(task_json)
         print(f"task_message: {task.task_message}")
 
         max_delay = task.task_message["max_delay"]
