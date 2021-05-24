@@ -20,7 +20,7 @@ class DBStreamAdapter:
         task_status = ""
         if single_event["dynamodb"]["NewImage"]["sk"]["S"].startswith("TASK"):
             task_status = single_event["dynamodb"]["NewImage"]["status"]["S"]
-        print(f"--- single_event: {db_event:<10} {pk:<20} {sk:20} {task_status}")
+        print(f"DEBUG single_event: {db_event:<10} {pk:<20} {sk:20} {task_status}")
 
         if self._is_newly_created_fan_out(
             single_event

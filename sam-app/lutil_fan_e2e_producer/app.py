@@ -16,11 +16,12 @@ def lambda_handler(event, context):
     start_process_lambda = os.environ["START_PROCESS_LAMBDA_NAME"]
     iterations = event.get("iterations", 20)
     process_name = event.get("process_name", "e2e tests")
+    task_prefix = event.get("task_prefix", "task")
 
     task_list = []
     for i in range(iterations):
         new_task = {}
-        new_task["task_name"] = f"task-{i}"
+        new_task["task_name"] = f"{task_prefix}-{i}"
         new_task["task_message"] = event
         task_list.append(new_task)
 
