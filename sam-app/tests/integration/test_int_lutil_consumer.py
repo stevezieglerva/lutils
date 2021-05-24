@@ -8,7 +8,7 @@ import boto3
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 parentdir = os.path.dirname(parentdir) + "/lutil_fan_e2e_consumer"
-parentdir = os.path.dirname(parentdir) + "/common_layer/python"
+parentdir = os.path.dirname(parentdir) + "/common_layer_hex/python"
 sys.path.insert(0, parentdir)
 print("Updated path:")
 print(json.dumps(sys.path, indent=3))
@@ -17,14 +17,14 @@ import unittest
 from unittest import mock
 
 from lutil_fan_e2e_consumer import app
-from TaskRecord import TaskRecord
-from FanEvent import *
+from FanEventDTO import *
+from TaskDTO import *
 from DynamoDB import DynamoDB
 
 
 def get_output_from_stack(output_key):
     cloudformation = boto3.client("cloudformation")
-    stacks = cloudformation.describe_stacks(StackName="lutils")
+    stacks = cloudformation.describe_stacks(StackName="lutils2")
     stack_outputs = stacks["Stacks"][0]["Outputs"]
     s3_bucket = ""
     for output in stack_outputs:
@@ -53,12 +53,13 @@ task_json = {
     "status_changed_timestamp": "2021-05-06T02:10:10.577068",
 }
 
-task = TaskRecord(record_string=json.dumps(task_json, indent=3, default=str), db=db)
-task.fan_out()
+task = convert_json_to_task(task_json)
 
-event = FanEvent(
-    event_source="test consumer", event_name="task_created", message=task.json()
+
+event = FanEventDTO(
+    event_source="test consumer", event_name="task_created", event_message=task.__dict__
 )
+event_string = json.dumps(event.__dict__, indent=3, default=str)
 
 TASK_CREATED = {
     "Records": [
@@ -71,7 +72,7 @@ TASK_CREATED = {
                 "MessageId": "afc5e054-eab6-5906-a8d7-b959b8f41ec6",
                 "TopicArn": "arn:aws:sns:us-east-1:112280397275:lutil_fan_events_test",
                 "Subject": None,
-                "Message": str(event),
+                "Message": event_string,
                 "Timestamp": "2021-05-06T02:10:10.968Z",
                 "SignatureVersion": "1",
                 "Signature": "GxRmH8dcwhDc/Ft1zH7K1MOnFeOhq2NJfuWkHFnRjA2IreQGk30OVIcKwtSkoPxL71wi6Up58oaoXXkiBLnRTAqucGzLtGpIFBT/nXvPW3NqCLew5HaB068ulkbpxHqjeWRmF6HgZbGnNlmelcKwyNUnMHu+2dNAL4UJ+slctGlK0p/Q8dxowO/TA/ZPMsiKv5xoA2z2Y/R1UfbTt7orDeAhfOew6eJP/4ZzHBharWM1UcR0XCUUPK2Q7N/X45c+vBuTffdtQYpA4SZhBRK2LwaWX2BsRN58LjUVGRypX/Zm9cOLuvAVaBb+j5dd3vya5oB516A29bxKqkymySE28A==",

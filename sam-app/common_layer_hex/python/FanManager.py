@@ -134,5 +134,5 @@ class FanManager:
         completed_count = len(completed_tasks)
         progress = 0.0
         if total_tasks > 0:
-            progress = float(completed_count / total_tasks)
+            progress = round(float(completed_count / total_tasks), 2)
         return progress
