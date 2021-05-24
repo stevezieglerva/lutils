@@ -115,7 +115,7 @@ class FanManager:
             process_progress,
         )
         self.repository.save_process(updated_process)
-        if updated_process.progress == 1.0:
+        if updated_process.progress == 1:
             event = FanEventDTO(
                 self.event_source, EVENT_PROCESS_COMPLETED, updated_process.__dict__
             )
