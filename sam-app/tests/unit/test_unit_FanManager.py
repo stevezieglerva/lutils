@@ -94,29 +94,29 @@ class FanManagerUnitTests(unittest.TestCase):
 
         self.event_created_for(results.event_notifications[0], EVENT_PROCESS_STARTED)
 
-    @mock_dynamodb2
-    def test_fan_out__given_newly_created_tasks__then_tasks_status_changed_and_notifications_sent(
-        self,
-    ):
-        # Arrange
-        repo = InMemoryRepository("fake-table")
-        notifier = TestNotifier("fake-sns")
-        subject = FanManager(repo, notifier)
-        task_1 = TaskDTO("task 01", {"action": "go"})
-        task_2 = TaskDTO("task 02", {"action": "save"})
+        @mock_dynamodb2
+        def test_fan_out__given_newly_created_tasks__then_tasks_status_changed_and_notifications_sent(
+            self,
+        ):
+            # Arrange
+            repo = InMemoryRepository("fake-table")
+            notifier = TestNotifier("fake-sns")
+            subject = FanManager(repo, notifier)
+            task_1 = TaskDTO("task 01", {"action": "go"})
+            task_2 = TaskDTO("task 02", {"action": "save"})
 
-        process = ProcessDTO("fan manager test")
-        subject.start_process(process, [task_1, task_2])
-        task_list = [task_1, task_2]
+            process = ProcessDTO("fan manager test")
+            subject.start_process(process, [task_1, task_2])
+            task_list = [task_1, task_2]
 
-        # Act
-        results = subject.fan_out(task_list)
-        print(results)
+            # Act
+            results = subject.fan_out(task_list)
+            print(results)
 
-        # Assert
-        self.count_of_tasks_in_status(process.process_id, "created", 2)
+            # Assert
+            self.count_of_tasks_in_status(process.process_id, "created", 2)
 
-        self.event_created_for(results.event_notifications[0], EVENT_TASK_CREATED)
+            self.event_created_for(results.event_notifications[0], EVENT_TASK_CREATED)
 
     @mock_dynamodb2
     def test_complete_task__given_one_task_completed__then_tasks_status_changed_and_process_progress_set(
@@ -176,4 +176,4 @@ class FanManagerUnitTests(unittest.TestCase):
             results.updated_process.process_id, "completed", 2
         )
         self.assertEqual(results.updated_process.progress, 1.0)
-        self.event_created_for(results.event_notifications[0], EVENT_PROCESS_CREATED)
+        self.event_created_for(results.event_notifications[0], EVENT_PROCESS_COMPLETED)
