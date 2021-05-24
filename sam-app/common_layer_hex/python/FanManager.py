@@ -36,7 +36,7 @@ class FanManager:
         self.event_source = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "fan_manager")
 
     def start_process(self, process, tasks: list) -> FanManagerResults:
-        print(f"\n\nStarting process: {process.process_name}")
+        print(f"\n\n--- Starting process: {process.process_name}")
         updated_process = ProcessDTO(
             process.process_name, str(ulid.ULID()), datetime.now().isoformat()
         )
@@ -44,7 +44,7 @@ class FanManager:
 
         updated_tasks = []
         for task in tasks:
-            print(f"\nAdding: {task.task_name}")
+            print(f"\n--- Adding: {task.task_name}")
             new_task = TaskDTO(
                 task.task_name,
                 task.task_message,
@@ -64,11 +64,11 @@ class FanManager:
         return FanManagerResults(updated_process, updated_tasks, [event])
 
     def fan_out(self, task_list: list) -> FanManagerResults:
-        print("\n\nFanning out")
+        print(f"\n\n--- Fanning out: {task_list}")
         updated_tasks = []
         event_notifications = []
         for task in task_list:
-            print(f"\nProcessing task: {task.task_name}")
+            print(f"\n--- Processing task: {task.task_name}")
             new_task = TaskDTO(
                 task.task_name,
                 task.task_message,
@@ -89,10 +89,9 @@ class FanManager:
         return FanManagerResults(None, updated_tasks, event_notifications)
 
     def complete_task(self, task: TaskDTO) -> FanManagerResults:
-        print("F\n\nCompleting task")
+        print(f"\n\n--- Completing task: {task.task_name}")
         updated_tasks = []
         event_notifications = []
-        print(f"\n\nProcessing task: {task.task_name}")
         new_task = TaskDTO(
             task.task_name,
             task.task_message,

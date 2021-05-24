@@ -91,6 +91,9 @@ TASK_CREATED = {
 class ConsumerIntTests(unittest.TestCase):
     def test_lambda_handler__then_no_exception(self):
         # Arrange
+        os.environ["COMPLETE_TASK_LAMBDA_NAME"] = get_output_from_stack(
+            "FanCompleteTaskTestLambda"
+        )
 
         # Act
         results = app.lambda_handler(TASK_CREATED, {})

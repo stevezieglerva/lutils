@@ -666,7 +666,7 @@ Outputs:
     Description: "FanStartProcessTestLambda"
     Value: !Ref FanStartProcessTestLambda
 
-  FanStartProcessTestLambda:
+  FanCompleteTaskTestLambda:
     Description: "FanCompleteTaskTestLambda"
     Value: !Ref FanCompleteTaskTestLambda
 

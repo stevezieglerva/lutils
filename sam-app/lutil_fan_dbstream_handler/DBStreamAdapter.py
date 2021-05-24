@@ -13,6 +13,15 @@ class DBStreamAdapter:
     def process_single_event(self, single_event):
         print("\n\nsingle_event:")
         print(json.dumps(single_event, indent=3, default=str))
+
+        db_event = single_event["eventName"]
+        pk = single_event["dynamodb"]["NewImage"]["pk"]["S"]
+        sk = single_event["dynamodb"]["NewImage"]["sk"]["S"]
+        task_status = ""
+        if single_event["dynamodb"]["NewImage"]["sk"]["S"].startswith("TASK"):
+            task_status = single_event["dynamodb"]["NewImage"]["status"]["S"]
+        print(f"--- single_event: {db_event:<10} {pk:<20} {sk:20} {task_status}")
+
         if self._is_newly_created_fan_out(
             single_event
         ) or self._is_newly_completed_task(single_event):
