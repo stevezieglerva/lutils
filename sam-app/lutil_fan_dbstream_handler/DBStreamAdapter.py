@@ -22,9 +22,7 @@ class DBStreamAdapter:
             task_status = single_event["dynamodb"]["NewImage"]["status"]["S"]
         print(f"DEBUG single_event: {db_event:<10} {pk:<20} {sk:20} {task_status}")
 
-        if self._is_newly_created_fan_out(
-            single_event
-        ) or self._is_newly_completed_task(single_event):
+        if self._is_newly_created_fan_out(single_event):
             task_db_json = single_event["dynamodb"]["NewImage"]
             task_json = self._convert_from_dict_format(task_db_json)
             print(json.dumps(task_json, indent=3, default=str))
@@ -41,20 +39,6 @@ class DBStreamAdapter:
                 single_event["dynamodb"]["NewImage"]["status"]["S"]
                 == TASK_STATUS_FAN_OUT
             ):
-                return True
-        return False
-
-    def _is_newly_completed_task(self, single_event):
-        print("checking completed")
-        if single_event["eventName"] == "MODIFY" and single_event["dynamodb"][
-            "NewImage"
-        ]["sk"]["S"].startswith("TASK"):
-            print("is updated task")
-            if (
-                single_event["dynamodb"]["NewImage"]["status"]["S"]
-                == TASK_STATUS_TASK_COMPLETED
-            ):
-                print("is task complete")
                 return True
         return False
 
