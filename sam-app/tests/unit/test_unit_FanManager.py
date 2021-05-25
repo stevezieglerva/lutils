@@ -147,7 +147,7 @@ class FanManagerUnitTests(unittest.TestCase):
             1,
         )
         self.assertEqual(results.updated_process.progress, 0.5)
-        self.assertEqual(results.event_notifications, [])
+        self.event_created_for(results.event_notifications[0], EVENT_TASK_COMPLETED)
 
     @mock_dynamodb2
     def test_complete_task__given_all_tasks_completed__then_tasks_status_changed_and_process_progress_set(
@@ -177,3 +177,4 @@ class FanManagerUnitTests(unittest.TestCase):
         )
         self.assertEqual(results.updated_process.progress, 1.0)
         self.event_created_for(results.event_notifications[0], EVENT_PROCESS_COMPLETED)
+        self.event_created_for(results.event_notifications[1], EVENT_TASK_COMPLETED)

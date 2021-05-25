@@ -19,6 +19,7 @@ TASK_STATUS_TASK_COMPLETED = "completed"
 
 EVENT_PROCESS_STARTED = "process_started"
 EVENT_TASK_CREATED = "task_created"
+EVENT_TASK_COMPLETED = "task_completed"
 EVENT_PROCESS_COMPLETED = "process_completed"
 
 
@@ -124,6 +125,9 @@ class FanManager:
             )
             self.notifer.send_message(event)
             event_notifications.append(event)
+        event = FanEventDTO(self.event_source, EVENT_TASK_COMPLETED, task.__dict__)
+        self.notifer.send_message(event)
+        event_notifications.append(event)
         return FanManagerResults(updated_process, updated_tasks, event_notifications)
 
     def _calculate_process_progress(self, process: ProcessDTO) -> float:
