@@ -44,6 +44,7 @@ class DynamoDBUnitTests(unittest.TestCase):
                 "value": {"subkey": "03939"},
                 "gs1_pk": "INDEX",
                 "gs1_sk": "ABCDEF",
+                "status": "created",
             }
         )
 
@@ -65,6 +66,7 @@ class DynamoDBUnitTests(unittest.TestCase):
                     "gs1_pk": "INDEX",
                     "pk": "J1K4",
                     "gs1_sk": "ABCDEF",
+                    "status": "created",
                 }
             ],
         )
