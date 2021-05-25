@@ -107,11 +107,14 @@ class FanManager:
         current_process = self.repository.get_process(task.process_id)
         process_progress = self._calculate_process_progress(current_process)
         print(f"\n\ncurrent_process: {current_process}")
+        ended = ""
+        if process_progress == 1:
+            ended = datetime.now().isoformat()
         updated_process = ProcessDTO(
             current_process.process_name,
             current_process.process_id,
             current_process.started,
-            current_process.ended,
+            ended,
             process_progress,
         )
         self.repository.save_process(updated_process)

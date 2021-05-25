@@ -300,7 +300,7 @@ Resources:
       Runtime: python3.7
       Environment:
         Variables:
-          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
           TABLE_NAME: !Ref FanProcessingPartTestTable 
           POWERTOOLS_METRICS_NAMESPACE: lutils
           POWERTOOLS_SERVICE_NAME: fan-logging
@@ -406,7 +406,7 @@ Resources:
       Runtime: python3.7
       Environment:
         Variables:
-          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
       Tags:
         Type: "lutils"
         Environment: lutils
