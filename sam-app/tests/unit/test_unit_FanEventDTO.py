@@ -17,7 +17,7 @@ import unittest
 from unittest import mock
 
 
-from common_layer_hex.python.FanEventDTO import *
+from common_layer_hex.python.domain.FanEventDTO import *
 
 
 class ProcessDTOUnitTests(unittest.TestCase):

@@ -21,10 +21,10 @@ from unittest import mock
 from common_layer_hex.python.FanManager import *
 from common_layer_hex.python.InMemoryRepository import InMemoryRepository
 from common_layer_hex.python.TestNotifier import TestNotifier
-from common_layer_hex.python.ProcessDTO import *
-from common_layer_hex.python.TaskDTO import *
+from common_layer_hex.python.domain.ProcessDTO import *
+from common_layer_hex.python.domain.TaskDTO import *
 from common_layer_hex.python.DynamoDB import DynamoDB
-from common_layer_hex.python.FanEventDTO import FanEventDTO
+from common_layer_hex.python.domain.FanEventDTO import FanEventDTO
 
 
 class FanManagerUnitTests(unittest.TestCase):

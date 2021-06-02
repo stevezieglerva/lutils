@@ -2,8 +2,8 @@ import boto3
 
 from DynamoDB import DynamoDB
 from IRepository import IRepository
-from ProcessDTO import *
-from TaskDTO import *
+from domain.ProcessDTO import *
+from domain.TaskDTO import *
 
 
 class DynamoDBRepository(IRepository):

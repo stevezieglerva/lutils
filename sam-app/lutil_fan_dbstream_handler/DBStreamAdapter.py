@@ -1,7 +1,7 @@
 from IRepository import *
 from INotifier import *
 from FanManager import *
-from TaskDTO import *
+from domain.TaskDTO import *
 
 
 class DBStreamAdapter:

@@ -6,12 +6,12 @@ from typing import List
 
 import ulid
 
-from FanEventDTO import *
+from domain.FanEventDTO import *
 from INotifier import INotifier
 from IRepository import IRepository
-from ProcessDTO import *
-from ProcessDTO import ProcessDTO
-from TaskDTO import *
+from domain.ProcessDTO import *
+from domain.ProcessDTO import ProcessDTO
+from domain.TaskDTO import *
 
 TASK_STATUS_FAN_OUT = "fan_out"
 TASK_STATUS_TASK_CREATED = "created"

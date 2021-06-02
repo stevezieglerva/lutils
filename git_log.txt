@@ -1,0 +1,3320 @@
+^^3e4d8b4--1593520336--2020-06-30T08:32:16-04:00--Steve Ziegler
+
+
+129	0	.gitignore
+2	0	README.md
+^^f8de8f9--1593520442--2020-06-30T08:34:02-04:00--Steve Ziegler
+
+
+2	0	.gitignore
+^^3075571--1593520660--2020-06-30T08:37:40-04:00--Steve Ziegler
+
+
+244	0	sam-app/.gitignore
+138	0	sam-app/README.md
+62	0	sam-app/events/event.json
+0	0	sam-app/hello_world/__init__.py
+42	0	sam-app/hello_world/app.py
+1	0	sam-app/hello_world/requirements.txt
+31	0	sam-app/template.yaml
+0	0	sam-app/tests/unit/__init__.py
+73	0	sam-app/tests/unit/test_handler.py
+^^95983f5--1593568293--2020-06-30T21:51:33-04:00--Steve Ziegler
+
+
+-	-	.DS_Store
+1	2	README.md
+75	0	sam-app/lutil_s3_text_lines_to_sns/S3TextFromLambdaEvent.py
+0	0	sam-app/lutil_s3_text_lines_to_sns/__init__.py
+54	0	sam-app/lutil_s3_text_lines_to_sns/app.py
+27	0	sam-app/lutil_s3_text_lines_to_sns/firehose_helpers.py
+1	0	sam-app/lutil_s3_text_lines_to_sns/requirements.txt
+8	0	sam-app/requirements_ci_testing.txt
+94	0	sam-app/run_tests_ci.sh
+1	0	sam-app/test_coverage_results_2020_06_30_21_34_42.txt
+1	0	sam-app/test_coverage_results_2020_06_30_21_35_50.txt
+1	0	sam-app/test_coverage_results_2020_06_30_21_36_26.txt
+1	0	sam-app/test_coverage_results_2020_06_30_21_36_45.txt
+8	0	sam-app/test_coverage_results_2020_06_30_21_37_12.txt
+8	0	sam-app/test_coverage_results_2020_06_30_21_37_41.txt
+8	0	sam-app/test_coverage_results_2020_06_30_21_38_07.txt
+8	0	sam-app/test_coverage_results_2020_06_30_21_40_35.txt
+8	0	sam-app/test_coverage_results_2020_06_30_21_41_13.txt
+8	0	sam-app/test_coverage_results_2020_06_30_21_42_08.txt
+8	0	sam-app/test_coverage_results_2020_06_30_21_49_16.txt
+10	0	sam-app/test_coverage_results_2020_06_30_21_49_36.txt
+10	0	sam-app/test_coverage_results_2020_06_30_21_49_50.txt
+10	0	sam-app/test_coverage_results_2020_06_30_21_50_14.txt
+10	0	sam-app/test_coverage_results_2020_06_30_21_50_31.txt
+0	0	sam-app/tests/integration/__init__.py
+0	73	sam-app/tests/unit/test_handler.py
+26	0	sam-app/tests/unit/test_lutil-s3-text-lines-to-sns.py
+76	0	sam-app/venv_ci_testing/bin/activate
+37	0	sam-app/venv_ci_testing/bin/activate.csh
+75	0	sam-app/venv_ci_testing/bin/activate.fish
+10	0	sam-app/venv_ci_testing/bin/black
+10	0	sam-app/venv_ci_testing/bin/blackd
+10	0	sam-app/venv_ci_testing/bin/coverage
+10	0	sam-app/venv_ci_testing/bin/coverage-3.7
+10	0	sam-app/venv_ci_testing/bin/coverage3
+10	0	sam-app/venv_ci_testing/bin/easy_install
+10	0	sam-app/venv_ci_testing/bin/easy_install-3.7
+10	0	sam-app/venv_ci_testing/bin/epylint
+10	0	sam-app/venv_ci_testing/bin/isort
+54	0	sam-app/venv_ci_testing/bin/jp.py
+10	0	sam-app/venv_ci_testing/bin/pip
+10	0	sam-app/venv_ci_testing/bin/pip3
+10	0	sam-app/venv_ci_testing/bin/pip3.7
+10	0	sam-app/venv_ci_testing/bin/pylint
+10	0	sam-app/venv_ci_testing/bin/pyreverse
+1	0	sam-app/venv_ci_testing/bin/python
+1	0	sam-app/venv_ci_testing/bin/python3
+23	0	sam-app/venv_ci_testing/bin/rst2html.py
+26	0	sam-app/venv_ci_testing/bin/rst2html4.py
+35	0	sam-app/venv_ci_testing/bin/rst2html5.py
+26	0	sam-app/venv_ci_testing/bin/rst2latex.py
+26	0	sam-app/venv_ci_testing/bin/rst2man.py
+30	0	sam-app/venv_ci_testing/bin/rst2odt.py
+67	0	sam-app/venv_ci_testing/bin/rst2odt_prepstyles.py
+23	0	sam-app/venv_ci_testing/bin/rst2pseudoxml.py
+24	0	sam-app/venv_ci_testing/bin/rst2s5.py
+27	0	sam-app/venv_ci_testing/bin/rst2xetex.py
+23	0	sam-app/venv_ci_testing/bin/rst2xml.py
+25	0	sam-app/venv_ci_testing/bin/rstpep2html.py
+10	0	sam-app/venv_ci_testing/bin/symilar
+3	0	sam-app/venv_ci_testing/pyvenv.cfg
+^^6a49314--1593572173--2020-06-30T22:56:13-04:00--Steve Ziegler
+
+
+1	0	.gitignore
+50	49	sam-app/lutil_s3_text_lines_to_sns/S3TextFromLambdaEvent.py
+46	43	sam-app/lutil_s3_text_lines_to_sns/app.py
+1	1	sam-app/run_tests_ci.sh
+61	0	sam-app/tests/integration/test_lutil_s3_text_lines_to_sns.py
+6	2	sam-app/tests/unit/{test_lutil-s3-text-lines-to-sns.py => test_lutil_s3_text_lines_to_sns.py}
+^^6894792--1593604941--2020-07-01T08:02:21-04:00--Steve Ziegler
+
+
+23	0	buildspec.yml
+19	17	sam-app/lutil_s3_text_lines_to_sns/firehose_helpers.py
+21	0	sam-app/template.yaml
+0	1	sam-app/test_coverage_results_2020_06_30_21_34_42.txt
+0	1	sam-app/test_coverage_results_2020_06_30_21_35_50.txt
+0	1	sam-app/test_coverage_results_2020_06_30_21_36_26.txt
+0	1	sam-app/test_coverage_results_2020_06_30_21_36_45.txt
+0	8	sam-app/test_coverage_results_2020_06_30_21_37_12.txt
+0	8	sam-app/test_coverage_results_2020_06_30_21_37_41.txt
+0	8	sam-app/test_coverage_results_2020_06_30_21_38_07.txt
+0	8	sam-app/test_coverage_results_2020_06_30_21_40_35.txt
+0	8	sam-app/test_coverage_results_2020_06_30_21_41_13.txt
+0	8	sam-app/test_coverage_results_2020_06_30_21_42_08.txt
+0	8	sam-app/test_coverage_results_2020_06_30_21_49_16.txt
+0	10	sam-app/test_coverage_results_2020_06_30_21_49_36.txt
+0	10	sam-app/test_coverage_results_2020_06_30_21_49_50.txt
+0	10	sam-app/test_coverage_results_2020_06_30_21_50_14.txt
+0	10	sam-app/test_coverage_results_2020_06_30_21_50_31.txt
+^^771c1f5--1593605398--2020-07-01T08:09:58-04:00--Steve Ziegler
+
+
+3	7	sam-app/template.yaml
+^^65c1495--1593605598--2020-07-01T08:13:18-04:00--Steve Ziegler
+
+
+2	2	buildspec.yml
+^^dafedfc--1593606353--2020-07-01T08:25:53-04:00--Steve Ziegler
+
+
+4	1	sam-app/template.yaml
+^^4642152--1593620956--2020-07-01T12:29:16-04:00--Steve Ziegler
+
+
+1	0	sam-app/template.yaml
+^^4c95c03--1593621214--2020-07-01T12:33:34-04:00--Steve Ziegler
+
+
+1	2	sam-app/template.yaml
+^^6f4a861--1593622960--2020-07-01T13:02:40-04:00--Steve Ziegler
+
+
+9	0	sam-app/template.yaml
+^^43d5b01--1593623135--2020-07-01T13:05:35-04:00--Steve Ziegler
+
+
+2	1	sam-app/template.yaml
+^^4b45876--1593623189--2020-07-01T13:06:29-04:00--Steve Ziegler
+
+
+8	7	sam-app/template.yaml
+^^d8fb8d1--1593623553--2020-07-01T13:12:33-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^11df434--1593623614--2020-07-01T13:13:34-04:00--Steve Ziegler
+
+
+2	1	sam-app/template.yaml
+^^332cd4a--1593624787--2020-07-01T13:33:07-04:00--Steve Ziegler
+
+
+9	8	sam-app/template.yaml
+^^233c0b5--1593625465--2020-07-01T13:44:25-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^5319fad--1593625777--2020-07-01T13:49:37-04:00--Steve Ziegler
+
+
+3	0	sam-app/template.yaml
+^^f11c85b--1593627962--2020-07-01T14:26:02-04:00--Steve Ziegler
+
+
+-	-	.DS_Store
+3	0	sam-app/template.yaml
+2	0	sam-app/tests/url_list.txt
+^^995ad2e--1593628238--2020-07-01T14:30:38-04:00--Steve Ziegler
+
+
+5	0	sam-app/template.yaml
+^^d64160b--1593778174--2020-07-03T08:09:34-04:00--Steve Ziegler
+
+
+-	-	.DS_Store
+637	0	lutil-download-url/Include/Python-ast.h
+159	0	lutil-download-url/Include/Python.h
+1109	0	lutil-download-url/Include/abstract.h
+37	0	lutil-download-url/Include/accu.h
+46	0	lutil-download-url/Include/asdl.h
+29	0	lutil-download-url/Include/ast.h
+32	0	lutil-download-url/Include/bitset.h
+14	0	lutil-download-url/Include/bltinmodule.h
+34	0	lutil-download-url/Include/boolobject.h
+62	0	lutil-download-url/Include/bytearrayobject.h
+69	0	lutil-download-url/Include/bytes_methods.h
+224	0	lutil-download-url/Include/bytesobject.h
+29	0	lutil-download-url/Include/cellobject.h
+239	0	lutil-download-url/Include/ceval.h
+58	0	lutil-download-url/Include/classobject.h
+157	0	lutil-download-url/Include/code.h
+240	0	lutil-download-url/Include/codecs.h
+93	0	lutil-download-url/Include/compile.h
+69	0	lutil-download-url/Include/complexobject.h
+84	0	lutil-download-url/Include/context.h
+273	0	lutil-download-url/Include/datetime.h
+110	0	lutil-download-url/Include/descrobject.h
+179	0	lutil-download-url/Include/dictobject.h
+19	0	lutil-download-url/Include/dtoa.h
+499	0	lutil-download-url/Include/dynamic_annotations.h
+17	0	lutil-download-url/Include/enumobject.h
+38	0	lutil-download-url/Include/errcode.h
+37	0	lutil-download-url/Include/eval.h
+55	0	lutil-download-url/Include/fileobject.h
+201	0	lutil-download-url/Include/fileutils.h
+130	0	lutil-download-url/Include/floatobject.h
+93	0	lutil-download-url/Include/frameobject.h
+103	0	lutil-download-url/Include/funcobject.h
+105	0	lutil-download-url/Include/genobject.h
+89	0	lutil-download-url/Include/graminit.h
+94	0	lutil-download-url/Include/grammar.h
+151	0	lutil-download-url/Include/import.h
+52	0	lutil-download-url/Include/internal/ceval.h
+91	0	lutil-download-url/Include/internal/condvar.h
+41	0	lutil-download-url/Include/internal/context.h
+46	0	lutil-download-url/Include/internal/gil.h
+113	0	lutil-download-url/Include/internal/hamt.h
+6	0	lutil-download-url/Include/internal/hash.h
+6	0	lutil-download-url/Include/internal/import.h
+151	0	lutil-download-url/Include/internal/mem.h
+19	0	lutil-download-url/Include/internal/pygetopt.h
+132	0	lutil-download-url/Include/internal/pystate.h
+21	0	lutil-download-url/Include/internal/warnings.h
+33	0	lutil-download-url/Include/intrcheck.h
+25	0	lutil-download-url/Include/iterobject.h
+81	0	lutil-download-url/Include/listobject.h
+99	0	lutil-download-url/Include/longintrepr.h
+220	0	lutil-download-url/Include/longobject.h
+28	0	lutil-download-url/Include/marshal.h
+72	0	lutil-download-url/Include/memoryobject.h
+18	0	lutil-download-url/Include/metagrammar.h
+135	0	lutil-download-url/Include/methodobject.h
+229	0	lutil-download-url/Include/modsupport.h
+89	0	lutil-download-url/Include/moduleobject.h
+19	0	lutil-download-url/Include/namespaceobject.h
+44	0	lutil-download-url/Include/node.h
+1105	0	lutil-download-url/Include/object.h
+370	0	lutil-download-url/Include/objimpl.h
+43	0	lutil-download-url/Include/odictobject.h
+147	0	lutil-download-url/Include/opcode.h
+47	0	lutil-download-url/Include/osdefs.h
+17	0	lutil-download-url/Include/osmodule.h
+108	0	lutil-download-url/Include/parsetok.h
+35	0	lutil-download-url/Include/patchlevel.h
+18	0	lutil-download-url/Include/pgen.h
+43	0	lutil-download-url/Include/pgenheaders.h
+159	0	lutil-download-url/Include/py_curses.h
+64	0	lutil-download-url/Include/pyarena.h
+535	0	lutil-download-url/Include/pyatomic.h
+59	0	lutil-download-url/Include/pycapsule.h
+680	0	lutil-download-url/Include/pyconfig.h
+33	0	lutil-download-url/Include/pyctype.h
+40	0	lutil-download-url/Include/pydebug.h
+57	0	lutil-download-url/Include/pydtrace.h
+504	0	lutil-download-url/Include/pyerrors.h
+55	0	lutil-download-url/Include/pyexpat.h
+12	0	lutil-download-url/Include/pyfpe.h
+145	0	lutil-download-url/Include/pyhash.h
+236	0	lutil-download-url/Include/pylifecycle.h
+102	0	lutil-download-url/Include/pymacconfig.h
+100	0	lutil-download-url/Include/pymacro.h
+230	0	lutil-download-url/Include/pymath.h
+246	0	lutil-download-url/Include/pymem.h
+793	0	lutil-download-url/Include/pyport.h
+455	0	lutil-download-url/Include/pystate.h
+23	0	lutil-download-url/Include/pystrcmp.h
+19	0	lutil-download-url/Include/pystrhex.h
+45	0	lutil-download-url/Include/pystrtod.h
+181	0	lutil-download-url/Include/pythonrun.h
+155	0	lutil-download-url/Include/pythread.h
+246	0	lutil-download-url/Include/pytime.h
+27	0	lutil-download-url/Include/rangeobject.h
+108	0	lutil-download-url/Include/setobject.h
+63	0	lutil-download-url/Include/sliceobject.h
+74	0	lutil-download-url/Include/structmember.h
+49	0	lutil-download-url/Include/structseq.h
+118	0	lutil-download-url/Include/symtable.h
+48	0	lutil-download-url/Include/sysmodule.h
+92	0	lutil-download-url/Include/token.h
+119	0	lutil-download-url/Include/traceback.h
+73	0	lutil-download-url/Include/tupleobject.h
+85	0	lutil-download-url/Include/typeslots.h
+36	0	lutil-download-url/Include/ucnhash.h
+2334	0	lutil-download-url/Include/unicodeobject.h
+67	0	lutil-download-url/Include/warnings.h
+86	0	lutil-download-url/Include/weakrefobject.h
+27	0	lutil-download-url/firehose_helpers.py
+3	0	lutil-download-url/requirements.txt
+15	0	lutil-download-url/tests/s3/delete_output.bat
+110	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-38-39-0a0a4d7e-e929-4fbb-8a7f-e81b38203295
+105	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-39-40-9b1579e3-abfe-473e-9243-b25744fec643
+111	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-41-39-02f33261-708d-4e15-8c9f-9beaad7ca98c
+113	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-42-39-b3e06aa3-243b-41d3-b749-aba076a0cee2
+112	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-43-41-85ddf667-adb6-4c79-bf7e-62bfa7cef408
+116	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-44-41-15d43480-176f-4b05-9ff7-9c3f24072dcb
+114	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-45-43-7ad0d2e3-c098-499b-98ee-fbdb2908c0ac
+115	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-46-44-877fe50a-eba8-47f9-821e-cea013141ebe
+114	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-47-45-ea7ae70d-1bac-4703-9e8b-becd6938d64f
+112	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-48-46-f79d58f0-9656-4cc4-a7bb-e0a9e2acaf1d
+114	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-49-46-63f4e398-fcf6-43ff-8fe2-4a99a3b24065
+97	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-50-47-c9c1d069-9d8b-4433-8bb0-d467b7b83785
+115	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-53-39-98e3b147-d1b9-4885-ac30-cb4a4005a424
+114	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-54-39-31641dbb-3326-4469-80bc-60c7db898cf0
+115	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-55-41-c2fdf869-b939-4bb6-a739-5390e6bbcc2b
+115	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-56-41-0d6873bd-bf1a-41cc-b51f-fc2aac9fc76d
+114	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-57-42-c724ffdc-7041-41c0-b13e-752c17a30cee
+118	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-58-42-2dca22e8-487f-4529-9b63-180ab0186b11
+115	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-59-44-6512a0ec-cac9-4327-ada4-af6193221e71
+109	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-00-36-39810258-adb0-4e30-945e-6d058909e7ba
+111	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-01-36-8213b30e-df63-47c6-a6bf-e9818b166a05
+111	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-02-36-97a46cb3-85ac-4cea-b6ff-0b3272a294f6
+113	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-03-38-05ae61f9-8b51-4b4d-b77f-b5be9003cd83
+177	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-04-39-db8eb553-11f9-40c2-92d9-31d2418c02dc
+213	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-05-40-af11fbf5-2739-41f6-8f1e-b5d48fe02419
+114	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-06-41-e6e481be-2618-4704-b611-8e14309c2d89
+114	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-07-42-4d1bcc93-065c-4ed7-a4b2-27bb127d779b
+113	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-08-43-63643514-01cd-4ef3-a2c9-4cdec47fe283
+113	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-09-44-a069d6d1-4199-4296-baf5-3cb448c563aa
+113	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-10-45-d94d1eea-4757-4364-b13a-b5ae58fbc1ad
+116	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-11-46-ea7f5f9f-f4d1-491c-9aca-e449f770de6b
+116	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-12-48-e796ade3-5f44-4243-80f2-4a148fd61195
+114	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-13-49-02d1e0d0-6c87-459f-9e35-3ac99385e7bc
+30	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-14-50-08221bfc-be6c-4368-97ca-5f31c8463175
+113	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-16-14-f3165243-00e9-4028-8d6b-bfce66e8eceb
+114	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-17-14-dcd30aa0-cdbd-4d7f-ad03-6d9ab9e5f5bf
+112	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-18-15-c8487c43-00e8-40c4-b693-4f9689091f3c
+115	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-19-15-eaf6593d-0d96-4488-a721-c2b4fe088db2
+115	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-20-16-e8358873-3f64-45f8-bf92-702a411e793d
+116	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-21-18-e94617b7-bb96-4135-b751-94755e7a3863
+112	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-22-19-51d80e8d-f806-476b-966a-e631990f1a0d
+116	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-23-20-53ba3dc5-f7c0-4bdb-8c32-5bec8e109b9f
+114	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-24-21-0767c83e-e917-4173-9f1e-cc49c3476af6
+97	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-25-22-df15e208-a020-4a48-9092-d817de7bf61d
+113	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-28-07-73ad2a46-3223-42f3-a19c-ebfad883816f
+114	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-29-07-465a9c52-7b65-4a99-a41a-8bbd384fe375
+116	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-30-08-ecf91db6-52a9-41ac-9632-09c4f484f5bf
+115	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-31-09-a93b8c68-3197-4b89-93f1-cddeebb9f2ef
+116	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-32-11-79f239ba-c85b-4107-b5c8-b4bc1231ebe8
+113	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-33-12-7ef86d14-320d-45c9-a762-6c703a03a597
+116	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-34-12-b5e17bdd-ce0e-4c9d-aa40-18d1a3597113
+114	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-35-14-0a4f44d9-0309-4193-97ad-0beae44c9530
+113	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-36-14-09219f7b-c87c-471c-8660-6756c5c80198
+99	0	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-37-15-6c85091d-c813-47ea-b7dc-e823c8f775b8
+104	0	lutil-download-url/tests/s3/input/lnkchk.txt
+3460	0	lutil-download-url/tests/s3/input/nyse -2Copy.txt
+3460	0	lutil-download-url/tests/s3/input/nyse.txt
+100	0	lutil-download-url/tests/s3/input/tweets_100.txt
+8284	0	lutil-download-url/tests/s3/input/tweets_all.txt
+4	0	lutil-download-url/tests/s3/input/url_list.txt
+100	0	lutil-download-url/tests/s3/input2/lnkchk.txt
+8284	0	lutil-download-url/tests/s3/input2/tweets_all.txt
+21	0	lutil-download-url/tests/s3/lnkchk.bat
+21	0	lutil-download-url/tests/s3/nyse.bat
+16	0	lutil-download-url/tests/s3/sync.bat
+19	0	lutil-download-url/tests/s3/tail_aws-download-webpage.bat
+6	4	sam-app/hello_world/app.py
+76	0	sam-app/lutil_download_url/S3TextFromLambdaEvent.py
+64	0	sam-app/lutil_download_url/app.py
+29	0	sam-app/lutil_download_url/firehose_helpers.py
+2	0	sam-app/lutil_download_url/requirements.txt
+2	1	sam-app/requirements_ci_testing.txt
+1	1	sam-app/run_tests_ci.sh
+7	9	sam-app/template.yaml
+99	0	sam-app/tests/integration/test_lutil_download_url.py
+2	1	sam-app/tests/integration/test_lutil_s3_text_lines_to_sns.py
+1	2	sam-app/tests/unit/test_lutil_s3_text_lines_to_sns.py
+10	0	sam-app/venv_ci_testing/bin/chardetect
+^^02a1b91--1593778246--2020-07-03T08:10:46-04:00--Steve Ziegler
+
+
+2	1	sam-app/template.yaml
+^^cff5696--1593778352--2020-07-03T08:12:32-04:00--Steve Ziegler
+
+
+0	0	sam-app/hello_world/__init__.py
+0	44	sam-app/hello_world/app.py
+0	1	sam-app/hello_world/requirements.txt
+0	7	sam-app/template.yaml
+^^453072b--1593778891--2020-07-03T08:21:31-04:00--Steve Ziegler
+
+
+37	0	sam-app/template.yaml
+^^4f7abc6--1593779135--2020-07-03T08:25:35-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^c2f8688--1593779247--2020-07-03T08:27:27-04:00--Steve Ziegler
+
+
+2	2	sam-app/template.yaml
+^^560d8c8--1593779398--2020-07-03T08:29:58-04:00--Steve Ziegler
+
+
+1	11	sam-app/template.yaml
+^^a38a7f6--1593779575--2020-07-03T08:32:55-04:00--Steve Ziegler
+
+
+5	2	sam-app/template.yaml
+^^ebf0f9f--1593779950--2020-07-03T08:39:10-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^e6e2539--1593780092--2020-07-03T08:41:32-04:00--Steve Ziegler
+
+
+6	0	sam-app/template.yaml
+^^8cbf2ed--1593780275--2020-07-03T08:44:35-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^9e5e06a--1593780358--2020-07-03T08:45:58-04:00--Steve Ziegler
+
+
+2	2	sam-app/template.yaml
+^^1b1e431--1593807533--2020-07-03T16:18:53-04:00--Steve Ziegler
+
+
+2	2	sam-app/template.yaml
+^^bbd6ccc--1593807968--2020-07-03T16:26:08-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^2fb3612--1593808335--2020-07-03T16:32:15-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^eed5908--1593808721--2020-07-03T16:38:41-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^9b3e63d--1593809115--2020-07-03T16:45:15-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^b8eb18c--1593861769--2020-07-04T07:22:49-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^8591f7e--1593862183--2020-07-04T07:29:43-04:00--Steve Ziegler
+
+
+11	0	sam-app/commit_and_push.sh
+1	1	sam-app/template.yaml
+^^fb00620--1593862339--2020-07-04T07:32:19-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^e5b99a0--1593862389--2020-07-04T07:33:09-04:00--Steve Ziegler
+
+
+2	2	sam-app/commit_and_push.sh
+^^5c6a2a3--1593863463--2020-07-04T07:51:03-04:00--Steve Ziegler
+
+
+8	1	sam-app/lutil_s3_text_lines_to_sns/app.py
+2	0	sam-app/template.yaml
+34	0	sam-app/tests/end_to_end/test_end_to_end.py
+^^915018e--1593864838--2020-07-04T08:13:58-04:00--Steve Ziegler
+
+
+9	10	sam-app/lutil_s3_text_lines_to_sns/app.py
+1	1	sam-app/run_tests_ci.sh
+1	1	sam-app/template.yaml
+4	4	sam-app/tests/integration/test_lutil_s3_text_lines_to_sns.py
+^^5b49a35--1593866160--2020-07-04T08:36:00-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_download_url/app.py
+1	0	sam-app/lutil_s3_text_lines_to_sns/app.py
+1	1	sam-app/run_tests_ci.sh
+2	0	sam-app/template.yaml
+114	0	sam-app/tests/end_to_end/schools_list.txt
+6	4	sam-app/tests/end_to_end/test_end_to_end.py
+^^24a7d87--1593950549--2020-07-05T08:02:29-04:00--Steve Ziegler
+
+
+1	1	sam-app/tests/end_to_end/test_end_to_end.py
+^^3c69065--1594253168--2020-07-08T20:06:08-04:00--Steve Ziegler
+
+
+6	4	sam-app/template.yaml
+^^530fb8f--1594384559--2020-07-10T08:35:59-04:00--Steve Ziegler
+
+
+2	2	sam-app/template.yaml
+22	4	sam-app/tests/end_to_end/test_end_to_end.py
+^^02bf5a7--1594390109--2020-07-10T10:08:29-04:00--Steve Ziegler
+
+
+1	0	.gitignore
+1	0	buildspec.yml
+1	0	ls_results.txt
+17	0	upload_python_selenium_layer.sh
+^^e69e093--1594390401--2020-07-10T10:13:21-04:00--Steve Ziegler
+
+
+1	0	buildspec.yml
+^^d2b2173--1594390634--2020-07-10T10:17:14-04:00--Steve Ziegler
+
+
+1	0	buildspec.yml
+^^7113975--1594390796--2020-07-10T10:19:56-04:00--Steve Ziegler
+
+
+1	0	buildspec.yml
+^^4526a6e--1594391307--2020-07-10T10:28:27-04:00--Steve Ziegler
+
+
+1	1	buildspec.yml
+^^1f95389--1594417316--2020-07-10T17:41:56-04:00--Steve Ziegler
+
+
+0	637	lutil-download-url/Include/Python-ast.h
+0	159	lutil-download-url/Include/Python.h
+0	1109	lutil-download-url/Include/abstract.h
+0	37	lutil-download-url/Include/accu.h
+0	46	lutil-download-url/Include/asdl.h
+0	29	lutil-download-url/Include/ast.h
+0	32	lutil-download-url/Include/bitset.h
+0	14	lutil-download-url/Include/bltinmodule.h
+0	34	lutil-download-url/Include/boolobject.h
+0	62	lutil-download-url/Include/bytearrayobject.h
+0	69	lutil-download-url/Include/bytes_methods.h
+0	224	lutil-download-url/Include/bytesobject.h
+0	29	lutil-download-url/Include/cellobject.h
+0	239	lutil-download-url/Include/ceval.h
+0	58	lutil-download-url/Include/classobject.h
+0	157	lutil-download-url/Include/code.h
+0	240	lutil-download-url/Include/codecs.h
+0	93	lutil-download-url/Include/compile.h
+0	69	lutil-download-url/Include/complexobject.h
+0	84	lutil-download-url/Include/context.h
+0	273	lutil-download-url/Include/datetime.h
+0	110	lutil-download-url/Include/descrobject.h
+0	179	lutil-download-url/Include/dictobject.h
+0	19	lutil-download-url/Include/dtoa.h
+0	499	lutil-download-url/Include/dynamic_annotations.h
+0	17	lutil-download-url/Include/enumobject.h
+0	38	lutil-download-url/Include/errcode.h
+0	37	lutil-download-url/Include/eval.h
+0	55	lutil-download-url/Include/fileobject.h
+0	201	lutil-download-url/Include/fileutils.h
+0	130	lutil-download-url/Include/floatobject.h
+0	93	lutil-download-url/Include/frameobject.h
+0	103	lutil-download-url/Include/funcobject.h
+0	105	lutil-download-url/Include/genobject.h
+0	89	lutil-download-url/Include/graminit.h
+0	94	lutil-download-url/Include/grammar.h
+0	151	lutil-download-url/Include/import.h
+0	52	lutil-download-url/Include/internal/ceval.h
+0	91	lutil-download-url/Include/internal/condvar.h
+0	41	lutil-download-url/Include/internal/context.h
+0	46	lutil-download-url/Include/internal/gil.h
+0	113	lutil-download-url/Include/internal/hamt.h
+0	6	lutil-download-url/Include/internal/hash.h
+0	6	lutil-download-url/Include/internal/import.h
+0	151	lutil-download-url/Include/internal/mem.h
+0	19	lutil-download-url/Include/internal/pygetopt.h
+0	132	lutil-download-url/Include/internal/pystate.h
+0	21	lutil-download-url/Include/internal/warnings.h
+0	33	lutil-download-url/Include/intrcheck.h
+0	25	lutil-download-url/Include/iterobject.h
+0	81	lutil-download-url/Include/listobject.h
+0	99	lutil-download-url/Include/longintrepr.h
+0	220	lutil-download-url/Include/longobject.h
+0	28	lutil-download-url/Include/marshal.h
+0	72	lutil-download-url/Include/memoryobject.h
+0	18	lutil-download-url/Include/metagrammar.h
+0	135	lutil-download-url/Include/methodobject.h
+0	229	lutil-download-url/Include/modsupport.h
+0	89	lutil-download-url/Include/moduleobject.h
+0	19	lutil-download-url/Include/namespaceobject.h
+0	44	lutil-download-url/Include/node.h
+0	1105	lutil-download-url/Include/object.h
+0	370	lutil-download-url/Include/objimpl.h
+0	43	lutil-download-url/Include/odictobject.h
+0	147	lutil-download-url/Include/opcode.h
+0	47	lutil-download-url/Include/osdefs.h
+0	17	lutil-download-url/Include/osmodule.h
+0	108	lutil-download-url/Include/parsetok.h
+0	35	lutil-download-url/Include/patchlevel.h
+0	18	lutil-download-url/Include/pgen.h
+0	43	lutil-download-url/Include/pgenheaders.h
+0	159	lutil-download-url/Include/py_curses.h
+0	64	lutil-download-url/Include/pyarena.h
+0	535	lutil-download-url/Include/pyatomic.h
+0	59	lutil-download-url/Include/pycapsule.h
+0	680	lutil-download-url/Include/pyconfig.h
+0	33	lutil-download-url/Include/pyctype.h
+0	40	lutil-download-url/Include/pydebug.h
+0	57	lutil-download-url/Include/pydtrace.h
+0	504	lutil-download-url/Include/pyerrors.h
+0	55	lutil-download-url/Include/pyexpat.h
+0	12	lutil-download-url/Include/pyfpe.h
+0	145	lutil-download-url/Include/pyhash.h
+0	236	lutil-download-url/Include/pylifecycle.h
+0	102	lutil-download-url/Include/pymacconfig.h
+0	100	lutil-download-url/Include/pymacro.h
+0	230	lutil-download-url/Include/pymath.h
+0	246	lutil-download-url/Include/pymem.h
+0	793	lutil-download-url/Include/pyport.h
+0	455	lutil-download-url/Include/pystate.h
+0	23	lutil-download-url/Include/pystrcmp.h
+0	19	lutil-download-url/Include/pystrhex.h
+0	45	lutil-download-url/Include/pystrtod.h
+0	181	lutil-download-url/Include/pythonrun.h
+0	155	lutil-download-url/Include/pythread.h
+0	246	lutil-download-url/Include/pytime.h
+0	27	lutil-download-url/Include/rangeobject.h
+0	108	lutil-download-url/Include/setobject.h
+0	63	lutil-download-url/Include/sliceobject.h
+0	74	lutil-download-url/Include/structmember.h
+0	49	lutil-download-url/Include/structseq.h
+0	118	lutil-download-url/Include/symtable.h
+0	48	lutil-download-url/Include/sysmodule.h
+0	92	lutil-download-url/Include/token.h
+0	119	lutil-download-url/Include/traceback.h
+0	73	lutil-download-url/Include/tupleobject.h
+0	85	lutil-download-url/Include/typeslots.h
+0	36	lutil-download-url/Include/ucnhash.h
+0	2334	lutil-download-url/Include/unicodeobject.h
+0	67	lutil-download-url/Include/warnings.h
+0	86	lutil-download-url/Include/weakrefobject.h
+0	27	lutil-download-url/firehose_helpers.py
+0	3	lutil-download-url/requirements.txt
+0	15	lutil-download-url/tests/s3/delete_output.bat
+0	110	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-38-39-0a0a4d7e-e929-4fbb-8a7f-e81b38203295
+0	105	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-39-40-9b1579e3-abfe-473e-9243-b25744fec643
+0	111	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-41-39-02f33261-708d-4e15-8c9f-9beaad7ca98c
+0	113	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-42-39-b3e06aa3-243b-41d3-b749-aba076a0cee2
+0	112	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-43-41-85ddf667-adb6-4c79-bf7e-62bfa7cef408
+0	116	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-44-41-15d43480-176f-4b05-9ff7-9c3f24072dcb
+0	114	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-45-43-7ad0d2e3-c098-499b-98ee-fbdb2908c0ac
+0	115	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-46-44-877fe50a-eba8-47f9-821e-cea013141ebe
+0	114	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-47-45-ea7ae70d-1bac-4703-9e8b-becd6938d64f
+0	112	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-48-46-f79d58f0-9656-4cc4-a7bb-e0a9e2acaf1d
+0	114	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-49-46-63f4e398-fcf6-43ff-8fe2-4a99a3b24065
+0	97	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-50-47-c9c1d069-9d8b-4433-8bb0-d467b7b83785
+0	115	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-53-39-98e3b147-d1b9-4885-ac30-cb4a4005a424
+0	114	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-54-39-31641dbb-3326-4469-80bc-60c7db898cf0
+0	115	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-55-41-c2fdf869-b939-4bb6-a739-5390e6bbcc2b
+0	115	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-56-41-0d6873bd-bf1a-41cc-b51f-fc2aac9fc76d
+0	114	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-57-42-c724ffdc-7041-41c0-b13e-752c17a30cee
+0	118	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-58-42-2dca22e8-487f-4529-9b63-180ab0186b11
+0	115	lutil-download-url/tests/s3/firehose/async/2019/07/07/21/aws-download-webpages-async-3-2019-07-07-21-59-44-6512a0ec-cac9-4327-ada4-af6193221e71
+0	109	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-00-36-39810258-adb0-4e30-945e-6d058909e7ba
+0	111	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-01-36-8213b30e-df63-47c6-a6bf-e9818b166a05
+0	111	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-02-36-97a46cb3-85ac-4cea-b6ff-0b3272a294f6
+0	113	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-03-38-05ae61f9-8b51-4b4d-b77f-b5be9003cd83
+0	177	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-04-39-db8eb553-11f9-40c2-92d9-31d2418c02dc
+0	213	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-05-40-af11fbf5-2739-41f6-8f1e-b5d48fe02419
+0	114	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-06-41-e6e481be-2618-4704-b611-8e14309c2d89
+0	114	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-07-42-4d1bcc93-065c-4ed7-a4b2-27bb127d779b
+0	113	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-08-43-63643514-01cd-4ef3-a2c9-4cdec47fe283
+0	113	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-09-44-a069d6d1-4199-4296-baf5-3cb448c563aa
+0	113	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-10-45-d94d1eea-4757-4364-b13a-b5ae58fbc1ad
+0	116	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-11-46-ea7f5f9f-f4d1-491c-9aca-e449f770de6b
+0	116	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-12-48-e796ade3-5f44-4243-80f2-4a148fd61195
+0	114	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-13-49-02d1e0d0-6c87-459f-9e35-3ac99385e7bc
+0	30	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-14-50-08221bfc-be6c-4368-97ca-5f31c8463175
+0	113	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-16-14-f3165243-00e9-4028-8d6b-bfce66e8eceb
+0	114	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-17-14-dcd30aa0-cdbd-4d7f-ad03-6d9ab9e5f5bf
+0	112	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-18-15-c8487c43-00e8-40c4-b693-4f9689091f3c
+0	115	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-19-15-eaf6593d-0d96-4488-a721-c2b4fe088db2
+0	115	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-20-16-e8358873-3f64-45f8-bf92-702a411e793d
+0	116	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-21-18-e94617b7-bb96-4135-b751-94755e7a3863
+0	112	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-22-19-51d80e8d-f806-476b-966a-e631990f1a0d
+0	116	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-23-20-53ba3dc5-f7c0-4bdb-8c32-5bec8e109b9f
+0	114	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-24-21-0767c83e-e917-4173-9f1e-cc49c3476af6
+0	97	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-25-22-df15e208-a020-4a48-9092-d817de7bf61d
+0	113	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-28-07-73ad2a46-3223-42f3-a19c-ebfad883816f
+0	114	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-29-07-465a9c52-7b65-4a99-a41a-8bbd384fe375
+0	116	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-30-08-ecf91db6-52a9-41ac-9632-09c4f484f5bf
+0	115	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-31-09-a93b8c68-3197-4b89-93f1-cddeebb9f2ef
+0	116	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-32-11-79f239ba-c85b-4107-b5c8-b4bc1231ebe8
+0	113	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-33-12-7ef86d14-320d-45c9-a762-6c703a03a597
+0	116	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-34-12-b5e17bdd-ce0e-4c9d-aa40-18d1a3597113
+0	114	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-35-14-0a4f44d9-0309-4193-97ad-0beae44c9530
+0	113	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-36-14-09219f7b-c87c-471c-8660-6756c5c80198
+0	99	lutil-download-url/tests/s3/firehose/async/2019/07/07/23/aws-download-webpages-async-3-2019-07-07-23-37-15-6c85091d-c813-47ea-b7dc-e823c8f775b8
+0	104	lutil-download-url/tests/s3/input/lnkchk.txt
+0	3460	lutil-download-url/tests/s3/input/nyse -2Copy.txt
+0	3460	lutil-download-url/tests/s3/input/nyse.txt
+0	100	lutil-download-url/tests/s3/input/tweets_100.txt
+0	8284	lutil-download-url/tests/s3/input/tweets_all.txt
+0	4	lutil-download-url/tests/s3/input/url_list.txt
+0	100	lutil-download-url/tests/s3/input2/lnkchk.txt
+0	8284	lutil-download-url/tests/s3/input2/tweets_all.txt
+0	21	lutil-download-url/tests/s3/lnkchk.bat
+0	21	lutil-download-url/tests/s3/nyse.bat
+0	16	lutil-download-url/tests/s3/sync.bat
+0	19	lutil-download-url/tests/s3/tail_aws-download-webpage.bat
+1	1	sam-app/commit_and_push.sh
+72	0	sam-app/lutil-download-url-selenium/app.py
+2	0	sam-app/lutil-download-url-selenium/requirements.txt
+31	0	sam-app/template.yaml
+^^45976f1--1594417854--2020-07-10T17:50:54-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^b95a409--1594417885--2020-07-10T17:51:25-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^1137e4e--1594465830--2020-07-11T07:10:30-04:00--Steve Ziegler
+
+
+0	0	sam-app/{lutil-download-url-selenium => lutil_download_url_selenium}/app.py
+0	0	sam-app/{lutil-download-url-selenium => lutil_download_url_selenium}/requirements.txt
+1	1	sam-app/template.yaml
+^^c767c86--1594466089--2020-07-11T07:14:49-04:00--Steve Ziegler
+
+
+25	1	sam-app/template.yaml
+^^931b4e4--1594467131--2020-07-11T07:32:11-04:00--Steve Ziegler
+
+
+76	0	sam-app/lutil_download_url_selenium/S3TextFromLambdaEvent.py
+56	7	sam-app/lutil_download_url_selenium/app.py
+^^32a8370--1594467618--2020-07-11T07:40:18-04:00--Steve Ziegler
+
+
+3	0	sam-app/lutil_download_url/app.py
+4	4	sam-app/lutil_download_url_selenium/app.py
+32	0	sam-app/tests/unit/test_download_url.py
+1	1	sam-app/venv_ci_testing/pyvenv.cfg
+^^febc50d--1594469677--2020-07-11T08:14:37-04:00--Steve Ziegler
+
+
+25	2	sam-app/lutil_download_url/app.py
+1	1	sam-app/run_tests_ci.sh
+2	2	sam-app/tests/integration/test_lutil_download_url.py
+3	2	sam-app/tests/integration/test_lutil_s3_text_lines_to_sns.py
+0	32	sam-app/tests/unit/test_download_url.py
+51	0	sam-app/tests/unit/test_unit_lutil_download_url.py
+0	0	sam-app/tests/unit/{test_lutil_s3_text_lines_to_sns.py => test_unit_lutil_s3_text_lines_to_sns.py}
+1	1	sam-app/venv_ci_testing/pyvenv.cfg
+^^36ce83a--1594470083--2020-07-11T08:21:23-04:00--Steve Ziegler
+
+
+3	5	sam-app/lutil_download_url/app.py
+1	1	sam-app/run_tests_ci.sh
+1	1	sam-app/tests/end_to_end/test_end_to_end.py
+1	1	sam-app/tests/integration/test_lutil_download_url.py
+^^7461d54--1594470369--2020-07-11T08:26:09-04:00--Steve Ziegler
+
+
+1	0	sam-app/lutil_download_url/app.py
+1	1	sam-app/tests/end_to_end/test_end_to_end.py
+^^6aff10b--1594470710--2020-07-11T08:31:50-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_download_url/app.py
+^^abf4917--1594471097--2020-07-11T08:38:17-04:00--Steve Ziegler
+
+
+0	5	sam-app/lutil_download_url/app.py
+26	4	sam-app/lutil_download_url_selenium/app.py
+^^4dcbc48--1594471467--2020-07-11T08:44:27-04:00--Steve Ziegler
+
+
+1	0	sam-app/lutil_download_url_selenium/app.py
+23	0	sam-app/tests/end_to_end/test_end_to_end.py
+^^db5e808--1594471693--2020-07-11T08:48:13-04:00--Steve Ziegler
+
+
+2	2	sam-app/lutil_download_url_selenium/app.py
+2	2	sam-app/tests/end_to_end/test_end_to_end.py
+^^d5b0be9--1594472081--2020-07-11T08:54:41-04:00--Steve Ziegler
+
+
+2	1	sam-app/template.yaml
+^^7fd0fee--1594475246--2020-07-11T09:47:26-04:00--Steve Ziegler
+
+
+11	1	sam-app/lutil_download_url/app.py
+12	5	sam-app/lutil_download_url_selenium/app.py
+1	0	sam-app/template.yaml
+15	0	sam-app/tests/unit/test_unit_lutil_download_url.py
+^^2975389--1594478608--2020-07-11T10:43:28-04:00--Steve Ziegler
+
+
+5	5	sam-app/lutil_download_url/app.py
+4	4	sam-app/lutil_download_url_selenium/app.py
+2	1	sam-app/template.yaml
+^^945aaf5--1594479460--2020-07-11T10:57:40-04:00--Steve Ziegler
+
+
+4	4	sam-app/lutil_download_url/app.py
+4	4	sam-app/lutil_download_url_selenium/app.py
+2	2	sam-app/template.yaml
+^^adb733d--1594555623--2020-07-12T08:07:03-04:00--Steve Ziegler
+
+
+-	-	.DS_Store
+3	0	sam-app/template.yaml
+^^4802cf6--1594556955--2020-07-12T08:29:15-04:00--Steve Ziegler
+
+
+1	3	sam-app/template.yaml
+^^c4b40b7--1595123105--2020-07-18T21:45:05-04:00--Steve Ziegler
+
+
+-	-	.DS_Store
+76	0	sam-app/lutil_s3_filenames_to_sns/S3TextFromLambdaEvent.py
+0	0	sam-app/lutil_s3_filenames_to_sns/__init__.py
+64	0	sam-app/lutil_s3_filenames_to_sns/app.py
+29	0	sam-app/lutil_s3_filenames_to_sns/firehose_helpers.py
+1	0	sam-app/lutil_s3_filenames_to_sns/requirements.txt
+47	1	sam-app/template.yaml
+^^6e60f72--1595125525--2020-07-18T22:25:25-04:00--Steve Ziegler
+
+
+48	30	sam-app/lutil_s3_filenames_to_sns/app.py
+2	2	sam-app/run_tests_ci.sh
+1	1	sam-app/tests/integration/test_lutil_download_url.py
+35	0	sam-app/tests/integration/test_lutil_s3_filenames_to_sns.py
+0	1	sam-app/tests/integration/test_lutil_s3_text_lines_to_sns.py
+^^7f33475--1595126774--2020-07-18T22:46:14-04:00--Steve Ziegler
+
+
+4	4	sam-app/template.yaml
+^^72eac4c--1595127165--2020-07-18T22:52:45-04:00--Steve Ziegler
+
+
+2	2	sam-app/template.yaml
+^^6cb51da--1595127584--2020-07-18T22:59:44-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^b0ce78b--1595127892--2020-07-18T23:04:52-04:00--Steve Ziegler
+
+
+3	0	sam-app/template.yaml
+^^d4af54e--1595128259--2020-07-18T23:10:59-04:00--Steve Ziegler
+
+
+2	5	sam-app/template.yaml
+^^bd9f028--1595157917--2020-07-19T07:25:17-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_s3_filenames_to_sns/app.py
+1	1	sam-app/template.yaml
+^^90d1790--1595161533--2020-07-19T08:25:33-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^617e971--1616872015--2021-03-27T15:06:55-04:00--Steve Ziegler
+
+
+7	3	sam-app/lutil_download_url_selenium/app.py
+1	1	sam-app/venv_ci_testing/pyvenv.cfg
+^^545fd84--1617198296--2021-03-31T09:44:56-04:00--Steve Ziegler
+
+
+2	2	sam-app/template.yaml
+^^e07b4b2--1617244788--2021-03-31T22:39:48-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^27efa47--1617302779--2021-04-01T14:46:19-04:00--Steve Ziegler
+
+
+36	31	sam-app/lutil_download_url_selenium/app.py
+^^b167bb5--1618661010--2021-04-17T08:03:30-04:00--Steve Ziegler
+
+
+-	-	.DS_Store
+1	1	buildspec.yml
+^^83ad5af--1618973577--2021-04-20T22:52:57-04:00--Steve Ziegler
+
+
+7	0	sam-app/template.yaml
+^^d835890--1618973949--2021-04-20T22:59:09-04:00--Steve Ziegler
+
+
+3	1	sam-app/template.yaml
+^^1fa7ba2--1618974111--2021-04-20T23:01:51-04:00--Steve Ziegler
+
+
+0	1	sam-app/template.yaml
+^^8914a88--1618974830--2021-04-20T23:13:50-04:00--Steve Ziegler
+
+
+11	2	sam-app/template.yaml
+^^34fd299--1618975642--2021-04-20T23:27:22-04:00--Steve Ziegler
+
+
+76	0	sam-app/lutil_start_and_stop_fan_in/S3TextFromLambdaEvent.py
+0	0	sam-app/lutil_start_and_stop_fan_in/__init__.py
+64	0	sam-app/lutil_start_and_stop_fan_in/app.py
+29	0	sam-app/lutil_start_and_stop_fan_in/firehose_helpers.py
+1	0	sam-app/lutil_start_and_stop_fan_in/requirements.txt
+35	3	sam-app/template.yaml
+^^123a8c6--1618975906--2021-04-20T23:31:46-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^0cc4211--1618976378--2021-04-20T23:39:38-04:00--Steve Ziegler
+
+
+1	6	sam-app/template.yaml
+^^cf6bbb8--1619823585--2021-04-30T18:59:45-04:00--Steve Ziegler
+
+
+27	0	sam-app/fan_in_helpers/design.py
+0	0	sam-app/{lutil_start_and_stop_fan_in => lutil_fan_handler}/S3TextFromLambdaEvent.py
+0	0	sam-app/{lutil_start_and_stop_fan_in => lutil_fan_handler}/__init__.py
+0	0	sam-app/{lutil_start_and_stop_fan_in => lutil_fan_handler}/app.py
+0	0	sam-app/{lutil_start_and_stop_fan_in => lutil_fan_handler}/firehose_helpers.py
+0	0	sam-app/{lutil_start_and_stop_fan_in => lutil_fan_handler}/requirements.txt
+38	0	sam-app/report_template_json.txt
+3	1	sam-app/requirements_ci_testing.txt
+72	0	sam-app/run_tests.sh
+6	7	sam-app/template.yaml
+61	0	sam-app/test_and_format.py
+^^59a0f48--1619836985--2021-04-30T22:43:05-04:00--Steve Ziegler
+
+
+30	0	sam-app/lutil_fan_handler/FanOut.py
+36	0	sam-app/lutil_fan_handler/NamedTupleBase.py
+0	0	sam-app/{fan_in_helpers => lutil_fan_handler}/design.py
+22	0	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+1	1	sam-app/{requirements_ci_testing.txt => requirements.txt}
+1	1	sam-app/{requirements_ci_testing.txt => requirements_ci_testing copy.txt}
+15	1	sam-app/template.yaml
+34	0	sam-app/tests/integration/test_int_FanOut.py
+38	0	sam-app/tests/unit/test_unit_FanOut.py
+^^1b0ebd8--1619838175--2021-04-30T23:02:55-04:00--Steve Ziegler
+
+
+8	2	sam-app/lutil_fan_handler/FanOut.py
+0	22	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+22	8	sam-app/tests/unit/test_unit_FanOut.py
+^^3c7b668--1619838575--2021-04-30T23:09:35-04:00--Steve Ziegler
+
+
+4	0	sam-app/lutil_fan_handler/FanOut.py
+7	4	sam-app/tests/unit/test_unit_FanOut.py
+^^a569b10--1619839204--2021-04-30T23:20:04-04:00--Steve Ziegler
+
+
+17	0	sam-app/lutil_fan_handler/DynamoDB.py
+1	1	sam-app/lutil_fan_handler/FanOut.py
+2	5	sam-app/reports/{test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html => test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html}
+32	0	sam-app/tests/unit/test_unit_DynamoDB.py
+1	0	sam-app/tests/unit/test_unit_FanOut.py
+^^b8c0dc0--1619869333--2021-05-01T07:42:13-04:00--Steve Ziegler
+
+
+34	4	sam-app/lutil_fan_handler/DynamoDB.py
+5	2	sam-app/lutil_fan_handler/FanOut.py
+0	19	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+20	14	sam-app/tests/integration/test_int_FanOut.py
+54	2	sam-app/tests/unit/test_unit_DynamoDB.py
+27	0	sam-app/tests/unit/test_unit_FanOut.py
+^^4f552e3--1619869681--2021-05-01T07:48:01-04:00--Steve Ziegler
+
+
+2	0	sam-app/lutil_fan_handler/DynamoDB.py
+1	1	sam-app/template.yaml
+9	17	sam-app/tests/integration/test_int_FanOut.py
+0	26	sam-app/tests/unit/test_unit_FanOut.py
+^^97e20fb--1619869870--2021-05-01T07:51:10-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^3f20ca6--1619870481--2021-05-01T08:01:21-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+1	1	sam-app/tests/integration/test_int_FanOut.py
+^^74d82d9--1619871635--2021-05-01T08:20:35-04:00--Steve Ziegler
+
+
+13	2	sam-app/lutil_fan_handler/FanOut.py
+2	2	sam-app/template.yaml
+1	1	sam-app/tests/integration/test_int_FanOut.py
+^^d21b8da--1619871962--2021-05-01T08:26:02-04:00--Steve Ziegler
+
+
+1	7	sam-app/template.yaml
+^^25e6e70--1619872740--2021-05-01T08:39:00-04:00--Steve Ziegler
+
+
+1	2	sam-app/template.yaml
+^^960f567--1619873082--2021-05-01T08:44:42-04:00--Steve Ziegler
+
+
+6	0	sam-app/template.yaml
+^^64d5d16--1619884114--2021-05-01T11:48:34-04:00--Steve Ziegler
+
+
+18	4	sam-app/lutil_fan_handler/DynamoDB.py
+18	7	sam-app/lutil_fan_handler/FanOut.py
+20	0	sam-app/lutil_fan_handler/NamedTupleBase.py
+7	1	sam-app/template.yaml
+43	4	sam-app/tests/integration/test_int_FanOut.py
+2	2	sam-app/tests/unit/test_unit_DynamoDB.py
+^^4aceb01--1619884339--2021-05-01T11:52:19-04:00--Steve Ziegler
+
+
+5	1	sam-app/template.yaml
+^^5c21f21--1619884491--2021-05-01T11:54:51-04:00--Steve Ziegler
+
+
+4	6	sam-app/tests/integration/test_int_FanOut.py
+^^b2918ea--1619885235--2021-05-01T12:07:15-04:00--Steve Ziegler
+
+
+15	2	sam-app/template.yaml
+^^aac8290--1619885716--2021-05-01T12:15:16-04:00--Steve Ziegler
+
+
+8	6	sam-app/template.yaml
+^^b3b0d5e--1619886231--2021-05-01T12:23:51-04:00--Steve Ziegler
+
+
+4	0	sam-app/template.yaml
+^^f2842f7--1619886516--2021-05-01T12:28:36-04:00--Steve Ziegler
+
+
+26	5	sam-app/template.yaml
+^^974dfc2--1619954104--2021-05-02T07:15:04-04:00--Steve Ziegler
+
+
+6	4	sam-app/lutil_fan_handler/FanOut.py
+6	3	sam-app/lutil_fan_handler/NamedTupleBase.py
+22	2	sam-app/template.yaml
+2	2	sam-app/tests/integration/test_int_FanOut.py
+2	21	sam-app/tests/unit/test_unit_FanOut.py
+^^c2784db--1619954531--2021-05-02T07:22:11-04:00--Steve Ziegler
+
+
+21	6	sam-app/template.yaml
+^^814fd7b--1619955939--2021-05-02T07:45:39-04:00--Steve Ziegler
+
+
+3	4	sam-app/lutil_fan_handler/DynamoDB.py
+1	1	sam-app/lutil_fan_handler/FanOut.py
+3	47	sam-app/lutil_fan_handler/app.py
+1	0	sam-app/lutil_fan_handler/requirements.txt
+1	0	sam-app/requirements.txt
+^^25f2c9b--1619958733--2021-05-02T08:32:13-04:00--Steve Ziegler
+
+
+5	13	sam-app/lutil_fan_handler/DynamoDB.py
+43	0	sam-app/lutil_fan_handler/FanIn.py
+2	1	sam-app/lutil_fan_handler/FanOut.py
+4	0	sam-app/lutil_fan_handler/FanStatus.py
+3	0	sam-app/lutil_fan_handler/app.py
+22	0	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+67	0	sam-app/tests/unit/test_unit_FanIn.py
+169	0	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^5cb8015--1619958948--2021-05-02T08:35:48-04:00--Steve Ziegler
+
+
+5	2	sam-app/lutil_fan_handler/app.py
+0	22	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+^^dd1eeca--1619964128--2021-05-02T10:02:08-04:00--Steve Ziegler
+
+
+10	10	sam-app/lutil_fan_handler/FanIn.py
+31	17	sam-app/lutil_fan_handler/NamedTupleBase.py
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+128	0	sam-app/tests/unit/test_unit_NamedTupleBase.py
+^^2a6907f--1619964270--2021-05-02T10:04:30-04:00--Steve Ziegler
+
+
+3	12	sam-app/lutil_fan_handler/FanIn.py
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+4	0	sam-app/tests/unit/test_unit_FanIn.py
+^^ffef690--1619967538--2021-05-02T10:58:58-04:00--Steve Ziegler
+
+
+7	0	sam-app/template.yaml
+^^5d41d93--1619967983--2021-05-02T11:06:23-04:00--Steve Ziegler
+
+
+9	2	sam-app/template.yaml
+^^5e5b054--1619969584--2021-05-02T11:33:04-04:00--Steve Ziegler
+
+
+23	1	sam-app/lutil_fan_handler/app.py
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+7	2	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^ed8aa4c--1619970289--2021-05-02T11:44:49-04:00--Steve Ziegler
+
+
+9	3	sam-app/lutil_fan_handler/app.py
+4	0	sam-app/template.yaml
+37	0	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^691eb95--1619970708--2021-05-02T11:51:48-04:00--Steve Ziegler
+
+
+11	3	sam-app/template.yaml
+3	6	sam-app/tests/{unit/test_unit_lutil_fan_handler.py => integration/test_int_lutil_fan_handler.py}
+1	0	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^f968600--1619971199--2021-05-02T11:59:59-04:00--Steve Ziegler
+
+
+10	6	sam-app/lutil_fan_handler/app.py
+14	2	sam-app/tests/integration/test_int_lutil_fan_handler.py
+1	1	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^b30c4b2--1619971875--2021-05-02T12:11:15-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_handler/app.py
+54	0	sam-app/lutil_fan_test_client/DynamoDB.py
+34	0	sam-app/lutil_fan_test_client/FanIn.py
+68	0	sam-app/lutil_fan_test_client/FanOut.py
+4	0	sam-app/lutil_fan_test_client/FanStatus.py
+73	0	sam-app/lutil_fan_test_client/NamedTupleBase.py
+76	0	sam-app/lutil_fan_test_client/S3TextFromLambdaEvent.py
+0	0	sam-app/lutil_fan_test_client/__init__.py
+20	0	sam-app/lutil_fan_test_client/app.py
+27	0	sam-app/lutil_fan_test_client/design.py
+29	0	sam-app/lutil_fan_test_client/firehose_helpers.py
+2	0	sam-app/lutil_fan_test_client/requirements.txt
+32	1	sam-app/template.yaml
+^^4c3c8fc--1619972511--2021-05-02T12:21:51-04:00--Steve Ziegler
+
+
+3	0	sam-app/template.yaml
+113	0	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^b8e10c2--1619982903--2021-05-02T15:15:03-04:00--Steve Ziegler
+
+
+14	5	sam-app/lutil_fan_handler/app.py
+3	0	sam-app/template.yaml
+1	1	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^0a47257--1620049172--2021-05-03T09:39:32-04:00--Steve Ziegler
+
+
+0	0	sam-app/{lutil_fan_test_client => common_layer}/FanIn.py
+5	1	sam-app/lutil_fan_test_client/FanIn.py
+0	29	sam-app/lutil_fan_test_client/firehose_helpers.py
+9	0	sam-app/template.yaml
+^^74ccb50--1620049212--2021-05-03T09:40:12-04:00--Steve Ziegler
+
+
+2	0	sam-app/template.yaml
+^^b35d393--1620049538--2021-05-03T09:45:38-04:00--Steve Ziegler
+
+
+0	0	sam-app/{lutil_fan_handler => common_layer}/DynamoDB.py
+5	1	sam-app/common_layer/FanIn.py
+0	0	sam-app/{lutil_fan_handler => common_layer}/NamedTupleBase.py
+0	34	sam-app/lutil_fan_handler/FanIn.py
+0	38	sam-app/lutil_fan_test_client/FanIn.py
+5	4	sam-app/template.yaml
+3	3	sam-app/tests/unit/test_unit_FanIn.py
+^^2acecfc--1620049925--2021-05-03T09:52:05-04:00--Steve Ziegler
+
+
+5	0	sam-app/common_layer/FanIn.py
+1	2	sam-app/template.yaml
+1	1	sam-app/tests/unit/test_unit_FanIn.py
+^^07b8bba--1620050648--2021-05-03T10:04:08-04:00--Steve Ziegler
+
+
+3	3	sam-app/common_layer/FanIn.py
+0	0	sam-app/{lutil_fan_handler => common_layer}/FanOut.py
+0	0	sam-app/{lutil_fan_handler => common_layer}/FanStatus.py
+0	29	sam-app/lutil_fan_handler/firehose_helpers.py
+2	0	sam-app/lutil_fan_test_client/app.py
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+2	2	sam-app/tests/unit/test_unit_DynamoDB.py
+4	4	sam-app/tests/unit/test_unit_FanOut.py
+2	2	sam-app/tests/unit/test_unit_NamedTupleBase.py
+^^af763a0--1620051088--2021-05-03T10:11:28-04:00--Steve Ziegler
+
+
+2	2	sam-app/common_layer/FanIn.py
+2	2	sam-app/lutil_fan_handler/app.py
+25	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+1	0	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^f5442dc--1620051316--2021-05-03T10:15:16-04:00--Steve Ziegler
+
+
+0	27	sam-app/lutil_fan_handler/design.py
+0	54	sam-app/lutil_fan_test_client/DynamoDB.py
+0	68	sam-app/lutil_fan_test_client/FanOut.py
+0	4	sam-app/lutil_fan_test_client/FanStatus.py
+0	73	sam-app/lutil_fan_test_client/NamedTupleBase.py
+1	3	sam-app/lutil_fan_test_client/app.py
+0	27	sam-app/lutil_fan_test_client/design.py
+0	25	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+3	2	sam-app/tests/integration/test_int_FanOut.py
+^^6ec8728--1620051497--2021-05-03T10:18:17-04:00--Steve Ziegler
+
+
+5	1	sam-app/lutil_fan_test_client/app.py
+^^6dbebbb--1620051591--2021-05-03T10:19:51-04:00--Steve Ziegler
+
+
+1	4	sam-app/lutil_fan_test_client/app.py
+4	0	sam-app/template.yaml
+^^aa0eb71--1620052061--2021-05-03T10:27:41-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_test_client/app.py
+22	0	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+^^684cdbd--1620052337--2021-05-03T10:32:17-04:00--Steve Ziegler
+
+
+0	0	sam-app/common_layer/__init__.py
+^^6f6b4fd--1620053422--2021-05-03T10:50:22-04:00--Steve Ziegler
+
+
+0	0	sam-app/common_layer/{ => python}/DynamoDB.py
+0	0	sam-app/common_layer/{ => python}/FanIn.py
+0	0	sam-app/common_layer/{ => python}/FanOut.py
+0	0	sam-app/common_layer/{ => python}/FanStatus.py
+0	0	sam-app/common_layer/{ => python}/NamedTupleBase.py
+0	0	sam-app/common_layer/python/__init__.py
+4	1	sam-app/lutil_fan_test_client/app.py
+^^48a277b--1620053974--2021-05-03T10:59:34-04:00--Steve Ziegler
+
+
+0	0	sam-app/common_layer/__init__.py
+^^53fb313--1620054514--2021-05-03T11:08:34-04:00--Steve Ziegler
+
+
+1	0	sam-app/common_layer/python/__init__.py
+^^c18fa0f--1620055402--2021-05-03T11:23:22-04:00--Steve Ziegler
+
+
+1	0	sam-app/common_layer/__init__.py
+2	2	sam-app/common_layer/python/FanIn.py
+1	1	sam-app/common_layer/python/__init__.py
+0	22	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+2	2	sam-app/tests/unit/test_unit_NamedTupleBase.py
+^^c21cbc2--1620056008--2021-05-03T11:33:28-04:00--Steve Ziegler
+
+
+2	2	sam-app/common_layer/python/FanIn.py
+^^7504901--1620056315--2021-05-03T11:38:35-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_handler/app.py
+25	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+2	2	sam-app/tests/unit/test_unit_DynamoDB.py
+2	3	sam-app/tests/unit/test_unit_FanIn.py
+3	4	sam-app/tests/unit/test_unit_FanOut.py
+2	0	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^aea19ed--1620056401--2021-05-03T11:40:01-04:00--Steve Ziegler
+
+
+22	0	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+5	2	sam-app/reports/{test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html => test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html}
+0	25	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+0	0	sam-app/tests/integration/{test_lutil_download_url.py => _test_lutil_download_url.py}
+0	0	sam-app/tests/integration/{test_lutil_s3_filenames_to_sns.py => _test_lutil_s3_filenames_to_sns.py}
+0	0	sam-app/tests/integration/{test_lutil_s3_text_lines_to_sns.py => _test_lutil_s3_text_lines_to_sns.py}
+3	3	sam-app/tests/integration/test_int_FanOut.py
+1	1	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^59bc43b--1620056934--2021-05-03T11:48:54-04:00--Steve Ziegler
+
+
+1	0	sam-app/common_layer/python/FanOut.py
+^^4270084--1620059059--2021-05-03T12:24:19-04:00--Steve Ziegler
+
+
+76	0	sam-app/lutil_fan_log_events/S3TextFromLambdaEvent.py
+0	0	sam-app/lutil_fan_log_events/__init__.py
+0	3	sam-app/{lutil_fan_test_client => lutil_fan_log_events}/app.py
+2	0	sam-app/lutil_fan_log_events/requirements.txt
+0	3	sam-app/lutil_fan_test_client/app.py
+30	0	sam-app/template.yaml
+^^326f259--1620059888--2021-05-03T12:38:08-04:00--Steve Ziegler
+
+
+5	1	sam-app/template.yaml
+^^d19e7aa--1620072624--2021-05-03T16:10:24-04:00--Steve Ziegler
+
+
+0	0	sam-app/{lutil_fan_test_client => lutil_fan_e2e_consumer}/S3TextFromLambdaEvent.py
+0	0	sam-app/{lutil_fan_test_client => lutil_fan_e2e_consumer}/__init__.py
+0	0	sam-app/{lutil_fan_test_client => lutil_fan_e2e_consumer}/app.py
+0	0	sam-app/{lutil_fan_test_client => lutil_fan_e2e_consumer}/requirements.txt
+0	0	sam-app/{lutil_fan_test_client => lutil_fan_e2e_producer}/S3TextFromLambdaEvent.py
+0	0	sam-app/{lutil_fan_test_client => lutil_fan_e2e_producer}/__init__.py
+3	0	sam-app/{lutil_fan_test_client => lutil_fan_e2e_producer}/app.py
+0	0	sam-app/{lutil_fan_test_client => lutil_fan_e2e_producer}/requirements.txt
+32	2	sam-app/template.yaml
+^^639df6f--1620073208--2021-05-03T16:20:08-04:00--Steve Ziegler
+
+
+76	0	sam-app/lutil_fan_e2e_completed/S3TextFromLambdaEvent.py
+0	0	sam-app/lutil_fan_e2e_completed/__init__.py
+21	0	sam-app/lutil_fan_e2e_completed/app.py
+2	0	sam-app/lutil_fan_e2e_completed/requirements.txt
+36	0	sam-app/template.yaml
+^^6447b32--1620073931--2021-05-03T16:32:11-04:00--Steve Ziegler
+
+
+7	2	sam-app/template.yaml
+^^5c31c6f--1620074564--2021-05-03T16:42:44-04:00--Steve Ziegler
+
+
+2	2	sam-app/template.yaml
+^^392c978--1620074859--2021-05-03T16:47:39-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_e2e_producer/app.py
+^^03d24ec--1620075365--2021-05-03T16:56:05-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_e2e_producer/app.py
+^^e628005--1620075413--2021-05-03T16:56:53-04:00--Steve Ziegler
+
+
+0	1	sam-app/common_layer/python/FanOut.py
+^^3f72e9f--1620076294--2021-05-03T17:11:34-04:00--Steve Ziegler
+
+
+0	1	sam-app/common_layer/python/FanOut.py
+^^ff156e2--1620076692--2021-05-03T17:18:12-04:00--Steve Ziegler
+
+
+3	4	sam-app/lutil_fan_e2e_producer/app.py
+^^29db7e2--1620077527--2021-05-03T17:32:07-04:00--Steve Ziegler
+
+
+8	0	sam-app/common_layer/python/FanIn.py
+6	3	sam-app/lutil_fan_e2e_consumer/app.py
+0	22	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+0	22	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+19	1	sam-app/tests/unit/test_unit_FanIn.py
+^^7d4a620--1620077682--2021-05-03T17:34:42-04:00--Steve Ziegler
+
+
+5	2	sam-app/lutil_fan_e2e_consumer/app.py
+^^e5225f2--1620078231--2021-05-03T17:43:51-04:00--Steve Ziegler
+
+
+7	0	sam-app/common_layer/python/FanMessages.py
+2	2	sam-app/common_layer/python/FanOut.py
+0	4	sam-app/common_layer/python/FanStatus.py
+4	0	sam-app/common_layer/python/FanTaskStatus.py
+25	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+^^e26500e--1620079408--2021-05-03T18:03:28-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/{FanMessages.py => FanEventOptions.py}
+30	1	sam-app/common_layer/python/NamedTupleBase.py
+0	25	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanEventUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+34	0	sam-app/tests/unit/test_unit_NamedTupleBase.py
+^^62246cc--1620081070--2021-05-03T18:31:10-04:00--Steve Ziegler
+
+
+22	1	sam-app/common_layer/python/FanIn.py
+2	1	sam-app/common_layer/python/FanOut.py
+8	1	sam-app/common_layer/python/NamedTupleBase.py
+1	1	sam-app/lutil_fan_handler/app.py
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanEventUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+1	0	sam-app/tests/integration/test_int_FanOut.py
+2	2	sam-app/tests/unit/test_unit_FanIn.py
+^^fa6bf31--1620081194--2021-05-03T18:33:14-04:00--Steve Ziegler
+
+
+3	0	sam-app/lutil_fan_e2e_consumer/app.py
+^^bc8481f--1620081624--2021-05-03T18:40:24-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_e2e_consumer/app.py
+^^2c5b9cd--1620082254--2021-05-03T18:50:54-04:00--Steve Ziegler
+
+
+3	3	sam-app/lutil_fan_e2e_consumer/app.py
+^^54d9c06--1620082900--2021-05-03T19:01:40-04:00--Steve Ziegler
+
+
+3	2	sam-app/common_layer/python/FanIn.py
+^^29f2f11--1620083697--2021-05-03T19:14:57-04:00--Steve Ziegler
+
+
+4	1	sam-app/common_layer/python/FanIn.py
+^^1a0b979--1620084327--2021-05-03T19:25:27-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/FanIn.py
+^^8c8ae40--1620093336--2021-05-03T21:55:36-04:00--Steve Ziegler
+
+
+3	1	sam-app/lutil_fan_log_events/app.py
+2	0	sam-app/template.yaml
+^^b0911af--1620093638--2021-05-03T22:00:38-04:00--Steve Ziegler
+
+
+6	2	sam-app/lutil_fan_log_events/app.py
+1	1	sam-app/template.yaml
+^^1cbfc72--1620093964--2021-05-03T22:06:04-04:00--Steve Ziegler
+
+
+1	0	sam-app/lutil_fan_log_events/app.py
+21	0	sam-app/tests/unit/test_unit_NamedTupleBase.py
+^^53b214f--1620094418--2021-05-03T22:13:38-04:00--Steve Ziegler
+
+
+4	0	sam-app/common_layer/python/NamedTupleBase.py
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanEventUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+6	12	sam-app/tests/unit/test_unit_NamedTupleBase.py
+^^607b733--1620094613--2021-05-03T22:16:53-04:00--Steve Ziegler
+
+
+2	1	sam-app/lutil_fan_log_events/app.py
+^^7648d79--1620095306--2021-05-03T22:28:26-04:00--Steve Ziegler
+
+
+4	1	sam-app/lutil_fan_e2e_consumer/app.py
+3	1	sam-app/lutil_fan_e2e_producer/app.py
+3	1	sam-app/lutil_fan_log_events/app.py
+^^e2bcd72--1620095727--2021-05-03T22:35:27-04:00--Steve Ziegler
+
+
+1	0	sam-app/lutil_fan_log_events/app.py
+^^f747f85--1620163092--2021-05-04T17:18:12-04:00--Steve Ziegler
+
+
+59	0	sam-app/common_layer/python/FanEvent.py
+25	0	sam-app/common_layer/python/FanEventPublisher.py
+0	38	sam-app/common_layer/python/NamedTupleBase.py
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanEventUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+2	1	sam-app/requirements.txt
+78	0	sam-app/tests/unit/test_unit_FanEvent.py
+53	0	sam-app/tests/unit/test_unit_FanEventPublisher.py
+^^f0dbd9c--1620164951--2021-05-04T17:49:11-04:00--Steve Ziegler
+
+
+3	13	sam-app/common_layer/python/FanEvent.py
+37	12	sam-app/common_layer/python/FanEventPublisher.py
+10	2	sam-app/tests/unit/test_unit_FanEventPublisher.py
+^^db861bb--1620166008--2021-05-04T18:06:48-04:00--Steve Ziegler
+
+
+18	0	sam-app/common_layer/python/FanEvent.py
+40	0	sam-app/tests/integration/test_int_FanEventPublisher.py
+23	0	sam-app/tests/unit/test_unit_FanEvent.py
+^^c4b6f45--1620166320--2021-05-04T18:12:00-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_log_events/app.py
+25	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+0	10	sam-app/tests/unit/test_unit_FanEventPublisher.py
+0	48	sam-app/tests/unit/test_unit_NamedTupleBase.py
+^^0252215--1620166939--2021-05-04T18:22:19-04:00--Steve Ziegler
+
+
+3	2	sam-app/lutil_fan_log_events/app.py
+0	25	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+^^ae7046f--1620168510--2021-05-04T18:48:30-04:00--Steve Ziegler
+
+
+5	5	sam-app/lutil_fan_e2e_producer/app.py
+3	3	sam-app/template.yaml
+^^7c3b6a3--1620219213--2021-05-05T08:53:33-04:00--Steve Ziegler
+
+
+20	1	README.md
+6	2	sam-app/common_layer/python/FanEventPublisher.py
+9	7	sam-app/lutil_fan_e2e_producer/app.py
+52	12	sam-app/lutil_fan_handler/app.py
+1	1	sam-app/lutil_fan_log_events/app.py
+11	5	sam-app/template.yaml
+56	1	sam-app/tests/integration/test_int_lutil_fan_handler.py
+40	2	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^361e33c--1620220445--2021-05-05T09:14:05-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/FanEventPublisher.py
+2	5	sam-app/lutil_fan_handler/app.py
+1	310	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^2c8701e--1620220828--2021-05-05T09:20:28-04:00--Steve Ziegler
+
+
+3	2	sam-app/lutil_fan_handler/app.py
+31	1	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^6395f6a--1620221212--2021-05-05T09:26:52-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/FanEventPublisher.py
+25	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+1	1	sam-app/tests/integration/test_int_lutil_fan_handler.py
+5	1	sam-app/tests/unit/test_unit_FanEventPublisher.py
+^^52a4584--1620222102--2021-05-05T09:41:42-04:00--Steve Ziegler
+
+
+2	3	sam-app/lutil_fan_e2e_producer/app.py
+^^e9dfa87--1620225764--2021-05-05T10:42:44-04:00--Steve Ziegler
+
+
+6	0	sam-app/template.yaml
+^^1504ffe--1620226389--2021-05-05T10:53:09-04:00--Steve Ziegler
+
+
+2	1	sam-app/template.yaml
+^^7164822--1620226675--2021-05-05T10:57:55-04:00--Steve Ziegler
+
+
+0	6	sam-app/template.yaml
+^^93c4504--1620227024--2021-05-05T11:03:44-04:00--Steve Ziegler
+
+
+6	0	sam-app/template.yaml
+^^877ce23--1620229354--2021-05-05T11:42:34-04:00--Steve Ziegler
+
+
+13	1	sam-app/common_layer/python/DynamoDB.py
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+2	1	sam-app/template.yaml
+3	0	sam-app/tests/unit/test_unit_DynamoDB.py
+^^7e229df--1620230445--2021-05-05T12:00:45-04:00--Steve Ziegler
+
+
+2	0	sam-app/lutil_fan_handler/app.py
+22	0	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+^^3c028cb--1620233466--2021-05-05T12:51:06-04:00--Steve Ziegler
+
+
+6	0	sam-app/common_layer/python/FanEventPublisher.py
+11	22	sam-app/lutil_fan_handler/app.py
+48	16	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^044af94--1620234225--2021-05-05T13:03:45-04:00--Steve Ziegler
+
+
+6	0	sam-app/common_layer/python/FanEventPublisher.py
+1	1	sam-app/lutil_fan_handler/app.py
+^^77bfce9--1620236443--2021-05-05T13:40:43-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^981ef5f--1620236893--2021-05-05T13:48:13-04:00--Steve Ziegler
+
+
+2	5	sam-app/template.yaml
+^^29f201a--1620237343--2021-05-05T13:55:43-04:00--Steve Ziegler
+
+
+2	0	sam-app/template.yaml
+^^435aadf--1620239942--2021-05-05T14:39:02-04:00--Steve Ziegler
+
+
+2	3	sam-app/template.yaml
+^^1c4ec72--1620245551--2021-05-05T16:12:31-04:00--Steve Ziegler
+
+
+13	9	sam-app/lutil_fan_e2e_consumer/app.py
+^^79bd6dc--1620246015--2021-05-05T16:20:15-04:00--Steve Ziegler
+
+
+2	2	sam-app/lutil_fan_e2e_consumer/app.py
+^^3aa99e3--1620247432--2021-05-05T16:43:52-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_e2e_consumer/app.py
+^^1721719--1620248035--2021-05-05T16:53:55-04:00--Steve Ziegler
+
+
+2	2	sam-app/common_layer/python/FanEventPublisher.py
+5	10	sam-app/lutil_fan_e2e_consumer/app.py
+^^fd7d7c1--1620248102--2021-05-05T16:55:02-04:00--Steve Ziegler
+
+
+6	0	sam-app/common_layer/python/FanEventPublisher.py
+^^3311acc--1620248183--2021-05-05T16:56:23-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/FanEventPublisher.py
+^^8c1c65e--1620249554--2021-05-05T17:19:14-04:00--Steve Ziegler
+
+
+3	0	sam-app/template.yaml
+^^68d5b5e--1620250082--2021-05-05T17:28:02-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/FanEventPublisher.py
+^^eb71f6a--1620250613--2021-05-05T17:36:53-04:00--Steve Ziegler
+
+
+1	0	sam-app/lutil_fan_e2e_consumer/app.py
+^^0f2cedc--1620251088--2021-05-05T17:44:48-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_e2e_consumer/app.py
+^^7eb382d--1620267952--2021-05-05T22:25:52-04:00--Steve Ziegler
+
+
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ProducerIntTests.html
+0	22	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+68	0	sam-app/tests/integration/test_int_lutil_consumer.py
+40	0	sam-app/tests/integration/test_int_lutil_producer.py
+^^cc6cb5b--1620268118--2021-05-05T22:28:38-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_e2e_consumer/app.py
+^^2a75f92--1620268726--2021-05-05T22:38:46-04:00--Steve Ziegler
+
+
+0	14	sam-app/lutil_fan_handler/app.py
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ProducerIntTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+23	179	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^a7f76cd--1620313228--2021-05-06T11:00:28-04:00--Steve Ziegler
+
+
+4	0	sam-app/lutil_fan_handler/app.py
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+2	1	sam-app/requirements.txt
+44	2	sam-app/template.yaml
+2	4	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^dd8aed4--1620313466--2021-05-06T11:04:26-04:00--Steve Ziegler
+
+
+8	3	sam-app/template.yaml
+^^e0c01f3--1620314027--2021-05-06T11:13:47-04:00--Steve Ziegler
+
+
+18	0	sam-app/common_layer/python/ProcessRecord.py
+19	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+37	0	sam-app/tests/unit/test_unit_ProcessRecord.py
+^^3ac8903--1620314419--2021-05-06T11:20:19-04:00--Steve Ziegler
+
+
+7	1	sam-app/common_layer/python/ProcessRecord.py
+4	1	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+11	0	sam-app/tests/unit/test_unit_ProcessRecord.py
+^^00a1ac5--1620314644--2021-05-06T11:24:04-04:00--Steve Ziegler
+
+
+0	1	sam-app/template.yaml
+^^1e0cea3--1620319490--2021-05-06T12:44:50-04:00--Steve Ziegler
+
+
+10	1	sam-app/common_layer/python/ProcessRecord.py
+9	1	sam-app/tests/unit/test_unit_ProcessRecord.py
+^^f37638a--1620338336--2021-05-06T17:58:56-04:00--Steve Ziegler
+
+
+4	1	sam-app/common_layer/python/ProcessRecord.py
+15	7	sam-app/common_layer/python/{ProcessRecord.py => TaskRecord.py}
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+2	0	sam-app/tests/unit/test_unit_ProcessRecord.py
+13	8	sam-app/tests/unit/{test_unit_ProcessRecord.py => test_unit_TaskRecord.py}
+^^3ab4cc5--1620344738--2021-05-06T19:45:38-04:00--Steve Ziegler
+
+
+48	40	sam-app/common_layer/python/FanEvent.py
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+23	39	sam-app/tests/unit/test_unit_FanEvent.py
+^^0974baa--1620345010--2021-05-06T19:50:10-04:00--Steve Ziegler
+
+
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+6	4	sam-app/tests/unit/test_unit_FanEvent.py
+^^73cfc3b--1620356207--2021-05-06T22:56:47-04:00--Steve Ziegler
+
+
+9	8	sam-app/common_layer/python/FanEventPublisher.py
+19	0	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+1	1	sam-app/requirements.txt
+4	2	sam-app/tests/integration/test_int_FanEventPublisher.py
+4	1	sam-app/tests/unit/test_unit_FanEventPublisher.py
+^^af78a4f--1620358932--2021-05-06T23:42:12-04:00--Steve Ziegler
+
+
+18	4	sam-app/common_layer/python/TaskRecord.py
+21	9	sam-app/lutil_fan_handler/app.py
+0	19	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+1	1	sam-app/tests/integration/test_int_lutil_fan_handler.py
+5	2	sam-app/tests/unit/test_unit_TaskRecord.py
+1	1	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^0569de9--1620359675--2021-05-06T23:54:35-04:00--Steve Ziegler
+
+
+13	11	sam-app/common_layer/python/TaskRecord.py
+11	20	sam-app/lutil_fan_handler/app.py
+5	1	sam-app/tests/unit/test_unit_TaskRecord.py
+^^0c0d07e--1620360389--2021-05-07T00:06:29-04:00--Steve Ziegler
+
+
+3	1	sam-app/common_layer/python/FanEventPublisher.py
+0	3	sam-app/common_layer/python/TaskRecord.py
+7	10	sam-app/lutil_fan_handler/app.py
+20	13	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^9681084--1620422450--2021-05-07T17:20:50-04:00--Steve Ziegler
+
+
+5	1	sam-app/lutil_fan_handler/app.py
+1	6	sam-app/tests/unit/test_unit_FanEvent.py
+6	1	sam-app/tests/unit/test_unit_FanEventPublisher.py
+12	8	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^eaea3de--1620424577--2021-05-07T17:56:17-04:00--Steve Ziegler
+
+
+4	4	sam-app/common_layer/python/ProcessRecord.py
+6	6	sam-app/common_layer/python/TaskRecord.py
+2	1	sam-app/lutil_fan_log_events/app.py
+19	0	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+22	0	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ProducerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+7	2	sam-app/tests/integration/test_int_FanEventPublisher.py
+12	22	sam-app/tests/integration/test_int_lutil_fan_handler.py
+2	2	sam-app/tests/unit/test_unit_ProcessRecord.py
+2	2	sam-app/tests/unit/test_unit_TaskRecord.py
+2	2	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^8f7bd16--1620425246--2021-05-07T18:07:26-04:00--Steve Ziegler
+
+
+8	1	sam-app/lutil_fan_e2e_producer/app.py
+0	19	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+0	22	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ProducerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+^^079b943--1620426683--2021-05-07T18:31:23-04:00--Steve Ziegler
+
+
+2	2	sam-app/common_layer/python/FanEventPublisher.py
+1	1	sam-app/lutil_fan_e2e_producer/app.py
+2	4	sam-app/tests/integration/test_int_FanEventPublisher.py
+2	5	sam-app/tests/unit/test_unit_FanEventPublisher.py
+^^a0cd975--1620430966--2021-05-07T19:42:46-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/FanEvent.py
+8	4	sam-app/common_layer/python/FanEventPublisher.py
+1	1	sam-app/common_layer/python/TaskRecord.py
+7	5	sam-app/lutil_fan_e2e_consumer/app.py
+22	2	sam-app/tests/integration/test_int_lutil_consumer.py
+^^6b0b091--1620431280--2021-05-07T19:48:00-04:00--Steve Ziegler
+
+
+7	3	sam-app/lutil_fan_e2e_consumer/app.py
+^^3ff1d18--1620433840--2021-05-07T20:30:40-04:00--Steve Ziegler
+
+
+0	8	sam-app/common_layer/python/FanEventPublisher.py
+19	0	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+22	0	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+1	1	sam-app/tests/unit/test_unit_TaskRecord.py
+6	7	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^3d60464--1620434254--2021-05-07T20:37:34-04:00--Steve Ziegler
+
+
+2	1	sam-app/lutil_fan_e2e_completed/requirements.txt
+2	1	sam-app/lutil_fan_e2e_consumer/requirements.txt
+2	1	sam-app/lutil_fan_e2e_producer/requirements.txt
+2	1	sam-app/lutil_fan_handler/requirements.txt
+2	1	sam-app/lutil_fan_log_events/requirements.txt
+^^f45a3a0--1620435588--2021-05-07T20:59:48-04:00--Steve Ziegler
+
+
+2	1	sam-app/lutil_fan_e2e_producer/app.py
+0	19	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+0	22	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+^^4a4a601--1620436244--2021-05-07T21:10:44-04:00--Steve Ziegler
+
+
+3	1	sam-app/lutil_fan_e2e_consumer/app.py
+^^0647123--1620437394--2021-05-07T21:29:54-04:00--Steve Ziegler
+
+
+3	0	sam-app/lutil_fan_e2e_consumer/app.py
+2	1	sam-app/lutil_fan_e2e_producer/app.py
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+1	1	sam-app/tests/integration/test_int_lutil_consumer.py
+^^8bd8985--1620474304--2021-05-08T07:45:04-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^84c33b2--1620474579--2021-05-08T07:49:39-04:00--Steve Ziegler
+
+
+6	2	sam-app/common_layer/python/DynamoDB.py
+1	1	sam-app/common_layer/python/FanIn.py
+25	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+^^210b77c--1620475521--2021-05-08T08:05:21-04:00--Steve Ziegler
+
+
+12	0	sam-app/common_layer/python/DynamoDB.py
+0	25	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+28	0	sam-app/tests/unit/test_unit_DynamoDB.py
+^^3ee7513--1620476711--2021-05-08T08:25:11-04:00--Steve Ziegler
+
+
+1	0	sam-app/lutil_fan_handler/app.py
+19	0	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+22	0	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+2	1	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^6a914f4--1620477170--2021-05-08T08:32:50-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^95ce4f8--1620478214--2021-05-08T08:50:14-04:00--Steve Ziegler
+
+
+2	1	sam-app/lutil_fan_handler/app.py
+0	19	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+0	22	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+4	1	sam-app/tests/integration/test_int_lutil_fan_handler.py
+2	1	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^e90d694--1620478468--2021-05-08T08:54:28-04:00--Steve Ziegler
+
+
+3	1	sam-app/lutil_fan_handler/app.py
+19	0	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+22	0	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+4	0	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^a1bd67b--1620571465--2021-05-09T10:44:25-04:00--Steve Ziegler
+
+
+2	0	sam-app/lutil_fan_e2e_producer/app.py
+4	1	sam-app/lutil_fan_handler/app.py
+0	28	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+^^df2a445--1620580921--2021-05-09T13:22:01-04:00--Steve Ziegler
+
+
+5	12	sam-app/common_layer/python/FanEventPublisher.py
+5	3	sam-app/lutil_fan_e2e_consumer/app.py
+2	3	sam-app/lutil_fan_e2e_producer/app.py
+3	4	sam-app/lutil_fan_handler/app.py
+2	2	sam-app/lutil_fan_log_events/app.py
+3	2	sam-app/tests/integration/test_int_FanEventPublisher.py
+3	3	sam-app/tests/unit/test_unit_FanEventPublisher.py
+^^259947e--1620581404--2021-05-09T13:30:04-04:00--Steve Ziegler
+
+
+6	2	sam-app/lutil_fan_log_events/app.py
+^^00a0fed--1620600557--2021-05-09T18:49:17-04:00--Steve Ziegler
+
+
+4	4	sam-app/lutil_fan_log_events/app.py
+28	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+0	1	sam-app/template.yaml
+^^96e5c0b--1620601258--2021-05-09T19:00:58-04:00--Steve Ziegler
+
+
+1	2	sam-app/lutil_fan_log_events/app.py
+^^c39a26d--1620601693--2021-05-09T19:08:13-04:00--Steve Ziegler
+
+
+1	2	sam-app/lutil_fan_log_events/app.py
+^^028c1c7--1620602976--2021-05-09T19:29:36-04:00--Steve Ziegler
+
+
+6	4	sam-app/lutil_fan_log_events/app.py
+1	0	sam-app/template.yaml
+^^af32442--1620609497--2021-05-09T21:18:17-04:00--Steve Ziegler
+
+
+13	3	sam-app/lutil_fan_handler/app.py
+1	1	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^f304e26--1620614932--2021-05-09T22:48:52-04:00--Steve Ziegler
+
+
+2	2	sam-app/common_layer/python/TaskRecord.py
+6	5	sam-app/lutil_fan_handler/app.py
+0	19	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+0	22	sam-app/reports/test_results.json_integration.test_int_FanOut.FanOutIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanIn.FanInUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanOut.FanOutUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+65	22	sam-app/tests/integration/test_int_lutil_fan_handler.py
+3	3	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^2b7b274--1620615364--2021-05-09T22:56:04-04:00--Steve Ziegler
+
+
+41	40	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^f10dd9d--1620653261--2021-05-10T09:27:41-04:00--Steve Ziegler
+
+
+1	2	sam-app/lutil_fan_handler/app.py
+^^5c24ffa--1620654185--2021-05-10T09:43:05-04:00--Steve Ziegler
+
+
+6	0	sam-app/lutil_fan_handler/app.py
+42	59	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^60cf3f8--1620657772--2021-05-10T10:42:52-04:00--Steve Ziegler
+
+
+0	1	sam-app/common_layer/python/FanEvent.py
+23	3	sam-app/common_layer/python/ProcessRecord.py
+25	6	sam-app/lutil_fan_handler/app.py
+101	38	sam-app/tests/integration/test_int_lutil_fan_handler.py
+6	3	sam-app/tests/unit/test_unit_ProcessRecord.py
+^^a940463--1620658116--2021-05-10T10:48:36-04:00--Steve Ziegler
+
+
+1	0	sam-app/lutil_fan_handler/app.py
+69	69	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^cdb7dde--1620661252--2021-05-10T11:40:52-04:00--Steve Ziegler
+
+
+12	7	sam-app/common_layer/python/DynamoDB.py
+110	70	sam-app/tests/unit/test_unit_DynamoDB.py
+^^3b914eb--1620664368--2021-05-10T12:32:48-04:00--Steve Ziegler
+
+
+39	1	sam-app/common_layer/python/DynamoDB.py
+137	94	sam-app/tests/unit/test_unit_DynamoDB.py
+^^2fb48b6--1620664518--2021-05-10T12:35:18-04:00--Steve Ziegler
+
+
+55	1	sam-app/tests/unit/test_unit_DynamoDB.py
+^^8265c4b--1620667031--2021-05-10T13:17:11-04:00--Steve Ziegler
+
+
+15	6	sam-app/common_layer/python/DynamoDB.py
+52	0	sam-app/tests/unit/test_unit_DynamoDB.py
+^^f3f8c90--1620680014--2021-05-10T16:53:34-04:00--Steve Ziegler
+
+
+11	1	sam-app/lutil_fan_handler/app.py
+126	76	sam-app/tests/integration/test_int_lutil_fan_handler.py
+30	9	sam-app/tests/unit/test_unit_lutil_fan_handler.py
+^^32b047e--1620750056--2021-05-11T12:20:56-04:00--Steve Ziegler
+
+
+2	3	sam-app/common_layer/python/DynamoDB.py
+4	1	sam-app/common_layer/python/ProcessRecord.py
+38	6	sam-app/lutil_fan_handler/app.py
+173	34	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^695b3ea--1620750777--2021-05-11T12:32:57-04:00--Steve Ziegler
+
+
+2	0	sam-app/common_layer/python/DynamoDB.py
+0	76	sam-app/common_layer/python/FanIn.py
+0	68	sam-app/common_layer/python/FanOut.py
+40	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+0	71	sam-app/tests/integration/test_int_FanOut.py
+1	1	sam-app/tests/unit/test_unit_DynamoDB.py
+0	88	sam-app/tests/unit/test_unit_FanIn.py
+0	37	sam-app/tests/unit/test_unit_FanOut.py
+1	0	sam-app/tests/unit/test_unit_ProcessRecord.py
+^^1ce2f55--1620753935--2021-05-11T13:25:35-04:00--Steve Ziegler
+
+
+22	20	sam-app/template.yaml
+^^c911c74--1620753965--2021-05-11T13:26:05-04:00--Steve Ziegler
+
+
+24	21	sam-app/template.yaml
+^^08a114d--1620754218--2021-05-11T13:30:18-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^07d8fca--1620755197--2021-05-11T13:46:37-04:00--Steve Ziegler
+
+
+2	3	sam-app/template.yaml
+^^2837338--1620757900--2021-05-11T14:31:40-04:00--Steve Ziegler
+
+
+1	3	sam-app/template.yaml
+^^e712368--1620758839--2021-05-11T14:47:19-04:00--Steve Ziegler
+
+
+2	2	sam-app/lutil_fan_handler/app.py
+2	2	sam-app/template.yaml
+^^1d7d542--1620759278--2021-05-11T14:54:38-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^d28298b--1620759562--2021-05-11T14:59:22-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^fe6b893--1620787020--2021-05-11T22:37:00-04:00--Steve Ziegler
+
+
+1	0	sam-app/lutil_fan_handler/app.py
+0	40	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+208	207	sam-app/tests/integration/test_int_lutil_fan_handler.py
+^^d0b2c08--1620788282--2021-05-11T22:58:02-04:00--Steve Ziegler
+
+
+76	0	sam-app/lutil_fan_log_dbstream/S3TextFromLambdaEvent.py
+0	0	sam-app/lutil_fan_log_dbstream/__init__.py
+28	0	sam-app/lutil_fan_log_dbstream/app.py
+3	0	sam-app/lutil_fan_log_dbstream/requirements.txt
+1	1	sam-app/template.yaml
+^^10700c0--1620788662--2021-05-11T23:04:22-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^430938d--1620829607--2021-05-12T10:26:47-04:00--Steve Ziegler
+
+
+1	2	sam-app/common_layer/python/ProcessRecord.py
+19	0	sam-app/reports/test_results.json_integration._test_lutil_download_url.IntegrationTests.html
+19	0	sam-app/reports/test_results.json_integration._test_lutil_s3_filenames_to_sns.IntegrationTests.html
+19	0	sam-app/reports/test_results.json_integration._test_lutil_s3_text_lines_to_sns.IntegrationTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+40	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+^^befa0c5--1620842298--2021-05-12T13:58:18-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^3fe88b0--1620847019--2021-05-12T15:16:59-04:00--Steve Ziegler
+
+
+17	1	sam-app/lutil_fan_log_dbstream/app.py
+0	19	sam-app/reports/test_results.json_integration._test_lutil_download_url.IntegrationTests.html
+0	19	sam-app/reports/test_results.json_integration._test_lutil_s3_filenames_to_sns.IntegrationTests.html
+0	19	sam-app/reports/test_results.json_integration._test_lutil_s3_text_lines_to_sns.IntegrationTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+0	40	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+93	0	sam-app/tests/unit/test_unit_lutil_dynamodb_stream.py
+^^4e55044--1620848001--2021-05-12T15:33:21-04:00--Steve Ziegler
+
+
+3	2	sam-app/lutil_fan_log_dbstream/app.py
+^^40edd6f--1620848959--2021-05-12T15:49:19-04:00--Steve Ziegler
+
+
+1	4	sam-app/lutil_fan_log_dbstream/app.py
+^^1ae175d--1620850722--2021-05-12T16:18:42-04:00--Steve Ziegler
+
+
+3	2	sam-app/lutil_fan_e2e_producer/app.py
+19	0	sam-app/reports/test_results.json_integration._test_lutil_download_url.IntegrationTests.html
+19	0	sam-app/reports/test_results.json_integration._test_lutil_s3_filenames_to_sns.IntegrationTests.html
+19	0	sam-app/reports/test_results.json_integration._test_lutil_s3_text_lines_to_sns.IntegrationTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+40	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_dynamodb_stream.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+^^f60ea5f--1620851956--2021-05-12T16:39:16-04:00--Steve Ziegler
+
+
+16	8	sam-app/lutil_fan_log_dbstream/app.py
+0	19	sam-app/reports/test_results.json_integration._test_lutil_download_url.IntegrationTests.html
+0	19	sam-app/reports/test_results.json_integration._test_lutil_s3_filenames_to_sns.IntegrationTests.html
+0	19	sam-app/reports/test_results.json_integration._test_lutil_s3_text_lines_to_sns.IntegrationTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_fan_handler.FanHandlerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+0	40	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_dynamodb_stream.FanEventUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_handler.FanHandlerUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+9	37	sam-app/tests/unit/test_unit_lutil_dynamodb_stream.py
+^^e38c5d8--1620852372--2021-05-12T16:46:12-04:00--Steve Ziegler
+
+
+2	2	sam-app/lutil_fan_log_dbstream/app.py
+^^312bf69--1620853285--2021-05-12T17:01:25-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_e2e_producer/app.py
+^^8442e7e--1620869273--2021-05-12T21:27:53-04:00--Steve Ziegler
+
+
+63	0	sam-app/common_layer/python/DynamoDBStream.py
+102	0	sam-app/tests/unit/test_unit_DynamoDBStream.py
+^^f9e1093--1620872511--2021-05-12T22:21:51-04:00--Steve Ziegler
+
+
+15	8	sam-app/common_layer/python/DynamoDBStream.py
+3	28	sam-app/lutil_fan_log_dbstream/app.py
+1	1	sam-app/template.yaml
+28	3	sam-app/tests/unit/test_unit_DynamoDBStream.py
+^^5eca3d6--1620872930--2021-05-12T22:28:50-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_log_dbstream/app.py
+^^78acf02--1620873229--2021-05-12T22:33:49-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^c4dd967--1620874217--2021-05-12T22:50:17-04:00--Steve Ziegler
+
+
+3	1	sam-app/template.yaml
+^^95ca730--1620875003--2021-05-12T23:03:23-04:00--Steve Ziegler
+
+
+2	2	sam-app/common_layer/python/DynamoDBStream.py
+^^1e383ff--1620909577--2021-05-13T08:39:37-04:00--Steve Ziegler
+
+
+1	0	sam-app/lutil_fan_log_dbstream/app.py
+^^b4a7c87--1620910457--2021-05-13T08:54:17-04:00--Steve Ziegler
+
+
+6	5	sam-app/common_layer/python/DynamoDBStream.py
+^^0912fa1--1620912054--2021-05-13T09:20:54-04:00--Steve Ziegler
+
+
+5	8	sam-app/common_layer/python/DynamoDBStream.py
+1	1	sam-app/tests/unit/test_unit_DynamoDBStream.py
+^^f5c243c--1620934593--2021-05-13T15:36:33-04:00--Steve Ziegler
+
+
+4	0	sam-app/common_layer/python/DynamoDB.py
+30	6	sam-app/common_layer/python/TaskRecord.py
+46	0	sam-app/tests/integration/blast_data.py
+32	0	sam-app/tests/integration/check_dbs.py
+757	0	sam-app/tests/integration/temp.txt
+8	0	sam-app/tests/integration/temp2.txt
+97	0	sam-app/tests/integration/test_int_TaskRecord.py
+^^86a7c4e--1620936336--2021-05-13T16:05:36-04:00--Steve Ziegler
+
+
+10	0	sam-app/common_layer/python/TaskRecord.py
+76	0	sam-app/lutil_fan_dbstream_handler/S3TextFromLambdaEvent.py
+0	0	sam-app/lutil_fan_dbstream_handler/__init__.py
+26	0	sam-app/lutil_fan_dbstream_handler/app.py
+3	0	sam-app/lutil_fan_dbstream_handler/requirements.txt
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+8	12	sam-app/template.yaml
+20	0	sam-app/tests/integration/test_int_TaskRecord.py
+6	3	sam-app/tests/unit/test_unit_DynamoDBStream.py
+4	1	sam-app/tests/unit/test_unit_TaskRecord.py
+^^57045b9--1620936456--2021-05-13T16:07:36-04:00--Steve Ziegler
+
+
+0	3	sam-app/lutil_fan_log_dbstream/app.py
+^^b8fc1d9--1620939240--2021-05-13T16:54:00-04:00--Steve Ziegler
+
+
+2	2	buildspec.yml
+1	1	sam-app/lutil_fan_log_dbstream/app.py
+25	0	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+11	10	sam-app/template.yaml
+25	0	sam-app/tests/unit/test_unit_lutil_fan_dbstream_handler.py
+^^a313acb--1620996461--2021-05-14T08:47:41-04:00--Steve Ziegler
+
+
+2	2	sam-app/template.yaml
+^^938148c--1620997122--2021-05-14T08:58:42-04:00--Steve Ziegler
+
+
+11	11	sam-app/template.yaml
+^^31ca130--1620997877--2021-05-14T09:11:17-04:00--Steve Ziegler
+
+
+10	10	sam-app/template.yaml
+^^49249f1--1620998328--2021-05-14T09:18:48-04:00--Steve Ziegler
+
+
+4	15	sam-app/template.yaml
+^^3d145bd--1620998919--2021-05-14T09:28:39-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_dbstream_handler/app.py
+^^df53790--1621001202--2021-05-14T10:06:42-04:00--Steve Ziegler
+
+
+2	0	sam-app/lutil_fan_dbstream_handler/app.py
+^^444c3d3--1621004204--2021-05-14T10:56:44-04:00--Steve Ziegler
+
+
+14	0	sam-app/common_layer/python/TaskUpdateProcessor.py
+16	0	sam-app/lutil_fan_dbstream_handler/app.py
+0	25	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+65	0	sam-app/tests/unit/test_unit_TaskUpdateProcessor.py
+^^774fe6d--1621006167--2021-05-14T11:29:27-04:00--Steve Ziegler
+
+
+1	0	sam-app/common_layer/python/TaskRecord.py
+23	4	sam-app/common_layer/python/TaskUpdateProcessor.py
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+16	8	sam-app/tests/unit/test_unit_TaskUpdateProcessor.py
+^^01cb5ac--1621006581--2021-05-14T11:36:21-04:00--Steve Ziegler
+
+
+14	7	sam-app/common_layer/python/TaskUpdateProcessor.py
+7	3	sam-app/tests/unit/test_unit_TaskUpdateProcessor.py
+^^5ad6a2f--1621007991--2021-05-14T11:59:51-04:00--Steve Ziegler
+
+
+16	7	sam-app/common_layer/python/ProcessRecord.py
+4	4	sam-app/common_layer/python/TaskUpdateProcessor.py
+22	24	sam-app/tests/{unit/test_unit_TaskUpdateProcessor.py => integration/test_int_TaskUpdateProcessor.py}
+4	4	sam-app/tests/unit/test_unit_TaskUpdateProcessor.py
+^^36e8835--1621025186--2021-05-14T16:46:26-04:00--Steve Ziegler
+
+
+27	1	sam-app/common_layer/python/ProcessRecord.py
+17	1	sam-app/common_layer/python/TaskUpdateProcessor.py
+82	0	sam-app/tests/integration/test_int_ProcessRecord.py
+41	4	sam-app/tests/integration/test_int_TaskUpdateProcessor.py
+41	0	sam-app/tests/unit/test_unit_TaskUpdateProcessor.py
+^^0e9948b--1621025808--2021-05-14T16:56:48-04:00--Steve Ziegler
+
+
+40	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_dynamodb_stream.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+0	0	sam-app/tests/integration/{test_int_lutil_fan_handler.py => _test_int_lutil_fan_handler.py}
+0	0	sam-app/tests/unit/{test_unit_lutil_fan_handler.py => _test_unit_lutil_fan_handler.py}
+1	0	sam-app/tests/unit/test_unit_FanEventPublisher.py
+4	2	sam-app/tests/unit/test_unit_ProcessRecord.py
+1	0	sam-app/tests/unit/test_unit_TaskRecord.py
+^^4a3d71c--1621027633--2021-05-14T17:27:13-04:00--Steve Ziegler
+
+
+0	8	sam-app/common_layer/python/FanEventPublisher.py
+5	6	sam-app/lutil_fan_e2e_producer/app.py
+19	0	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+25	0	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+22	0	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+0	40	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_dynamodb_stream.FanEventUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+19	0	sam-app/reports/test_results.json_unittest.loader._FailedTest.integration.html
+2	0	sam-app/tests/integration/test_int_TaskRecord.py
+3	1	sam-app/tests/integration/test_int_lutil_producer.py
+^^34b0182--1621027695--2021-05-14T17:28:15-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^4e32fcb--1621029918--2021-05-14T18:05:18-04:00--Steve Ziegler
+
+
+13	0	sam-app/lutil_fan_dbstream_handler/DBStreamTaskUpdateProcessor.py
+44	2	sam-app/lutil_fan_dbstream_handler/app.py
+1	1	sam-app/lutil_fan_e2e_producer/app.py
+0	19	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+0	22	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+0	19	sam-app/reports/test_results.json_unittest.loader._FailedTest.integration.html
+41	0	sam-app/tests/unit/test_unit_DBStreamAdaptor.py
+^^d2c7dec--1621030733--2021-05-14T18:18:53-04:00--Steve Ziegler
+
+
+2	1	sam-app/lutil_fan_dbstream_handler/DBStreamTaskUpdateProcessor.py
+1	0	sam-app/lutil_fan_dbstream_handler/app.py
+19	0	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+22	0	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+19	0	sam-app/reports/test_results.json_unittest.loader._FailedTest.integration.html
+1	1	sam-app/template.yaml
+39	2	sam-app/tests/unit/test_unit_DBStreamAdaptor.py
+^^8d83c70--1621042539--2021-05-14T21:35:39-04:00--Steve Ziegler
+
+
+2	2	sam-app/common_layer/python/DynamoDB.py
+1	1	sam-app/common_layer/python/TaskUpdateProcessor.py
+48	0	sam-app/lutil_fan_dbstream_handler/DBStreamAdapter.py
+0	14	sam-app/lutil_fan_dbstream_handler/DBStreamTaskUpdateProcessor.py
+0	19	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+0	25	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+0	22	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+0	19	sam-app/reports/test_results.json_unittest.loader._FailedTest.integration.html
+36	5	sam-app/tests/unit/test_unit_DBStreamAdaptor.py
+^^08bd5a9--1621043313--2021-05-14T21:48:33-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/DynamoDB.py
+1	4	sam-app/common_layer/python/TaskUpdateProcessor.py
+95	2	sam-app/tests/unit/test_unit_DBStreamAdaptor.py
+^^ceb20d7--1621081083--2021-05-15T08:18:03-04:00--Steve Ziegler
+
+
+10	9	sam-app/common_layer/python/DynamoDB.py
+10	46	sam-app/lutil_fan_dbstream_handler/app.py
+6	8	sam-app/lutil_fan_log_dbstream/app.py
+19	0	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+25	0	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+22	0	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+22	0	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream.DBStreamLambdaIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+19	0	sam-app/reports/test_results.json_unittest.loader._FailedTest.integration.html
+177	0	sam-app/tests/integration/test_int_lutil_dbstream.py
+0	27	sam-app/tests/unit/test_unit_FanEventPublisher.py
+0	25	sam-app/tests/unit/test_unit_lutil_fan_dbstream_handler.py
+^^deaa2e5--1621081903--2021-05-15T08:31:43-04:00--Steve Ziegler
+
+
+5	6	sam-app/lutil_fan_e2e_consumer/app.py
+0	19	sam-app/reports/test_results.json_integration.test_int_FanEventPublisher.FanEventPublisherUnitTests.html
+1	4	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	19	sam-app/reports/test_results.json_unittest.loader._FailedTest.integration.html
+1	0	sam-app/template.yaml
+0	46	sam-app/tests/integration/test_int_FanEventPublisher.py
+0	37	sam-app/tests/integration/test_int_TaskUpdateProcessor.py
+12	4	sam-app/tests/integration/test_int_lutil_consumer.py
+^^e0596dd--1621082986--2021-05-15T08:49:46-04:00--Steve Ziegler
+
+
+1	2	sam-app/template.yaml
+^^c605041--1621083921--2021-05-15T09:05:21-04:00--Steve Ziegler
+
+
+7	1	sam-app/template.yaml
+^^69c0478--1621084478--2021-05-15T09:14:38-04:00--Steve Ziegler
+
+
+1	7	sam-app/template.yaml
+^^90a9750--1621084890--2021-05-15T09:21:30-04:00--Steve Ziegler
+
+
+7	1	sam-app/template.yaml
+^^708258c--1621085557--2021-05-15T09:32:37-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^dcad8bd--1621086121--2021-05-15T09:42:01-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^1f60303--1621086716--2021-05-15T09:51:56-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_dbstream_handler/DBStreamAdapter.py
+^^93fd87f--1621087525--2021-05-15T10:05:25-04:00--Steve Ziegler
+
+
+3	0	sam-app/lutil_fan_dbstream_handler/DBStreamAdapter.py
+^^850f838--1621087881--2021-05-15T10:11:21-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_dbstream_handler/DBStreamAdapter.py
+^^7e634da--1621088922--2021-05-15T10:28:42-04:00--Steve Ziegler
+
+
+2	0	sam-app/common_layer/python/TaskUpdateProcessor.py
+^^56bf540--1621088955--2021-05-15T10:29:15-04:00--Steve Ziegler
+
+
+2	2	sam-app/common_layer/python/TaskUpdateProcessor.py
+^^03402c8--1621089307--2021-05-15T10:35:07-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/TaskUpdateProcessor.py
+3	3	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream.DBStreamLambdaIntTests.html
+^^1f15cb2--1621090472--2021-05-15T10:54:32-04:00--Steve Ziegler
+
+
+3	2	sam-app/common_layer/python/TaskUpdateProcessor.py
+3	3	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream.DBStreamLambdaIntTests.html
+^^0857fe5--1621102223--2021-05-15T14:10:23-04:00--Steve Ziegler
+
+
+0	7	sam-app/common_layer/python/TaskUpdateProcessor.py
+0	0	sam-app/tests/integration/{check_dbs.py => check_audit.py}
+31	0	sam-app/tests/integration/check_progress.py
+^^7304d78--1621167516--2021-05-16T08:18:36-04:00--Steve Ziegler
+
+
+4	2	sam-app/common_layer/python/TaskUpdateProcessor.py
+0	19	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+0	25	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	22	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream.DBStreamLambdaIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+47	47	sam-app/tests/unit/test_unit_DBStreamAdaptor.py
+^^d8606f1--1621167625--2021-05-16T08:20:25-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/TaskUpdateProcessor.py
+43	46	sam-app/tests/unit/test_unit_DBStreamAdaptor.py
+^^8ad0ac1--1621170450--2021-05-16T09:07:30-04:00--Steve Ziegler
+
+
+6	3	sam-app/common_layer/python/TaskUpdateProcessor.py
+22	0	sam-app/reports/test_results.json_unit.test_unit_DBStreamAdaptor.DBStreamAdapterUnitTests.html
+40	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_dynamodb_stream.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+1	1	sam-app/tests/unit/test_unit_TaskUpdateProcessor.py
+^^4a2181e--1621170676--2021-05-16T09:11:16-04:00--Steve Ziegler
+
+
+19	0	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+25	0	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+22	0	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream.DBStreamLambdaIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+1	1	sam-app/tests/integration/test_int_TaskUpdateProcessor.py
+^^ffccbdd--1621171407--2021-05-16T09:23:27-04:00--Steve Ziegler
+
+
+6	2	sam-app/common_layer/python/ProcessRecord.py
+1	0	sam-app/common_layer/python/TaskUpdateProcessor.py
+0	19	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+0	25	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	22	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream.DBStreamLambdaIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+1	0	sam-app/tests/unit/test_unit_ProcessRecord.py
+^^3472c4d--1621172059--2021-05-16T09:34:19-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/ProcessRecord.py
+1	0	sam-app/common_layer/python/TaskUpdateProcessor.py
+^^5444359--1621172221--2021-05-16T09:37:01-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/TaskUpdateProcessor.py
+^^b1ad53a--1621175062--2021-05-16T10:24:22-04:00--Steve Ziegler
+
+
+8	0	sam-app/common_layer/python/ProcessRecord.py
+5	4	sam-app/common_layer/python/TaskUpdateProcessor.py
+25	0	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+25	0	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+22	0	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream.DBStreamLambdaIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+3	3	sam-app/reports/test_results.json_unit.test_unit_DBStreamAdaptor.DBStreamAdapterUnitTests.html
+90	0	sam-app/tests/integration/test_int_ProcessRecord.py
+^^fd4479c--1621176545--2021-05-16T10:49:05-04:00--Steve Ziegler
+
+
+4	3	sam-app/common_layer/python/TaskUpdateProcessor.py
+^^eb60e45--1621176563--2021-05-16T10:49:23-04:00--Steve Ziegler
+
+
+3	3	sam-app/common_layer/python/TaskUpdateProcessor.py
+^^6c924e5--1621176792--2021-05-16T10:53:12-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer/python/TaskUpdateProcessor.py
+^^3801929--1621216080--2021-05-16T21:48:00-04:00--Steve Ziegler
+
+
+1	0	sam-app/common_layer_hex/__init__.py
+140	0	sam-app/common_layer_hex/python/DynamoDB.py
+68	0	sam-app/common_layer_hex/python/DynamoDBStream.py
+17	0	sam-app/common_layer_hex/python/FanManager.py
+11	0	sam-app/common_layer_hex/python/INotifier.py
+16	0	sam-app/common_layer_hex/python/IRepository.py
+10	0	sam-app/common_layer_hex/python/InMemoryRepository.py
+10	0	sam-app/common_layer_hex/python/ProcessDTO.py
+9	0	sam-app/common_layer_hex/python/TaskDTO.py
+8	0	sam-app/common_layer_hex/python/TestNotifier.py
+1	0	sam-app/common_layer_hex/python/__init__.py
+0	25	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+0	25	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	22	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream.DBStreamLambdaIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_DBStreamAdaptor.DBStreamAdapterUnitTests.html
+0	40	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_dynamodb_stream.FanEventUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+53	0	sam-app/tests/unit/test_unit_FanManager.py
+^^a02226b--1621220552--2021-05-16T23:02:32-04:00--Steve Ziegler
+
+
+8	0	sam-app/common_layer_hex/python/FanManager.py
+9	0	sam-app/common_layer_hex/python/IRepository.py
+58	1	sam-app/common_layer_hex/python/InMemoryRepository.py
+2	1	sam-app/common_layer_hex/python/TaskDTO.py
+29	3	sam-app/tests/unit/test_unit_FanManager.py
+^^6be93e8--1621261575--2021-05-17T10:26:15-04:00--Steve Ziegler
+
+
+11	1	sam-app/template.yaml
+^^8345c58--1621261957--2021-05-17T10:32:37-04:00--Steve Ziegler
+
+
+0	0	sam-app/lutil_fan_start_process/__init__.py
+19	0	sam-app/lutil_fan_start_process/app.py
+3	0	sam-app/lutil_fan_start_process/requirements.txt
+30	0	sam-app/template.yaml
+^^8dd9bcc--1621262369--2021-05-17T10:39:29-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^09d7fb0--1621267120--2021-05-17T11:58:40-04:00--Steve Ziegler
+
+
+0	1	sam-app/lutil_fan_start_process/app.py
+^^a0720d0--1621267943--2021-05-17T12:12:23-04:00--Steve Ziegler
+
+
+1	0	sam-app/lutil_fan_start_process/app.py
+^^ea2c533--1621287397--2021-05-17T17:36:37-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer_hex/python/{InMemoryRepository.py => DynamoDBRepository.py}
+2	45	sam-app/common_layer_hex/python/InMemoryRepository.py
+4	0	sam-app/common_layer_hex/python/ProcessDTO.py
+5	1	sam-app/common_layer_hex/python/TaskDTO.py
+20	0	sam-app/lutil_fan_start_process/app.py
+22	0	sam-app/reports/test_results.json_unit.test_unit_lutil_start_process.LutilStartProcessUnitTests.html
+5	1	sam-app/tests/unit/test_unit_FanManager.py
+81	0	sam-app/tests/unit/test_unit_lutil_start_process.py
+^^183b8a1--1621289295--2021-05-17T18:08:15-04:00--Steve Ziegler
+
+
+23	0	sam-app/common_layer_hex/python/FakeRepository.py
+8	2	sam-app/lutil_fan_start_process/app.py
+4	1	sam-app/reports/test_results.json_unit.test_unit_lutil_start_process.LutilStartProcessUnitTests.html
+19	1	sam-app/tests/unit/test_unit_lutil_start_process.py
+^^4ec64be--1621289651--2021-05-17T18:14:11-04:00--Steve Ziegler
+
+
+2	15	sam-app/common_layer_hex/python/DynamoDBRepository.py
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_start_process.LutilStartProcessUnitTests.html
+61	0	sam-app/tests/integration/test_int_lutil_start_process.py
+^^e660318--1621302378--2021-05-17T21:46:18-04:00--Steve Ziegler
+
+
+19	9	sam-app/common_layer_hex/python/DynamoDB.py
+73	0	sam-app/tests/integration/test_int_DynamoDB.py
+3	3	sam-app/tests/unit/test_unit_DynamoDB.py
+^^072537b--1621302441--2021-05-17T21:47:21-04:00--Steve Ziegler
+
+
+0	3	sam-app/tests/integration/test_int_DynamoDB.py
+^^7dba319--1621303259--2021-05-17T22:00:59-04:00--Steve Ziegler
+
+
+11	14	sam-app/tests/integration/check_progress.py
+^^4fb3101--1621342667--2021-05-18T08:57:47-04:00--Steve Ziegler
+
+
+3	1	sam-app/common_layer_hex/python/InMemoryRepository.py
+4	7	sam-app/tests/unit/test_unit_FanManager.py
+1	1	sam-app/tests/unit/test_unit_lutil_start_process.py
+^^74d8538--1621343688--2021-05-18T09:14:48-04:00--Steve Ziegler
+
+
+19	2	sam-app/common_layer_hex/python/FanManager.py
+2	1	sam-app/common_layer_hex/python/INotifier.py
+1	1	sam-app/common_layer_hex/python/IRepository.py
+1	0	sam-app/common_layer_hex/python/TaskDTO.py
+2	2	sam-app/common_layer_hex/python/TestNotifier.py
+21	0	sam-app/tests/unit/test_unit_FanManager.py
+^^225ee32--1621344262--2021-05-18T09:24:22-04:00--Steve Ziegler
+
+
+8	0	sam-app/common_layer_hex/python/FanEventDTO.py
+12	4	sam-app/common_layer_hex/python/FanManager.py
+3	1	sam-app/common_layer_hex/python/INotifier.py
+3	2	sam-app/common_layer_hex/python/TestNotifier.py
+3	0	sam-app/tests/unit/test_unit_FanManager.py
+^^750cb3a--1621345638--2021-05-18T09:47:18-04:00--Steve Ziegler
+
+
+3	1	sam-app/common_layer_hex/python/FanManager.py
+27	0	sam-app/lutil_fan_start_process/StartProcessAdapter.py
+3	18	sam-app/lutil_fan_start_process/app.py
+5	38	sam-app/tests/unit/test_unit_lutil_start_process.py
+^^f142701--1621346295--2021-05-18T09:58:15-04:00--Steve Ziegler
+
+
+5	0	sam-app/common_layer_hex/python/FanManager.py
+31	0	sam-app/common_layer_hex/python/SNSNotifier.py
+2	2	sam-app/lutil_fan_start_process/app.py
+20	19	sam-app/tests/integration/test_int_lutil_start_process.py
+^^ae3d446--1621355233--2021-05-18T12:27:13-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer_hex/python/FanManager.py
+1	1	sam-app/common_layer_hex/python/TaskDTO.py
+47	22	sam-app/lutil_fan_dbstream_handler/DBStreamAdapter.py
+61	84	sam-app/tests/unit/{test_unit_DBStreamAdaptor.py => test_unit_DBStreamAdapter.py}
+^^6fefff3--1621463416--2021-05-19T18:30:16-04:00--Steve Ziegler
+
+
+13	3	sam-app/common_layer_hex/python/DynamoDBRepository.py
+3	0	sam-app/common_layer_hex/python/FakeRepository.py
+4	0	sam-app/common_layer_hex/python/IRepository.py
+10	1	sam-app/common_layer_hex/python/TaskDTO.py
+5	14	sam-app/lutil_fan_dbstream_handler/app.py
+9	2	sam-app/tests/integration/check_progress.py
+103	88	sam-app/tests/integration/test_int_lutil_dbstream.py
+^^7c07339--1621630386--2021-05-21T16:53:06-04:00--Steve Ziegler
+
+
+9	1	sam-app/common_layer_hex/python/FanManager.py
+^^8173734--1621632834--2021-05-21T17:33:54-04:00--Steve Ziegler
+
+
+3	0	.vscode/settings.json
+1	1	sam-app/common_layer_hex/python/FanEventDTO.py
+18	8	sam-app/common_layer_hex/python/FanManager.py
+1	1	sam-app/common_layer_hex/python/ProcessDTO.py
+1	1	sam-app/common_layer_hex/python/TaskDTO.py
+11	5	sam-app/tests/unit/test_unit_FanManager.py
+^^575d0a5--1621641001--2021-05-21T19:50:01-04:00--Steve Ziegler
+
+
+20	10	sam-app/common_layer_hex/python/FanManager.py
+10	2	sam-app/tests/unit/test_unit_FanManager.py
+^^6f3921b--1621642419--2021-05-21T20:13:39-04:00--Steve Ziegler
+
+
+5	2	sam-app/tests/unit/test_unit_DBStreamAdapter.py
+^^b751076--1621644078--2021-05-21T20:41:18-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer_hex/python/FanManager.py
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream.DBStreamLambdaIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_start_process.LutilStartProcessUnitTests.html
+2	2	sam-app/tests/integration/test_int_lutil_dbstream.py
+5	5	sam-app/tests/unit/test_unit_FanManager.py
+^^eeaafda--1621684138--2021-05-22T07:48:58-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^44cf68b--1621686062--2021-05-22T08:21:02-04:00--Steve Ziegler
+
+
+54	12	sam-app/common_layer_hex/python/FanManager.py
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream.DBStreamLambdaIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_start_process.LutilStartProcessUnitTests.html
+1	1	sam-app/tests/integration/test_int_lutil_dbstream.py
+^^14e00a8--1621687588--2021-05-22T08:46:28-04:00--Steve Ziegler
+
+
+8	2	sam-app/common_layer_hex/python/DynamoDBRepository.py
+6	5	sam-app/common_layer_hex/python/FanManager.py
+85	47	sam-app/tests/unit/test_unit_FanManager.py
+^^69d2eda--1621688179--2021-05-22T08:56:19-04:00--Steve Ziegler
+
+
+11	2	sam-app/common_layer_hex/python/DynamoDBRepository.py
+99	76	sam-app/tests/unit/test_unit_FanManager.py
+^^9cea9a0--1621688431--2021-05-22T09:00:31-04:00--Steve Ziegler
+
+
+9	1	sam-app/common_layer_hex/python/FanManager.py
+1	1	sam-app/tests/unit/test_unit_FanManager.py
+^^a7dd1b0--1621688755--2021-05-22T09:05:55-04:00--Steve Ziegler
+
+
+3	0	sam-app/tests/unit/test_unit_lutil_start_process.py
+^^c9eb152--1621688993--2021-05-22T09:09:53-04:00--Steve Ziegler
+
+
+27	0	sam-app/lutil_fan_complete_task/CompleteTaskAdapter.py
+0	0	sam-app/lutil_fan_complete_task/__init__.py
+30	0	sam-app/lutil_fan_complete_task/app.py
+3	0	sam-app/lutil_fan_complete_task/requirements.txt
+29	0	sam-app/template.yaml
+^^961fb51--1621690021--2021-05-22T09:27:01-04:00--Steve Ziegler
+
+
+4	1	sam-app/common_layer_hex/python/FanManager.py
+7	8	sam-app/lutil_fan_complete_task/CompleteTaskAdapter.py
+60	0	sam-app/tests/unit/test_unit_lutil_complete_task.py
+^^7df089b--1621691703--2021-05-22T09:55:03-04:00--Steve Ziegler
+
+
+4	3	sam-app/lutil_fan_complete_task/app.py
+19	0	sam-app/reports/test_results.json_integration.test_int_DynamoDB.DynamoDBUnitTests.html
+25	0	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+25	0	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_complete_task.LutilCompleteTaskUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream.DBStreamLambdaIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_start_process.LutilStartProcessUnitTests.html
+72	0	sam-app/tests/integration/test_int_lutil_complete_task.py
+1	1	sam-app/tests/integration/test_int_lutil_dbstream.py
+7	8	sam-app/tests/integration/test_int_lutil_start_process.py
+1	0	sam-app/tests/unit/test_unit_lutil_complete_task.py
+3	1	sam-app/tests/unit/test_unit_lutil_start_process.py
+^^1e98594--1621696503--2021-05-22T11:15:03-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer_hex/python/DynamoDBRepository.py
+19	0	sam-app/reports/test_results.json_unit.test_unit_DBStreamAdapter.DBStreamAdapterUnitTests.html
+40	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+31	0	sam-app/reports/test_results.json_unit.test_unit_FanManager.FanManagerUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_complete_task.CompleteTaskAdapterUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_dynamodb_stream.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_start_process.StartProcessAdapterUnitTests.html
+^^cb9c28f--1621699640--2021-05-22T12:07:20-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer_hex/python/DynamoDBRepository.py
+^^db3b3b6--1621709122--2021-05-22T14:45:22-04:00--Steve Ziegler
+
+
+25	15	sam-app/lutil_fan_e2e_producer/app.py
+0	19	sam-app/reports/test_results.json_integration.test_int_DynamoDB.DynamoDBUnitTests.html
+0	25	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+0	25	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_complete_task.LutilCompleteTaskUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream.DBStreamLambdaIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_start_process.LutilStartProcessUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_DBStreamAdapter.DBStreamAdapterUnitTests.html
+0	40	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	31	sam-app/reports/test_results.json_unit.test_unit_FanManager.FanManagerUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_complete_task.CompleteTaskAdapterUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_dynamodb_stream.FanEventUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_start_process.StartProcessAdapterUnitTests.html
+6	7	sam-app/template.yaml
+4	4	sam-app/tests/integration/test_int_lutil_producer.py
+^^f476119--1621709982--2021-05-22T14:59:42-04:00--Steve Ziegler
+
+
+1	0	sam-app/lutil_fan_e2e_producer/app.py
+1	1	sam-app/template.yaml
+^^d24147a--1621710577--2021-05-22T15:09:37-04:00--Steve Ziegler
+
+
+1	1	sam-app/lutil_fan_e2e_producer/app.py
+1	1	sam-app/tests/integration/test_int_lutil_producer.py
+^^2a538f2--1621711426--2021-05-22T15:23:46-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^352d6a9--1621717119--2021-05-22T16:58:39-04:00--Steve Ziegler
+
+
+17	1	sam-app/template.yaml
+^^9469f48--1621717219--2021-05-22T17:00:19-04:00--Steve Ziegler
+
+
+1	3	sam-app/template.yaml
+^^51c525b--1621718575--2021-05-22T17:22:55-04:00--Steve Ziegler
+
+
+22	17	sam-app/lutil_fan_e2e_consumer/app.py
+^^74e1bda--1621720858--2021-05-22T18:00:58-04:00--Steve Ziegler
+
+
+-	-	.DS_Store
+1	1	sam-app/template.yaml
+0	0	sam-app/tests/integration/{test_int_lutil_dbstream.py => test_int_lutil_dbstream_handler.py}
+0	0	sam-app/tests/unit/{test_unit_lutil_dynamodb_stream.py => test_unit_lutil_log_dynamodb_stream.py}
+^^b3e696f--1621769962--2021-05-23T07:39:22-04:00--Steve Ziegler
+
+
+3	3	sam-app/lutil_fan_dbstream_handler/app.py
+1	1	sam-app/lutil_fan_e2e_consumer/app.py
+19	0	sam-app/reports/test_results.json_integration.test_int_DynamoDB.DynamoDBUnitTests.html
+25	0	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+25	0	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_complete_task.LutilCompleteTaskUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream_handler.DBStreamLambdaIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_start_process.LutilStartProcessUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_DBStreamAdapter.DBStreamAdapterUnitTests.html
+40	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+31	0	sam-app/reports/test_results.json_unit.test_unit_FanManager.FanManagerUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_complete_task.CompleteTaskAdapterUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_log_dynamodb_stream.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_start_process.StartProcessAdapterUnitTests.html
+5	5	sam-app/template.yaml
+^^6057204--1621771642--2021-05-23T08:07:22-04:00--Steve Ziegler
+
+
+11	1	sam-app/common_layer_hex/python/ProcessDTO.py
+2	2	sam-app/lutil_fan_log_events/app.py
+0	19	sam-app/reports/test_results.json_integration.test_int_DynamoDB.DynamoDBUnitTests.html
+0	25	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+0	25	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_complete_task.LutilCompleteTaskUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream_handler.DBStreamLambdaIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_start_process.LutilStartProcessUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_DBStreamAdapter.DBStreamAdapterUnitTests.html
+0	40	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	31	sam-app/reports/test_results.json_unit.test_unit_FanManager.FanManagerUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_complete_task.CompleteTaskAdapterUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_log_dynamodb_stream.FanEventUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_start_process.StartProcessAdapterUnitTests.html
+56	0	sam-app/tests/unit/test_unit_ProcessDTO.py
+65	0	sam-app/tests/unit/test_unit_lutil_fan_log_events.py
+^^2bcba91--1621774585--2021-05-23T08:56:25-04:00--Steve Ziegler
+
+
+28	0	sam-app/common_layer_hex/python/FanEventDTO.py
+3	2	sam-app/common_layer_hex/python/ProcessDTO.py
+12	9	sam-app/common_layer_hex/python/TaskDTO.py
+7	7	sam-app/lutil_fan_log_events/app.py
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_log_events.FanEventUnitTests.html
+1	1	sam-app/template.yaml
+52	0	sam-app/tests/unit/test_unit_FanEventDTO.py
+20	23	sam-app/tests/unit/test_unit_lutil_fan_log_events.py
+^^522256c--1621775351--2021-05-23T09:09:11-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer_hex/python/SNSNotifier.py
+^^9aa8525--1621779129--2021-05-23T10:12:09-04:00--Steve Ziegler
+
+
+1	0	sam-app/lutil_fan_log_events/app.py
+^^b5b0891--1621784549--2021-05-23T11:42:29-04:00--Steve Ziegler
+
+
+4	1	sam-app/lutil_fan_dbstream_handler/DBStreamAdapter.py
+^^ad73b3a--1621795176--2021-05-23T14:39:36-04:00--Steve Ziegler
+
+
+2	0	sam-app/lutil_fan_dbstream_handler/DBStreamAdapter.py
+19	0	sam-app/reports/test_results.json_integration.test_int_DynamoDB.DynamoDBUnitTests.html
+25	0	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+25	0	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_complete_task.LutilCompleteTaskUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream_handler.DBStreamLambdaIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_start_process.LutilStartProcessUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_DBStreamAdapter.DBStreamAdapterUnitTests.html
+40	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanEventDTO.ProcessDTOUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+31	0	sam-app/reports/test_results.json_unit.test_unit_FanManager.FanManagerUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessDTO.ProcessDTOUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_complete_task.CompleteTaskAdapterUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_log_dynamodb_stream.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_start_process.StartProcessAdapterUnitTests.html
+^^9921bbc--1621797071--2021-05-23T15:11:11-04:00--Steve Ziegler
+
+
+1	8	sam-app/lutil_fan_dbstream_handler/DBStreamAdapter.py
+^^84829bc--1621798326--2021-05-23T15:32:06-04:00--Steve Ziegler
+
+
+1	1	sam-app/template.yaml
+^^9a0e234--1621798634--2021-05-23T15:37:14-04:00--Steve Ziegler
+
+
+1	7	sam-app/template.yaml
+^^740dcbb--1621799041--2021-05-23T15:44:01-04:00--Steve Ziegler
+
+
+2	1	sam-app/lutil_fan_e2e_consumer/app.py
+^^bdc5924--1621800412--2021-05-23T16:06:52-04:00--Steve Ziegler
+
+
+2	1	sam-app/lutil_fan_e2e_consumer/app.py
+^^5cf0b3a--1621864352--2021-05-24T09:52:32-04:00--Steve Ziegler
+
+
+5	6	sam-app/common_layer_hex/python/FanManager.py
+9	0	sam-app/lutil_fan_dbstream_handler/DBStreamAdapter.py
+0	1	sam-app/lutil_fan_e2e_consumer/app.py
+0	19	sam-app/reports/test_results.json_unit.test_unit_DBStreamAdapter.DBStreamAdapterUnitTests.html
+0	40	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanEventDTO.ProcessDTOUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	31	sam-app/reports/test_results.json_unit.test_unit_FanManager.FanManagerUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessDTO.ProcessDTOUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_complete_task.CompleteTaskAdapterUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_log_events.FanEventUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_log_dynamodb_stream.FanEventUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_start_process.StartProcessAdapterUnitTests.html
+1	1	sam-app/template.yaml
+3	0	sam-app/tests/integration/test_int_lutil_consumer.py
+^^e0a309c--1621867203--2021-05-24T10:40:03-04:00--Steve Ziegler
+
+
+5	5	sam-app/common_layer_hex/python/FanManager.py
+1	1	sam-app/lutil_fan_dbstream_handler/DBStreamAdapter.py
+2	1	sam-app/lutil_fan_e2e_producer/app.py
+19	0	sam-app/reports/test_results.json_unit.test_unit_DBStreamAdapter.DBStreamAdapterUnitTests.html
+40	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanEventDTO.ProcessDTOUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+31	0	sam-app/reports/test_results.json_unit.test_unit_FanManager.FanManagerUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessDTO.ProcessDTOUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_complete_task.CompleteTaskAdapterUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_log_events.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_log_dynamodb_stream.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_start_process.StartProcessAdapterUnitTests.html
+^^a6634f2--1621868214--2021-05-24T10:56:54-04:00--Steve Ziegler
+
+
+1	17	sam-app/lutil_fan_dbstream_handler/DBStreamAdapter.py
+^^5a9c40e--1621880647--2021-05-24T14:24:07-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer_hex/python/FanManager.py
+0	19	sam-app/reports/test_results.json_integration.test_int_DynamoDB.DynamoDBUnitTests.html
+0	25	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+0	25	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_complete_task.LutilCompleteTaskUnitTests.html
+3	3	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream_handler.DBStreamLambdaIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_start_process.LutilStartProcessUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_DBStreamAdapter.DBStreamAdapterUnitTests.html
+0	40	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+0	28	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_FanEventDTO.ProcessDTOUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+0	31	sam-app/reports/test_results.json_unit.test_unit_FanManager.FanManagerUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessDTO.ProcessDTOUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+0	22	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_complete_task.CompleteTaskAdapterUnitTests.html
+0	25	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_log_events.FanEventUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_log_dynamodb_stream.FanEventUnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+0	19	sam-app/reports/test_results.json_unit.test_unit_lutil_start_process.StartProcessAdapterUnitTests.html
+10	9	sam-app/tests/integration/test_int_lutil_consumer.py
+^^683019b--1621892104--2021-05-24T17:35:04-04:00--Steve Ziegler
+
+
+6	5	sam-app/common_layer_hex/python/FanManager.py
+0	19	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+24	24	sam-app/tests/unit/test_unit_FanManager.py
+^^6dfa286--1621893455--2021-05-24T17:57:35-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer_hex/python/FanManager.py
+^^a23a53e--1621953388--2021-05-25T10:36:28-04:00--Steve Ziegler
+
+
+4	1	sam-app/common_layer_hex/python/FanManager.py
+19	0	sam-app/reports/test_results.json_integration.test_int_DynamoDB.DynamoDBUnitTests.html
+25	0	sam-app/reports/test_results.json_integration.test_int_ProcessRecord.ProcessRecordIntTests.html
+25	0	sam-app/reports/test_results.json_integration.test_int_TaskRecord.TaskRecordIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_complete_task.LutilCompleteTaskUnitTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_consumer.ConsumerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_dbstream_handler.DBStreamLambdaIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_producer.ProducerIntTests.html
+19	0	sam-app/reports/test_results.json_integration.test_int_lutil_start_process.LutilStartProcessUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_DBStreamAdapter.DBStreamAdapterUnitTests.html
+40	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDB.DynamoDBUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_DynamoDBStream.DynamoDBStreamUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanEvent.FanEventUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_FanEventDTO.ProcessDTOUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_FanEventPublisher.FanEventPublisherUnitTests.html
+28	0	sam-app/reports/test_results.json_unit.test_unit_FanManager.FanManagerUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.CreatedFanJobUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_NamedTupleBase.FanJobUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessDTO.ProcessDTOUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_ProcessRecord.ProcessRecordUnitTests.html
+22	0	sam-app/reports/test_results.json_unit.test_unit_TaskRecord.TaskRecordUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_TaskUpdateProcessor.TaskUpdateProcessorUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_complete_task.CompleteTaskAdapterUnitTests.html
+25	0	sam-app/reports/test_results.json_unit.test_unit_lutil_download_url.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_fan_log_events.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_log_dynamodb_stream.FanEventUnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_s3_text_lines_to_sns.UnitTests.html
+19	0	sam-app/reports/test_results.json_unit.test_unit_lutil_start_process.StartProcessAdapterUnitTests.html
+0	94	sam-app/run_tests_ci.sh
+2	2	sam-app/template.yaml
+^^a266248--1621953953--2021-05-25T10:45:53-04:00--Steve Ziegler
+
+
+4	0	sam-app/common_layer_hex/python/FanManager.py
+3	2	sam-app/tests/unit/test_unit_FanManager.py
+^^384c4e0--1621955929--2021-05-25T11:18:49-04:00--Steve Ziegler
+
+
+1	1	sam-app/common_layer_hex/python/FanEventDTO.py
+3	3	sam-app/reports/test_results.json_integration.test_int_DynamoDB.DynamoDBUnitTests.html
+2	0	sam-app/tests/integration/test_int_DynamoDB.py

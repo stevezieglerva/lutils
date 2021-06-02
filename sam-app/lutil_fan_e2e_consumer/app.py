@@ -9,7 +9,7 @@ import glob
 import time
 import random
 
-from TaskDTO import *
+from domain.TaskDTO import *
 
 
 def lambda_handler(event, context):

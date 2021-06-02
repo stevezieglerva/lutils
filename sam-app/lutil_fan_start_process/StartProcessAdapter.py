@@ -3,8 +3,8 @@ from FanManager import FanManager
 from IRepository import IRepository
 from INotifier import INotifier
 
-from ProcessDTO import *
-from TaskDTO import *
+from domain.ProcessDTO import *
+from domain.TaskDTO import *
 
 
 class StartProcessAdapter:

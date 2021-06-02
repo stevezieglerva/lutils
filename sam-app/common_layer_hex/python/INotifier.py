@@ -1,7 +1,7 @@
 import json
 from abc import ABC, abstractmethod
 
-from FanEventDTO import FanEventDTO
+from domain.FanEventDTO import FanEventDTO
 
 
 class INotifier(ABC):

@@ -2,8 +2,8 @@ import boto3
 
 from DynamoDB import DynamoDB
 from IRepository import IRepository
-from ProcessDTO import ProcessDTO
-from TaskDTO import TaskDTO
+from domain.ProcessDTO import ProcessDTO
+from domain.TaskDTO import TaskDTO
 
 
 class FakeRepository(IRepository):

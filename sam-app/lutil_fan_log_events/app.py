@@ -7,7 +7,7 @@ import json
 import sys
 import glob
 
-from FanEventDTO import *
+from domain.FanEventDTO import *
 
 
 from aws_lambda_powertools import Metrics

@@ -11,8 +11,8 @@ from IRepository import IRepository
 from INotifier import INotifier
 from DynamoDBRepository import DynamoDBRepository
 from SNSNotifier import *
-from ProcessDTO import *
-from TaskDTO import *
+from domain.ProcessDTO import *
+from domain.TaskDTO import *
 from StartProcessAdapter import *
 
 

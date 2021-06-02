@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 from INotifier import *
-from FanEventDTO import FanEventDTO
+from domain.FanEventDTO import FanEventDTO
 
 
 class TestNotifier(INotifier):

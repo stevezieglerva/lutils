@@ -17,8 +17,8 @@ import unittest
 from unittest import mock
 
 from lutil_fan_e2e_consumer import app
-from FanEventDTO import *
-from TaskDTO import *
+from domain.FanEventDTO import *
+from domain.TaskDTO import *
 from DynamoDB import DynamoDB
 
 

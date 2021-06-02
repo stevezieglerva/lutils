@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from ProcessDTO import ProcessDTO
-from TaskDTO import TaskDTO
+from domain.ProcessDTO import ProcessDTO
+from domain.TaskDTO import TaskDTO
 
 
 class IRepository(ABC):

@@ -17,7 +17,7 @@ import unittest
 from unittest import mock
 
 
-from common_layer_hex.python.ProcessDTO import *
+from common_layer_hex.python.domain.ProcessDTO import *
 
 
 class ProcessDTOUnitTests(unittest.TestCase):
