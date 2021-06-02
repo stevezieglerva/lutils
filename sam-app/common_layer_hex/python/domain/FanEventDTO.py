@@ -8,7 +8,7 @@ class FanEventDTO:
     event_message: dict
 
     def get_formatted_line(self):
-        line = f"{self.event_source:<40} {self.event_name:<40} "
+        line = f"{self.event_source:<45}  {self.event_name:<40} "
         process_id = self.event_message.get("process_id", "")
         if process_id != "":
             line = line + f" {process_id:<40} "
