@@ -8,7 +8,7 @@ from datetime import datetime
 import boto3
 from aws_lambda_powertools import Metrics
 from aws_lambda_powertools.metrics import MetricUnit
-from DynamoDBStream import DynamoDBStream
+from infrastructure.repository.DynamoDBStream import DynamoDBStream
 from FanEvent import FanEvent
 
 metrics = Metrics()
