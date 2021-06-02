@@ -1,7 +1,7 @@
 import boto3
 
-from DynamoDB import DynamoDB
-from DynamoDBRepository import DynamoDBRepository
+from infrastructure.repository.DynamoDB import DynamoDB
+from infrastructure.repository.DynamoDBRepository import DynamoDBRepository
 from domain.ProcessDTO import ProcessDTO
 from domain.TaskDTO import TaskDTO
 

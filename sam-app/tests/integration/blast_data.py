@@ -10,7 +10,7 @@ sys.path.insert(0, parentdir)
 print("Updated path:")
 print(json.dumps(sys.path, indent=3))
 
-from DynamoDB import DynamoDB
+from infrastructure.repository.DynamoDB import DynamoDB
 
 from datetime import datetime
 

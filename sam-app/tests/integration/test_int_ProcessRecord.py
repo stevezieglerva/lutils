@@ -19,7 +19,7 @@ from unittest import mock
 
 
 from common_layer.python.TaskRecord import *
-from common_layer.python.DynamoDB import DynamoDB
+from common_layer.python.infrastructure.repository.DynamoDB import DynamoDB
 from common_layer.python.FanEvent import *
 from common_layer.python.ProcessRecord import *
 

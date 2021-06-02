@@ -1,6 +1,6 @@
 import boto3
 from FanManager import FanManager
-from IRepository import IRepository
+from infrastructure.repository.IRepository import IRepository
 from INotifier import INotifier
 
 from domain.ProcessDTO import *

@@ -23,7 +23,7 @@ from moto import mock_dynamodb2, mock_sns
 
 from common_layer_hex.python.domain.TaskDTO import *
 from common_layer_hex.python.FanManager import *
-from common_layer_hex.python.InMemoryRepository import *
+from common_layer_hex.python.infrastructure.repository.InMemoryRepository import *
 from common_layer_hex.python.TestNotifier import *
 from common_layer_hex.python.FanManager import *
 

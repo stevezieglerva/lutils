@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 
-from DynamoDB import DynamoDB
+from infrastructure.repository.DynamoDB import DynamoDB
 from FanEvent import *
 
 

@@ -43,7 +43,7 @@ import unittest
 from unittest import mock
 
 from lutil_fan_handler import app
-from DynamoDB import DynamoDB
+from infrastructure.repository.DynamoDB import DynamoDB
 from TaskRecord import TaskRecord
 from ProcessRecord import ProcessRecord
 from FanEvent import *

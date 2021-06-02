@@ -42,7 +42,7 @@ from unittest import mock
 from lutil_fan_start_process import app
 from domain.ProcessDTO import ProcessDTO
 from domain.TaskDTO import TaskDTO
-from FakeRepository import FakeRepository
+from infrastructure.repository.FakeRepository import FakeRepository
 from TestNotifier import TestNotifier
 from StartProcessAdapter import *
 

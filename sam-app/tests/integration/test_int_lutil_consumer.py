@@ -19,7 +19,7 @@ from unittest import mock
 from lutil_fan_e2e_consumer import app
 from domain.FanEventDTO import *
 from domain.TaskDTO import *
-from DynamoDB import DynamoDB
+from infrastructure.repository.DynamoDB import DynamoDB
 
 
 def get_output_from_stack(output_key):

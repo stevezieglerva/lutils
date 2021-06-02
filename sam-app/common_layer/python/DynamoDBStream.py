@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 
 import ulid
-from DynamoDB import DynamoDB
+from infrastructure.repository.DynamoDB import DynamoDB
 
 
 class DynamoDBStream:

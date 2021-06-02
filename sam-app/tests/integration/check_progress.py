@@ -10,7 +10,7 @@ sys.path.insert(0, parentdir)
 print("Updated path:")
 print(json.dumps(sys.path, indent=3))
 
-from DynamoDB import DynamoDB
+from infrastructure.repository.DynamoDB import DynamoDB
 
 
 db = DynamoDB("lutils2-FanProcessingPartTestTable-Q3PVEB6MO2AJ")

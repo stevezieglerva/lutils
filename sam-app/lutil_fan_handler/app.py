@@ -7,7 +7,7 @@ from datetime import datetime
 
 import boto3
 import FanTaskStatus
-from DynamoDB import DynamoDB
+from infrastructure.repository.DynamoDB import DynamoDB
 from FanEvent import *
 from FanEventPublisher import FanEventPublisher
 from ProcessRecord import ProcessRecord

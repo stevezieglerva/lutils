@@ -7,9 +7,9 @@ from datetime import datetime
 
 import boto3
 from FanManager import FanManager
-from IRepository import IRepository
+from infrastructure.repository.IRepository import IRepository
 from INotifier import INotifier
-from DynamoDBRepository import DynamoDBRepository
+from infrastructure.repository.DynamoDBRepository import DynamoDBRepository
 from SNSNotifier import *
 from domain.ProcessDTO import *
 from domain.TaskDTO import *

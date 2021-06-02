@@ -1,4 +1,4 @@
-from IRepository import *
+from infrastructure.repository.IRepository import *
 from INotifier import *
 from FanManager import *
 from domain.TaskDTO import *

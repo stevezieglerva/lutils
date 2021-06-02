@@ -16,7 +16,7 @@ print(json.dumps(sys.path, indent=3))
 import unittest
 from unittest import mock
 
-from common_layer_hex.python.DynamoDB import DynamoDB
+from common_layer_hex.python.infrastructure.repository.DynamoDB import DynamoDB
 
 
 def get_output_from_stack(output_key):

@@ -22,11 +22,13 @@ from unittest import mock
 
 
 from common_layer_hex.python.FanManager import FanManager
-from common_layer_hex.python.DynamoDBRepository import DynamoDBRepository
+from common_layer_hex.python.infrastructure.repository.DynamoDBRepository import (
+    DynamoDBRepository,
+)
 from common_layer_hex.python.TestNotifier import TestNotifier
 from common_layer_hex.python.domain.TaskDTO import TaskDTO
 from common_layer_hex.python.domain.ProcessDTO import ProcessDTO
-from common_layer_hex.python.DynamoDB import DynamoDB
+from common_layer_hex.python.infrastructure.repository.DynamoDB import DynamoDB
 from lutil_fan_dbstream_handler.app import *
 
 

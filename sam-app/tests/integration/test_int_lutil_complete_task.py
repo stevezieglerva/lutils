@@ -22,7 +22,7 @@ from unittest import mock
 from lutil_fan_complete_task import app
 from domain.ProcessDTO import ProcessDTO
 from domain.TaskDTO import TaskDTO
-from DynamoDBRepository import DynamoDBRepository
+from infrastructure.repository.DynamoDBRepository import DynamoDBRepository
 from SNSNotifier import *
 from FanManager import *
 

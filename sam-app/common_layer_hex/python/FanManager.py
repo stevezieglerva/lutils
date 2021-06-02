@@ -8,7 +8,7 @@ import ulid
 
 from domain.FanEventDTO import *
 from INotifier import INotifier
-from IRepository import IRepository
+from infrastructure.repository.IRepository import IRepository
 from domain.ProcessDTO import *
 from domain.ProcessDTO import ProcessDTO
 from domain.TaskDTO import *
