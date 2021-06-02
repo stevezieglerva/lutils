@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from INotifier import *
+from infrastructure.notifications.INotifier import *
 from domain.FanEventDTO import FanEventDTO
 
 import boto3

@@ -23,7 +23,7 @@ from lutil_fan_start_process import app
 from domain.ProcessDTO import ProcessDTO
 from domain.TaskDTO import TaskDTO
 from infrastructure.repository.DynamoDBRepository import DynamoDBRepository
-from TestNotifier import TestNotifier
+from infrastructure.notifications.TestNotifier import TestNotifier
 
 
 def get_output_from_stack(output_key):

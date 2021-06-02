@@ -23,7 +23,7 @@ from lutil_fan_complete_task import app
 from domain.ProcessDTO import ProcessDTO
 from domain.TaskDTO import TaskDTO
 from infrastructure.repository.DynamoDBRepository import DynamoDBRepository
-from SNSNotifier import *
+from infrastructure.notifications.SNSNotifier import *
 from domain.FanManager import *
 
 

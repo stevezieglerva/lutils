@@ -25,7 +25,9 @@ from common_layer_hex.python.domain.FanManager import FanManager
 from common_layer_hex.python.infrastructure.repository.DynamoDBRepository import (
     DynamoDBRepository,
 )
-from common_layer_hex.python.TestNotifier import TestNotifier
+from common_layer_hex.python.infrastructure.notifications.TestNotifier import (
+    TestNotifier,
+)
 from common_layer_hex.python.domain.TaskDTO import TaskDTO
 from common_layer_hex.python.domain.ProcessDTO import ProcessDTO
 from common_layer_hex.python.infrastructure.repository.DynamoDB import DynamoDB

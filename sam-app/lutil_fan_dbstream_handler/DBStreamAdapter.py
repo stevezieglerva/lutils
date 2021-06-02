@@ -1,5 +1,5 @@
 from infrastructure.repository.IRepository import *
-from INotifier import *
+from infrastructure.notifications.INotifier import *
 from domain.FanManager import *
 from domain.TaskDTO import *
 

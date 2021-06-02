@@ -11,7 +11,7 @@ import glob
 from aws_lambda_powertools import Metrics
 from aws_lambda_powertools.metrics import MetricUnit
 from infrastructure.repository.DynamoDBRepository import DynamoDBRepository
-from SNSNotifier import SNSNotifier
+from infrastructure.notifications.SNSNotifier import SNSNotifier
 from DBStreamAdapter import DBStreamAdapter
 
 
