@@ -22,10 +22,10 @@ from moto import mock_dynamodb2, mock_sns
 
 
 from common_layer_hex.python.domain.TaskDTO import *
-from common_layer_hex.python.FanManager import *
+from common_layer_hex.python.domain.FanManager import *
 from common_layer_hex.python.infrastructure.repository.InMemoryRepository import *
 from common_layer_hex.python.TestNotifier import *
-from common_layer_hex.python.FanManager import *
+from common_layer_hex.python.domain.FanManager import *
 
 from lutil_fan_dbstream_handler.DBStreamAdapter import DBStreamAdapter
 

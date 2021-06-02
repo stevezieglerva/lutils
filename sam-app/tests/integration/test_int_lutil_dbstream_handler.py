@@ -21,7 +21,7 @@ import unittest
 from unittest import mock
 
 
-from common_layer_hex.python.FanManager import FanManager
+from common_layer_hex.python.domain.FanManager import FanManager
 from common_layer_hex.python.infrastructure.repository.DynamoDBRepository import (
     DynamoDBRepository,
 )

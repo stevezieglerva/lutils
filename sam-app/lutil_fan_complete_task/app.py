@@ -6,7 +6,7 @@ import time
 from datetime import datetime
 
 import boto3
-from FanManager import FanManager
+from domain.FanManager import FanManager
 from infrastructure.repository.IRepository import IRepository
 from INotifier import INotifier
 from infrastructure.repository.DynamoDBRepository import DynamoDBRepository

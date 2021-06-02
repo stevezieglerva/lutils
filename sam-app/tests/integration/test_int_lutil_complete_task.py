@@ -24,7 +24,7 @@ from domain.ProcessDTO import ProcessDTO
 from domain.TaskDTO import TaskDTO
 from infrastructure.repository.DynamoDBRepository import DynamoDBRepository
 from SNSNotifier import *
-from FanManager import *
+from domain.FanManager import *
 
 
 def get_output_from_stack(output_key):

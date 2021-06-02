@@ -18,7 +18,7 @@ print(json.dumps(sys.path, indent=3))
 import unittest
 from unittest import mock
 
-from common_layer_hex.python.FanManager import *
+from common_layer_hex.python.domain.FanManager import *
 from common_layer_hex.python.infrastructure.repository.InMemoryRepository import (
     InMemoryRepository,
 )

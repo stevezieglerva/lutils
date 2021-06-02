@@ -1,5 +1,5 @@
 import boto3
-from FanManager import FanManager
+from domain.FanManager import FanManager
 from infrastructure.repository.IRepository import IRepository
 from INotifier import INotifier
 
