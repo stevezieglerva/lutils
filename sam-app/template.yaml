@@ -22,15 +22,6 @@ Resources:
         - python3.7
 
 
-  Common:
-    Type: AWS::Serverless::LayerVersion
-    Properties:
-      LayerName: common
-      Description: Custom python code shared across the app
-      ContentUri: common_layer/
-      CompatibleRuntimes:
-        - python3.7
-
   CommonHex:
     Type: AWS::Serverless::LayerVersion
     Properties:
