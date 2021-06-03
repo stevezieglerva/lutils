@@ -464,8 +464,6 @@ Resources:
       Layers: 
         - !Ref CommonHex
       Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref FanProcessingTableTest 
         - Version: 2012-10-17
           Statement:
             - Effect: Allow
@@ -673,10 +671,10 @@ Outputs:
     Value: !Select [1, !Split ['/', !GetAtt FanProcessingPartTable.Arn]] 
 
   FanProcessingPartTestTableArn:
-    Description: "FanProcessingTableTest ARN"
+    Description: "FanProcessingPartTestTable ARN"
     Value: !GetAtt FanProcessingPartTestTable.Arn
   FanProcessingPartTestTableName:
-    Description: "FanProcessingTableTest Name"
+    Description: "FanProcessingPartTestTable Name"
     Value: !Select [1, !Split ['/', !GetAtt FanProcessingPartTestTable.Arn]] 
 
   # SNS
