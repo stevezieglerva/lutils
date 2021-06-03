@@ -567,7 +567,7 @@ Resources:
   ################################
   ### Tables
   ################################
-  FanProcessingTable:
+  FanProcessingPartTable:
     Type: AWS::DynamoDB::Table
     Properties: 
       BillingMode: PAY_PER_REQUEST
@@ -576,49 +576,28 @@ Resources:
           AttributeName: "pk"
           AttributeType: "S"
         - 
-          AttributeName: "process_id"
+          AttributeName: "sk"
+          AttributeType: "S"
+        - 
+          AttributeName: "gs1_pk"
+          AttributeType: "S"
+        - 
+          AttributeName: "gs1_sk"
           AttributeType: "S"
       KeySchema: 
         -
           AttributeName: "pk"
           KeyType: "HASH"
-      GlobalSecondaryIndexes:
-        - IndexName: process_id
-          KeySchema:
-            - AttributeName: process_id
-              KeyType: HASH
-          Projection:
-            ProjectionType: ALL
-          ProvisionedThroughput:
-            ReadCapacityUnits: 0
-            WriteCapacityUnits: 0
-      StreamSpecification:
-        StreamViewType: NEW_AND_OLD_IMAGES
-      TimeToLiveSpecification:
-        AttributeName: ttl
-        Enabled: True
-
-
-  FanProcessingTableTest:
-    Type: AWS::DynamoDB::Table
-    Properties: 
-      BillingMode: PAY_PER_REQUEST
-      AttributeDefinitions: 
-        - 
-          AttributeName: "pk"
-          AttributeType: "S"
-        - 
-          AttributeName: "process_id"
-          AttributeType: "S"
-      KeySchema: 
         -
-          AttributeName: "pk"
-          KeyType: "HASH"
+          AttributeName: "sk"
+          KeyType: "RANGE"
       GlobalSecondaryIndexes:
-        - IndexName: process_id
+        - IndexName: gs1
           KeySchema:
-            - AttributeName: process_id
+            - AttributeName: gs1_pk
               KeyType: HASH
+            - AttributeName: gs1_sk
+              KeyType: RANGE
           Projection:
             ProjectionType: ALL
           ProvisionedThroughput:
@@ -686,19 +665,12 @@ Outputs:
     Value: !GetAtt ProcessingBucket.Arn
 
   # Tables
-  FanProcesssingTable:
+  FanProcessingPartTableArn:
     Description: "FanProcessingTable ARN"
-    Value: !GetAtt FanProcessingTable.Arn
-  FanProcesssingTableName:
+    Value: !GetAtt FanProcessingPartTable.Arn
+  FanProcessingPartTestTableName:
     Description: "FanProcessingTable Name"
-    Value: !Select [1, !Split ['/', !GetAtt FanProcessingTable.Arn]] 
-
-  FanProcesssingTestTableArn:
-    Description: "FanProcessingTableTest ARN"
-    Value: !GetAtt FanProcessingTableTest.Arn
-  FanProcesssingTestTableName:
-    Description: "FanProcessingTableTest Name"
-    Value: !Select [1, !Split ['/', !GetAtt FanProcessingTableTest.Arn]] 
+    Value: !Select [1, !Split ['/', !GetAtt FanProcessingPartTable.Arn]] 
 
   FanProcessingPartTestTableArn:
     Description: "FanProcessingTableTest ARN"
