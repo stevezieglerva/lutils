@@ -32,8 +32,6 @@ Resources:
         - python3.7        
 
 
-
-
   S3TextLinesToSNSLambda:
     Type: AWS::Serverless::Function 
     Properties:
@@ -148,6 +146,7 @@ Resources:
           Properties:
             Topic: !Ref DownloadURLSNS
 
+
   DownloadURLSeleniumLambda:
     Type: AWS::Serverless::Function 
     Properties:
@@ -189,36 +188,6 @@ Resources:
             Topic: !Ref DownloadURLSeleniumSNS
 
 
-  FanHandlerLambda:
-    Type: AWS::Serverless::Function 
-    Properties:
-      Description: Responds to inserts or deletes fan in records into the fan in table
-      CodeUri: lutil_fan_log_dbstream/
-      Handler: app.lambda_handler
-      Runtime: python3.7
-      Environment:
-        Variables:
-          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
-          TABLE_NAME: AUDIT #!Ref FanProcessingPartTestTable
-      Tags:
-        Type: "lutils"
-        Environment: lutils
-      Layers: 
-        - !Ref CommonHex
-      Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref FanProcessingPartTestTable 
-        - DynamoDBCrudPolicy:
-            TableName: "AUDIT" 
-        - Version: 2012-10-17
-          Statement:
-            - Effect: Allow
-              Action: 
-                - sns:Get*
-                - sns:Publish*
-              Resource: !Sub "arn:aws:sns:us-east-1:${AWS::AccountId}:lutil_*"
-
-
   FanDBStreamHandlerTestLambda:
     Type: AWS::Serverless::Function 
     Properties:
@@ -253,6 +222,7 @@ Resources:
             BatchSize: 100
             StartingPosition: TRIM_HORIZON
 
+
   FanStartProcessTestLambda:
     Type: AWS::Serverless::Function 
     Properties:
@@ -282,6 +252,7 @@ Resources:
                 - sns:Publish*
               Resource: !Sub "arn:aws:sns:us-east-1:${AWS::AccountId}:${AWS::StackName}*"
 
+              
   FanCompleteTaskTestLambda:
     Type: AWS::Serverless::Function 
     Properties:
@@ -418,7 +389,11 @@ Resources:
           Type: SNS
           Properties:
             Topic: !Ref FanEventsTestSNS
-
+            FilterPolicy: # only accept specific message types
+              event_name:
+                - "process_completed" 
+              process_name:
+                - "e2e tests" 
 
   FanLogEventsLambda:
     Type: AWS::Serverless::Function 

@@ -7,8 +7,6 @@ import json
 import sys
 import glob
 
-# from FanIn import FanIn
-
 
 def lambda_handler(event, context):
     print(f"Started at {datetime.now()}")
