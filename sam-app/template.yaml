@@ -187,6 +187,39 @@ Resources:
           Properties:
             Topic: !Ref DownloadURLSeleniumSNS
 
+  FanDBStreamHandlerLambda:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Description: Responds to inserts or deletes fan in records into the fan in table
+      CodeUri: lutil_fan_dbstream_handler/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      Environment:
+        Variables:
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
+          TABLE_NAME: !Ref FanProcessingPartTable
+      Tags:
+        Type: "lutils"
+        Environment: lutils
+      Layers: 
+        - !Ref CommonHex
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref FanProcessingPartTable 
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: 
+                - sns:Get*
+                - sns:Publish*
+              Resource: !Sub "arn:aws:sns:us-east-1:${AWS::AccountId}:${AWS::StackName}*"
+      Events:
+        Stream:
+          Type: DynamoDB
+          Properties:
+            Stream: !GetAtt FanProcessingPartTable.StreamArn
+            BatchSize: 100
+            StartingPosition: TRIM_HORIZON
 
   FanDBStreamHandlerTestLambda:
     Type: AWS::Serverless::Function 
@@ -222,6 +255,34 @@ Resources:
             BatchSize: 100
             StartingPosition: TRIM_HORIZON
 
+  FanStartProcessLambda:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Description: Initiate a fan out process for a set of tasks
+      CodeUri: lutil_fan_start_process/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      Environment:
+        Variables:
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
+          TABLE_NAME: !Ref FanProcessingPartTable 
+          POWERTOOLS_METRICS_NAMESPACE: lutils
+          POWERTOOLS_SERVICE_NAME: fan-logging
+      Tags:
+        Type: "lutils"
+        Environment: lutils
+      Layers: 
+        - !Ref CommonHex
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref FanProcessingPartTable 
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: 
+                - sns:Get*
+                - sns:Publish*
+              Resource: !Sub "arn:aws:sns:us-east-1:${AWS::AccountId}:${AWS::StackName}*"
 
   FanStartProcessTestLambda:
     Type: AWS::Serverless::Function 
@@ -252,7 +313,35 @@ Resources:
                 - sns:Publish*
               Resource: !Sub "arn:aws:sns:us-east-1:${AWS::AccountId}:${AWS::StackName}*"
 
-              
+  FanCompleteTaskLambda:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Description: Mark a fan out task as completed
+      CodeUri: lutil_fan_complete_task/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      Environment:
+        Variables:
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
+          TABLE_NAME: !Ref FanProcessingPartTable 
+          POWERTOOLS_METRICS_NAMESPACE: lutils
+          POWERTOOLS_SERVICE_NAME: fan-logging
+      Tags:
+        Type: "lutils"
+        Environment: lutils
+      Layers: 
+        - !Ref CommonHex
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref FanProcessingPartTable 
+        - Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Action: 
+                - sns:Get*
+                - sns:Publish*
+              Resource: !Sub "arn:aws:sns:us-east-1:${AWS::AccountId}:${AWS::StackName}*"
+
   FanCompleteTaskTestLambda:
     Type: AWS::Serverless::Function 
     Properties:
