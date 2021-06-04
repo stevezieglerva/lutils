@@ -440,7 +440,7 @@ Resources:
         SNSEvent:
           Type: SNS
           Properties:
-            Topic: !Ref FanEventSNS
+            Topic: !Ref FanEventsSNS
             FilterPolicy: # only accept specific message types
               event_name:
                 - "task_created" 
