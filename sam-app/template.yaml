@@ -385,7 +385,7 @@ Resources:
       Runtime: python3.7
       Environment:
         Variables:
-          START_PROCESS_LAMBDA_NAME: !Ref FanStartProcessTestLambda
+          START_PROCESS_LAMBDA_NAME: !Ref FanStartProcessLambda
       Tags:
         Type: "lutils"
         Environment: lutils
@@ -409,8 +409,8 @@ Resources:
       Runtime: python3.7
       Environment:
         Variables:
-          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
-          COMPLETE_TASK_LAMBDA_NAME: !Ref FanCompleteTaskTestLambda
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
+          COMPLETE_TASK_LAMBDA_NAME: !Ref FanCompleteTaskLambda
       Tags:
         Type: "lutils"
         Environment: lutils
@@ -457,7 +457,7 @@ Resources:
       Runtime: python3.7
       Environment:
         Variables:
-          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsTestSNS
+          HANDLER_SNS_TOPIC_ARN: !Ref FanEventsSNS
       Tags:
         Type: "lutils"
         Environment: lutils
@@ -475,7 +475,7 @@ Resources:
         SNSEvent:
           Type: SNS
           Properties:
-            Topic: !Ref FanEventsTestSNS
+            Topic: !Ref FanEventsSNS
             FilterPolicy: # only accept specific message types
               event_name:
                 - "process_completed" 
@@ -521,8 +521,6 @@ Resources:
 
 
 
-
-
   ################################
   ### S3
   ################################
@@ -559,7 +557,6 @@ Resources:
 
   FanEventsTestSNS:
     Type: AWS::SNS::Topic
-
 
 
   ################################
