@@ -20,5 +20,5 @@ phases:
       - sam validate -t template.yaml
       - sam build
       - sam package --output-template-file packaged.yaml --s3-bucket $S3_ARTIFACTS
-      - sam deploy --template-file packaged.yaml --stack-name lutils2 --capabilities CAPABILITY_NAMED_IAM --tags Type=lutils2
-      - aws cloudformation describe-stacks --stack-name lutils2 --query 'Stacks[].Outputs' --output table
+      - sam deploy --template-file packaged.yaml --stack-name lutils3 --capabilities CAPABILITY_NAMED_IAM --tags Type=lutils3
+      - aws cloudformation describe-stacks --stack-name lutils3 --query 'Stacks[].Outputs' --output table
