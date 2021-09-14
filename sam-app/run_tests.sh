@@ -1,7 +1,21 @@
 #!/bin/bash
 source venv/bin/activate
-pip install -r requirements.txt
+#pip install -r requirements.txt
 rm reports/*.*
+
+export PYTHONPATH=$PYTHONPATH:common_layer_hex/python
+export PYTHONPATH=$PYTHONPATH:lutil_download_url/
+export PYTHONPATH=$PYTHONPATH:lutil_download_url_selenium/
+export PYTHONPATH=$PYTHONPATH:lutil_fan_complete_task/
+export PYTHONPATH=$PYTHONPATH:lutil_fan_dbstream_handler/
+export PYTHONPATH=$PYTHONPATH:lutil_fan_e2e_completed/
+export PYTHONPATH=$PYTHONPATH:lutil_fan_e2e_consumer/
+export PYTHONPATH=$PYTHONPATH:lutil_fan_e2e_producer/
+export PYTHONPATH=$PYTHONPATH:lutil_fan_log_dbstream/
+export PYTHONPATH=$PYTHONPATH:lutil_fan_log_events/
+export PYTHONPATH=$PYTHONPATH:lutil_fan_start_process/
+export PYTHONPATH=$PYTHONPATH:lutil_s3_filenames_to_sns/
+export PYTHONPATH=$PYTHONPATH:lutil_s3_text_lines_to_sns/
 
 echo "Args: $1, $2"
 

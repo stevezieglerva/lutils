@@ -6,13 +6,6 @@ import sys
 import boto3
 
 
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-parentdir = os.path.dirname(parentdir) + "/common_layer_hex/python"
-sys.path.insert(0, parentdir)
-print("Updated path:")
-print(json.dumps(sys.path, indent=3))
-
 import unittest
 from unittest import mock
 
@@ -25,11 +18,28 @@ class ProcessDTOUnitTests(unittest.TestCase):
         # Arrange
 
         # Act
-        subject = ProcessDTO("procA")
+        subject = ProcessDTO(process_name="procA", information="")
 
         # Assert
         self.assertEqual(subject.process_name, "procA")
         self.assertEqual(subject.progress, 0)
+
+    def test_constructor__given_only_name_and_info__then_no_exceptions(self):
+        # Arrange
+        record = {
+            "process_name": "keyword blast",
+            "information": "basic info",
+        }
+
+        # Act
+        results = ProcessDTO.create_from_dict(record)
+
+        print(results)
+
+        # Assert
+        self.assertEqual(results.process_name, record["process_name"])
+        self.assertEqual(results.progress, 0.0)
+        self.assertEqual(results.information, "basic info")
 
     def test_constructor__given_valid_string_input__then_no_exceptions(self):
         # Arrange
@@ -39,17 +49,37 @@ class ProcessDTOUnitTests(unittest.TestCase):
             "progress": 0.5,
             "started": "2021",
             "ended": "2021",
-            "extra_field": "junk",
+            "information": "should appear",
         }
 
         # Act
-        results = convert_json_to_process(record)
+        results = ProcessDTO.create_from_dict(record)
 
         print(results)
 
         # Assert
         self.assertEqual(results.process_name, record["process_name"])
         self.assertEqual(results.progress, 0.5)
+        self.assertEqual(results.information, "should appear")
+
+    def test_dunder_dict__given_valid_object__then_dict_json_is_valid(self):
+        # Arrange
+        record = {
+            "process_id": "456",
+            "process_name": "keyword blast",
+            "progress": 0.5,
+            "started": "2021",
+            "ended": "2021",
+            "information": '{"hello":"world"}',
+        }
+        dto_object = ProcessDTO.create_from_dict(record)
+
+        # Act
+        project_json = dto_object.__dict__
+
+        # Assert
+        self.assertEqual(type(project_json), dict)
+        print(json.dumps(project_json, indent=3, default=str))
 
 
 if __name__ == "__main__":

@@ -16,7 +16,7 @@ Resources:
       LayerName: selenium-simplified
       Description: Dependencies for Selenium and the headless browser
       ContentUri: 
-        Bucket: !Sub  "lutils-pipeline-artifactsbucket-98fi0mj7zik2"
+        Bucket: !Sub  "lutils-pipeline-artifactsbucket-1u7u95eaa2rhn"
         Key: "python-selenium-simplified.zip"
       CompatibleRuntimes:
         - python3.7
@@ -646,6 +646,43 @@ Resources:
         AttributeName: ttl
         Enabled: True
 
+  ################################
+  ### IAM
+  ################################
+  FanLambdasPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: !Sub "FanLambdaExecution-${AWS::StackName}"
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - lambda:InvokeFunction
+          - lambda:InvokeAsync
+          Resource: !Sub "arn:aws:lambda:us-east-1:${AWS::AccountId}:function:lutil*"
+        - Effect: Allow
+          Action:
+          - cloudformation:DescribeStacks
+          Resource: "*"
+      Roles:
+      - !Ref FanLambdasRole
+
+  FanLambdasRole:
+    Type: AWS::IAM::Role
+    Description: Creating service role for other apps to call the fan lambdas
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service: codebuild.amazonaws.com
+      Path: /
+      RoleName: !Join
+        - '-'
+        - - !Ref 'AWS::StackName'
+          - FanLambdas
 
 ################################
 ### Outputs
@@ -688,8 +725,16 @@ Outputs:
     Description: "FanStartProcessTestLambda"
     Value: !Ref FanStartProcessTestLambda
 
-  FanCompleteTaskTestLambda:
-    Description: "FanCompleteTaskTestLambda"
-    Value: !Ref FanCompleteTaskTestLambda
+  FanStartProcessLambda:
+    Description: "FanStartProcessLambda"
+    Value: !Ref FanStartProcessLambda
 
+  FanCompleteTaskLambda:
+    Description: "FanCompleteTaskLambda"
+    Value: !Ref FanCompleteTaskLambda
+
+  # IAM
+  FanLambdasRole:
+    Description: "FanLambdasRole"
+    Value: !Ref FanLambdasRole
     

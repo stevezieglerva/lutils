@@ -5,6 +5,10 @@ from time import time
 import boto3
 
 
+class RecordNotFound(Exception):
+    pass
+
+
 class DynamoDB:
     def __init__(self, table_name):
         self._db = boto3.client("dynamodb")
@@ -93,6 +97,8 @@ class DynamoDB:
         db_format = self.convert_to_dynamodb_format(key)
         print(f"Getting: {db_format}")
         db_record = self._db.get_item(TableName=self.table_name, Key=db_format)
+        if "Item" not in db_record:
+            raise RecordNotFound(f"key '{key}' not found")
         results = self.convert_from_dynamodb_format(db_record)
         return results
 

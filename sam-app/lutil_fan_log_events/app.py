@@ -25,7 +25,7 @@ def lambda_handler(event, context):
         print(record)
         message = record["Sns"]["Message"]
         message = message.replace("'", '"')
-        fan_event = convert_json_to_fanevent(json.loads(message))
+        fan_event = FanEventDTO.create_from_dict(json.loads(message))
         print("_event_ " + fan_event.get_formatted_line())
     ##        metrics.add_metric(
     ##            name=f"Source-{fan_event.event_source}", unit=MetricUnit.Count, value=1

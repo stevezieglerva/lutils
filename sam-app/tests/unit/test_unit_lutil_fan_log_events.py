@@ -6,15 +6,6 @@ import sys
 import boto3
 
 
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-parentdir = os.path.dirname(parentdir) + "/common_layer_hex/python"
-sys.path.insert(0, parentdir)
-parentdir = os.path.dirname(parentdir) + "/lutil_fan_log_events"
-sys.path.insert(0, parentdir)
-print("Updated path:")
-print(json.dumps(sys.path, indent=3))
-
 import unittest
 from unittest import mock
 
@@ -53,7 +44,7 @@ event = {
 class FanEventUnitTests(unittest.TestCase):
     def test_lambda_handler__given_event__then_done(self):
         # Arrange
-        os.environ["POWERTOOLS_METRICS_NAMESPACE"] = "lutils2"
+        os.environ["POWERTOOLS_METRICS_NAMESPACE"] = "lutils"
         os.environ["POWERTOOLS_SERVICE_NAME"] = "fan-logging"
 
         # Act

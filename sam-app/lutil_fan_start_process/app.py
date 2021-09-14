@@ -4,6 +4,7 @@ import os
 import sys
 import time
 from datetime import datetime
+from dataclasses import asdict
 
 import boto3
 from domain.FanManager import FanManager
@@ -22,9 +23,9 @@ def lambda_handler(event, context):
     print(json.dumps(event, indent=3, default=str))
     db = DynamoDBRepository(os.environ["TABLE_NAME"])
     notifier = SNSNotifier(os.environ["HANDLER_SNS_TOPIC_ARN"])
-    adapter = StartProcessAdapter(db, notifier)
-    adapter.start_process(event)
+    adapter = StartProcessAdapter(FanManager(db, notifier))
+    process_start_result = adapter.start_process(event)
 
     print(f"Finished at {datetime.now()}")
 
-    return {}
+    return asdict(process_start_result)

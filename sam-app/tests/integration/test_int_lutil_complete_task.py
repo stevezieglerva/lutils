@@ -29,7 +29,7 @@ from domain.FanManager import *
 
 def get_output_from_stack(output_key):
     cloudformation = boto3.client("cloudformation")
-    stacks = cloudformation.describe_stacks(StackName="lutils2")
+    stacks = cloudformation.describe_stacks(StackName="lutils")
     stack_outputs = stacks["Stacks"][0]["Outputs"]
     s3_bucket = ""
     for output in stack_outputs:
@@ -52,7 +52,7 @@ class LutilCompleteTaskUnitTests(unittest.TestCase):
         subject = FanManager(repo, notifier)
         task_1 = TaskDTO("task 01", {"action": "go"})
 
-        process = ProcessDTO("LutilCompleteTaskUnitTests")
+        process = ProcessDTO(process_name="LutilCompleteTaskUnitTests", information="")
         start_results = subject.start_process(process, [task_1])
         print(f"\n\nstart process: {start_results}")
 

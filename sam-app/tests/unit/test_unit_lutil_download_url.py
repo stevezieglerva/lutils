@@ -1,11 +1,5 @@
 import os, sys, inspect, json
 
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-parentdir = os.path.dirname(parentdir) + "/lutil_download_url"
-sys.path.insert(0, parentdir)
-print("Updated path:")
-print(json.dumps(sys.path, indent=3))
 
 import unittest
 from lutil_download_url import app
@@ -46,7 +40,9 @@ class UnitTests(unittest.TestCase):
             "lutil-download-url/latest/step-1/step-2/www.cnn.com/http___www.cnn.com",
         )
 
-    def test_get_s3_key_for_latest__given_use_guid__then_filename_formatted(self,):
+    def test_get_s3_key_for_latest__given_use_guid__then_filename_formatted(
+        self,
+    ):
         # Arrange
         url = "http://www.cnn.com"
         source = "https://s3.amazonaws.com/lutils-processingbucket-ekhfo2czytqo/lutil_s3_text_lines_to_sns/lutil_s3_text_lines_output_selenium/step-1/step-2/zillow_urls.txt"

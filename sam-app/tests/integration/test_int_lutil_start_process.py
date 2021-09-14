@@ -28,9 +28,10 @@ from infrastructure.notifications.TestNotifier import TestNotifier
 
 def get_output_from_stack(output_key):
     cloudformation = boto3.client("cloudformation")
-    stacks = cloudformation.describe_stacks(StackName="lutils2")
+    stacks = cloudformation.describe_stacks(StackName="lutils")
     stack_outputs = stacks["Stacks"][0]["Outputs"]
     s3_bucket = ""
+    output_value = ""
     for output in stack_outputs:
         if output["OutputKey"] == output_key:
             output_value = output["OutputValue"]

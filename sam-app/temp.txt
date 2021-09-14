@@ -1,0 +1,167 @@
+Requirement already satisfied: botocore in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 1)) (1.20.73)
+Requirement already satisfied: boto3 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 2)) (1.9.230)
+Requirement already satisfied: pysnooper in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 3)) (0.2.5)
+Requirement already satisfied: coverage in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 4)) (5.0.3)
+Requirement already satisfied: timeago in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 5)) (1.0.15)
+Requirement already satisfied: pytz in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 6)) (2019.2)
+Requirement already satisfied: pylint in /Users/sziegler/Library/Python/3.7/lib/python/site-packages (from -r requirements.txt (line 7)) (2.3.1)
+Requirement already satisfied: black in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 8)) (20.8b1)
+Requirement already satisfied: requests in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 9)) (2.22.0)
+Requirement already satisfied: html-testRunner in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 10)) (1.2.1)
+Requirement already satisfied: moto in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 11)) (2.0.5)
+Requirement already satisfied: aws_lambda_powertools in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 12)) (1.14.0)
+Requirement already satisfied: docker in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 13)) (4.4.4)
+Requirement already satisfied: python-ulid in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from -r requirements.txt (line 14)) (1.0.2)
+Requirement already satisfied: python-dateutil<3.0.0,>=2.1 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from botocore->-r requirements.txt (line 1)) (2.8.0)
+Requirement already satisfied: urllib3<1.27,>=1.25.4 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from botocore->-r requirements.txt (line 1)) (1.25.11)
+Requirement already satisfied: jmespath<1.0.0,>=0.7.1 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from botocore->-r requirements.txt (line 1)) (0.9.4)
+Requirement already satisfied: s3transfer<0.3.0,>=0.2.0 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from boto3->-r requirements.txt (line 2)) (0.2.1)
+Requirement already satisfied: mccabe<0.7,>=0.6 in /Users/sziegler/Library/Python/3.7/lib/python/site-packages (from pylint->-r requirements.txt (line 7)) (0.6.1)
+Requirement already satisfied: isort<5,>=4.2.5 in /Users/sziegler/Library/Python/3.7/lib/python/site-packages (from pylint->-r requirements.txt (line 7)) (4.3.21)
+Requirement already satisfied: astroid<3,>=2.2.0 in /Users/sziegler/Library/Python/3.7/lib/python/site-packages (from pylint->-r requirements.txt (line 7)) (2.2.5)
+Requirement already satisfied: regex>=2020.1.8 in /Users/sziegler/Library/Python/3.7/lib/python/site-packages (from black->-r requirements.txt (line 8)) (2020.4.4)
+Requirement already satisfied: pathspec<1,>=0.6 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from black->-r requirements.txt (line 8)) (0.8.1)
+Requirement already satisfied: typing-extensions>=3.7.4 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from black->-r requirements.txt (line 8)) (3.7.4.3)
+Requirement already satisfied: mypy-extensions>=0.4.3 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from black->-r requirements.txt (line 8)) (0.4.3)
+Requirement already satisfied: appdirs in /Users/sziegler/Library/Python/3.7/lib/python/site-packages (from black->-r requirements.txt (line 8)) (1.4.3)
+Requirement already satisfied: click>=7.1.2 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from black->-r requirements.txt (line 8)) (7.1.2)
+Requirement already satisfied: toml>=0.10.1 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from black->-r requirements.txt (line 8)) (0.10.1)
+Requirement already satisfied: typed-ast>=1.4.0 in /Users/sziegler/Library/Python/3.7/lib/python/site-packages (from black->-r requirements.txt (line 8)) (1.4.0)
+Requirement already satisfied: idna<2.9,>=2.5 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from requests->-r requirements.txt (line 9)) (2.8)
+Requirement already satisfied: certifi>=2017.4.17 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from requests->-r requirements.txt (line 9)) (2019.6.16)
+Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from requests->-r requirements.txt (line 9)) (3.0.4)
+Requirement already satisfied: Jinja2>=2.10.1 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from html-testRunner->-r requirements.txt (line 10)) (2.11.2)
+Requirement already satisfied: xmltodict in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from moto->-r requirements.txt (line 11)) (0.12.0)
+Requirement already satisfied: MarkupSafe<2.0 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from moto->-r requirements.txt (line 11)) (1.1.1)
+Requirement already satisfied: setuptools in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from moto->-r requirements.txt (line 11)) (40.8.0)
+Requirement already satisfied: zipp in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from moto->-r requirements.txt (line 11)) (3.4.1)
+Requirement already satisfied: cryptography>=3.3.1 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from moto->-r requirements.txt (line 11)) (3.4.7)
+Requirement already satisfied: responses>=0.9.0 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from moto->-r requirements.txt (line 11)) (0.13.3)
+Requirement already satisfied: six>1.9 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from moto->-r requirements.txt (line 11)) (1.12.0)
+Requirement already satisfied: werkzeug in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from moto->-r requirements.txt (line 11)) (1.0.1)
+Requirement already satisfied: more-itertools in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from moto->-r requirements.txt (line 11)) (8.7.0)
+Requirement already satisfied: aws-xray-sdk==2.6.0 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from aws_lambda_powertools->-r requirements.txt (line 12)) (2.6.0)
+Requirement already satisfied: fastjsonschema<3.0.0,>=2.14.5 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from aws_lambda_powertools->-r requirements.txt (line 12)) (2.15.0)
+Requirement already satisfied: websocket-client>=0.32.0 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from docker->-r requirements.txt (line 13)) (0.59.0)
+Requirement already satisfied: wrapt in /Users/sziegler/Library/Python/3.7/lib/python/site-packages (from astroid<3,>=2.2.0->pylint->-r requirements.txt (line 7)) (1.11.2)
+Requirement already satisfied: lazy-object-proxy in /Users/sziegler/Library/Python/3.7/lib/python/site-packages (from astroid<3,>=2.2.0->pylint->-r requirements.txt (line 7)) (1.4.2)
+Requirement already satisfied: cffi>=1.12 in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from cryptography>=3.3.1->moto->-r requirements.txt (line 11)) (1.14.5)
+Requirement already satisfied: jsonpickle in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from aws-xray-sdk==2.6.0->aws_lambda_powertools->-r requirements.txt (line 12)) (2.0.0)
+Requirement already satisfied: future in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from aws-xray-sdk==2.6.0->aws_lambda_powertools->-r requirements.txt (line 12)) (0.16.0)
+Requirement already satisfied: pycparser in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from cffi>=1.12->cryptography>=3.3.1->moto->-r requirements.txt (line 11)) (2.20)
+Requirement already satisfied: importlib-metadata; python_version < "3.8" in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages (from jsonpickle->aws-xray-sdk==2.6.0->aws_lambda_powertools->-r requirements.txt (line 12)) (4.0.1)
+Args: simple, *unit*_with_driver.*
+Running simple ...
+  Found pattern: *unit*_with_driver.*
+Updated path:
+[
+   "/Users/sziegler/Documents/GitHub/lutils-icf/sam-app/tests",
+   "/Users/sziegler/Documents/GitHub/lutils-icf/sam-app/common_layer_hex/python",
+   "/Users/sziegler/Documents/GitHub/lutils-icf/sam-app/tests",
+   "/Users/sziegler/Documents/GitHub/lutils-icf/sam-app",
+   "/Library/Frameworks/Python.framework/Versions/3.7/lib/python37.zip",
+   "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7",
+   "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload",
+   "/Users/sziegler/Library/Python/3.7/lib/python/site-packages",
+   "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages"
+]
+fake-table
+
+
+DEBUG Starting process: fan manager test
+Saving: {'process_name': 'fan manager test', 'process_id': '01F8J84WVK2MV74MBF3G5REPBV', 'started': '2021-06-19T09:42:46.899509', 'ended': '', 'progress': 0.0, 'pk': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV', 'sk': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV', 'gs1_pk': 'STATUS#in_progress', 'gs1_sk': '-'}
+put item successful: {'process_name': {'S': 'fan manager test'}, 'process_id': {'S': '01F8J84WVK2MV74MBF3G5REPBV'}, 'started': {'S': '2021-06-19T09:42:46.899509'}, 'ended': {'S': ''}, 'progress': {'N': '0.0'}, 'pk': {'S': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV'}, 'sk': {'S': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV'}, 'gs1_pk': {'S': 'STATUS#in_progress'}, 'gs1_sk': {'S': '-'}}
+
+DEBUG Adding: task 01
+Saving: {'task_name': 'task 01', 'task_message': {'action': 'go'}, 'process_id': '01F8J84WVK2MV74MBF3G5REPBV', 'process_name': 'fan manager test', 'status': 'fan_out', 'status_changed_timestamp': '2021-06-19T09:42:46.902209', 'created': '2021-06-19T09:42:46.902216', 'pk': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV', 'sk': 'TASK#task 01', 'gs1_pk': '-', 'gs1_sk': '-'}
+put item successful: {'task_name': {'S': 'task 01'}, 'task_message': {'S': '"{\'action\': \'go\'}"'}, 'process_id': {'S': '01F8J84WVK2MV74MBF3G5REPBV'}, 'process_name': {'S': 'fan manager test'}, 'status': {'S': 'fan_out'}, 'status_changed_timestamp': {'S': '2021-06-19T09:42:46.902209'}, 'created': {'S': '2021-06-19T09:42:46.902216'}, 'pk': {'S': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV'}, 'sk': {'S': 'TASK#task 01'}, 'gs1_pk': {'S': '-'}, 'gs1_sk': {'S': '-'}}
+
+DEBUG Adding: task 02
+Saving: {'task_name': 'task 02', 'task_message': {'action': 'save'}, 'process_id': '01F8J84WVK2MV74MBF3G5REPBV', 'process_name': 'fan manager test', 'status': 'fan_out', 'status_changed_timestamp': '2021-06-19T09:42:46.904450', 'created': '2021-06-19T09:42:46.904458', 'pk': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV', 'sk': 'TASK#task 02', 'gs1_pk': '-', 'gs1_sk': '-'}
+put item successful: {'task_name': {'S': 'task 02'}, 'task_message': {'S': '"{\'action\': \'save\'}"'}, 'process_id': {'S': '01F8J84WVK2MV74MBF3G5REPBV'}, 'process_name': {'S': 'fan manager test'}, 'status': {'S': 'fan_out'}, 'status_changed_timestamp': {'S': '2021-06-19T09:42:46.904450'}, 'created': {'S': '2021-06-19T09:42:46.904458'}, 'pk': {'S': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV'}, 'sk': {'S': 'TASK#task 02'}, 'gs1_pk': {'S': '-'}, 'gs1_sk': {'S': '-'}}
+Sending message: FanEventDTO(event_source='fan_manager', event_name='process_started', event_message={'process_name': 'fan manager test', 'process_id': '01F8J84WVK2MV74MBF3G5REPBV', 'started': '2021-06-19T09:42:46.899509', 'ended': '', 'progress': 0.0})
+key_condition_exp: pk = :pk AND begins_with( sk, :sk)
+exp_attribute_values_db_format: {':pk': {'S': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV'}, ':sk': {'S': 'TASK'}}
+['task 01', {'action': 'go'}, '01F8J84WVK2MV74MBF3G5REPBV', 'fan manager test', 'fan_out', '2021-06-19T09:42:46.902209', '2021-06-19T09:42:46.902216']
+['task 02', {'action': 'save'}, '01F8J84WVK2MV74MBF3G5REPBV', 'fan manager test', 'fan_out', '2021-06-19T09:42:46.904450', '2021-06-19T09:42:46.904458']
+
+
+DEBUG Fanning out: [TaskDTO(task_name='task 01', task_message={'action': 'go'}, process_id='01F8J84WVK2MV74MBF3G5REPBV', process_name='fan manager test', status='fan_out', status_changed_timestamp='2021-06-19T09:42:46.902209', created='2021-06-19T09:42:46.902216'), TaskDTO(task_name='task 02', task_message={'action': 'save'}, process_id='01F8J84WVK2MV74MBF3G5REPBV', process_name='fan manager test', status='fan_out', status_changed_timestamp='2021-06-19T09:42:46.904450', created='2021-06-19T09:42:46.904458')]
+
+DEBUG Processing task: task 01
+Saving: {'task_name': 'task 01', 'task_message': {'action': 'go'}, 'process_id': '01F8J84WVK2MV74MBF3G5REPBV', 'process_name': 'fan manager test', 'status': 'created', 'status_changed_timestamp': '2021-06-19T09:42:46.910892', 'created': '2021-06-19T09:42:46.902216', 'pk': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV', 'sk': 'TASK#task 01', 'gs1_pk': '-', 'gs1_sk': '-'}
+put item successful: {'task_name': {'S': 'task 01'}, 'task_message': {'S': '"{\'action\': \'go\'}"'}, 'process_id': {'S': '01F8J84WVK2MV74MBF3G5REPBV'}, 'process_name': {'S': 'fan manager test'}, 'status': {'S': 'created'}, 'status_changed_timestamp': {'S': '2021-06-19T09:42:46.910892'}, 'created': {'S': '2021-06-19T09:42:46.902216'}, 'pk': {'S': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV'}, 'sk': {'S': 'TASK#task 01'}, 'gs1_pk': {'S': '-'}, 'gs1_sk': {'S': '-'}}
+Sending message: FanEventDTO(event_source='fan_manager', event_name='task_created', event_message={'task_name': 'task 01', 'task_message': {'action': 'go'}, 'process_id': '01F8J84WVK2MV74MBF3G5REPBV', 'process_name': 'fan manager test', 'status': 'created', 'status_changed_timestamp': '2021-06-19T09:42:46.910892', 'created': '2021-06-19T09:42:46.902216'})
+
+DEBUG Processing task: task 02
+Saving: {'task_name': 'task 02', 'task_message': {'action': 'save'}, 'process_id': '01F8J84WVK2MV74MBF3G5REPBV', 'process_name': 'fan manager test', 'status': 'created', 'status_changed_timestamp': '2021-06-19T09:42:46.912968', 'created': '2021-06-19T09:42:46.904458', 'pk': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV', 'sk': 'TASK#task 02', 'gs1_pk': '-', 'gs1_sk': '-'}
+put item successful: {'task_name': {'S': 'task 02'}, 'task_message': {'S': '"{\'action\': \'save\'}"'}, 'process_id': {'S': '01F8J84WVK2MV74MBF3G5REPBV'}, 'process_name': {'S': 'fan manager test'}, 'status': {'S': 'created'}, 'status_changed_timestamp': {'S': '2021-06-19T09:42:46.912968'}, 'created': {'S': '2021-06-19T09:42:46.904458'}, 'pk': {'S': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV'}, 'sk': {'S': 'TASK#task 02'}, 'gs1_pk': {'S': '-'}, 'gs1_sk': {'S': '-'}}
+Sending message: FanEventDTO(event_source='fan_manager', event_name='task_created', event_message={'task_name': 'task 02', 'task_message': {'action': 'save'}, 'process_id': '01F8J84WVK2MV74MBF3G5REPBV', 'process_name': 'fan manager test', 'status': 'created', 'status_changed_timestamp': '2021-06-19T09:42:46.912968', 'created': '2021-06-19T09:42:46.904458'})
+FanManagerResults(updated_process=None, updated_tasks=[TaskDTO(task_name='task 01', task_message={'action': 'go'}, process_id='01F8J84WVK2MV74MBF3G5REPBV', process_name='fan manager test', status='created', status_changed_timestamp='2021-06-19T09:42:46.910892', created='2021-06-19T09:42:46.902216'), TaskDTO(task_name='task 02', task_message={'action': 'save'}, process_id='01F8J84WVK2MV74MBF3G5REPBV', process_name='fan manager test', status='created', status_changed_timestamp='2021-06-19T09:42:46.912968', created='2021-06-19T09:42:46.904458')], event_notifications=[FanEventDTO(event_source='fan_manager', event_name='task_created', event_message={'task_name': 'task 01', 'task_message': {'action': 'go'}, 'process_id': '01F8J84WVK2MV74MBF3G5REPBV', 'process_name': 'fan manager test', 'status': 'created', 'status_changed_timestamp': '2021-06-19T09:42:46.910892', 'created': '2021-06-19T09:42:46.902216'}), FanEventDTO(event_source='fan_manager', event_name='task_created', event_message={'task_name': 'task 02', 'task_message': {'action': 'save'}, 'process_id': '01F8J84WVK2MV74MBF3G5REPBV', 'process_name': 'fan manager test', 'status': 'created', 'status_changed_timestamp': '2021-06-19T09:42:46.912968', 'created': '2021-06-19T09:42:46.904458'})])
+key_condition_exp: pk = :pk AND begins_with( sk, :sk)
+exp_attribute_values_db_format: {':pk': {'S': 'PROCESS#01F8J84WVK2MV74MBF3G5REPBV'}, ':sk': {'S': 'TASK'}}
+	asks_json:
+[
+   {
+      "task_name": "task 01",
+      "task_message": {
+         "action": "go"
+      },
+      "process_id": "01F8J84WVK2MV74MBF3G5REPBV",
+      "process_name": "fan manager test",
+      "status": "created",
+      "status_changed_timestamp": "2021-06-19T09:42:46.910892",
+      "created": "2021-06-19T09:42:46.902216",
+      "pk": "PROCESS#01F8J84WVK2MV74MBF3G5REPBV",
+      "sk": "TASK#task 01",
+      "gs1_pk": "-",
+      "gs1_sk": "-"
+   },
+   {
+      "task_name": "task 02",
+      "task_message": {
+         "action": "save"
+      },
+      "process_id": "01F8J84WVK2MV74MBF3G5REPBV",
+      "process_name": "fan manager test",
+      "status": "created",
+      "status_changed_timestamp": "2021-06-19T09:42:46.912968",
+      "created": "2021-06-19T09:42:46.904458",
+      "pk": "PROCESS#01F8J84WVK2MV74MBF3G5REPBV",
+      "sk": "TASK#task 02",
+      "gs1_pk": "-",
+      "gs1_sk": "-"
+   }
+]
+[
+   {
+      "task_name": "task 01",
+      "task_message": {
+         "action": "go"
+      },
+      "process_id": "01F8J84WVK2MV74MBF3G5REPBV",
+      "process_name": "fan manager test",
+      "status": "created",
+      "status_changed_timestamp": "2021-06-19T09:42:46.910892",
+      "created": "2021-06-19T09:42:46.902216",
+      "pk": "PROCESS#01F8J84WVK2MV74MBF3G5REPBV",
+      "sk": "TASK#task 01",
+      "gs1_pk": "-",
+      "gs1_sk": "-"
+   },
+   {
+      "task_name": "task 02",
+      "task_message": {
+         "action": "save"
+      },
+      "process_id": "01F8J84WVK2MV74MBF3G5REPBV",
+      "process_name": "fan manager test",
+      "status": "created",
+      "status_changed_timestamp": "2021-06-19T09:42:46.912968",
+      "created": "2021-06-19T09:42:46.904458",
+      "pk": "PROCESS#01F8J84WVK2MV74MBF3G5REPBV",
+      "sk": "TASK#task 02",
+      "gs1_pk": "-",
+      "gs1_sk": "-"
+   }
+]

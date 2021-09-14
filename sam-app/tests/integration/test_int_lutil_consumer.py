@@ -5,6 +5,7 @@ import sys
 
 import boto3
 
+
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 parentdir = os.path.dirname(parentdir) + "/lutil_fan_e2e_consumer"
@@ -16,6 +17,7 @@ print(json.dumps(sys.path, indent=3))
 import unittest
 from unittest import mock
 
+
 from lutil_fan_e2e_consumer import app
 from domain.FanEventDTO import *
 from domain.TaskDTO import *
@@ -24,13 +26,15 @@ from infrastructure.repository.DynamoDB import DynamoDB
 
 def get_output_from_stack(output_key):
     cloudformation = boto3.client("cloudformation")
-    stacks = cloudformation.describe_stacks(StackName="lutils2")
+    stacks = cloudformation.describe_stacks(StackName="lutils")
     stack_outputs = stacks["Stacks"][0]["Outputs"]
     s3_bucket = ""
+    output_value = ""
     for output in stack_outputs:
         if output["OutputKey"] == output_key:
             output_value = output["OutputValue"]
             break
+    assert output_value != ""
     return output_value
 
 
@@ -42,7 +46,7 @@ task_json = {
     "process_id": "2e7d2b96-ae10-11eb-b5ab-acde48001122",
     "process_name": "e2e tests",
     "task_name": "task-9",
-    "task_message": {"max_delay": 5},
+    "task_message": {"max_delay": 5, "number_1": 3, "number_2": 4, "info": "test 2"},
     "completion_sns_arn": "completion_sns_arn",
     "created": "2021-05-06T02:10:10.773986",
     "pk": "FAN-OUT-JOB#2e7d2b96-ae10-11eb-b5ab-acde48001122-TASK#task-9",
@@ -53,7 +57,7 @@ task_json = {
     "status_changed_timestamp": "2021-05-06T02:10:10.577068",
 }
 
-task = convert_json_to_task(task_json)
+task = TaskDTO.create_from_dict(task_json)
 
 
 event = FanEventDTO(
@@ -93,7 +97,7 @@ class ConsumerIntTests(unittest.TestCase):
     def test_lambda_handler__then_no_exception(self):
         # Arrange
         os.environ["COMPLETE_TASK_LAMBDA_NAME"] = get_output_from_stack(
-            "FanCompleteTaskTestLambda"
+            "FanCompleteTaskLambda"
         )
 
         # Act

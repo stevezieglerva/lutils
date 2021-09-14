@@ -6,13 +6,6 @@ import sys
 import boto3
 
 
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-parentdir = os.path.dirname(parentdir) + "/common_layer_hex/python"
-sys.path.insert(0, parentdir)
-print("Updated path:")
-print(json.dumps(sys.path, indent=3))
-
 import unittest
 from unittest import mock
 
@@ -40,7 +33,7 @@ class ProcessDTOUnitTests(unittest.TestCase):
         }
 
         # Act
-        results = convert_json_to_fanevent(record)
+        results = FanEventDTO.create_from_dict(record)
 
         print(results)
 

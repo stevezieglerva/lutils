@@ -27,14 +27,6 @@ os.environ["HANDLER_SNS_TOPIC_ARN"] = get_output_from_stack(
     "FanProcessingPartTestTableName"
 )
 
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-parentdir = os.path.dirname(parentdir) + "/lutil_fan_start_process"
-sys.path.insert(0, parentdir)
-parentdir = os.path.dirname(parentdir) + "/common_layer_hex/python"
-sys.path.insert(0, parentdir)
-print("Updated path:")
-print(json.dumps(sys.path, indent=3))
 
 import unittest
 from unittest import mock
@@ -42,6 +34,7 @@ from unittest import mock
 from lutil_fan_start_process import app
 from domain.ProcessDTO import ProcessDTO
 from domain.TaskDTO import TaskDTO
+from domain.FanManager import FanManager
 from infrastructure.repository.FakeRepository import FakeRepository
 from infrastructure.notifications.TestNotifier import TestNotifier
 from StartProcessAdapter import *
@@ -51,7 +44,7 @@ class StartProcessAdapterUnitTests(unittest.TestCase):
     def test_start_process__given_valid_event__then_no_exceptions(self):
         # Arrange
         event = {
-            "process": {"process_name": "proc A"},
+            "process": {"process_name": "proc A", "information": "extra info"},
             "tasks": [
                 {"task_name": "task 1", "task_message": {"hello": "world"}},
                 {"task_name": "task 2", "task_message": {"apple": "pear"}},
@@ -59,7 +52,7 @@ class StartProcessAdapterUnitTests(unittest.TestCase):
         }
         db = FakeRepository("fake")
         notifier = TestNotifier("test")
-        adapter = StartProcessAdapter(db, notifier)
+        adapter = StartProcessAdapter(FanManager(db, notifier))
 
         # Act
         results = adapter.start_process(event)
@@ -68,4 +61,5 @@ class StartProcessAdapterUnitTests(unittest.TestCase):
         # Assert
         self.assertEqual(results.updated_process.process_name, "proc A")
         self.assertTrue(results.updated_process.process_id != "")
+        self.assertEqual(results.updated_process.information, "extra info")
         self.assertEqual(results.event_notifications[0].event_name, "process_started")

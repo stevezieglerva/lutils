@@ -21,7 +21,7 @@ from common_layer_hex.python.infrastructure.repository.DynamoDB import DynamoDB
 
 def get_output_from_stack(output_key):
     cloudformation = boto3.client("cloudformation")
-    stacks = cloudformation.describe_stacks(StackName="lutils2")
+    stacks = cloudformation.describe_stacks(StackName="lutils")
     stack_outputs = stacks["Stacks"][0]["Outputs"]
     s3_bucket = ""
     for output in stack_outputs:

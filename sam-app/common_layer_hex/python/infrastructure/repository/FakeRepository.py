@@ -9,7 +9,7 @@ from domain.TaskDTO import TaskDTO
 class FakeRepository(IRepository):
     def get_process(self, process_id: str) -> ProcessDTO:
         print("fake get process")
-        return ProcessDTO("test")
+        return ProcessDTO(process_name="test", information="")
 
     def save_process(self, process: ProcessDTO):
         print("fake save process")

@@ -16,14 +16,14 @@ class DynamoDBRepository(IRepository):
         process_json = self.db.get_item(
             {"pk": f"PROCESS#{process_id}", "sk": f"PROCESS#{process_id}"}
         )
+        process_json.pop("pk")
+        process_json.pop("sk")
+        process_json.pop("gs1_pk")
+        process_json.pop("gs1_sk")
+        if "ttl" in process_json:
+            process_json.pop("ttl")
         print(process_json)
-        process = ProcessDTO(
-            process_json["process_name"],
-            process_json["process_id"],
-            process_json["started"],
-            process_json["ended"],
-            process_json["progress"],
-        )
+        process = ProcessDTO(**process_json)
         return process
 
     def save_process(self, process: ProcessDTO):
@@ -75,5 +75,5 @@ class DynamoDBRepository(IRepository):
         records = self.db.query_table_begins(
             {"pk": f"PROCESS#{process.process_id}", "sk": "TASK"}
         )
-        results = [convert_json_to_task(t) for t in records]
+        results = [TaskDTO.create_from_dict(t) for t in records]
         return results

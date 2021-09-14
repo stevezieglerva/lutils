@@ -26,15 +26,6 @@ os.environ["TABLE_NAME"] = get_output_from_stack(
 os.environ["HANDLER_SNS_TOPIC_ARN"] = "fake-sns"
 
 
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-parentdir = os.path.dirname(parentdir) + "/lutil_fan_complete_task"
-sys.path.insert(0, parentdir)
-parentdir = os.path.dirname(parentdir) + "/common_layer_hex/python"
-sys.path.insert(0, parentdir)
-print("Updated path:")
-print(json.dumps(sys.path, indent=3))
-
 import unittest
 from unittest import mock
 

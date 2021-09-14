@@ -1,5 +1,6 @@
 import glob
 import json
+import re
 import sys
 import unittest
 from unittest.mock import MagicMock, Mock, PropertyMock, patch
@@ -31,6 +32,23 @@ def print_results(pattern):
     print(f"\n🗂  Total Tests: {test_count}\n")
 
 
+def get_files_with_lots_of_tests_commented_out(start_dir):
+    results = []
+    path = f"{start_dir}**/test_*.py"
+    print(f"❎ Checking for commented tests in {path}")
+    files = glob.glob(path)
+    for filename in files:
+        with open(filename, "r") as file:
+            file_lines = file.readlines()
+            all_lines_count = len(file_lines)
+            commented_lines = [l for l in file_lines if re.findall(r"#", l)]
+            commented_lines_count = len(commented_lines)
+            percent_commented = round(float(commented_lines_count / all_lines_count), 2)
+            if percent_commented > 0.25:
+                results.append((filename, percent_commented))
+    return results
+
+
 if __name__ == "__main__":
     start_dir = "tests/"
     pattern = "test_*.*"
@@ -53,6 +71,13 @@ if __name__ == "__main__":
     test_results = runner.run(suite)
 
     print_results(pattern)
+
+    tests_with_lots_of_comments = get_files_with_lots_of_tests_commented_out(start_dir)
+    if tests_with_lots_of_comments:
+        print("\n🚨 Lots of commented tests")
+        for f in tests_with_lots_of_comments:
+            print(f"{f[0]:<60} {f[1]:.0%}")
+    print()
 
     if test_results.wasSuccessful() == True:
         print("👍🎉 All tests passed!")

@@ -10,6 +10,7 @@ import glob
 
 from aws_lambda_powertools import Metrics
 from aws_lambda_powertools.metrics import MetricUnit
+from domain.FanManager import FanManager
 from infrastructure.repository.DynamoDBRepository import DynamoDBRepository
 from infrastructure.notifications.SNSNotifier import SNSNotifier
 from DBStreamAdapter import DBStreamAdapter
@@ -32,11 +33,8 @@ def lambda_handler(event, context):
         raise ValueError(f"Missing env variable for HANDLER_SNS_TOPIC_ARN")
     notifier = SNSNotifier(handler_sns_topic_arn)
 
-    adapter = DBStreamAdapter(repo, notifier)
+    adapter = DBStreamAdapter(FanManager(repo, notifier))
 
-    processed_count = 0
-    for record in event["Records"]:
-        results = adapter.process_single_event(record)
-        processed_count = processed_count + 1
+    all_results = adapter.process_events(event)
 
-    return {"processed": processed_count}
+    return {"processed": len(all_results)}

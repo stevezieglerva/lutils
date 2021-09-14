@@ -24,11 +24,20 @@ def lambda_handler(event, context):
         print(f"Received message: {message}")
         message = message.replace("'", '"')
         task_json = json.loads(message)["event_message"]
-        task = convert_json_to_task(task_json)
+        task = TaskDTO.create_from_dict(task_json)
         print(f"task_message: {task.task_message}")
 
+        # Random wait to simulate tasks of different lengths
         max_delay = task.task_message["max_delay"]
         time.sleep(random.randint(0, max_delay))
+
+        number_1 = task.task_message["number_1"]
+        number_2 = task.task_message["number_2"]
+        sum = number_1 + number_2
+
+        info = task.task_message["info"]
+
+        print(f"Info: {info:<25}| Sum: {number_1} + {number_2} = {sum}")
 
         results = complete_task(complete_task_lambda, task.process_id, task.task_name)
 
