@@ -55,7 +55,7 @@ opm_event = {
                 "MessageId": "95df01b4-ee98-5cb9-9903-4c221d41eb5e",
                 "TopicArn": "arn:aws:sns:us-east-1:123456789012:ExampleTopic",
                 "Subject": "example subject",
-                "Message": '{"line" : "https://ia800608.us.archive.org/16/items/opm-federal-employment-data/data/1973-09-to-2014-06/non-dod/status/Status_Non_DoD_2012_09.txt"}',
+                "Message": '{"line" : "https://ia800608.us.archive.org/16/items/opm-federal-employment-data/data/1973-09-to-2014-06/non-dod/status/Status_Non_DoD_2012_09.txt", "source" : "test"}',
                 "Timestamp": "1970-01-01T00:00:00.000Z",
                 "SignatureVersion": "1",
                 "Signature": "EXAMPLE",
@@ -83,15 +83,17 @@ class IntegrationTests(unittest.TestCase):
         # Arrange
         self.assertEqual(1, 1)
 
+    def test_lambda_handler__given_valid_sns_data_big_slow_url__file_is_downloaded_to_location(
+        self,
+    ):
+        # Act
+        os.environ["s3_bucket"] = "lutils-processingbucket-ekhfo2czytqo"
 
-## 	def test_lambda_handler__given_valid_sns_data_big_slow_url__file_is_downloaded_to_location(self):
-## 		# Act
-##
-## 		result = lambda_handler(opm_event, None)
-## 		print(result)
-##
-## 		# Arrange
-## 		self.assertEqual(1, 1)
+        result = app.lambda_handler(opm_event, None)
+        print(result)
+
+        # Arrange
+        self.assertEqual(1, 1)
 
 
 if __name__ == "__main__":
