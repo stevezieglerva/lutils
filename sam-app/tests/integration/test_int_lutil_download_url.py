@@ -1,4 +1,7 @@
-import os, sys, inspect, json
+import inspect
+import json
+import os
+import sys
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
@@ -7,13 +10,13 @@ sys.path.insert(0, parentdir)
 print("Updated path:")
 print(json.dumps(sys.path, indent=3))
 
-import unittest
-from unittest.mock import patch, Mock, MagicMock, PropertyMock
-import time
-import boto3
 import json
-from lutil_download_url import app
+import time
+import unittest
+from unittest.mock import MagicMock, Mock, PropertyMock, patch
 
+import boto3
+from lutil_download_url import app
 
 event = {
     "Records": [
@@ -74,8 +77,8 @@ class IntegrationTests(unittest.TestCase):
         os.environ["s3_bucket"] = "lutils-processingbucket-ekhfo2czytqo"
 
         # Act
-        result = app.lambda_handler(event, None)
-        print(result)
+        results = app.lambda_handler(event, None)
+        print(f"test results: {results}")
 
         # Arrange
         self.assertEqual(1, 1)

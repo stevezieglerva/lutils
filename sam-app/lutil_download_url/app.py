@@ -1,20 +1,22 @@
-import boto3
-import time
-from datetime import datetime
+import hashlib
+import json
 import logging
 import os
-import json
-import sys
-import requests
-import re
 import random
+import re
+import sys
 import time
-import hashlib
+from datetime import datetime
 from urllib.parse import urlparse
+
+import boto3
+import requests
+
 from S3TextFromLambdaEvent import *
 
 
 def lambda_handler(event, context):
+    result = {}
     try:
         print(f"Started at {datetime.now()}")
 
@@ -40,14 +42,18 @@ def lambda_handler(event, context):
                 use_guid_for_filename = True
             s3_key = get_s3_key_for_latest(url, source, use_guid_for_filename)
             create_s3_text_file(
-                bucket, s3_key, res.text,
+                bucket,
+                s3_key,
+                res.text,
             )
             print(f"File saved to: {s3_key}")
             timestamp = datetime.now().isoformat()
             s3_key_historical = s3_key.replace("latest/", "")
             s3_key = f"{s3_key_historical}.{timestamp}"
             create_s3_text_file(
-                bucket, s3_key, res.text,
+                bucket,
+                s3_key,
+                res.text,
             )
             print(f"File saved to: {s3_key}")
             print(f"Finished at {datetime.now()}")
@@ -57,7 +63,7 @@ def lambda_handler(event, context):
         raise (e)
         return {"msg": "Exception"}
 
-    return {"msg": "Success"}
+    return result
 
 
 def download_page(url):
