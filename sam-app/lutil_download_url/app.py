@@ -7,6 +7,7 @@ import re
 import sys
 import time
 from datetime import datetime
+from typing import List
 from urllib.parse import urlparse
 
 import boto3
@@ -98,3 +99,25 @@ def get_s3_key_for_latest(url, source, use_guid=False):
 
     s3_key = f"lutil-download-url/latest/{domain}/{filename}"
     return s3_key
+
+
+def get_random_user_agent_header_set() -> List[str]:
+    options = []
+    options.append([
+        "ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "ACCEPT-ENCODING:gzip, deflate, br",
+        "ACCEPT-LANGUAGE:en-US,en;q=0.9",
+        "HOST:www.whatismybrowser.com",
+        "REFERER:https://www.google.com/",
+        'SEC-CH-UA:"Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"',
+        "SEC-CH-UA-MOBILE:?0",
+        'SEC-CH-UA-PLATFORM:"macOS"',
+        "SEC-FETCH-DEST:document",
+        "SEC-FETCH-MODE:navigate",
+        "SEC-FETCH-SITE:cross-site",
+        "SEC-FETCH-USER:?1",
+        "UPGRADE-INSECURE-REQUESTS:1",
+        "USER-AGENT:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36",
+    ])
+    random_index = random.randint(0, len(options) - 1)
+    return options[random_index]

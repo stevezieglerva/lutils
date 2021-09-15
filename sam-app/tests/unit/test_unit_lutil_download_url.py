@@ -1,9 +1,11 @@
-import os, sys, inspect, json
-
-
+import inspect
+import json
+import os
+import sys
 import unittest
+from unittest.mock import MagicMock, Mock, PropertyMock, patch
+
 from lutil_download_url import app
-from unittest.mock import patch, Mock, MagicMock, PropertyMock
 
 
 class UnitTests(unittest.TestCase):
@@ -56,6 +58,17 @@ class UnitTests(unittest.TestCase):
             result,
             "lutil-download-url/latest/step-1/step-2/www.cnn.com/13135319696474009996500139906251311974",
         )
+
+    def test_get_random_user_agent_header_set__given_func_call_then_header_array_returned(
+        self,
+    ):
+        # Arrange
+
+        # Act
+        results = app.get_random_user_agent_header_set()
+
+        # Assert
+        self.assertTrue("USER-AGENT" in results[-1])
 
 
 if __name__ == "__main__":
