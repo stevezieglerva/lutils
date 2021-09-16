@@ -68,7 +68,7 @@ class UnitTests(unittest.TestCase):
         results = app.get_random_user_agent_header_set()
 
         # Assert
-        self.assertTrue("USER-AGENT" in results[-1])
+        self.assertTrue("USER-AGENT" in results)
 
 
 if __name__ == "__main__":
