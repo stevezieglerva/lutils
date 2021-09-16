@@ -72,18 +72,18 @@ zillow_event = {
 
 
 class IntegrationTests(unittest.TestCase):
-    # def test_lambda_handler__given_valid_sns_data_for_cnn__file_is_downloaded_to_location(
-    #     self,
-    # ):
-    #     # Arrange
-    #     os.environ["s3_bucket"] = "lutils-processingbucket-ekhfo2czytqo"
+    def test_lambda_handler__given_valid_sns_data_for_cnn__file_is_downloaded_to_location(
+        self,
+    ):
+        # Arrange
+        os.environ["s3_bucket"] = "lutils-processingbucket-ekhfo2czytqo"
 
-    #     # Act
-    #     results = app.lambda_handler(cnn_event, None)
-    #     print(f"test results: {results}")
+        # Act
+        results = app.lambda_handler(cnn_event, None)
+        print(f"test results: {results}")
 
-    #     # Arrange
-    #     self.assertEqual(results["status_code"], 200)
+        # Arrange
+        self.assertEqual(results["status_code"], 200)
 
     def test_lambda_handler__given_valid_sns_data_for_zillow__file_is_downloaded_to_location(
         self,
@@ -96,7 +96,7 @@ class IntegrationTests(unittest.TestCase):
         print(f"test results: {results}")
 
         # Arrange
-        self.assertEqual(results["status_code"], 500)
+        self.assertEqual(results["status_code"], 200)
 
 
 if __name__ == "__main__":

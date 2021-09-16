@@ -42,7 +42,6 @@ def lambda_handler(event, context):
             if use_guid_for_filename_var == "yes":
                 use_guid_for_filename = True
             s3_key = get_s3_key_for_latest(url, source, use_guid_for_filename)
-            print(res.text)
             create_s3_text_file(
                 bucket,
                 s3_key,
@@ -111,11 +110,11 @@ def get_random_user_agent_header_set() -> List[str]:
             "ACCEPT-ENCODING": "gzip, deflate, br",
             "ACCEPT-LANGUAGE": "en-US,en;q=0.9",
             "CACHE-CONTROL": "max-age=0",
-            "COOKIE": "__utma=12798129.360629145.1631740934.1631740934.1631740934.1; __utmc=12798129; __utmz=12798129.1631740934.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __gads=ID=9d21a14a49714b90-224fce3c08bb00d3:T=1631740934:RT=1631740934:S=ALNI_MY6XCRmtIF_Ojomjm39TaHjmPJkXg; __utmt=1; __utmb=12798129.2.10.1631740934",
             "DEVICE-MEMORY": "8",
             "DOWNLINK": "10",
             "DPR": "2",
             "ECT": "4g",
+            "REFERER": "https://duckduckgo.com/",
             "RTT": "50",
             "SEC-CH-PREFERS-COLOR-SCHEME": "light",
             "SEC-CH-UA": '"Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"',
@@ -133,6 +132,21 @@ def get_random_user_agent_header_set() -> List[str]:
             "USER-AGENT": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36",
             "VIEWPORT-WIDTH": "1680",
         }
+    )
+    options.append(
+        {
+            "ACCEPT": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+            "ACCEPT-ENCODING": "gzip, deflate, br",
+            "ACCEPT-LANGUAGE": "en-US,en;q=0.5",
+            "REFERER": "https://duckduckgo.com/",
+            "SEC-FETCH-DEST": "document",
+            "SEC-FETCH-MODE": "navigate",
+            "SEC-FETCH-SITE": "cross-site",
+            "SEC-FETCH-USER": "?1",
+            "TE": "trailers",
+            "UPGRADE-INSECURE-REQUESTS": "1",
+            "USER-AGENT": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:92.0) Gecko/20100101 Firefox/92.0",
+        },
     )
     random_index = random.randint(0, len(options) - 1)
     return options[random_index]
