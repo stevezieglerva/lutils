@@ -80,10 +80,12 @@ class IntegrationTests(unittest.TestCase):
 
         # Act
         results = app.lambda_handler(cnn_event, None)
-        print(f"test results: {results}")
+        print(f"test results: {json.dumps(results, indent=3, default=str)}")
 
         # Arrange
         self.assertEqual(results["status_code"], 200)
+        self.assertTrue("2021" in results["s3_historical_key"])
+        self.assertTrue(":" not in results["s3_historical_key"])
 
     def test_lambda_handler__given_valid_sns_data_for_zillow__file_is_downloaded_to_location(
         self,
